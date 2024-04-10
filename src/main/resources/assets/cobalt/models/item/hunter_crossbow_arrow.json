@@ -1,0 +1,6 @@
+{
+    "parent": "cobalt:item/hunter_crossbow",
+    "textures": {
+        "layer0": "cobalt:item/crossbow/hunter_crossbow_arrow"
+    }
+}

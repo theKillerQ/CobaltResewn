@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "cobalt:mechanical_hand",
+    "cobalt:hunter_gloves",
+    "cobalt:mechanic_gloves"
+  ]
+}

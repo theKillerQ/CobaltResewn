@@ -1,0 +1,267 @@
+{
+  "key.cobalt.togglegui": "Toggle GUI",
+  "key.cobalt.header": "Cobalt",
+
+
+  "itemGroup.cobalt.items": "Flickering Lights",
+
+
+
+  "item.cobalt.adventure_sword": "Adventurer's Sword",
+  "item.cobalt.adventure_sword.tooltip": "Perfect for a fledgling adventurer",
+
+  "item.cobalt.adventure_helmet": "Adventurer's Helmet",
+  "item.cobalt.adventure_helmet.tooltip": "Sturdy helmet made for adventure",
+
+  "item.cobalt.adventure_chestplate": "Adventurer's Chestplate",
+  "item.cobalt.adventure_chestplate.tooltip": "Sturdy chestplate made for adventure",
+
+  "item.cobalt.adventure_leggings": "Adventurer's Leggings",
+  "item.cobalt.adventure_leggings.tooltip": "Sturdy leggings made for adventure",
+
+  "item.cobalt.adventure_boots": "Adventurer's Boots",
+  "item.cobalt.adventure_boots.tooltip": "Sturdy boots made for adventure",
+
+
+
+
+
+  "item.cobalt.guard_helmet": "Guard's Helmet",
+  "item.cobalt.guard_helmet.tooltip": "Heavy leather helmet",
+
+  "item.cobalt.guard_chestplate": "Guard's Chestplate",
+  "item.cobalt.guard_chestplate.tooltip": "Sturdy chain chestplate",
+
+  "item.cobalt.guard_leggings": "Guard's Leggings",
+  "item.cobalt.guard_leggings.tooltip": "Heavy leather leggings",
+
+  "item.cobalt.guard_boots": "Guard's Boots",
+  "item.cobalt.guard_boots.tooltip": "Heavy leather boots",
+
+
+
+
+
+  "item.cobalt.hunter_crossbow": "Hunter's Crossbow",
+  "item.cobalt.hunter_crossbow:tooltip": "Snipe your prey from afar",
+
+  "item.cobalt.hunter_boots": "Hunter's Boots",
+  "item.cobalt.hunter_boots.tooltip": "Boots left by a hunter. Good for stalking your prey",
+
+  "item.cobalt.hunter_leggings": "Hunter's Pants",
+  "item.cobalt.hunter_leggings.tooltip": "Pants left by a hunter. They seem well used",
+
+  "item.cobalt.hunter_chestplate": "Hunter's Tunic",
+  "item.cobalt.hunter_chestplate.tooltip": "Tunic left by a hunter. Where did they go?",
+
+  "item.cobalt.hunter_helmet": "Hunter's Cap",
+  "item.cobalt.hunter_helmet.tooltip": "Cap left by a hunter. Why was it left here?",
+
+  "item.cobalt.hunter_gloves": "Hunter's Gloves",
+  "item.cobalt.hunter_gloves.tooltip": "Protect your hands while outdoors",
+
+
+
+
+  "item.cobalt.mechanical_hand": "Mechanical Hand",
+  "item.cobalt.mechanical_hand.tooltip": "When your own hands are not strong enough",
+
+  "item.cobalt.mechanic_boots": "Mechanic's Boots",
+  "item.cobalt.mechanic_boots.tooltip": "Heavy leather boots made for working in wet environments",
+
+  "item.cobalt.mechanic_leggings": "Mechanic's Leggings",
+  "item.cobalt.mechanic_leggings.tooltip": "Heavy, insulated leggings",
+
+  "item.cobalt.mechanic_chestplate": "Mechanic's Chestplate",
+  "item.cobalt.mechanic_chestplate.tooltip": "Heavy-duty chestplate for working with heavy machinery",
+
+  "item.cobalt.mechanic_helmet": "Mechanic's Helmet",
+  "item.cobalt.mechanic_helmet.tooltip": "Protect your head from falling debris",
+
+  "item.cobalt.mechanic_gloves": "Mechanic's Gloves",
+  "item.cobalt.mechanic_gloves.tooltip": "Keep the grease off your hands",
+
+  "item.cobalt.heavy_wrench": "Heavy Wrench",
+  "item.cobalt.heavy_wrench.tooltip": "Used to maintain heavy machinery",
+
+  "item.cobalt.gearstrap": "Gearstrap",
+  "item.cobalt.gearstrap.tooltip": "Tight belt with small gears attached",
+
+  "item.cobalt.reinforced_mechanic_boots": "Reinforced Mechanic's Boots",
+  "item.cobalt.reinforced_mechanic_boots.tooltip": "Even heavier leather boots, reinforced with steel",
+
+  "item.cobalt.reinforced_mechanic_leggings": "Reinforced Mechanic's Leggings",
+  "item.cobalt.reinforced_mechanic_leggings.tooltip": "Leggings made to withstand extreme situations",
+
+  "item.cobalt.reinforced_mechanic_chestplate": "Reinforced Mechanic's Chestplate",
+  "item.cobalt.reinforced_mechanic_chestplate.tooltip": "Extremely heavy chestplate. Reinforced with steel",
+
+  "item.cobalt.reinforced_mechanic_helmet": "Reinforced Mechanic's Helmet",
+  "item.cobalt.reinforced_mechanic_helmet.tooltip": "Helmet made for working in dangerous environments",
+
+
+
+
+
+  "item.cobalt.basic_drill": "Basic Drill",
+  "item.cobalt.basic_drill.tooltip": "Fast digging",
+  "item.cobalt.basic_drill.ability": "Use: Gain haste for 10s. Consumes coal",
+
+  "item.cobalt.miner_helmet": "Miner's Helmet",
+  "item.cobalt.miner_helmet.tooltip": "Brighten your surroundings",
+
+  "item.cobalt.miner_chestplate": "Miner's Chestplate",
+  "item.cobalt.miner_chestplate.tooltip": "Heavy chestplate made for mining",
+
+  "item.cobalt.miner_leggings": "Miner's Leggings",
+  "item.cobalt.miner_leggings.tooltip": "Sturdy leggings made for mining",
+
+  "item.cobalt.miner_boots": "Miner's Boots",
+  "item.cobalt.miner_boots.tooltip": "Sturdy boots made for mining",
+
+  "item.cobalt.miner_pickaxe": "Miner's Pickaxe",
+  "item.cobalt.miner_pickaxe.tooltip": "Pickaxe meant for mining and punching things",
+
+
+
+
+
+  "item.cobalt.prospector_pickaxe": "Prospector's Pickaxe",
+  "item.cobalt.prospector_pickaxe.tooltip": "Swiftly test the ground for minerals",
+
+  "item.cobalt.prospector_helmet": "Prospector's Helmet",
+  "item.cobalt.prospector_helmet.tooltip": "Swiftly explore the mines for ancient structures",
+
+  "item.cobalt.prospector_chestplate": "Prospector's Chestguard",
+  "item.cobalt.prospector_chestplate.tooltip": "Swiftly explore the mines for ores",
+
+  "item.cobalt.prospector_leggings": "Prospector's Leggings",
+  "item.cobalt.prospector_leggings.tooltip": "Swiftly explore the mines for rocks",
+
+  "item.cobalt.prospector_boots": "Prospector's Boots",
+  "item.cobalt.prospector_boots.tooltip": "Swiftly explore the mines for rare metals ",
+
+
+
+
+
+  "item.cobalt.tinker_helmet": "Tinker Goggles",
+  "item.cobalt.tinker_helmet.tooltip": "Your sight becomes clear",
+
+  "item.cobalt.reinforced_tinker_helmet": "Reinforced Tinker Goggles",
+  "item.cobalt.reinforced_tinker_helmet.tooltip": "Working in the dark has never been easier",
+
+  "item.cobalt.tinker_chestplate": "Whirlwind Tinkertorso",
+  "item.cobalt.tinker_chestplate.tooltip": "Chestplate meant to improve mobility",
+
+  "item.cobalt.reinforced_tinker_chestplate": "Reinforced Tinkertorso",
+  "item.cobalt.reinforced_tinker_chestplate.tooltip": "Surprisingly lightweight",
+
+  "item.cobalt.tinker_leggings": "Whirlwind Tinkergreaves",
+  "item.cobalt.tinker_leggings.tooltip": "Brass leggings optimized for speed and balance",
+
+  "item.cobalt.reinforced_tinker_leggings": "Reinforced Tinkergreaves",
+  "item.cobalt.reinforced_tinker_leggings.tooltip": "Run like the wind!",
+
+  "item.cobalt.tinker_boots": "Tinker's Boots",
+  "item.cobalt.tinker_boots.tooltip": "Light leather boots made for moving quickly through tight spaces",
+
+  "item.cobalt.reinforced_tinker_boots": "Reinforced Tinker Boots",
+  "item.cobalt.reinforced_tinker_boots.tooltip": "Aerodynamic aglets",
+
+
+
+  "item.cobalt.painkillers": "Painkillers",
+  "item.cobalt.painkillers.tooltip": "For the small wounds",
+
+  "item.cobalt.bandage": "Bandage",
+  "item.cobalt.bandage.tooltip": "Patch those wounds up",
+
+  "item.cobalt.first_aid_kit": "First Aid Kit",
+  "item.cobalt.first_aid_kit.tooltip": "The whole kit!",
+
+  "item.cobalt.pneumatic_needle": "Pneumatic Needle",
+  "item.cobalt.pneumatic_needle.tooltip": "..what is in this?",
+
+
+
+
+  "item.cobalt.lumberjack_axe": "Lumberjack's Axe",
+  "item.cobalt.lumberjack_axe.tooltip": "Trees tremble before you",
+
+  "item.cobalt.lumberjack_boots": "Lumberjack's Boots",
+  "item.cobalt.lumberjack_boots.tooltip": "Weathered by age and use",
+
+  "item.cobalt.lumberjack_leggings": "Lumberjack's Pants",
+  "item.cobalt.lumberjack_leggings.tooltip": "They need a wash",
+
+  "item.cobalt.lumberjack_chestplate": "Lumberjack's Chestpiece",
+  "item.cobalt.lumberjack_chestplate.tooltip": "It seems to have been left here for some time",
+
+  "item.cobalt.lumberjack_helmet": "Lumberjack's Cap",
+  "item.cobalt.lumberjack_helmet.tooltip": "Provides adequate protection against the environments",
+
+
+
+
+  "item.cobalt.infected_adventure_sword": "Infected Adventurer's Sword",
+  "item.cobalt.infected_adventure_sword.tooltip": "A familiar sword infected by corruption",
+  "item.cobalt.infected_adventure_sword.ability": "Use: Gain strength for 1m. Consumes 4 health",
+
+
+
+
+
+  "item.cobalt.sample_drill": "Sample Drill",
+  "item.cobalt.sample_drill.tooltip": "Mend your flesh with theirs",
+  "item.cobalt.sample_drill.ability": "2% chance to heal 10% when you hit an enemy",
+
+
+
+
+
+  "item.cobalt.ruined_gear": "Ruined Gear",
+  "item.cobalt.ruined_gear.tooltip": "Gear ruined by years of weathering",
+
+  "item.cobalt.tarnished_gear": "Tarnished Gear",
+  "item.cobalt.tarnished_gear.tooltip": "Gear covered in patina",
+
+  "item.cobalt.average_gear": "Average Gear",
+  "item.cobalt.average_gear.tooltip": "Gear of decent quality",
+
+  "item.cobalt.remarkable_gear": "Remarkable Gear",
+  "item.cobalt.remarkable_gear.tooltip": "Gear of remarkable quality",
+
+
+
+
+
+  "item.cobalt.mystery_medicine": "Mystery Medicine",
+  "item.cobalt.mystery_medicine.tooltip": "..maybe it'll be good?",
+
+
+
+
+
+  "item.cobalt.battery": "Battery",
+  "item.cobalt.battery.tooltip": "Shocking!",
+
+
+
+
+
+  "item.cobalt.harpoon_gun": "Harpoon Gun",
+  "item.cobalt.harpoon_gun.tooltip": "",
+
+  "item.cobalt.diving_helmet": "Diving Helmet",
+  "item.cobalt.diving_helmet.tooltip": "Breathe underwater! ..if you can find some air tanks..",
+
+  "item.cobalt.diving_chestplate": "Diving Torso",
+  "item.cobalt.diving_chestplate.tooltip": "Waterproof but very heavy",
+
+  "item.cobalt.diving_leggings": "Diving Leggings",
+  "item.cobalt.diving_leggings.tooltip": "They are not easy to walk around in",
+
+  "item.cobalt.diving_boots": "Diving Boots",
+  "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom"
+}

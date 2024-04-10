@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cobalt:item/swords/infected_adventure_sword"
+  }
+}

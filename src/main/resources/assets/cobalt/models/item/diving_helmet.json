@@ -1,0 +1,80 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 32],
+	"textures": {
+		"0": "cobalt:item/armor/scuba_helmet_layer_1",
+		"particle": "cobalt:item/armor/scuba_helmet_layer_1"
+	},
+	"elements": [
+		{
+			"from": [-2, 0, -2],
+			"to": [18, 20, 18],
+			"faces": {
+				"north": {"uv": [2.5, 5, 5, 10], "texture": "#0"},
+				"east": {"uv": [0, 5, 2.5, 10], "texture": "#0"},
+				"south": {"uv": [5, 0, 7.5, 5], "texture": "#0"},
+				"west": {"uv": [5, 5, 7.5, 10], "texture": "#0"},
+				"up": {"uv": [7.5, 5, 10, 10], "texture": "#0"},
+				"down": {"uv": [2.5, 0, 5, 5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-4, 2, 0],
+			"to": [-2, 18, 16],
+			"faces": {
+				"north": {"uv": [5, 5, 5.25, 10], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 8], "texture": "#0"},
+				"south": {"uv": [7.25, 5, 7.5, 10], "texture": "#0"},
+				"west": {"uv": [5, 5, 7.5, 10], "texture": "#0"},
+				"up": {"uv": [5, 5, 5.25, 10], "texture": "#0"},
+				"down": {"uv": [7.25, 5, 7.5, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [18, 2, 0],
+			"to": [20, 18, 16],
+			"faces": {
+				"north": {"uv": [2.25, 5, 2.5, 10], "texture": "#0"},
+				"east": {"uv": [0, 5, 2.5, 10], "texture": "#0"},
+				"south": {"uv": [0, 5, 0.25, 10], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 8], "texture": "#0"},
+				"up": {"uv": [0, 5, 0.25, 10], "texture": "#0"},
+				"down": {"uv": [2.25, 5, 2.5, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 20, 2],
+			"to": [14, 22, 14],
+			"faces": {
+				"north": {"uv": [9, 3, 10.5, 3.5], "texture": "#0"},
+				"east": {"uv": [7.5, 3, 9, 3.5], "texture": "#0"},
+				"south": {"uv": [10.5, 3, 12, 3.5], "texture": "#0"},
+				"west": {"uv": [12, 3, 13.5, 3.5], "texture": "#0"},
+				"up": {"uv": [9, 0, 10.5, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 6], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [24, 135, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"translation": [0, -2, 0],
+			"scale": [0.9, 0.9, 0.9]
+		}
+	},
+	"groups": [
+		{
+			"name": "helmet",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

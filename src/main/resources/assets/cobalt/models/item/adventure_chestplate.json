@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cobalt:item/armor/adventure_chestplate",
+    "layer1": "cobalt:item/armor/adventure_chestplate_overlay"
+  }
+}

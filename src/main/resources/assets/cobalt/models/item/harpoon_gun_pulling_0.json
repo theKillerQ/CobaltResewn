@@ -1,0 +1,6 @@
+{
+  "parent": "cobalt:item/harpoon_gun",
+  "textures": {
+    "layer0": "cobalt:item/crossbow/harpoon_gun"
+  }
+}

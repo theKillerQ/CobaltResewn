@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cobalt:item/trinkets/mechanical_hand"
+  }
+}

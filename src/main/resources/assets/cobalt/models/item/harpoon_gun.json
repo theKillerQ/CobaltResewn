@@ -1,0 +1,56 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cobalt:item/crossbow/harpoon_gun"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, 90, -20 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 90, -20 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, 90, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 90, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 1, 1, 1 ]
+    }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "pulling": 1
+      },
+      "model": "cobalt:item/harpoon_gun_pulling_0"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.65
+      },
+      "model": "cobalt:item/harpoon_gun_pulling_1"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.9
+      },
+      "model": "cobalt:item/harpoon_gun_pulling_2"
+    },
+    {
+      "predicate": {
+        "charged": 1
+      },
+      "model": "cobalt:item/harpoon_gun_charged"
+    }
+  ]
+}

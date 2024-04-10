@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.example.mixin.client",
+	"compatibilityLevel": "JAVA_17",
+	"client": [
+		"ExampleClientMixin",
+		"ExampleMixin",
+		"imgui.MinecraftClientMixin",
+		"imgui.WindowProviderInit"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
