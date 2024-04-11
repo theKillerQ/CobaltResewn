@@ -4,9 +4,12 @@ import com.example.util.item.AttributeModifierProvider;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Equipment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,11 +34,25 @@ public class CobaltEquipmentItem extends Item implements Equipment {
     private boolean m_isDamageable = false;
     private Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
 
+    private List<StatusEffectInstance> wornEffects = new ArrayList<>();
+
     public CobaltEquipmentItem(Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
         super(settings);
 
         this.slotType = slotType;
         this.nameFormatting = nameFormatting;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(stack, world, entity, slot, selected);
+
+        if (slot != slotType.getEntitySlotId()) return;
+        if (entity instanceof LivingEntity living) {
+            for (StatusEffectInstance effect : wornEffects) {
+                living.addStatusEffect(effect);
+            }
+        }
     }
 
     @Override
@@ -88,6 +105,7 @@ public class CobaltEquipmentItem extends Item implements Equipment {
         private final List<Text> m_tooltip = new ArrayList<>();
         private boolean m_isDamageable = false;
         private final Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
+        private List<StatusEffectInstance> wornEffects = new ArrayList<>();
 
         public Builder(Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
             this.settings = settings;
@@ -105,6 +123,11 @@ public class CobaltEquipmentItem extends Item implements Equipment {
                 List<AttributeModifierProvider> list = m_attributeModifiers.computeIfAbsent(slot, k -> new ArrayList<>());
                 list.add(new AttributeModifierProvider(attribute, modifier));
             }
+            return this;
+        }
+
+        public Builder wornEffect(StatusEffectInstance effect) {
+            wornEffects.add(effect);
             return this;
         }
 

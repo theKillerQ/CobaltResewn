@@ -174,7 +174,7 @@ public class CustomItemRegistry {
 
     // Mutant Researcher
     // TODO: Add special ability
-    // public static final Item SAMPLE_DRILL = register("sample_drill", new SampleDrillItem(ToolMaterials.STONE, -2+2, -4+2, new FabricItemSettings(), Formatting.LIGHT_PURPLE));
+    public static final Item SAMPLE_DRILL = register("sample_drill", new SampleDrillItem(ToolMaterials.STONE, -2+2, -4+2, new FabricItemSettings(), Formatting.LIGHT_PURPLE));
 
 
 
@@ -199,7 +199,7 @@ public class CustomItemRegistry {
 
 
     // Medicine
-    // public static final Item MYSTERY_MEDICINE = register("mystery_medicine", new MysteryMedicineItem(new FabricItemSettings()));
+    public static final Item MYSTERY_MEDICINE = register("mystery_medicine", new MysteryMedicineItem(new FabricItemSettings()));
 
 
 
