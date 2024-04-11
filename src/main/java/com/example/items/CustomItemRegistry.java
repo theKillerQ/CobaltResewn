@@ -49,11 +49,13 @@ public class CustomItemRegistry {
             .build());
 
 
+
     // --- ITEMS
 
     // Adventure Set
     public static final Item ADVENTURE_SWORD = register("adventure_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, new FabricItemSettings(), Formatting.DARK_GREEN));
     public static final CobaltArmorSet ADVENTURE_ARMOR_SET = registerSet("adventure", ADVENTURE, Formatting.DARK_GREEN);
+
 
 
 
