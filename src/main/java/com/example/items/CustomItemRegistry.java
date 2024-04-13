@@ -1,5 +1,7 @@
 package com.example.items;
 
+import com.example.entity.ExplosiveArrowEntity;
+import com.example.entity.LightningArrowEntity;
 import com.example.items.armor.CobaltArmorItem;
 import com.example.items.armor.CobaltArmorSet;
 import com.example.items.consumable.CobaltHealingItem;
@@ -15,11 +17,15 @@ import com.example.items.tools.CobaltPickaxeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -30,12 +36,13 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Position;
+import net.minecraft.world.World;
 
+import static com.example.ExampleMod.MOD_NAMESPACE;
 import static com.example.items.materials.CobaltArmorMaterials.*;
 
 public class CustomItemRegistry {
-
-    public static final String MOD_NAMESPACE = "cobalt";
 
 
     public static final Item ICON_ITEM = new Item(new Item.Settings());
@@ -213,9 +220,19 @@ public class CustomItemRegistry {
 
 
 
+    // Arrows
+    public static final Item LIGHTNING_ARROW = register("lightning_arrow", new CobaltArrowItem(new FabricItemSettings(), Formatting.DARK_AQUA, LightningArrowEntity::new));
+    public static final Item EXPLOSIVE_ARROW = register("explosive_arrow", new CobaltArrowItem(new FabricItemSettings(), Formatting.DARK_AQUA, ExplosiveArrowEntity::new));
+
+
+
+
+
 
     public static void register() {
         register("icon_item", ICON_ITEM);
+
+        registerDispenserBlockBehaviour(LIGHTNING_ARROW);
     }
 
     private static Item register(String itemId, Item item) {
@@ -245,5 +262,20 @@ public class CustomItemRegistry {
     private static ItemGroup register(RegistryKey<ItemGroup> key, ItemGroup group) {
         Registry.register(Registries.ITEM_GROUP, key, group);
         return group;
+    }
+
+    private static void registerDispenserBlockBehaviour(Item item) {
+        DispenserBlock.registerBehavior(item, new ProjectileDispenserBehavior() {
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                if (item instanceof CobaltArrowItem cobaltArrowItem) {
+                    var arrowEntity = cobaltArrowItem.getEntityFactory().create(position.getX(), position.getY(), position.getZ(), world, stack);
+                    arrowEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
+                    return arrowEntity;
+                }
+
+                return null;
+            }
+        });
     }
 }

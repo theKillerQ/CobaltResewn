@@ -263,5 +263,12 @@
   "item.cobalt.diving_leggings.tooltip": "They are not easy to walk around in",
 
   "item.cobalt.diving_boots": "Diving Boots",
-  "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom"
+  "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom",
+
+
+
+
+
+  "item.cobalt.lightning_arrow": "Lightning Arrow",
+  "item.cobalt.explosive_arrow": "Explosive Arrow"
 }
