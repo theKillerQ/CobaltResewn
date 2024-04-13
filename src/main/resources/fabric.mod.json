@@ -2,24 +2,24 @@
 	"schemaVersion": 1,
 	"id": "modid",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "CobaltResewn",
+	"description": "Used for the Flickering Lights campaign",
 	"authors": [
-		"Me!"
+		"Fusion1013"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://fusion1013.github.io/",
+		"sources": "https://github.com/Fusion1013/CobaltResewn"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+          "se.fusion1013.ExampleMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"se.fusion1013.ExampleModClient"
 		]
 	},
 	"mixins": [
