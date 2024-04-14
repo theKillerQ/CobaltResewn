@@ -1,5 +1,10 @@
 package se.fusion1013.items.armor;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorMaterial;
+import se.fusion1013.items.CobaltEquipmentItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.AttributeModifierProvider;
 import com.google.common.collect.ImmutableMultimap;
@@ -29,6 +34,7 @@ public class CobaltArmorItem extends ArmorItem {
 
     private List<Text> tooltip = new ArrayList<>();
     private Map<EquipmentSlot, List<AttributeModifierProvider>> attributeModifiers = new HashMap<>();
+    private IArmorTickExecutor setBonusTickExecutor;
 
     public CobaltArmorItem(CobaltArmorMaterial material, ArmorItem.Type type, Item.Settings settings, Formatting nameFormatting) {
         super(material, type, settings);
@@ -47,6 +53,18 @@ public class CobaltArmorItem extends ArmorItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
         tooltip.addAll(this.tooltip);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(stack, world, entity, slot, selected);
+
+        if (setBonusTickExecutor == null) return;
+
+        if (entity instanceof PlayerEntity player) {
+            if (!isWearingArmorSet(player, material)) return;
+            setBonusTickExecutor.execute(stack, world, entity, slot, selected);
+        }
     }
 
     @Override
@@ -84,6 +102,7 @@ public class CobaltArmorItem extends ArmorItem {
         private final List<Text> m_tooltip = new ArrayList<>();
         private boolean m_isDamageable = false;
         private Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
+        private IArmorTickExecutor setBonusTickExecutor;
 
         public Builder(CobaltArmorMaterial material, Type type, Settings settings, Formatting nameFormatting) {
             this.material = material;
@@ -105,13 +124,59 @@ public class CobaltArmorItem extends ArmorItem {
             return this;
         }
 
+        public Builder armorSetBonusTick(IArmorTickExecutor tickExecutor) {
+            this.setBonusTickExecutor = tickExecutor;
+            return this;
+        }
+
         public CobaltArmorItem build() {
             CobaltArmorItem armor = new CobaltArmorItem(material, type, settings, nameFormatting);
 
             armor.tooltip = m_tooltip;
             armor.attributeModifiers = m_attributeModifiers;
+            armor.setBonusTickExecutor = setBonusTickExecutor;
 
             return armor;
         }
+    }
+
+    private static boolean isWearingArmorSet(PlayerEntity player, ArmorMaterial material) {
+        ArmorMaterial boots = getArmorMaterial(player.getInventory().getArmorStack(0).getItem());
+        ArmorMaterial leggings = getArmorMaterial(player.getInventory().getArmorStack(1).getItem());
+        ArmorMaterial chestplate = getArmorMaterial(player.getInventory().getArmorStack(2).getItem());
+        ArmorMaterial helmet = getArmorMaterial(player.getInventory().getArmorStack(3).getItem());
+
+        return  boots == material &&
+                leggings == material &&
+                chestplate == material &&
+                helmet == material;
+    }
+
+    private static ArmorMaterial getArmorMaterial(Item item) {
+        if (item instanceof ArmorItem armorItem) return armorItem.getMaterial();
+        if (item instanceof CobaltEquipmentItem equipmentItem) return equipmentItem.material;
+        return null;
+    }
+
+    public static void addSetBonusStatusEffect(Entity entity, StatusEffectInstance effect) {
+        if (entity instanceof PlayerEntity player) addSetBonusStatusEffect(player, effect);
+    }
+
+    public static void addSetBonusStatusEffect(PlayerEntity player, StatusEffectInstance effect) {
+        boolean hasEffect = player.hasStatusEffect(effect.getEffectType());
+
+        if (!hasEffect) {
+            player.addStatusEffect(new StatusEffectInstance(effect.getEffectType(), effect.getDuration(), effect.getAmplifier(), false, false, true));
+        }
+
+        if (player.getActiveStatusEffects().containsKey(effect.getEffectType())) {
+            if (player.getActiveStatusEffects().get(effect.getEffectType()).getDuration() < 221) {
+                player.addStatusEffect(new StatusEffectInstance(effect.getEffectType(), effect.getDuration(), effect.getAmplifier(), false, false, true));
+            }
+        }
+    }
+
+    public interface IArmorTickExecutor {
+        void execute(ItemStack stack, World world, Entity entity, int slot, boolean selected);
     }
 }

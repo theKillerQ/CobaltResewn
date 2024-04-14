@@ -1,8 +1,10 @@
 package se.fusion1013.items;
 
 import io.wispforest.lavender.book.LavenderBookItem;
+import se.fusion1013.Main;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
+import se.fusion1013.items.armor.ArmorSetBonus;
 import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.items.consumable.CobaltHealingItem;
@@ -75,11 +77,15 @@ public class CustomItemRegistry {
 
 
     // Diving Set
-    public static final Item DIVING_HELMET = register("diving_helmet", new CobaltEquipmentItem.Builder(new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.GOLD)
+    /*
+    public static final Item DIVING_HELMET = register("diving_helmet", new CobaltEquipmentItem.Builder(CobaltArmorMaterials.DIVE, new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.GOLD)
             .attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt.diving_helmet.armor", 3, EntityAttributeModifier.Operation.ADDITION), EquipmentSlot.HEAD)
             .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.diving_helmet.move_speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
             .build());
-    public static final CobaltArmorSet DIVING_ARMOR_SET = registerSet("diving", CobaltArmorMaterials.DIVE, Formatting.GOLD, true);
+     */
+    public static final CobaltArmorSet DIVING_ARMOR_SET = registerSet("diving", CobaltArmorMaterials.DIVE, Formatting.GOLD, true, new ArmorSetBonus(new String[] { "item.cobalt.diving_set_bonus.tooltip" }, (stack, world, entity, slot, selected) -> {
+        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
+    }));
     public static final Item HARPOON_GUN = register("harpoon_gun", new CobaltCrossbowItem(new FabricItemSettings()));
 
 
@@ -153,21 +159,25 @@ public class CustomItemRegistry {
             .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.miner_pickaxe.speed", -.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND)
             .build());
     public static final Item BASIC_DRILL = register("basic_drill", new BasicDrillItem(ToolMaterials.STONE, -2+5, -4+1.4f, new Item.Settings()));
-    public static final Item MINER_HELMET = register("miner_helmet", new CobaltEquipmentItem.Builder(new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.DARK_GRAY)
+    /*
+    public static final Item MINER_HELMET = register("miner_helmet", new CobaltEquipmentItem.Builder(CobaltArmorMaterials.MINER, new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.DARK_GRAY)
             .attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt.miner_helmet.armor", 1.0, EntityAttributeModifier.Operation.ADDITION), EquipmentSlot.HEAD)
             .build());
-    public static final CobaltArmorSet MINER_ARMOR_SET = registerSet("miner", CobaltArmorMaterials.MINER, Formatting.DARK_GRAY, true);
+     */
+    public static final CobaltArmorSet MINER_ARMOR_SET = registerSet("miner", CobaltArmorMaterials.MINER, Formatting.DARK_GRAY, true, null);
 
 
 
 
 
     // Prospector Set
-    public static final CobaltArmorSet PROSPECTOR_ARMOR_SET = registerSet("prospector", CobaltArmorMaterials.PROSPECTOR, Formatting.GOLD, true);
-    public static final Item PROSPECTOR_HELMET = register("prospector_helmet", new CobaltEquipmentItem.Builder(new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.GOLD)
+    public static final CobaltArmorSet PROSPECTOR_ARMOR_SET = registerSet("prospector", CobaltArmorMaterials.PROSPECTOR, Formatting.GOLD, true, null);
+    /*
+    public static final Item PROSPECTOR_HELMET = register("prospector_helmet", new CobaltEquipmentItem.Builder(CobaltArmorMaterials.PROSPECTOR, new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.GOLD)
             .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_helmet.move_speed", 0.01, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
             .attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt.prospector_helmet.armor", 2, EntityAttributeModifier.Operation.ADDITION), EquipmentSlot.HEAD)
             .build());
+     */
     public static final Item PROSPECTOR_PICKAXE = register("prospector_pickaxe", new CobaltPickaxeItem.Builder(ToolMaterials.STONE, -2+4, -4+1.8f, new FabricItemSettings(), Formatting.GOLD)
             .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND)
             .build());
@@ -256,20 +266,71 @@ public class CustomItemRegistry {
         return item;
     }
 
+    private static CobaltArmorItem register(String itemId, CobaltArmorItem armorItem) {
+        return (CobaltArmorItem) register(itemId, (Item) armorItem);
+    }
+
     private static ArmorItem register(String itemId, ArmorItem armorItem) {
         return (ArmorItem) register(itemId, (Item) armorItem);
     }
 
     private static CobaltArmorSet registerSet(String setId, CobaltArmorMaterial material, Formatting nameFormatting) {
-        return registerSet(setId, material, nameFormatting, false);
+        return registerSet(setId, material, nameFormatting, null);
     }
-    private static CobaltArmorSet registerSet(String setId, CobaltArmorMaterial material, Formatting nameFormatting, boolean ignoreHelmet) {
-        ArmorItem helmet = null;
-        if (!ignoreHelmet) helmet = register(setId + "_helmet", new CobaltArmorItem(material, ArmorItem.Type.HELMET, new FabricItemSettings(), nameFormatting));
-        var chestplate = register(setId + "_chestplate", new CobaltArmorItem(material, ArmorItem.Type.CHESTPLATE, new FabricItemSettings(), nameFormatting));
-        var leggings = register(setId + "_leggings", new CobaltArmorItem(material, ArmorItem.Type.LEGGINGS, new FabricItemSettings(), nameFormatting));
-        var boots = register(setId + "_boots", new CobaltArmorItem(material, ArmorItem.Type.BOOTS, new FabricItemSettings(), nameFormatting));
+    private static CobaltArmorSet registerSet(String setId, CobaltArmorMaterial material, Formatting nameFormatting, boolean helmetAsEquipment) {
+        return registerSet(setId, material, nameFormatting, helmetAsEquipment, null);
+    }
+    private static CobaltArmorSet registerSet(String setId, CobaltArmorMaterial material, Formatting nameFormatting, ArmorSetBonus setBonus) {
+        return registerSet(setId, material, nameFormatting, false, setBonus);
+    }
+    private static CobaltArmorSet registerSet(String setId, CobaltArmorMaterial material, Formatting nameFormatting, boolean helmetAsEquipment, ArmorSetBonus setBonus) {
+        Item helmet;
+
+        if (!helmetAsEquipment) helmet = register(setId + "_helmet", getArmorItem(material, ArmorItem.Type.HELMET, setBonus, nameFormatting));
+        else helmet = register(setId + "_helmet", getEquipmentItem(material, ArmorItem.Type.HELMET, setBonus, nameFormatting));
+        var chestplate = register(setId + "_chestplate", getArmorItem(material, ArmorItem.Type.CHESTPLATE, setBonus, nameFormatting));
+        var leggings = register(setId + "_leggings", getArmorItem(material, ArmorItem.Type.LEGGINGS, setBonus, nameFormatting));
+        var boots = register(setId + "_boots", getArmorItem(material, ArmorItem.Type.BOOTS, setBonus, nameFormatting));
+
         return new CobaltArmorSet(helmet, chestplate, leggings, boots);
+    }
+
+    private static CobaltEquipmentItem getEquipmentItem(CobaltArmorMaterial material, ArmorItem.Type armorType, ArmorSetBonus bonus, Formatting nameFormatting) {
+        var equipmentSlot = switch (armorType) {
+            case HELMET -> EquipmentSlot.HEAD;
+            case CHESTPLATE -> EquipmentSlot.CHEST;
+            case LEGGINGS -> EquipmentSlot.LEGS;
+            case BOOTS -> EquipmentSlot.FEET;
+        };
+        var builder = new CobaltEquipmentItem.Builder(material, new FabricItemSettings(), equipmentSlot, nameFormatting);
+
+        builder.attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt." + material.getName() + ".armor", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), armorType.getEquipmentSlot());
+        builder.attributeModifier(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt." + material.getName() + ".toughness", material.getToughness(), EntityAttributeModifier.Operation.ADDITION), armorType.getEquipmentSlot());
+
+        if (bonus == null) return builder.build();
+
+        builder.tooltip(Text.empty());
+        builder.tooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
+        for (String text : bonus.tooltip()) builder.tooltip(Text.translatable(text).formatted(Formatting.GRAY));
+
+        return builder.build();
+    }
+
+    private static CobaltArmorItem getArmorItem(CobaltArmorMaterial material, ArmorItem.Type armorType, ArmorSetBonus bonus, Formatting nameFormatting) {
+        var builder = new CobaltArmorItem.Builder(material, armorType, new FabricItemSettings(), nameFormatting);
+        addArmorBonus(armorType, builder, bonus);
+        return builder.build();
+    }
+
+    private static void addArmorBonus(ArmorItem.Type type, CobaltArmorItem.Builder builder, ArmorSetBonus bonus) {
+        if (bonus == null) return;
+
+        builder.tooltip(Text.empty());
+        builder.tooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
+        for (String text : bonus.tooltip()) builder.tooltip(Text.translatable(text).formatted(Formatting.GRAY));
+
+        if (type != ArmorItem.Type.BOOTS) return;
+        builder.armorSetBonusTick(bonus.executor());
     }
 
     private static ItemGroup register(RegistryKey<ItemGroup> key, ItemGroup group) {

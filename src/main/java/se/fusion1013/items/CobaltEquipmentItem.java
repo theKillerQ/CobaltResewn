@@ -1,5 +1,7 @@
 package se.fusion1013.items;
 
+import net.minecraft.item.ArmorMaterial;
+import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.AttributeModifierProvider;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -29,18 +31,20 @@ public class CobaltEquipmentItem extends Item implements Equipment {
     private final EquipmentSlot slotType;
 
     private final Formatting nameFormatting;
+    public final CobaltArmorMaterial material;
 
-    private List<Text> m_tooltip = new ArrayList<>();
+    private List<Text> tooltip = new ArrayList<>();
     private boolean m_isDamageable = false;
     private Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
 
     private List<StatusEffectInstance> wornEffects = new ArrayList<>();
 
-    public CobaltEquipmentItem(Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
+    public CobaltEquipmentItem(CobaltArmorMaterial material, Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
         super(settings);
 
         this.slotType = slotType;
         this.nameFormatting = nameFormatting;
+        this.material = material;
     }
 
     @Override
@@ -69,6 +73,7 @@ public class CobaltEquipmentItem extends Item implements Equipment {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
+        tooltip.addAll(this.tooltip);
     }
 
     @Override
@@ -79,6 +84,11 @@ public class CobaltEquipmentItem extends Item implements Equipment {
         for (AttributeModifierProvider attribute : m_attributeModifiers.getOrDefault(slot, new ArrayList<>())) {
 
             builder.put(attribute.attribute(), attribute.modifier());
+        }
+        if (slot == getSlotType()) {
+            for (AttributeModifierProvider attribute : material.getAttributeModifiers(slot)) {
+                builder.put(attribute.attribute(), attribute.modifier());
+            }
         }
         builder.putAll(map);
         return builder.build();
@@ -101,13 +111,15 @@ public class CobaltEquipmentItem extends Item implements Equipment {
         private final Item.Settings settings;
         private final Formatting nameFormatting;
         private final EquipmentSlot slotType;
+        private final CobaltArmorMaterial material;
 
         private final List<Text> m_tooltip = new ArrayList<>();
         private boolean m_isDamageable = false;
         private final Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
         private List<StatusEffectInstance> wornEffects = new ArrayList<>();
 
-        public Builder(Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
+        public Builder(CobaltArmorMaterial material, Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
+            this.material = material;
             this.settings = settings;
             this.nameFormatting = nameFormatting;
             this.slotType = slotType;
@@ -132,9 +144,9 @@ public class CobaltEquipmentItem extends Item implements Equipment {
         }
 
         public CobaltEquipmentItem build() {
-            CobaltEquipmentItem equipment = new CobaltEquipmentItem(settings, slotType, nameFormatting);
+            CobaltEquipmentItem equipment = new CobaltEquipmentItem(material, settings, slotType, nameFormatting);
 
-            equipment.m_tooltip = m_tooltip;
+            equipment.tooltip = m_tooltip;
             equipment.m_isDamageable = m_isDamageable;
             equipment.m_attributeModifiers = m_attributeModifiers;
 
