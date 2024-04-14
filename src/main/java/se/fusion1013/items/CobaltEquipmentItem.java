@@ -1,6 +1,7 @@
 package se.fusion1013.items;
 
 import net.minecraft.item.ArmorMaterial;
+import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.AttributeModifierProvider;
 import com.google.common.collect.ImmutableMultimap;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CobaltEquipmentItem extends Item implements Equipment {
+public class CobaltEquipmentItem extends Item implements Equipment, ICobaltItem {
 
     private final EquipmentSlot slotType;
 
@@ -103,6 +104,26 @@ public class CobaltEquipmentItem extends Item implements Equipment {
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
         nbt.putBoolean("Unbreakable", true);
+    }
+
+    @Override
+    public void addTooltip(String translatableString) {
+        tooltip.add(Text.translatable(translatableString).formatted(Formatting.DARK_GRAY));
+    }
+
+    @Override
+    public void addTooltip(Text text) {
+        tooltip.add(text);
+    }
+
+    @Override
+    public void setArmorBonusTickExecutor(CobaltArmorItem.IArmorTickExecutor executor) {
+        // TODO
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 
     public static class Builder {

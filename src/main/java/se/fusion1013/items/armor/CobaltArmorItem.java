@@ -5,6 +5,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorMaterial;
 import se.fusion1013.items.CobaltEquipmentItem;
+import se.fusion1013.items.ICobaltItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.AttributeModifierProvider;
 import com.google.common.collect.ImmutableMultimap;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CobaltArmorItem extends ArmorItem {
+public class CobaltArmorItem extends ArmorItem implements ICobaltItem {
 
     private final Formatting nameFormatting;
     private final CobaltArmorMaterial cobaltMaterial;
@@ -89,6 +90,26 @@ public class CobaltArmorItem extends ArmorItem {
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
         nbt.putBoolean("Unbreakable", true);
+    }
+
+    @Override
+    public void addTooltip(String translatableString) {
+        tooltip.add(Text.translatable(translatableString).formatted(Formatting.DARK_GRAY));
+    }
+
+    @Override
+    public void addTooltip(Text text) {
+        tooltip.add(text);
+    }
+
+    @Override
+    public void setArmorBonusTickExecutor(IArmorTickExecutor executor) {
+        setBonusTickExecutor = executor;
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 
     public static class Builder {

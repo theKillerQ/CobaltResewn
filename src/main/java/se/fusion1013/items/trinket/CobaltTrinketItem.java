@@ -22,7 +22,7 @@ public class CobaltTrinketItem extends TrinketItem {
     private final TrinketModifierProvider m_modifierProvider;
 
     public CobaltTrinketItem(Settings settings, TrinketModifierProvider modifierProvider, Formatting nameFormatting) {
-        super(settings);
+        super(settings.maxCount(1));
         this.m_modifierProvider = modifierProvider;
         this.m_nameFormatting = nameFormatting;
     }
