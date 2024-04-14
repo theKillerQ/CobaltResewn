@@ -1,0 +1,32 @@
+{
+  "keys": {
+    "a": "minecraft:exposed_copper",
+    "b": "minecraft:orange_terracotta",
+    "c": "minecraft:terracotta",
+    "d": "minecraft:acacia_trapdoor[half=top]",
+    "e": "minecraft:acacia_trapdoor[half=bottom]",
+    "f": "minecraft:acacia_trapdoor[facing=south,open=true]",
+    "g": "minecraft:acacia_trapdoor[facing=north,open=true]",
+    "h": "minecraft:redstone_lamp",
+    "i": "minecraft:command_block",
+    "j": "minecraft:acacia_wall_sign[facing=south]",
+    "k": "minecraft:acacia_wall_sign[facing=north]"
+  },
+  "layers": [
+    [
+      "         ",
+      "  d   d  ",
+      "         "
+    ],
+    [
+      " kg   gk ",
+      "abchihcba",
+      " jf   fj "
+    ],
+    [
+      "         ",
+      "  e   e  ",
+      "         "
+    ]
+  ]
+}

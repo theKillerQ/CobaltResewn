@@ -1,8 +1,10 @@
 package se.fusion1013;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
+import se.fusion1013.networking.CobaltNetworkingConstants;
 import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
 import se.fusion1013.render.entity.LightningArrowEntityRenderer;
 import dev.emi.trinkets.api.client.TrinketRenderer;
@@ -15,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import se.fusion1013.util.FacilityStatus;
 
 public class ExampleModClient implements ClientModInitializer {
 
@@ -29,6 +32,13 @@ public class ExampleModClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(CustomEntityRegistry.LIGHTNING_ARROW, LightningArrowEntityRenderer::new);
 		EntityRendererRegistry.register(CustomEntityRegistry.EXPLOSIVE_ARROW, ExplosiveArrowEntityRenderer::new);
+
+		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, (client, handler, buf, responseSender) -> {
+			client.execute(() -> {
+				FacilityStatus.POWER_CURRENT = buf.readInt();
+				FacilityStatus.PRESSURE_CURRENT = buf.readInt();
+			});
+		});
 	}
 
 	private void registerItems() {

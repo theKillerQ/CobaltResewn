@@ -81,6 +81,9 @@
   "item.cobalt.mechanic_gloves": "Mechanic's Gloves",
   "item.cobalt.mechanic_gloves.tooltip": "Keep the grease off your hands",
 
+  "item.cobalt.mechanic_spectacles": "Mechanic's Spectacles",
+  "item.cobalt.mechanic_spectacles.tooltip": "Allows the wearer to see the status of site EF002 systems",
+
   "item.cobalt.heavy_wrench": "Heavy Wrench",
   "item.cobalt.heavy_wrench.tooltip": "Used to maintain heavy machinery",
 
@@ -171,16 +174,16 @@
 
 
 
-  "item.cobalt.painkillers": "Painkillers",
+  "item.cobalt.painkillers": "Painkillers \uECC1\uECC1\uECC0",
   "item.cobalt.painkillers.tooltip": "For the small wounds",
 
-  "item.cobalt.bandage": "Bandage",
+  "item.cobalt.bandage": "Bandage \uECC1\uECC1\uECC1\uECC1\uECC1",
   "item.cobalt.bandage.tooltip": "Patch those wounds up",
 
-  "item.cobalt.first_aid_kit": "First Aid Kit",
+  "item.cobalt.first_aid_kit": "First Aid Kit 10x\uECC1",
   "item.cobalt.first_aid_kit.tooltip": "The whole kit!",
 
-  "item.cobalt.pneumatic_needle": "Pneumatic Needle",
+  "item.cobalt.pneumatic_needle": "Pneumatic Needle 20x\uECC1",
   "item.cobalt.pneumatic_needle.tooltip": "..what is in this?",
 
 
@@ -270,5 +273,11 @@
 
 
   "item.cobalt.lightning_arrow": "Lightning Arrow",
-  "item.cobalt.explosive_arrow": "Explosive Arrow"
+  "item.cobalt.explosive_arrow": "Explosive Arrow",
+
+
+
+
+
+  "item.cobalt.wf_instruction_manual": "Site EF002 Instructions"
 }

@@ -1,4 +1,4 @@
-package se.fusion1013.items;
+package se.fusion1013.items.trinket;
 
 import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.SlotReference;

@@ -1,5 +1,6 @@
 package se.fusion1013.items;
 
+import io.wispforest.lavender.book.LavenderBookItem;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
 import se.fusion1013.items.armor.CobaltArmorItem;
@@ -39,6 +40,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import se.fusion1013.items.materials.CobaltArmorMaterials;
+import se.fusion1013.items.trinket.CobaltTrinketItem;
+import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
 
 import static se.fusion1013.ExampleMod.MOD_NAMESPACE;
 
@@ -46,6 +49,7 @@ public class CustomItemRegistry {
 
 
     public static final Item ICON_ITEM = new Item(new Item.Settings());
+    public static final LavenderBookItem WF_INSTRUCTION_MANUAL = LavenderBookItem.registerForBook(new Identifier("cobalt", "wf_instruction_manual"), new FabricItemSettings());
 
 
     // --- ITEM GROUPS
@@ -53,6 +57,9 @@ public class CustomItemRegistry {
     private static final ItemGroup COBALT_GROUP = register(COBALT_GROUP_KEY, FabricItemGroup.builder()
             .icon(() -> new ItemStack(ICON_ITEM))
             .displayName(Text.translatable("itemGroup.cobalt.items"))
+            .entries((displayContext, entries) -> {
+                entries.add(WF_INSTRUCTION_MANUAL);
+            })
             .build());
 
 
@@ -135,6 +142,7 @@ public class CustomItemRegistry {
         modifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt.mechanic_gloves.toughness", 1, EntityAttributeModifier.Operation.ADDITION));
         return modifiers;
     }, Formatting.DARK_GRAY));
+    public static final Item MECHANIC_SPECTACLES = register("mechanic_spectacles", new MechanicSpectaclesTrinket(new FabricItemSettings(), (modifiers, stack, slot, entity, uuid) -> modifiers, Formatting.DARK_GRAY));
 
 
 
@@ -215,7 +223,7 @@ public class CustomItemRegistry {
 
 
     // Power Cells
-    public static final Item BATTERY = register("battery", new CobaltItem(new FabricItemSettings(), Formatting.DARK_AQUA));
+    public static final Item BATTERY = register("battery", new CobaltItem(new FabricItemSettings().maxCount(24), Formatting.DARK_AQUA));
 
 
 
@@ -224,6 +232,11 @@ public class CustomItemRegistry {
     public static final Item LIGHTNING_ARROW = register("lightning_arrow", new CobaltArrowItem(new FabricItemSettings(), Formatting.DARK_AQUA, LightningArrowEntity::new));
     public static final Item EXPLOSIVE_ARROW = register("explosive_arrow", new CobaltArrowItem(new FabricItemSettings(), Formatting.DARK_AQUA, ExplosiveArrowEntity::new));
 
+
+
+
+
+    public static final Item PRESSURE_GAUGE = register("pressure_gauge", new CobaltItem(new FabricItemSettings(), Formatting.GOLD));
 
 
 

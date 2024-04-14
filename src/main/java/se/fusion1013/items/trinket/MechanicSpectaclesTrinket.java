@@ -1,0 +1,52 @@
+package se.fusion1013.items.trinket;
+
+import dev.emi.trinkets.api.SlotReference;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.scoreboard.ScoreHolder;
+import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.scoreboard.ServerScoreboard;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Formatting;
+import se.fusion1013.ExampleMod;
+import se.fusion1013.networking.CobaltNetworkingConstants;
+
+public class MechanicSpectaclesTrinket extends CobaltTrinketItem {
+
+
+    public MechanicSpectaclesTrinket(Settings settings, TrinketModifierProvider modifierProvider, Formatting nameFormatting) {
+        super(settings, modifierProvider, nameFormatting);
+    }
+
+    @Override
+    public void tick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        super.tick(stack, slot, entity);
+
+        if (entity instanceof ServerPlayerEntity user) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeInt(getScoreboardValue("wf_power", "power"));
+            buf.writeInt(getScoreboardValue("wf_pressure", "pressure"));
+            ServerPlayNetworking.send(user, CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, buf);
+        }
+    }
+
+    private int getScoreboardValue(String objectiveName, String scoreHolderName) {
+        var server = ExampleMod.server;
+        if (server == null) return 0;
+        var scoreboard = server.getScoreboard();
+        var objective = findObjective(objectiveName, scoreboard);
+        var score = scoreboard.getScore(ScoreHolder.fromName(scoreHolderName), objective);
+        if (score == null) return 0;
+        return score.getScore();
+    }
+
+    private ScoreboardObjective findObjective(String name, ServerScoreboard scoreboard) {
+        for (ScoreboardObjective objective : scoreboard.getObjectives()) {
+            if (objective.getName().equalsIgnoreCase(name)) return objective;
+        }
+        return null;
+    }
+}
