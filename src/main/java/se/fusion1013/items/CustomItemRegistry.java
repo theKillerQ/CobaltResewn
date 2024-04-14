@@ -43,7 +43,7 @@ import se.fusion1013.items.materials.CobaltArmorMaterials;
 import se.fusion1013.items.trinket.CobaltTrinketItem;
 import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
 
-import static se.fusion1013.ExampleMod.MOD_NAMESPACE;
+import static se.fusion1013.Main.MOD_NAMESPACE;
 
 public class CustomItemRegistry {
 

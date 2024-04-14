@@ -11,7 +11,7 @@ import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ServerScoreboard;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Formatting;
-import se.fusion1013.ExampleMod;
+import se.fusion1013.Main;
 import se.fusion1013.networking.CobaltNetworkingConstants;
 
 public class MechanicSpectaclesTrinket extends CobaltTrinketItem {
@@ -34,7 +34,7 @@ public class MechanicSpectaclesTrinket extends CobaltTrinketItem {
     }
 
     private int getScoreboardValue(String objectiveName, String scoreHolderName) {
-        var server = ExampleMod.server;
+        var server = Main.server;
         if (server == null) return 0;
         var scoreboard = server.getScoreboard();
         var objective = findObjective(objectiveName, scoreboard);

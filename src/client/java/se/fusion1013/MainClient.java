@@ -19,7 +19,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.util.FacilityStatus;
 
-public class ExampleModClient implements ClientModInitializer {
+public class MainClient implements ClientModInitializer {
 
 	private static KeyBinding toggleGuiKeybind;
 

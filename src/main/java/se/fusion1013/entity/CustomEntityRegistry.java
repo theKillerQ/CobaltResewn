@@ -8,7 +8,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
-import static se.fusion1013.ExampleMod.MOD_NAMESPACE;
+import static se.fusion1013.Main.MOD_NAMESPACE;
 
 public class CustomEntityRegistry {
 

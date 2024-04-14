@@ -1,6 +1,6 @@
 package se.fusion1013.items.sword;
 
-import se.fusion1013.ExampleMod;
+import se.fusion1013.Main;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -25,7 +25,7 @@ public class SampleDrillItem extends CobaltSwordItem {
 
         var rand = new Random();
         var chance = rand.nextInt(0, 100);
-        ExampleMod.LOGGER.info("Chance: " + chance);
+        Main.LOGGER.info("Chance: " + chance);
         if (chance > 2) return super.postHit(stack, target, attacker);
 
         attacker.heal(attacker.getMaxHealth() * HEAL_AMOUNT_PERCENTAGE);

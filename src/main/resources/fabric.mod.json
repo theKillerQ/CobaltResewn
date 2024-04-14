@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "se.fusion1013.ExampleMod"
+          "se.fusion1013.Main"
 		],
 		"client": [
-			"se.fusion1013.ExampleModClient"
+			"se.fusion1013.MainClient"
 		]
 	},
 	"mixins": [

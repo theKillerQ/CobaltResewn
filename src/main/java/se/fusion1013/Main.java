@@ -9,7 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ExampleMod implements ModInitializer {
+public class Main implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("cobalt");
 	public static final String MOD_NAMESPACE = "cobalt";
@@ -27,6 +27,6 @@ public class ExampleMod implements ModInitializer {
 	}
 
 	private void onServerStart(MinecraftServer server) {
-		ExampleMod.server = server;
+		Main.server = server;
 	}
 }
