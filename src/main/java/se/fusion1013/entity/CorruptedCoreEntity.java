@@ -69,6 +69,16 @@ public class CorruptedCoreEntity extends HostileEntity {
     }
 
     @Override
+    public boolean cannotDespawn() {
+        return true;
+    }
+
+    @Override
+    public boolean isPersistent() {
+        return true;
+    }
+
+    @Override
     public void takeKnockback(double strength, double x, double z) {}
 
     @Override
