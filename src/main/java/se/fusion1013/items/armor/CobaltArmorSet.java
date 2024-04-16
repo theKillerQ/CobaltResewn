@@ -12,6 +12,12 @@ import java.util.List;
 
 public class CobaltArmorSet {
 
+    // Registered items
+    public Item registeredHelmet;
+    public Item registeredChestplate;
+    public Item registeredLeggings;
+    public Item registeredBoots;
+
     // Armor pieces
     private boolean hasHelmet;
     public ICobaltItem helmet;

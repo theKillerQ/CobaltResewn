@@ -1,5 +1,7 @@
 package se.fusion1013.blocks;
 
+import io.wispforest.owo.itemgroup.OwoItemSettings;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -11,7 +13,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
+import se.fusion1013.items.CustomItemGroupRegistry;
 import se.fusion1013.items.CustomItemRegistry;
+
+import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_GROUP_KEY;
 
 public class CustomBlockRegistry {
 
@@ -84,15 +89,16 @@ public class CustomBlockRegistry {
     public static final Block OXIDIZED_PINK_CHISELED_COPPER =       register("oxidized_pink_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
 
     public static Block register(String name, Block block) {
-        var item = Registry.register(Registries.ITEM, new Identifier(Main.MOD_NAMESPACE, name), new BlockItem(block, new Item.Settings()));
+        var item = Registry.register(Registries.ITEM, new Identifier(Main.MOD_NAMESPACE, name), new BlockItem(block, new FabricItemSettings()));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
             content.addAfter(Items.WAXED_OXIDIZED_CHISELED_COPPER, item);
+        });
+        ItemGroupEvents.modifyEntriesEvent(COBALT_GROUP_KEY).register(content -> {
+            content.add(item);
         });
         return Registry.register(Registries.BLOCK, new Identifier(Main.MOD_NAMESPACE, name), block);
     }
 
-    public static void register() {
-
-    }
+    public static void register() {}
 
 }

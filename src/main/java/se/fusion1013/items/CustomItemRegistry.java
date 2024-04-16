@@ -46,6 +46,7 @@ import se.fusion1013.items.trinket.CobaltTrinketItem;
 import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
 
 import static se.fusion1013.Main.MOD_NAMESPACE;
+import static se.fusion1013.items.CustomItemGroupRegistry.*;
 
 public class CustomItemRegistry {
 
@@ -53,16 +54,6 @@ public class CustomItemRegistry {
     public static final Item ICON_ITEM = new Item(new Item.Settings());
     public static final LavenderBookItem WF_INSTRUCTION_MANUAL = LavenderBookItem.registerForBook(new Identifier("cobalt", "wf_instruction_manual"), new FabricItemSettings());
 
-
-    // --- ITEM GROUPS
-    private static final RegistryKey<ItemGroup> COBALT_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("cobalt", "item_group_all"));
-    public static final ItemGroup COBALT_GROUP = register(COBALT_GROUP_KEY, FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ICON_ITEM))
-            .displayName(Text.translatable("itemGroup.cobalt.items"))
-            .entries((displayContext, entries) -> {
-                entries.add(WF_INSTRUCTION_MANUAL);
-            })
-            .build());
 
 
 
@@ -78,12 +69,6 @@ public class CustomItemRegistry {
 
 
     // Diving Set
-    /*
-    public static final Item DIVING_HELMET = register("diving_helmet", new CobaltEquipmentItem.Builder(CobaltArmorMaterials.DIVE, new FabricItemSettings(), EquipmentSlot.HEAD, Formatting.GOLD)
-            .attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt.diving_helmet.armor", 3, EntityAttributeModifier.Operation.ADDITION), EquipmentSlot.HEAD)
-            .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.diving_helmet.move_speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
-            .build());
-     */
     public static final CobaltArmorSet DIVING_ARMOR_SET = registerSet("diving", new CobaltArmorSet.Builder(CobaltArmorMaterials.DIVE, Formatting.GOLD)
                     .withHelmet(true).withChestplate(false).withLeggings(false).withBoots(false).withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.diving_set_bonus.tooltip" }, (stack, world, entity, slot, selected) -> {
                         CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
@@ -257,6 +242,29 @@ public class CustomItemRegistry {
 
         registerDispenserBlockBehaviour(LIGHTNING_ARROW);
         registerDispenserBlockBehaviour(EXPLOSIVE_ARROW);
+
+        // Weapon group
+        ItemGroupEvents.modifyEntriesEvent(COBALT_WEAPON_GROUP_KEY).register(content -> {
+            content.add(ADVENTURE_SWORD);
+            content.add(HARPOON_GUN);
+            content.add(LUMBERJACK_AXE);
+            content.add(INFECTED_ADVENTURE_SWORD);
+            content.add(HUNTER_CROSSBOW);
+            content.add(HEAVY_WRENCH);
+            content.add(MINER_PICKAXE);
+            content.add(PROSPECTOR_PICKAXE);
+            content.add(SAMPLE_DRILL);
+            content.add(BASIC_DRILL);
+        });
+
+        // Trinket group
+        ItemGroupEvents.modifyEntriesEvent(COBALT_TRINKET_GROUP_KEY).register(content -> {
+            content.add(HUNTER_GLOVE);
+            content.add(MECHANICAL_HAND);
+            content.add(MECHANIC_GLOVES);
+            content.add(MECHANIC_SPECTACLES);
+            content.add(GEARSTRAP);
+        });
     }
 
     private static Item register(String itemId, Item item) {
@@ -268,16 +276,20 @@ public class CustomItemRegistry {
     }
 
     private static CobaltArmorSet registerSet(String setId, CobaltArmorSet set) {
-        register(setId + "_helmet", set.helmet.getItem());
-        register(setId + "_chestplate", set.chestplate.getItem());
-        register(setId + "_leggings", set.leggings.getItem());
-        register(setId + "_boots", set.boots.getItem());
-        return set;
-    }
+        set.registeredHelmet = register(setId + "_helmet", set.helmet.getItem());
+        set.registeredChestplate = register(setId + "_chestplate", set.chestplate.getItem());
+        set.registeredLeggings = register(setId + "_leggings", set.leggings.getItem());
+        set.registeredBoots = register(setId + "_boots", set.boots.getItem());
 
-    private static ItemGroup register(RegistryKey<ItemGroup> key, ItemGroup group) {
-        Registry.register(Registries.ITEM_GROUP, key, group);
-        return group;
+        // Add to armor item group
+        ItemGroupEvents.modifyEntriesEvent(COBALT_ARMOR_GROUP_KEY).register(content -> {
+            content.add(set.registeredHelmet);
+            content.add(set.registeredChestplate);
+            content.add(set.registeredLeggings);
+            content.add(set.registeredBoots);
+        });
+
+        return set;
     }
 
     private static void registerDispenserBlockBehaviour(Item item) {
