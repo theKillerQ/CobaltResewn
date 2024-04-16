@@ -56,7 +56,7 @@ public class CustomItemRegistry {
 
     // --- ITEM GROUPS
     private static final RegistryKey<ItemGroup> COBALT_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("cobalt", "item_group_all"));
-    private static final ItemGroup COBALT_GROUP = register(COBALT_GROUP_KEY, FabricItemGroup.builder()
+    public static final ItemGroup COBALT_GROUP = register(COBALT_GROUP_KEY, FabricItemGroup.builder()
             .icon(() -> new ItemStack(ICON_ITEM))
             .displayName(Text.translatable("itemGroup.cobalt.items"))
             .entries((displayContext, entries) -> {

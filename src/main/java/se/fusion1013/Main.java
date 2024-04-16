@@ -2,6 +2,7 @@ package se.fusion1013;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
+import se.fusion1013.blocks.CustomBlockRegistry;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.items.CustomItemRegistry;
 import net.fabricmc.api.ModInitializer;
@@ -23,6 +24,7 @@ public class Main implements ModInitializer {
 
 		CustomItemRegistry.register();
 		CustomEntityRegistry.register();
+		CustomBlockRegistry.register();
 
 	}
 

@@ -287,5 +287,20 @@
 
 
 
-  "item.cobalt.armor.set_bonus_header": "Set Bonus:"
+  "item.cobalt.armor.set_bonus_header": "Set Bonus:",
+
+
+
+
+
+  "entity.cobalt.corrupted_core": "Corrupted Core",
+
+
+
+
+
+  "block.cobalt.oxidized_lime_chiseled_copper": "Oxidized Lime Notched Chiseled Copper",
+  "block.cobalt.oxidized_red_chiseled_copper": "Oxidized Red Notched Chiseled Copper",
+  "block.cobalt.oxidized_white_chiseled_copper": "Oxidized White Notched Chiseled Copper",
+  "block.cobalt.oxidized_yellow_chiseled_copper": "Oxidized Yellow Notched Chiseled Copper"
 }

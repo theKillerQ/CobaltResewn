@@ -1,5 +1,6 @@
 package se.fusion1013.entity;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -15,9 +16,14 @@ public class CustomEntityRegistry {
     public static EntityType<LightningArrowEntity> LIGHTNING_ARROW;
     public static EntityType<ExplosiveArrowEntity> EXPLOSIVE_ARROW;
 
+    public static EntityType<CorruptedCoreEntity> CORRUPTED_CORE;
+
     public static void register() {
         LIGHTNING_ARROW = register("lightning_arrow", createArrowEntityType(LightningArrowEntity::new));
         EXPLOSIVE_ARROW = register("explosive_arrow", createArrowEntityType(ExplosiveArrowEntity::new));
+
+        CORRUPTED_CORE = register("corrupted_core", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, CorruptedCoreEntity::new).dimensions(EntityDimensions.fixed(2f, 2f)).build());
+        FabricDefaultAttributeRegistry.register(CORRUPTED_CORE, CorruptedCoreEntity.createCorruptedCoreAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String s, EntityType<T> entityType) {

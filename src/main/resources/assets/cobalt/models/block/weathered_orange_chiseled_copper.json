@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cobalt:block/weathered_orange_chiseled_copper"
+  }
+}
