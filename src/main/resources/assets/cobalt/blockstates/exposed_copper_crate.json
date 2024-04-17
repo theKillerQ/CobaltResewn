@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "cobalt:block/exposed_copper_crate"
+    },
+    "waterlogged=true": {
+      "model": "cobalt:block/exposed_copper_crate"
+    }
+  }
+}
