@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x":{
+      "model": "cobalt:block/sculk_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "cobalt:block/sculk_stem"
+    },
+    "axis=z": {
+      "model": "cobalt:block/sculk_stem",
+      "x": 90
+    }
+  }
+}
