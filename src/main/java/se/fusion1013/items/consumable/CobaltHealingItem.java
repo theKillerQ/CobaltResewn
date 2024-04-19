@@ -6,19 +6,19 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 public class CobaltHealingItem extends CobaltItem {
 
-    private final int m_healAmount;
+    private final int healAmount;
 
-    public CobaltHealingItem(Settings settings, Formatting nameFormatting, int amount) {
-        super(settings, nameFormatting);
+    public CobaltHealingItem(CobaltItemConfiguration configuration, Settings settings, int amount) {
+        super(configuration, settings);
 
-        m_healAmount = amount;
+        healAmount = amount;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class CobaltHealingItem extends CobaltItem {
         else user.getInventory().removeStack(PlayerInventory.OFF_HAND_SLOT, 1);
 
         // Heal the user
-        user.heal(m_healAmount);
+        user.heal(healAmount);
         user.playSound(SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.PLAYERS, 1, 1);
 
         return super.use(world, user, hand);

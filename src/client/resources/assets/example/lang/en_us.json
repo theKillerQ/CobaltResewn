@@ -1,6 +1,7 @@
 {
-  "key.cobalt.togglegui": "Toggle GUI",
-  "key.cobalt.header": "Cobalt",
+  "category.cobalt.main": "Cobalt",
+  "key.cobalt.armor_trigger": "Trigger Armor Ability",
+  "key.cobalt.armor_toggle": "Toggle Active Armor Ability",
 
 
   "item_group.cobalt.items": "Flickering Lights - All",
@@ -368,5 +369,19 @@
   "block.cobalt.blue_chiseled_copper":       "Blue Notched Chiseled Copper",
   "block.cobalt.purple_chiseled_copper":     "Purple Notched Chiseled Copper",
   "block.cobalt.magenta_chiseled_copper":    "Magenta Notched Chiseled Copper",
-  "block.cobalt.pink_chiseled_copper":       "Pink Notched Chiseled Copper"
+  "block.cobalt.pink_chiseled_copper":       "Pink Notched Chiseled Copper",
+
+  "block.cobalt.ancient_pot_1": "Chiseled Ancient Pot",
+  "block.cobalt.ancient_pot_2": "Grumpy Ancient Pot",
+  "block.cobalt.ancient_pot_3": "Smooth Ancient Pot",
+  "block.cobalt.ancient_pot_4_bottom": "Tall Ancient Pot Bottom",
+  "block.cobalt.tall_ancient_pot_middle": "Tall Ancient Pot Middle",
+  "block.cobalt.ancient_pot_4_top": "Tall Ancient Pot Top",
+
+  "block.cobalt.exposed_copper_crate": "Exposed Copper Crate",
+
+  "block.cobalt.sculk_grass": "Sculk Grass",
+  "block.cobalt.short_sculk_grass": "Short Sculk Grass",
+  "block.cobalt.sculk_stem": "Sculk Stem",
+  "block.cobalt.sculk_summoner": "Sculk Summoner"
 }

@@ -9,8 +9,8 @@ import net.minecraft.util.Identifier;
 public class CobaltPredicateProviderRegister {
 
     public static void register() {
-        registerCrossbow(CustomItemRegistry.HUNTER_CROSSBOW);
-        registerCrossbow(CustomItemRegistry.HARPOON_GUN);
+        registerCrossbow(CustomItemRegistry.CrossbowItems.HUNTER_CROSSBOW);
+        registerCrossbow(CustomItemRegistry.CrossbowItems.HARPOON_GUN);
     }
 
     private static void registerCrossbow(Item item) {

@@ -6,10 +6,12 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
+import se.fusion1013.items.CobaltItem;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.Random;
 
-public class MysteryMedicineItem extends Item {
+public class MysteryMedicineItem extends CobaltItem {
 
     private final static StatusEffect[] POSITIVE_POOL = new StatusEffect[] {
             StatusEffects.REGENERATION,
@@ -25,9 +27,9 @@ public class MysteryMedicineItem extends Item {
             StatusEffects.SLOWNESS,
     };
 
-    public MysteryMedicineItem(Settings settings) {
+    public MysteryMedicineItem(CobaltItemConfiguration configuration, Settings settings) {
 
-        super(settings.food(new FoodComponent.Builder()
+        super(configuration, settings.food(new FoodComponent.Builder()
                 .hunger(4)
                 .saturationModifier(.5f)
                 .build())

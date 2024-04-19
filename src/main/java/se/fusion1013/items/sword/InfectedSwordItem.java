@@ -13,6 +13,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class InfectedSwordItem extends CobaltSwordItem {
     private final InfectedAction m_infectedAction;
 
     public InfectedSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings, Formatting nameFormatting, float healthReduction, int cooldown, InfectedAction infectedAction) {
-        super(toolMaterial, attackDamage, attackSpeed, settings, nameFormatting);
+        super(toolMaterial, attackDamage, attackSpeed, CobaltItemConfiguration.create(nameFormatting), settings);
 
         this.m_healthReduction = healthReduction;
         this.m_cooldown = cooldown;

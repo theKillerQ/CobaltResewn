@@ -1,14 +1,18 @@
 package se.fusion1013.items.armor;
 
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.server.network.ServerPlayerEntity;
+import se.fusion1013.Main;
 import se.fusion1013.items.CobaltEquipmentItem;
-import se.fusion1013.items.ICobaltItem;
+import se.fusion1013.items.CobaltItemConfiguration;
+import se.fusion1013.items.ICobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
-import se.fusion1013.util.item.AttributeModifierProvider;
-import com.google.common.collect.ImmutableMultimap;
+import se.fusion1013.networking.CobaltNetworkingConstants;
+import se.fusion1013.util.item.ArmorUtil;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
@@ -19,47 +23,41 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class CobaltArmorItem extends ArmorItem implements ICobaltItem {
+public class CobaltArmorItem extends ArmorItem implements ICobaltArmorItem {
 
-    private final Formatting nameFormatting;
+    private final CobaltItemConfiguration configuration;
     private final CobaltArmorMaterial cobaltMaterial;
-
-    private List<Text> tooltip = new ArrayList<>();
-    private Map<EquipmentSlot, List<AttributeModifierProvider>> attributeModifiers = new HashMap<>();
     private IArmorTickExecutor setBonusTickExecutor;
 
-    public CobaltArmorItem(CobaltArmorMaterial material, ArmorItem.Type type, Item.Settings settings, Formatting nameFormatting) {
+    public CobaltArmorItem(CobaltArmorMaterial material, ArmorItem.Type type, CobaltItemConfiguration configuration, Item.Settings settings) {
         super(material, type, settings);
 
-        this.nameFormatting = nameFormatting;
+        this.configuration = configuration;
         cobaltMaterial = material;
     }
 
     @Override
     public Text getName(ItemStack stack) {
-        Text text = super.getName(stack);
-        return text.copy().formatted(nameFormatting);
+        return configuration.applyNameFormatting(super.getName(stack));
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
-        tooltip.addAll(this.tooltip);
+        configuration.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
+        armorSetBonusTick(stack, world, entity, slot, selected);
+    }
 
+    private void armorSetBonusTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (setBonusTickExecutor == null) return;
 
         if (entity instanceof PlayerEntity player) {
@@ -70,36 +68,15 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltItem {
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        Multimap<EntityAttribute, EntityAttributeModifier> map = super.getAttributeModifiers(stack, slot);
-
-        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        for (AttributeModifierProvider attribute : attributeModifiers.getOrDefault(slot, new ArrayList<>())) {
-            builder.put(attribute.attribute(), attribute.modifier());
-        }
-
-        if (slot == type.getEquipmentSlot()) {
-            for (AttributeModifierProvider attribute : cobaltMaterial.getAttributeModifiers(slot)) {
-                builder.put(attribute.attribute(), attribute.modifier());
-            }
-        }
-        builder.putAll(map);
-        return builder.build();
+        var map = configuration.getAttributeModifiers(super.getAttributeModifiers(stack, slot), stack, slot);
+        map = ArmorUtil.getAttributeModifiers(map, cobaltMaterial, type, slot);
+        return map;
     }
 
     @Override
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
-        nbt.putBoolean("Unbreakable", true);
-    }
-
-    @Override
-    public void addTooltip(String translatableString) {
-        tooltip.add(Text.translatable(translatableString).formatted(Formatting.DARK_GRAY));
-    }
-
-    @Override
-    public void addTooltip(Text text) {
-        tooltip.add(text);
+        configuration.postProcessNbt(nbt);
     }
 
     @Override
@@ -117,32 +94,15 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltItem {
         // Generic
         private final CobaltArmorMaterial material;
         private final ArmorItem.Type type;
+        private final CobaltItemConfiguration configuration;
         private final Item.Settings settings;
-        private final Formatting nameFormatting;
-
-        private final List<Text> m_tooltip = new ArrayList<>();
-        private boolean m_isDamageable = false;
-        private Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
         private IArmorTickExecutor setBonusTickExecutor;
 
-        public Builder(CobaltArmorMaterial material, Type type, Settings settings, Formatting nameFormatting) {
+        public Builder(CobaltArmorMaterial material, Type type, CobaltItemConfiguration configuration, Settings settings) {
             this.material = material;
             this.type = type;
+            this.configuration = configuration;
             this.settings = settings;
-            this.nameFormatting = nameFormatting;
-        }
-
-        public Builder tooltip(Text text) {
-            m_tooltip.add(text);
-            return this;
-        }
-
-        public Builder attributeModifier(EntityAttribute attribute, EntityAttributeModifier modifier, EquipmentSlot... slots) {
-            for (EquipmentSlot slot : slots) {
-                List<AttributeModifierProvider> list = m_attributeModifiers.computeIfAbsent(slot, k -> new ArrayList<>());
-                list.add(new AttributeModifierProvider(attribute, modifier));
-            }
-            return this;
         }
 
         public Builder armorSetBonusTick(IArmorTickExecutor tickExecutor) {
@@ -151,12 +111,8 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltItem {
         }
 
         public CobaltArmorItem build() {
-            CobaltArmorItem armor = new CobaltArmorItem(material, type, settings, nameFormatting);
-
-            armor.tooltip = m_tooltip;
-            armor.attributeModifiers = m_attributeModifiers;
+            CobaltArmorItem armor = new CobaltArmorItem(material, type, configuration, settings);
             armor.setBonusTickExecutor = setBonusTickExecutor;
-
             return armor;
         }
     }

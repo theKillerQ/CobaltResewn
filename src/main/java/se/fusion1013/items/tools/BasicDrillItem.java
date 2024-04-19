@@ -15,13 +15,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.List;
 
 public class BasicDrillItem extends CobaltPickaxeItem {
 
     public BasicDrillItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings, Formatting.DARK_GRAY);
+        super(material, attackDamage, attackSpeed, CobaltItemConfiguration.create(Formatting.DARK_GRAY), settings);
     }
 
     @Override

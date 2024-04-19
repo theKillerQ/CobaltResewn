@@ -9,6 +9,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Formatting;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.Random;
 
@@ -17,7 +18,7 @@ public class SampleDrillItem extends CobaltSwordItem {
     private static final float HEAL_AMOUNT_PERCENTAGE = 0.1f;
 
     public SampleDrillItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings, Formatting nameFormatting) {
-        super(toolMaterial, attackDamage, attackSpeed, settings, nameFormatting);
+        super(toolMaterial, attackDamage, attackSpeed, CobaltItemConfiguration.create(nameFormatting), settings);
     }
 
     @Override

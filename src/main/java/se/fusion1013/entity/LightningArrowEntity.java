@@ -26,7 +26,7 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
     }
 
     public LightningArrowEntity(EntityType<? extends PersistentProjectileEntity> entityEntityType, World world) {
-        super(entityEntityType, world, new ItemStack(CustomItemRegistry.LIGHTNING_ARROW));
+        super(entityEntityType, world, new ItemStack(CustomItemRegistry.ArrowItems.LIGHTNING_ARROW));
     }
 
     public LightningArrowEntity(double x, double y, double z, World world, ItemStack stack) {
@@ -99,6 +99,6 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
 
     @Override
     protected ItemStack asItemStack() {
-        return new ItemStack(CustomItemRegistry.LIGHTNING_ARROW);
+        return new ItemStack(CustomItemRegistry.ArrowItems.LIGHTNING_ARROW);
     }
 }

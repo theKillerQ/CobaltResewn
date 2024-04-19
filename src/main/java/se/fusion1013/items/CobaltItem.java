@@ -1,8 +1,13 @@
 package se.fusion1013.items;
 
+import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.text.TranslatableTextContent;
@@ -14,27 +19,31 @@ import java.util.List;
 
 public class CobaltItem extends Item {
 
-    private final Formatting nameFormatting;
+    private final CobaltItemConfiguration configuration;
 
-    public CobaltItem(Settings settings, Formatting nameFormatting) {
+    public CobaltItem(CobaltItemConfiguration configuration, Settings settings) {
         super(settings);
-
-        this.nameFormatting = nameFormatting;
+        this.configuration = configuration;
     }
 
     @Override
     public Text getName(ItemStack stack) {
-        Text text = super.getName(stack);
-        return text.copy().formatted(nameFormatting);
+        return configuration.applyNameFormatting(super.getName(stack));
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
+        configuration.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override
-    public boolean isDamageable() {
-        return false;
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+        return configuration.getAttributeModifiers(super.getAttributeModifiers(stack, slot), stack, slot);
+    }
+
+    @Override
+    public void postProcessNbt(NbtCompound nbt) {
+        super.postProcessNbt(nbt);
+        configuration.postProcessNbt(nbt);
     }
 }

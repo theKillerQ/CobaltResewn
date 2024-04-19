@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -12,31 +13,37 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.List;
 import java.util.UUID;
 
 public class CobaltTrinketItem extends TrinketItem {
 
-    private final Formatting m_nameFormatting;
-    private final TrinketModifierProvider m_modifierProvider;
+    private final CobaltItemConfiguration configuration;
+    private final TrinketModifierProvider modifierProvider;
 
-    public CobaltTrinketItem(Settings settings, TrinketModifierProvider modifierProvider, Formatting nameFormatting) {
-        super(settings.maxCount(1));
-        this.m_modifierProvider = modifierProvider;
-        this.m_nameFormatting = nameFormatting;
+    public CobaltTrinketItem(Settings settings, CobaltItemConfiguration configuration, TrinketModifierProvider modifierProvider) {
+        super(settings.maxCount(1)); // Override stack size for all trinkets
+        this.configuration = configuration;
+        this.modifierProvider = modifierProvider;
     }
 
     @Override
     public Text getName(ItemStack stack) {
         Text text = super.getName(stack);
-        return text.copy().formatted(m_nameFormatting);
+        return configuration.applyNameFormatting(text);
+    }
+
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+        return configuration.getAttributeModifiers(super.getAttributeModifiers(stack, slot), stack, slot);
     }
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getModifiers(ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid) {
         var modifiers = super.getModifiers(stack, slot, entity, uuid);
-        return m_modifierProvider.getModifiers(modifiers, stack, slot, entity, uuid);
+        return modifierProvider.getModifiers(modifiers, stack, slot, entity, uuid);
 
 
         // SlotAttributes.addSlotModifier(modifiers, "feet/aglet", uuid, 1, EntityAttributeModifier.Operation.ADDITION);
@@ -44,10 +51,8 @@ public class CobaltTrinketItem extends TrinketItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
+        configuration.appendTooltip(stack, world, tooltip, context);
     }
-
-    // TODO: Add builder
 
     public interface TrinketModifierProvider {
         Multimap<EntityAttribute, EntityAttributeModifier> getModifiers(Multimap<EntityAttribute, EntityAttributeModifier> modifiers, ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid);

@@ -4,11 +4,10 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import se.fusion1013.items.ICobaltItem;
+import se.fusion1013.items.CobaltItemConfiguration;
+import se.fusion1013.items.ICobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.ArmorUtil;
-
-import java.util.List;
 
 public class CobaltArmorSet {
 
@@ -20,20 +19,20 @@ public class CobaltArmorSet {
 
     // Armor pieces
     private boolean hasHelmet;
-    public ICobaltItem helmet;
+    public ICobaltArmorItem helmet;
 
     private boolean hasChestplate;
-    public ICobaltItem chestplate;
+    public ICobaltArmorItem chestplate;
 
     private boolean hasLeggings;
-    public ICobaltItem leggings;
+    public ICobaltArmorItem leggings;
 
     private boolean hasBoots;
-    public ICobaltItem boots;
+    public ICobaltArmorItem boots;
 
     public ArmorSetBonus setBonus;
 
-    private CobaltArmorSet() {}
+    public CobaltArmorSet() {}
 
     private void applySetBonus() {
         if (hasHelmet) applySetBonusTooltips(helmet, setBonus);
@@ -47,39 +46,39 @@ public class CobaltArmorSet {
         else if (hasHelmet) applySetBonus(helmet, setBonus);
     }
 
-    private static void applySetBonusTooltips(ICobaltItem item, ArmorSetBonus setBonus) {
+    private static void applySetBonusTooltips(ICobaltArmorItem item, ArmorSetBonus setBonus) {
         item.addTooltip("");
         item.addTooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
         for (String s : setBonus.tooltip()) item.addTooltip(Text.translatable(s).formatted(Formatting.GRAY));
     }
 
-    private static void applySetBonus(ICobaltItem item, ArmorSetBonus setBonus) {
+    private static void applySetBonus(ICobaltArmorItem item, ArmorSetBonus setBonus) {
         item.setArmorBonusTickExecutor(setBonus.executor());
     }
 
     public static class Builder {
 
         private final CobaltArmorMaterial material;
-        private final Formatting nameFormatting;
+        private final CobaltItemConfiguration configuration;
 
         // Armor pieces
         private boolean hasHelmet;
-        private ICobaltItem helmet;
+        private ICobaltArmorItem helmet;
 
         private boolean hasChestplate;
-        private ICobaltItem chestplate;
+        private ICobaltArmorItem chestplate;
 
         private boolean hasLeggings;
-        private ICobaltItem leggings;
+        private ICobaltArmorItem leggings;
 
         private boolean hasBoots;
-        private ICobaltItem boots;
+        private ICobaltArmorItem boots;
 
         private ArmorSetBonus setBonus;
 
-        public Builder(CobaltArmorMaterial material, Formatting nameFormatting) {
+        public Builder(CobaltArmorMaterial material, CobaltItemConfiguration configuration) {
             this.material = material;
-            this.nameFormatting = nameFormatting;
+            this.configuration = configuration;
         }
 
         public Builder withSetBonus(ArmorSetBonus setBonus) {
@@ -87,27 +86,43 @@ public class CobaltArmorSet {
             return this;
         }
 
-        public Builder withHelmet(boolean asEquipment) {
-            hasHelmet = true;
-            helmet = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.HELMET, nameFormatting);
+        public Builder withAll() {
+            withHelmet();
+            withChestplate();
+            withLeggings();
+            withBoots();
             return this;
         }
+
+        public Builder withHelmet() { return withHelmet(false); }
+
+        public Builder withHelmet(boolean asEquipment) {
+            hasHelmet = true;
+            helmet = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.HELMET, configuration);
+            return this;
+        }
+
+        public Builder withChestplate() { return withChestplate(false); }
 
         public Builder withChestplate(boolean asEquipment) {
             hasChestplate = true;
-            chestplate = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.CHESTPLATE, nameFormatting);
+            chestplate = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.CHESTPLATE, configuration);
             return this;
         }
+
+        public Builder withLeggings() { return withLeggings(false); }
 
         public Builder withLeggings(boolean asEquipment) {
             hasLeggings = true;
-            leggings = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.LEGGINGS, nameFormatting);
+            leggings = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.LEGGINGS, configuration);
             return this;
         }
 
+        public Builder withBoots() { return withBoots(false); }
+
         public Builder withBoots(boolean asEquipment) {
             hasBoots = true;
-            boots = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.BOOTS, nameFormatting);
+            boots = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.BOOTS, configuration);
             return this;
         }
 
@@ -133,6 +148,5 @@ public class CobaltArmorSet {
 
             return set;
         }
-
     }
 }

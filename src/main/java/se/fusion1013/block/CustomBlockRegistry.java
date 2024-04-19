@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
@@ -16,7 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
-import se.fusion1013.block.entity.CopperCrateBlockEntity;
+import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
 
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_GROUP_KEY;
 
@@ -93,14 +90,30 @@ public class CustomBlockRegistry {
     public static final Block EXPOSED_COPPER_VENT = register("exposed_copper_vent", new CopperVentBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
     public static final Block EXPOSED_COPPER_CRATE = register("exposed_copper_crate", new CopperCrateBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
-    public static final BlockEntityType<CopperCrateBlockEntity> EXPOSED_COPPER_CRATE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "exposed_copper_crate_block_entity"), FabricBlockEntityTypeBuilder.create(CopperCrateBlockEntity::new, EXPOSED_COPPER_CRATE).build());
+    public static final BlockEntityType<CustomSingleStackInventoryBlockEntity> EXPOSED_COPPER_CRATE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "exposed_copper_crate_block_entity"), FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, EXPOSED_COPPER_CRATE).build());
 
     // TODO: Replace with custom class
     public static final Block ANCIENT_POT_1 = register("ancient_pot_1", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
+    public static final BlockEntityType<CustomSingleStackInventoryBlockEntity> ANCIENT_POT_1_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "ancient_pot_1_block_entity"), FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, ANCIENT_POT_1).build());
+
     public static final Block ANCIENT_POT_2 = register("ancient_pot_2", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
+    public static final BlockEntityType<CustomSingleStackInventoryBlockEntity> ANCIENT_POT_2_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "ancient_pot_2_block_entity"), FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, ANCIENT_POT_2).build());
+
     public static final Block ANCIENT_POT_3 = register("ancient_pot_3", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
+    public static final BlockEntityType<CustomSingleStackInventoryBlockEntity> ANCIENT_POT_3_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "ancient_pot_3_block_entity"), FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, ANCIENT_POT_3).build());
+
     public static final Block ANCIENT_POT_4_BOTTOM = register("ancient_pot_4_bottom", new AncientPot4BottomBlock(AbstractBlock.Settings.create().strength(3, 6)));
+    public static final Block ANCIENT_POT_4_MIDDLE = register("tall_ancient_pot_middle", new AncientPot4BottomBlock(AbstractBlock.Settings.create().strength(3, 6)));
+
     public static final Block ANCIENT_POT_4_TOP = register("ancient_pot_4_top", new AncientPot4TopBlock(AbstractBlock.Settings.create().strength(3, 6)));
+    public static final BlockEntityType<CustomSingleStackInventoryBlockEntity> ANCIENT_POT_4_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, "ancient_pot_4_block_entity"), FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, ANCIENT_POT_4_TOP).build());
+
+    public static final Block SCULK_STEM = register("sculk_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
+
+    public static final Block SHORT_SCULK_GRASS = register("short_sculk_grass", new SculkPlantBlock(FabricBlockSettings.create()));
+    public static final Block SCULK_GRASS = register("sculk_grass", new SculkPlantBlock(FabricBlockSettings.create()));
+
+    public static final Block SCULK_SUMMONER = register("sculk_summoner", new SculkSummonerBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);

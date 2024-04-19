@@ -1,63 +1,35 @@
 package se.fusion1013.items;
 
-import net.minecraft.item.ArmorMaterial;
 import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
-import se.fusion1013.util.item.AttributeModifierProvider;
-import com.google.common.collect.ImmutableMultimap;
+import se.fusion1013.util.item.ArmorUtil;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Equipment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class CobaltEquipmentItem extends Item implements Equipment, ICobaltItem {
+public class CobaltEquipmentItem extends Item implements Equipment, ICobaltArmorItem {
 
+    private final CobaltItemConfiguration configuration;
     private final EquipmentSlot slotType;
-
-    private final Formatting nameFormatting;
     public final CobaltArmorMaterial material;
 
-    private List<Text> tooltip = new ArrayList<>();
-    private boolean m_isDamageable = false;
-    private Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
+    public CobaltEquipmentItem(CobaltArmorMaterial material, CobaltItemConfiguration configuration, Settings settings, EquipmentSlot slotType) {
+        super(settings.maxCount(1));
 
-    private List<StatusEffectInstance> wornEffects = new ArrayList<>();
-
-    public CobaltEquipmentItem(CobaltArmorMaterial material, Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
-        super(settings);
-
+        this.configuration = configuration;
         this.slotType = slotType;
-        this.nameFormatting = nameFormatting;
         this.material = material;
-    }
-
-    @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, world, entity, slot, selected);
-
-        if (slot != slotType.getEntitySlotId()) return;
-        if (entity instanceof LivingEntity living) {
-            for (StatusEffectInstance effect : wornEffects) {
-                living.addStatusEffect(effect);
-            }
-        }
     }
 
     @Override
@@ -67,32 +39,19 @@ public class CobaltEquipmentItem extends Item implements Equipment, ICobaltItem 
 
     @Override
     public Text getName(ItemStack stack) {
-        Text text = super.getName(stack);
-        return text.copy().formatted(nameFormatting);
+        return configuration.applyNameFormatting(super.getName(stack));
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(getTranslationKey(stack) + ".tooltip").formatted(Formatting.DARK_GRAY));
-        tooltip.addAll(this.tooltip);
+        configuration.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        Multimap<EntityAttribute, EntityAttributeModifier> map = super.getAttributeModifiers(stack, slot);
-
-        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        for (AttributeModifierProvider attribute : m_attributeModifiers.getOrDefault(slot, new ArrayList<>())) {
-
-            builder.put(attribute.attribute(), attribute.modifier());
-        }
-        if (slot == getSlotType()) {
-            for (AttributeModifierProvider attribute : material.getAttributeModifiers(slot)) {
-                builder.put(attribute.attribute(), attribute.modifier());
-            }
-        }
-        builder.putAll(map);
-        return builder.build();
+        var map = configuration.getAttributeModifiers(super.getAttributeModifiers(stack, slot), stack, slot);
+        map = ArmorUtil.getAttributeModifiers(map, material, ArmorUtil.toArmorType(getSlotType()), slot);
+        return map;
     }
 
     @Override
@@ -103,17 +62,7 @@ public class CobaltEquipmentItem extends Item implements Equipment, ICobaltItem 
     @Override
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
-        nbt.putBoolean("Unbreakable", true);
-    }
 
-    @Override
-    public void addTooltip(String translatableString) {
-        tooltip.add(Text.translatable(translatableString).formatted(Formatting.DARK_GRAY));
-    }
-
-    @Override
-    public void addTooltip(Text text) {
-        tooltip.add(text);
     }
 
     @Override
@@ -126,52 +75,4 @@ public class CobaltEquipmentItem extends Item implements Equipment, ICobaltItem 
         return this;
     }
 
-    public static class Builder {
-
-        // Generic
-        private final Item.Settings settings;
-        private final Formatting nameFormatting;
-        private final EquipmentSlot slotType;
-        private final CobaltArmorMaterial material;
-
-        private final List<Text> m_tooltip = new ArrayList<>();
-        private boolean m_isDamageable = false;
-        private final Map<EquipmentSlot, List<AttributeModifierProvider>> m_attributeModifiers = new HashMap<>();
-        private List<StatusEffectInstance> wornEffects = new ArrayList<>();
-
-        public Builder(CobaltArmorMaterial material, Settings settings, EquipmentSlot slotType, Formatting nameFormatting) {
-            this.material = material;
-            this.settings = settings;
-            this.nameFormatting = nameFormatting;
-            this.slotType = slotType;
-        }
-
-        public CobaltEquipmentItem.Builder tooltip(Text text) {
-            m_tooltip.add(text);
-            return this;
-        }
-
-        public CobaltEquipmentItem.Builder attributeModifier(EntityAttribute attribute, EntityAttributeModifier modifier, EquipmentSlot... slots) {
-            for (EquipmentSlot slot : slots) {
-                List<AttributeModifierProvider> list = m_attributeModifiers.computeIfAbsent(slot, k -> new ArrayList<>());
-                list.add(new AttributeModifierProvider(attribute, modifier));
-            }
-            return this;
-        }
-
-        public Builder wornEffect(StatusEffectInstance effect) {
-            wornEffects.add(effect);
-            return this;
-        }
-
-        public CobaltEquipmentItem build() {
-            CobaltEquipmentItem equipment = new CobaltEquipmentItem(material, settings, slotType, nameFormatting);
-
-            equipment.tooltip = m_tooltip;
-            equipment.m_isDamageable = m_isDamageable;
-            equipment.m_attributeModifiers = m_attributeModifiers;
-
-            return equipment;
-        }
-    }
 }

@@ -30,19 +30,19 @@ public class CustomItemGroupRegistry {
 
     public static final RegistryKey<ItemGroup> COBALT_WEAPON_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("cobalt", "weapon_group"));
     public static final ItemGroup COBALT_WEAPON_GROUP = register(COBALT_WEAPON_GROUP_KEY, FabricItemGroup.builder()
-            .icon(() -> new ItemStack(CustomItemRegistry.ADVENTURE_SWORD))
+            .icon(() -> new ItemStack(CustomItemRegistry.SwordItems.ADVENTURE_SWORD))
             .displayName(Text.translatable("item_group.cobalt.weapons"))
             .build());
 
     public static final RegistryKey<ItemGroup> COBALT_TRINKET_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("cobalt", "trinket_group"));
     public static final ItemGroup COBALT_TRINKET_GROUP = register(COBALT_TRINKET_GROUP_KEY, FabricItemGroup.builder()
-            .icon(() -> new ItemStack(CustomItemRegistry.MECHANIC_GLOVES))
+            .icon(() -> new ItemStack(CustomItemRegistry.TrinketItems.MECHANIC_GLOVES))
             .displayName(Text.translatable("item_group.cobalt.trinkets"))
             .build());
 
     public static final RegistryKey<ItemGroup> COBALT_ARMOR_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("cobalt", "armor_group"));
     public static final ItemGroup COBALT_ARMOR_GROUP = register(COBALT_ARMOR_GROUP_KEY, FabricItemGroup.builder()
-            .icon(() -> new ItemStack(CustomItemRegistry.TINKER_ARMOR_SET.registeredHelmet))
+            .icon(() -> new ItemStack(CustomItemRegistry.ArmorItems.TINKER_ARMOR_SET.registeredHelmet))
             .displayName(Text.translatable("item_group.cobalt.armor"))
             .build());
 
