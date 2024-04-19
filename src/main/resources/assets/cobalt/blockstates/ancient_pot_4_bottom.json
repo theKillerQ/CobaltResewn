@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "cobalt:block/ancient_pot_4_bottom"
+    "facing=east": {
+      "model": "cobalt:block/ancient_pot_4_bottom",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cobalt:block/ancient_pot_4_bottom",
+      "y": 0
+    },
+    "facing=south": {
+      "model": "cobalt:block/ancient_pot_4_bottom",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cobalt:block/ancient_pot_4_bottom",
+      "y": 270
     }
   }
 }
