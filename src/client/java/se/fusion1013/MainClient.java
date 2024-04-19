@@ -1,8 +1,20 @@
 package se.fusion1013;
 
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
+import se.fusion1013.block.CustomBlockRegistry;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
@@ -23,9 +35,12 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.util.FacilityStatus;
 
+import java.util.function.Function;
+
 public class MainClient implements ClientModInitializer {
 
-	private static KeyBinding toggleGuiKeybind;
+	private static KeyBinding armorTriggerKeyBinding;
+	private static KeyBinding armorToggleKeyBinding;
 
 	public static final Item BACKPACK = new BackpackItem(new FabricItemSettings());
 
@@ -42,6 +57,11 @@ public class MainClient implements ClientModInitializer {
 		EntityRendererRegistry.register(CustomEntityRegistry.CORRUPTED_CORE, CorruptedCoreEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+				CustomBlockRegistry.SCULK_GRASS,
+				CustomBlockRegistry.SHORT_SCULK_GRASS
+		);
+
 		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, (client, handler, buf, responseSender) -> {
 			client.execute(() -> {
 				FacilityStatus.POWER_CURRENT = buf.readInt();
@@ -57,5 +77,34 @@ public class MainClient implements ClientModInitializer {
 	}
 
 	private void initializeKeybinds() {
+		armorTriggerKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.cobalt.armor_trigger",
+				InputUtil.Type.KEYSYM,
+				GLFW.GLFW_KEY_X,
+				"category.cobalt.main"
+		));
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (armorTriggerKeyBinding.wasPressed()) {
+				if (client.player == null) continue;
+
+				PacketByteBuf buf = PacketByteBufs.create();
+				ClientPlayNetworking.send(CobaltNetworkingConstants.KEY_ARMOR_TRIGGER_ID, buf);
+			}
+		});
+
+		armorToggleKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.cobalt.armor_toggle",
+				InputUtil.Type.KEYSYM,
+				GLFW.GLFW_KEY_G,
+				"category.cobalt.main"
+		));
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (armorToggleKeyBinding.wasPressed()) {
+				if (client.player == null) continue;
+
+				PacketByteBuf buf = PacketByteBufs.create();
+				ClientPlayNetworking.send(CobaltNetworkingConstants.KEY_ARMOR_TOGGLE_ID, buf);
+			}
+		});
 	}
 }
