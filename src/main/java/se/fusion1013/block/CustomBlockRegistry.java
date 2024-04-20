@@ -110,14 +110,16 @@ public class CustomBlockRegistry {
 
     public static final Block SCULK_STEM = register("sculk_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
 
-    public static final Block SHORT_SCULK_GRASS = register("short_sculk_grass", new SculkPlantBlock(FabricBlockSettings.create()));
-    public static final Block SCULK_GRASS = register("sculk_grass", new SculkPlantBlock(FabricBlockSettings.create()));
+    public static final Block SHORT_SCULK_GRASS = register("short_sculk_grass", new SculkPlantBlock(FabricBlockSettings.create().noCollision()));
+    public static final Block SCULK_GRASS = register("sculk_grass", new SculkPlantBlock(FabricBlockSettings.create().noCollision()));
 
     public static final Block SCULK_SUMMONER = register("sculk_summoner", new SculkSummonerBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Main.MOD_NAMESPACE, name), block);
+
+        Blocks.TORCH
     }
 
     private static void registerItem(String name, Block block) {

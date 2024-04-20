@@ -27,6 +27,16 @@
       "model": "cobalt:block/short_sculk_grass",
       "x": 90,
       "y": 270
+    },
+    "face=wall,facing=up": {
+      "model": "cobalt:block/short_sculk_grass",
+      "x": 90,
+      "y": 270
+    },
+    "face=wall,facing=down": {
+      "model": "cobalt:block/short_sculk_grass",
+      "x": 90,
+      "y": 270
     }
   }
 }
