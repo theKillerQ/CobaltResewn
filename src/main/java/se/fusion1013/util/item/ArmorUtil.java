@@ -8,6 +8,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ArmorItem;
+import se.fusion1013.Main;
 import se.fusion1013.items.CobaltEquipmentItem;
 import se.fusion1013.items.CobaltItemConfiguration;
 import se.fusion1013.items.ICobaltArmorItem;
@@ -71,8 +72,8 @@ public class ArmorUtil {
         };
 
         // Add armor and toughness attributes to item
-        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt." + material.getName() + ".armor", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION));
-        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt." + material.getName() + ".toughness", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION));
+        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt." + material.getName() + ".armor", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
+        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt." + material.getName() + ".toughness", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
 
         return new CobaltEquipmentItem(material, configuration, new FabricItemSettings(), equipmentSlot);
     }

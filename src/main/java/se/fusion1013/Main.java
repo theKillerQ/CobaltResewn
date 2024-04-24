@@ -2,10 +2,11 @@ package se.fusion1013;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
-import se.fusion1013.block.CustomBlockRegistry;
+import se.fusion1013.block.CobaltBlocks;
+import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.items.CustomItemGroupRegistry;
-import se.fusion1013.items.CustomItemRegistry;
+import se.fusion1013.items.CobaltItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -23,10 +24,11 @@ public class Main implements ModInitializer {
 
 		ServerLifecycleEvents.SERVER_STARTED.register(this::onServerStart);
 
-		CustomItemRegistry.register();
+		CobaltItems.register();
 		CustomEntityRegistry.register();
-		CustomBlockRegistry.register();
+		CobaltBlocks.register();
 		CustomItemGroupRegistry.register();
+		CobaltBlockEntityTypes.registerAll();
 
 	}
 

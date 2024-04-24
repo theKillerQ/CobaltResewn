@@ -14,7 +14,7 @@ Room I01 - GREEN
 
 Room I02 - WHITE
 
-Door I01 <-> I02 - WHITE
+Door I01 <-> I02 - RED
 
 Door I02 <-> I03 - YELLOW
 

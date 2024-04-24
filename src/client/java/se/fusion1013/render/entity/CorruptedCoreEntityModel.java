@@ -7,9 +7,12 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import org.joml.Matrix4f;
 import se.fusion1013.entity.CorruptedCoreEntity;
 
 public class CorruptedCoreEntityModel extends EntityModel<CorruptedCoreEntity> {
+
+    private static final float HALF_SQRT_3 = (float)(Math.sqrt(3.0D) / 2.0D);
 
     private final ModelPart bb_main;
     public CorruptedCoreEntityModel(ModelPart root) {

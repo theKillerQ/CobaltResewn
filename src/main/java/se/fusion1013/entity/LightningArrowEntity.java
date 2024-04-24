@@ -1,6 +1,6 @@
 package se.fusion1013.entity;
 
-import se.fusion1013.items.CustomItemRegistry;
+import se.fusion1013.items.CobaltItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
@@ -26,7 +26,7 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
     }
 
     public LightningArrowEntity(EntityType<? extends PersistentProjectileEntity> entityEntityType, World world) {
-        super(entityEntityType, world, new ItemStack(CustomItemRegistry.ArrowItems.LIGHTNING_ARROW));
+        super(entityEntityType, world, new ItemStack(CobaltItems.ArrowItems.LIGHTNING_ARROW));
     }
 
     public LightningArrowEntity(double x, double y, double z, World world, ItemStack stack) {
@@ -99,6 +99,6 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
 
     @Override
     protected ItemStack asItemStack() {
-        return new ItemStack(CustomItemRegistry.ArrowItems.LIGHTNING_ARROW);
+        return new ItemStack(CobaltItems.ArrowItems.LIGHTNING_ARROW);
     }
 }

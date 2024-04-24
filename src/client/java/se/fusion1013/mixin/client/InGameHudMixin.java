@@ -5,13 +5,12 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.scoreboard.*;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import se.fusion1013.items.CustomItemRegistry;
+import se.fusion1013.items.CobaltItems;
 import se.fusion1013.util.FacilityStatus;
 
 @Mixin(InGameHud.class)
@@ -27,7 +26,7 @@ public class InGameHudMixin {
         if (possibleTrinketComponent.isEmpty()) return;
 
         var trinketComponent = possibleTrinketComponent.get();
-        if (!trinketComponent.isEquipped(CustomItemRegistry.TrinketItems.MECHANIC_SPECTACLES)) return;
+        if (!trinketComponent.isEquipped(CobaltItems.TrinketItems.MECHANIC_SPECTACLES)) return;
 
         var powerPercent = Math.round(FacilityStatus.POWER_CURRENT / POWER_MAX * 100);
         MinecraftClient.getInstance().textRenderer.draw("Power: " + powerPercent + "%", 5, 5, getColor(powerPercent), true, new Matrix4f(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0x00000000, 255);

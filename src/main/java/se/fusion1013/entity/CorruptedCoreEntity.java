@@ -1,24 +1,29 @@
 package se.fusion1013.entity;
 
-import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.SculkSpreadManager;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
-import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleEffect;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -27,11 +32,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import se.fusion1013.Main;
+import org.joml.Vector3d;
+import org.joml.Vector3f;
 import se.fusion1013.util.block.BlockSpreadManager;
+import se.fusion1013.util.math.MathUtil;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class CorruptedCoreEntity extends HostileEntity {
 
@@ -39,6 +46,12 @@ public class CorruptedCoreEntity extends HostileEntity {
     private final SculkSpreadManager spreadManager;
     private final BlockSpreadManager blockSpreadManager;
     private final net.minecraft.util.math.random.Random random;
+
+    // Tracked data
+    private static final TrackedData<Boolean> IS_DYING;
+
+    private static final Predicate<LivingEntity> CAN_BOOST_PREDICATE;
+    private static final TargetPredicate CAN_ATTACK_PREDICATE;
 
     private CorruptedCoreState state = CorruptedCoreState.ALIVE;
 
@@ -60,6 +73,17 @@ public class CorruptedCoreEntity extends HostileEntity {
         this.spreadManager = SculkSpreadManager.create();
         this.random = Random.create();
         this.blockSpreadManager = BlockSpreadManager.create();
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(IS_DYING, false);
+    }
+
+    @Override
+    protected void initGoals() {
+        this.targetSelector.add(0, new ActiveTargetGoal<>(this, HostileEntity.class, 0, false, false, CAN_BOOST_PREDICATE));
     }
 
     @Override
@@ -87,6 +111,8 @@ public class CorruptedCoreEntity extends HostileEntity {
     @Override
     public boolean damage(DamageSource source, float amount) {
 
+        if (source.getSource() instanceof PersistentProjectileEntity) return false;
+
         if (getWorld().isClient) return super.damage(source, amount);
 
         switch (state) {
@@ -104,38 +130,68 @@ public class CorruptedCoreEntity extends HostileEntity {
         this.spreadManager.spread(BlockPos.ofFloored(this.getX()+2, this.getY()-1, this.getZ()), charge);
         this.spreadManager.spread(BlockPos.ofFloored(this.getX(), this.getY()-1, this.getZ()-2), charge);
         this.spreadManager.spread(BlockPos.ofFloored(this.getX(), this.getY()-1, this.getZ()+2), charge);
+
+        // Give buffs to nearby entities
+        List<LivingEntity> list = this.getWorld().getTargets(LivingEntity.class, CAN_ATTACK_PREDICATE, this, getBoundingBox().expand(20, 8, 20));
+        for (LivingEntity entity : list) {
+            // Boost nearby entities
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*10, 0));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20*8, 1));
+        }
+        this.playSound(SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL, 1, 1);
     }
 
-    private void damagedDying(DamageSource source, float amount) {
-
-    }
+    private void damagedDying(DamageSource source, float amount) {}
 
     private float getHealthPercentage() {
         return (getHealth() - (getMaxHealth() * 0.5f)) / (getMaxHealth() * 0.5f);
     }
 
     @Override
-    protected void mobTick() {
-        super.mobTick();
+    public void tickMovement() {
+        if (getWorld().isClient) {
+            Random random = Random.create();
+            if (this.getIsDying()) {
+                // Spawn dying effects
+                if (random.nextInt(5) == 0 && !isSilent()) {
+                    getWorld().playSound(this.getX()+.5, getY()+.5, getZ()+.5, SoundEvents.ENTITY_WARDEN_DEATH, SoundCategory.HOSTILE, 1.0F + this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F, false);
+                }
+                getWorld().addParticle(ParticleTypes.EXPLOSION, getParticleX(1), getRandomBodyY(), getParticleZ(1), 0, 0, 0);
+            }
 
-        if (getHealthPercentage() < 0 && state == CorruptedCoreState.ALIVE) {
-            switchState(CorruptedCoreState.DYING);
+            // Spawn particles at target entities
+            List<LivingEntity> list = this.getWorld().getTargets(LivingEntity.class, CAN_ATTACK_PREDICATE, this, getBoundingBox().expand(20, 8, 20));
+            for (LivingEntity entity : list) {
+                // Spawn particle at entity
+                getWorld().addParticle(ParticleTypes.SCULK_SOUL, entity.getX() + (random.nextFloat() - .5) * 2, entity.getY() + (random.nextFloat() - .5) * 2, entity.getZ() + (random.nextFloat() - .5) * 2, 0, 0, 0);
+
+                // Spawn particles towards entity
+                var line = MathUtil.getPointsOnLine(new Vector3d(this.getParticleX(0), this.getY()+.5, this.getParticleZ(0)), new Vector3d(entity.getX(), entity.getY() + .5, entity.getZ()), 2);
+                for (Vector3d vec : line) {
+                    getWorld().addParticle(ParticleTypes.SCULK_CHARGE_POP, vec.x + (random.nextFloat() - .5) * .25, vec.y + (random.nextFloat() - .5) * .25, vec.z + (random.nextFloat() - .5) * .25, 0, 0, 0);
+                }
+            }
         }
 
-        switch (state) {
-            case ALIVE -> aliveTick();
-            case DYING -> dyingTick();
-        }
-    }
+        if (!getWorld().isClient) {
+            if (getHealthPercentage() < 0 && state == CorruptedCoreState.ALIVE) {
+                switchState(CorruptedCoreState.DYING);
+            }
 
-    @Override
-    public void tick() {
-        super.tick();
+            switch (state) {
+                case ALIVE -> aliveTick();
+                case DYING -> dyingTick();
+            }
 
-        // Spawn dying particles
-        if (getWorld().isClient && state == CorruptedCoreState.DYING) {
-            getWorld().addParticle(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 1, 1, 1);
+            // Give effects to nearby enemies
+            List<LivingEntity> list = this.getWorld().getTargets(LivingEntity.class, CAN_ATTACK_PREDICATE, this, getBoundingBox().expand(20, 8, 20));
+            for (LivingEntity entity : list) {
+                // Boost nearby entities
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20*10, 0));
+            }
         }
+
+        super.tickMovement();
     }
 
     private void aliveTick() {
@@ -166,14 +222,9 @@ public class CorruptedCoreEntity extends HostileEntity {
                 this.blockSpreadManager.spreadFrom(BlockPos.ofFloored(this.getX(), this.getY()-1, this.getZ()+2), 30, replacer);
             }
 
-            setInvisible(true);
-
-            getWorld().playSound(null, getX(), getY(), getZ(), SoundEvents.ENTITY_WARDEN_DEATH, SoundCategory.HOSTILE, 1f, 1f);
-
-            // Spawn dying particles
-            if (getWorld().isClient && state == CorruptedCoreState.DYING) {
-                getWorld().addParticle(ParticleTypes.EXPLOSION_EMITTER, getX(), getY(), getZ(), 1, 1, 1);
-            }
+            setInvulnerable(true);
+            // setInvisible(true);
+            setIsDying(true);
         }
 
         state = newState;
@@ -199,6 +250,14 @@ public class CorruptedCoreEntity extends HostileEntity {
         bossBar.removePlayer(player);
     }
 
+    public boolean getIsDying() {
+        return this.dataTracker.get(IS_DYING);
+    }
+
+    public void setIsDying(boolean isDying) {
+        this.dataTracker.set(IS_DYING, isDying);
+    }
+
     public static DefaultAttributeContainer.Builder createCorruptedCoreAttributes() {
         return DefaultAttributeContainer.builder()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 200)
@@ -209,6 +268,12 @@ public class CorruptedCoreEntity extends HostileEntity {
                 .add(EntityAttributes.GENERIC_MAX_ABSORPTION)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK);
+    }
+
+    static {
+        IS_DYING = DataTracker.registerData(CorruptedCoreEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        CAN_BOOST_PREDICATE = hostileEntity -> !hostileEntity.isPlayer() && (hostileEntity.getGroup() == EntityGroup.UNDEAD || hostileEntity.getGroup() == EntityGroup.ARTHROPOD || hostileEntity.getGroup() == EntityGroup.ILLAGER);
+        CAN_ATTACK_PREDICATE = TargetPredicate.createAttackable().setBaseMaxDistance(20).setPredicate(CAN_BOOST_PREDICATE);
     }
 
     private enum CorruptedCoreState {

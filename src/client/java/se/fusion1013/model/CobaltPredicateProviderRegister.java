@@ -1,6 +1,6 @@
 package se.fusion1013.model;
 
-import se.fusion1013.items.CustomItemRegistry;
+import se.fusion1013.items.CobaltItems;
 import se.fusion1013.items.crossbow.CobaltCrossbowItem;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.item.Item;
@@ -9,8 +9,8 @@ import net.minecraft.util.Identifier;
 public class CobaltPredicateProviderRegister {
 
     public static void register() {
-        registerCrossbow(CustomItemRegistry.CrossbowItems.HUNTER_CROSSBOW);
-        registerCrossbow(CustomItemRegistry.CrossbowItems.HARPOON_GUN);
+        registerCrossbow(CobaltItems.CrossbowItems.HUNTER_CROSSBOW);
+        registerCrossbow(CobaltItems.CrossbowItems.HARPOON_GUN);
     }
 
     private static void registerCrossbow(Item item) {

@@ -42,7 +42,7 @@ import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
 import static se.fusion1013.Main.MOD_NAMESPACE;
 import static se.fusion1013.items.CustomItemGroupRegistry.*;
 
-public class CustomItemRegistry {
+public class CobaltItems {
 
 
     public static final Item ICON_ITEM = new Item(new Item.Settings());
@@ -74,9 +74,9 @@ public class CustomItemRegistry {
                         CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
                     })).build());
             LUMBERJACK_ARMOR_SET = registerSet("lumberjack", new CobaltArmorSet.Builder(CobaltArmorMaterials.LUMBERJACK, CobaltItemConfiguration.create(Formatting.DARK_GREEN))
-                    .withHelmet(false).withChestplate(false).withLeggings(false).withBoots(false).build());
+                    .withHelmet().withChestplate().withLeggings().withBoots().build());
             GUARD_ARMOR_SET = registerSet("guard", new CobaltArmorSet.Builder(CobaltArmorMaterials.GUARD, CobaltItemConfiguration.create(Formatting.GRAY))
-                    .withHelmet(false).withChestplate(false).withLeggings(false).withBoots(false).build());
+                    .withHelmet().withChestplate().withLeggings().withBoots().build());
             HUNTER_ARMOR_SET = registerSet("hunter", new CobaltArmorSet.Builder(CobaltArmorMaterials.HUNTER, CobaltItemConfiguration.create(Formatting.GRAY)).withAll().build());
             MECHANIC_ARMOR_SET = registerSet("mechanic", new CobaltArmorSet.Builder(CobaltArmorMaterials.MECHANIC, CobaltItemConfiguration.create(Formatting.DARK_GRAY)).withAll().build());
             REINFORCED_MECHANIC_ARMOR_SET = registerSet("reinforced_mechanic", new CobaltArmorSet.Builder(CobaltArmorMaterials.REINFORCED_MECHANIC, CobaltItemConfiguration.create(Formatting.DARK_GRAY)).withAll().build());
@@ -99,16 +99,21 @@ public class CustomItemRegistry {
         public static final Item HEAVY_WRENCH;
         public static final Item BASIC_DRILL;
         public static final Item SAMPLE_DRILL;
+        public static final Item GUARD_SWORD;
+        public static final Item PROSPECTOR_PICKAXE;
 
         static {
-            ADVENTURE_SWORD = register("adventure_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GREEN), new FabricItemSettings()));
-            INFECTED_ADVENTURE_SWORD = register("infected_adventure_sword", new InfectedSwordItem(ToolMaterials.STONE, -2+5, -4+1.6f, new FabricItemSettings(), Formatting.DARK_PURPLE, 4, 60*20, ((world, user, hand) -> {
+            ADVENTURE_SWORD = register("adventure_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+3, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GREEN), new FabricItemSettings()));
+            INFECTED_ADVENTURE_SWORD = register("infected_adventure_sword", new InfectedSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, new FabricItemSettings(), Formatting.DARK_PURPLE, 10, 60*20, ((world, user, hand) -> {
                 user.playSound(SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*60, 0));
             })));
             HEAVY_WRENCH = register("heavy_wrench", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.heavy_wrench.speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             BASIC_DRILL = register("basic_drill", new BasicDrillItem(ToolMaterials.STONE, -2+5, -4+1.4f, new Item.Settings()));
             SAMPLE_DRILL = register("sample_drill", new SampleDrillItem(ToolMaterials.STONE, -2+2, -4+2, new FabricItemSettings(), Formatting.LIGHT_PURPLE));
+            GUARD_SWORD = register("guard_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GRAY), new FabricItemSettings()));
+            PROSPECTOR_PICKAXE = register("prospector_pickaxe", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+2.3f, CobaltItemConfiguration.create(Formatting.GOLD)
+                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
 
     }
@@ -118,13 +123,10 @@ public class CustomItemRegistry {
         public static void registerAll() {}
 
         public static final Item MINER_PICKAXE;
-        public static final Item PROSPECTOR_PICKAXE;
 
         static {
-            MINER_PICKAXE = register("miner_pickaxe", new CobaltPickaxeItem(ToolMaterials.STONE, -2+9, -4+0.8f, CobaltItemConfiguration.create(Formatting.DARK_GRAY)
+            MINER_PICKAXE = register("miner_pickaxe", new CobaltPickaxeItem(ToolMaterials.STONE, -2+9, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY)
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.miner_pickaxe.speed", -.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
-            PROSPECTOR_PICKAXE = register("prospector_pickaxe", new CobaltPickaxeItem(ToolMaterials.STONE, -2+4, -4+1.8f, CobaltItemConfiguration.create(Formatting.GOLD)
-                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
     }
 
@@ -164,8 +166,13 @@ public class CustomItemRegistry {
         public static final Item MECHANIC_GLOVES;
         public static final Item MECHANIC_SPECTACLES;
         public static final Item GEARSTRAP;
+        public static final Item DAGGER;
 
         static {
+            DAGGER = register("dagger", new CobaltItem(
+                    CobaltItemConfiguration.create(Formatting.GRAY)
+                            .attributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier("cobalt.dagger.attack_damage", .06, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.OFFHAND),
+                    new FabricItemSettings()));
             HUNTER_GLOVE = register("hunter_gloves", new CobaltTrinketItem(
                     new FabricItemSettings(),
                     new CobaltItemConfiguration()
@@ -291,9 +298,10 @@ public class CustomItemRegistry {
             content.add(CrossbowItems.HUNTER_CROSSBOW);
             content.add(SwordItems.HEAVY_WRENCH);
             content.add(PickaxeItems.MINER_PICKAXE);
-            content.add(PickaxeItems.PROSPECTOR_PICKAXE);
+            content.add(SwordItems.PROSPECTOR_PICKAXE);
             content.add(SwordItems.SAMPLE_DRILL);
             content.add(SwordItems.BASIC_DRILL);
+            content.add(SwordItems.GUARD_SWORD);
         });
 
         // Trinket group
@@ -303,6 +311,7 @@ public class CustomItemRegistry {
             content.add(TrinketItems.MECHANIC_GLOVES);
             content.add(TrinketItems.MECHANIC_SPECTACLES);
             content.add(TrinketItems.GEARSTRAP);
+            content.add(TrinketItems.DAGGER);
         });
     }
 

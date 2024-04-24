@@ -20,7 +20,7 @@ public class CobaltCrossbowItem extends CrossbowItem {
     private final CobaltItemConfiguration configuration;
 
     public CobaltCrossbowItem(CobaltItemConfiguration configuration, Settings settings) {
-        super(settings);
+        super(settings.maxCount(1));
         this.configuration = configuration;
     }
 

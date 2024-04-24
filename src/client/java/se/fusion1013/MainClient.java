@@ -6,15 +6,12 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
-import se.fusion1013.block.CustomBlockRegistry;
+import se.fusion1013.block.CobaltBlocks;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
@@ -34,8 +31,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.util.FacilityStatus;
-
-import java.util.function.Function;
 
 public class MainClient implements ClientModInitializer {
 
@@ -58,8 +53,8 @@ public class MainClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-				CustomBlockRegistry.SCULK_GRASS,
-				CustomBlockRegistry.SHORT_SCULK_GRASS
+				CobaltBlocks.SCULK_GRASS,
+				CobaltBlocks.SHORT_SCULK_GRASS
 		);
 
 		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, (client, handler, buf, responseSender) -> {

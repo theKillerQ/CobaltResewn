@@ -1,5 +1,6 @@
 package se.fusion1013.items;
 
+import se.fusion1013.Main;
 import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.ArmorUtil;

@@ -8,6 +8,7 @@
   "item_group.cobalt.weapons": "Flickering Lights - Weapons",
   "item_group.cobalt.trinkets": "Flickering Lights - Trinkets",
   "item_group.cobalt.armor": "Flickering Lights - Armor",
+  "item_group.cobalt.block": "Flickering Lights - Blocks",
 
 
 
@@ -41,6 +42,9 @@
 
   "item.cobalt.guard_boots": "Guard's Boots",
   "item.cobalt.guard_boots.tooltip": "Heavy leather boots",
+
+  "item.cobalt.guard_sword": "Guard's Sword",
+  "item.cobalt.guard_sword.tooltip": "Simple but sturdy sword",
 
 
 
@@ -213,7 +217,7 @@
 
   "item.cobalt.infected_adventure_sword": "Infected Adventurer's Sword",
   "item.cobalt.infected_adventure_sword.tooltip": "A familiar sword infected by corruption",
-  "item.cobalt.infected_adventure_sword.ability": "Use: Gain strength for 1m. Consumes 4 health",
+  "item.cobalt.infected_adventure_sword.ability": "Use: Gain strength for 1m. Consumes 10 health",
 
 
 
@@ -273,6 +277,12 @@
   "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom",
 
   "item.cobalt.diving_set_bonus.tooltip": "Allows the wearer to breathe underwater",
+
+
+
+
+  "item.cobalt.dagger": "Dagger",
+  "item.cobalt.dagger.tooltip": "Dagger dagger dagger!",
 
 
 
@@ -383,5 +393,6 @@
   "block.cobalt.sculk_grass": "Sculk Grass",
   "block.cobalt.short_sculk_grass": "Short Sculk Grass",
   "block.cobalt.sculk_stem": "Sculk Stem",
-  "block.cobalt.sculk_summoner": "Sculk Summoner"
+  "block.cobalt.sculk_summoner": "Sculk Summoner",
+  "block.cobalt.sculk_spreader": "Sculk Spreader"
 }

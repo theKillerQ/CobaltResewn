@@ -40,6 +40,10 @@ public class CobaltItemConfiguration {
         tooltip.addAll(this.tooltip);
     }
 
+    public int attributeCount() {
+        return attributeModifiers.size();
+    }
+
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(Multimap<EntityAttribute, EntityAttributeModifier> map, ItemStack stack, EquipmentSlot slot) {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         for (AttributeModifierProvider attribute : attributeModifiers.getOrDefault(slot, new ArrayList<>())) {
