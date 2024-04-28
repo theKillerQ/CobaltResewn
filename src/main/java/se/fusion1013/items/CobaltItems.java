@@ -172,7 +172,7 @@ public class CobaltItems {
             DAGGER = register("dagger", new CobaltItem(
                     CobaltItemConfiguration.create(Formatting.GRAY)
                             .attributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier("cobalt.dagger.attack_damage", .06, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.OFFHAND),
-                    new FabricItemSettings()));
+                    new FabricItemSettings().maxCount(1)));
             HUNTER_GLOVE = register("hunter_gloves", new CobaltTrinketItem(
                     new FabricItemSettings(),
                     new CobaltItemConfiguration()

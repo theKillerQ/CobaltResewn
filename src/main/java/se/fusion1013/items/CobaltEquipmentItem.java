@@ -75,5 +75,4 @@ public class CobaltEquipmentItem extends Item implements Equipment, ICobaltArmor
     public Item getItem() {
         return this;
     }
-
 }

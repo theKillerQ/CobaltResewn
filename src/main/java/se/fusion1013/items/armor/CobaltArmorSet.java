@@ -35,21 +35,10 @@ public class CobaltArmorSet {
     public CobaltArmorSet() {}
 
     private void applySetBonus() {
-        if (hasHelmet) applySetBonusTooltips(helmet, setBonus);
-        if (hasChestplate) applySetBonusTooltips(chestplate, setBonus);
-        if (hasLeggings) applySetBonusTooltips(leggings, setBonus);
-        if (hasBoots) applySetBonusTooltips(boots, setBonus);
-
         if (hasBoots) applySetBonus(boots, setBonus);
         else if (hasLeggings) applySetBonus(leggings, setBonus);
         else if (hasChestplate) applySetBonus(chestplate, setBonus);
         else if (hasHelmet) applySetBonus(helmet, setBonus);
-    }
-
-    private static void applySetBonusTooltips(ICobaltArmorItem item, ArmorSetBonus setBonus) {
-        item.addTooltip("");
-        item.addTooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
-        for (String s : setBonus.tooltip()) item.addTooltip(Text.translatable(s).formatted(Formatting.GRAY));
     }
 
     private static void applySetBonus(ICobaltArmorItem item, ArmorSetBonus setBonus) {
@@ -63,15 +52,19 @@ public class CobaltArmorSet {
 
         // Armor pieces
         private boolean hasHelmet;
+        private boolean helmetAsEquipment;
         private ICobaltArmorItem helmet;
 
         private boolean hasChestplate;
+        private boolean chestplateAsEquipment;
         private ICobaltArmorItem chestplate;
 
         private boolean hasLeggings;
+        private boolean leggingsAsEquipment;
         private ICobaltArmorItem leggings;
 
         private boolean hasBoots;
+        private boolean bootsAsEquipment;
         private ICobaltArmorItem boots;
 
         private ArmorSetBonus setBonus;
@@ -98,7 +91,7 @@ public class CobaltArmorSet {
 
         public Builder withHelmet(boolean asEquipment) {
             hasHelmet = true;
-            helmet = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.HELMET, configuration);
+            helmetAsEquipment = asEquipment;
             return this;
         }
 
@@ -106,7 +99,7 @@ public class CobaltArmorSet {
 
         public Builder withChestplate(boolean asEquipment) {
             hasChestplate = true;
-            chestplate = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.CHESTPLATE, configuration);
+            chestplateAsEquipment = asEquipment;
             return this;
         }
 
@@ -114,7 +107,7 @@ public class CobaltArmorSet {
 
         public Builder withLeggings(boolean asEquipment) {
             hasLeggings = true;
-            leggings = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.LEGGINGS, configuration);
+            leggingsAsEquipment = asEquipment;
             return this;
         }
 
@@ -122,12 +115,25 @@ public class CobaltArmorSet {
 
         public Builder withBoots(boolean asEquipment) {
             hasBoots = true;
-            boots = ArmorUtil.getArmorItem(material, asEquipment, ArmorItem.Type.BOOTS, configuration);
+            bootsAsEquipment = asEquipment;
             return this;
         }
 
         public CobaltArmorSet build() {
             var set = new CobaltArmorSet();
+
+            // Apply modifications to the config that all items inherit from
+            if (setBonus != null) {
+                configuration.tooltip("");
+                configuration.tooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
+                for (String s : setBonus.tooltip()) configuration.tooltip(Text.translatable(s).formatted(Formatting.GRAY));
+            }
+
+            // Create the armor items
+            if (hasHelmet) helmet = ArmorUtil.getArmorItem(material, helmetAsEquipment, ArmorItem.Type.HELMET, configuration);
+            if (hasChestplate) chestplate = ArmorUtil.getArmorItem(material, chestplateAsEquipment, ArmorItem.Type.CHESTPLATE, configuration);
+            if (hasLeggings) leggings = ArmorUtil.getArmorItem(material, leggingsAsEquipment, ArmorItem.Type.LEGGINGS, configuration);
+            if (hasBoots) boots = ArmorUtil.getArmorItem(material, bootsAsEquipment, ArmorItem.Type.BOOTS, configuration);
 
             set.hasHelmet = hasHelmet;
             set.helmet = helmet;

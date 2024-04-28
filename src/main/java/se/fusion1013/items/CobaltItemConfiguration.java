@@ -25,6 +25,18 @@ public class CobaltItemConfiguration {
     private final List<Text> tooltip = new ArrayList<>();
     private final Map<EquipmentSlot, List<AttributeModifierProvider>> attributeModifiers = new HashMap<>();
 
+    public CobaltItemConfiguration() {}
+
+    public CobaltItemConfiguration(CobaltItemConfiguration configuration) {
+        nameFormatting = configuration.nameFormatting;
+        tooltip.addAll(configuration.tooltip);
+        attributeModifiers.putAll(configuration.attributeModifiers);
+    }
+
+    public CobaltItemConfiguration clone() {
+        return new CobaltItemConfiguration(this);
+    }
+
     public static CobaltItemConfiguration create(Formatting nameFormatting) {
         return new CobaltItemConfiguration().nameFormatting(nameFormatting);
     }

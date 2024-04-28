@@ -71,11 +71,14 @@ public class ArmorUtil {
             case BOOTS -> EquipmentSlot.FEET;
         };
 
-        // Add armor and toughness attributes to item
-        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt." + material.getName() + ".armor", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
-        configuration.attributeModifier(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt." + material.getName() + ".toughness", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
+        // Create copy of config
+        var config = configuration.clone();
 
-        return new CobaltEquipmentItem(material, configuration, new FabricItemSettings(), equipmentSlot);
+        // Add armor and toughness attributes to item
+        config.attributeModifier(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt." + material.getName() + ".armor", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
+        config.attributeModifier(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt." + material.getName() + ".toughness", material.getProtection(armorType), EntityAttributeModifier.Operation.ADDITION), equipmentSlot);
+
+        return new CobaltEquipmentItem(material, config, new FabricItemSettings(), equipmentSlot);
     }
 
     public static CobaltArmorItem getArmorItem(CobaltArmorMaterial material, ArmorItem.Type armorType, CobaltItemConfiguration configuration) {
