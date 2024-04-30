@@ -13,9 +13,12 @@ import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
 import se.fusion1013.entity.CustomEntityRegistry;
+import se.fusion1013.gui.WalkieTalkieScreen;
+import se.fusion1013.items.misc.WalkieTalkieItem;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
 import se.fusion1013.networking.CobaltNetworkingConstants;
+import se.fusion1013.networking.UpdateWalkieTalkieS2CPacket;
 import se.fusion1013.render.entity.CorruptedCoreEntityModel;
 import se.fusion1013.render.entity.CorruptedCoreEntityRenderer;
 import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
@@ -63,6 +66,15 @@ public class MainClient implements ClientModInitializer {
 				FacilityStatus.PRESSURE_CURRENT = buf.readInt();
 			});
 		});
+
+		// Walkie talkie screen networking
+		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.OPEN_WALKIE_TALKIE_SCREEN, (client, handler, buf, responseSender) -> {
+			client.execute(() -> {
+				if (client.player == null) return;
+				new WalkieTalkieScreen(client.player.getMainHandStack());
+			});
+		});
+		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.UPDATE_WALKIETALKIE_S2C, UpdateWalkieTalkieS2CPacket::receive);
 	}
 
 	private void registerItems() {

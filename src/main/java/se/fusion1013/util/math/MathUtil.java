@@ -23,4 +23,13 @@ public class MathUtil {
         return positions;
     }
 
+    public static int loopValue(int value, int min, int max) {
+        if (value > max) {
+            value = min;
+        } else if (value < min) {
+            value = max;
+        }
+        return value;
+    }
+
 }

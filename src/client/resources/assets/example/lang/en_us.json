@@ -180,6 +180,9 @@
   "item.cobalt.reinforced_tinker_boots": "Reinforced Tinker Boots",
   "item.cobalt.reinforced_tinker_boots.tooltip": "Aerodynamic aglets",
 
+  "item.cobalt.screwdriver": "Screwdriver",
+  "item.cobalt.screwdriver.tooltip": "Tool for tinkering with machinery",
+
 
 
   "item.cobalt.painkillers": "Painkillers \uECC1\uECC1\uECC0",
@@ -301,13 +304,39 @@
 
 
 
+  "item.cobalt.corrupted_pearl": "Corrupted Pearl",
+  "item.cobalt.corrupted_pearl.tooltip": "Something sinister...",
+  "item.cobalt.corrupted_pearl.ability": "Spread corruption",
+
+
+
+
+
   "item.cobalt.armor.set_bonus_header": "Set Bonus:",
+  "item.cobalt.item_use.header": "On Use:",
+
+
+
+
+  "item.cobalt.walkie_talkie": "Walkie Talkie",
+  "item.cobalt.walkie_talkie.tooltip": "Communicate over vast distances",
 
 
 
 
 
   "entity.cobalt.corrupted_core": "Corrupted Core",
+
+
+
+
+  "effect.cobalt.crowd_control": "Crowd Control",
+  "effect.cobalt.corruption_spread": "Corruption Spread",
+
+
+
+
+  "gui.cobalt.walkietalkie.title": "Walkie Talkie Settings",
 
 
 

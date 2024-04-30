@@ -7,7 +7,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
 import se.fusion1013.Main;
 import se.fusion1013.items.CobaltEquipmentItem;
 import se.fusion1013.items.CobaltItemConfiguration;
@@ -89,6 +92,24 @@ public class ArmorUtil {
     public static ICobaltArmorItem getArmorItem(CobaltArmorMaterial material, boolean asEquipment, ArmorItem.Type armorType, CobaltItemConfiguration configuration) {
         if (asEquipment) return ArmorUtil.getEquipmentItem(material, armorType, configuration, 1);
         else return ArmorUtil.getArmorItem(material, armorType, configuration);
+    }
+
+    public static boolean isWearingArmorSet(PlayerEntity player, ArmorMaterial material) {
+        ArmorMaterial boots = getArmorMaterial(player.getInventory().getArmorStack(0).getItem());
+        ArmorMaterial leggings = getArmorMaterial(player.getInventory().getArmorStack(1).getItem());
+        ArmorMaterial chestplate = getArmorMaterial(player.getInventory().getArmorStack(2).getItem());
+        ArmorMaterial helmet = getArmorMaterial(player.getInventory().getArmorStack(3).getItem());
+
+        return  boots == material &&
+                leggings == material &&
+                chestplate == material &&
+                helmet == material;
+    }
+
+    public static ArmorMaterial getArmorMaterial(Item item) {
+        if (item instanceof ArmorItem armorItem) return armorItem.getMaterial();
+        if (item instanceof CobaltEquipmentItem equipmentItem) return equipmentItem.material;
+        return null;
     }
 
 }

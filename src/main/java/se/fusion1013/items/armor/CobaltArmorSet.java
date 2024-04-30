@@ -1,7 +1,15 @@
 package se.fusion1013.items.armor;
 
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayNetworkHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import se.fusion1013.items.CobaltItemConfiguration;
@@ -9,7 +17,14 @@ import se.fusion1013.items.ICobaltArmorItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.ArmorUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+
 public class CobaltArmorSet {
+
+    public static final Map<String, CobaltArmorSet> REGISTERED_ARMOR_SETS = new HashMap<>();
 
     // Registered items
     public Item registeredHelmet;
@@ -32,7 +47,14 @@ public class CobaltArmorSet {
 
     public ArmorSetBonus setBonus;
 
-    public CobaltArmorSet() {}
+    public final CobaltArmorMaterial material;
+
+    private BiConsumer<MinecraftServer, PlayerEntity> triggerAbility;
+
+    public CobaltArmorSet(CobaltArmorMaterial material) {
+        this.material = material;
+        REGISTERED_ARMOR_SETS.put(material.getName(), this);
+    }
 
     private void applySetBonus() {
         if (hasBoots) applySetBonus(boots, setBonus);
@@ -43,6 +65,21 @@ public class CobaltArmorSet {
 
     private static void applySetBonus(ICobaltArmorItem item, ArmorSetBonus setBonus) {
         item.setArmorBonusTickExecutor(setBonus.executor());
+    }
+
+    public static void onKeyArmorTrigger(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buffer, PacketSender responseSender) {
+        for (String key : REGISTERED_ARMOR_SETS.keySet()) {
+            var set = REGISTERED_ARMOR_SETS.get(key);
+
+            if (!ArmorUtil.isWearingArmorSet(player, set.material)) continue;
+
+            // Player is wearing armor set, trigger the ability
+            set.triggerArmorAbility(server, player);
+        }
+    }
+
+    public void triggerArmorAbility(MinecraftServer server, PlayerEntity player) {
+        if (triggerAbility != null) triggerAbility.accept(server, player);
     }
 
     public static class Builder {
@@ -68,6 +105,8 @@ public class CobaltArmorSet {
         private ICobaltArmorItem boots;
 
         private ArmorSetBonus setBonus;
+
+        private BiConsumer<MinecraftServer, PlayerEntity> triggerAbility;
 
         public Builder(CobaltArmorMaterial material, CobaltItemConfiguration configuration) {
             this.material = material;
@@ -119,14 +158,27 @@ public class CobaltArmorSet {
             return this;
         }
 
+        public Builder withTriggerAbility(BiConsumer<MinecraftServer, PlayerEntity> trigger) {
+            this.triggerAbility = trigger;
+            return this;
+        }
+
         public CobaltArmorSet build() {
-            var set = new CobaltArmorSet();
+            var set = new CobaltArmorSet(material);
 
             // Apply modifications to the config that all items inherit from
             if (setBonus != null) {
                 configuration.tooltip("");
                 configuration.tooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
                 for (String s : setBonus.tooltip()) configuration.tooltip(Text.translatable(s).formatted(Formatting.GRAY));
+            }
+
+            // Apply trigger ability
+            if (triggerAbility != null) {
+                set.triggerAbility = triggerAbility;
+                configuration.tooltip("");
+                configuration.tooltip(Text.translatable("item.cobalt.armor.trigger_ability.header").formatted(Formatting.GOLD));
+                configuration.tooltip(Text.translatable("item.cobalt.armor.trigger_ability." + material.getName() + "tooltip").formatted(Formatting.GOLD));
             }
 
             // Create the armor items

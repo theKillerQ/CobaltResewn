@@ -9,6 +9,9 @@ import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.items.consumable.CobaltHealingItem;
 import se.fusion1013.items.consumable.MysteryMedicineItem;
 import se.fusion1013.items.crossbow.CobaltCrossbowItem;
+import se.fusion1013.items.materials.CobaltArmorMaterial;
+import se.fusion1013.items.misc.CorruptedPearlItem;
+import se.fusion1013.items.misc.WalkieTalkieItem;
 import se.fusion1013.items.sword.InfectedSwordItem;
 import se.fusion1013.items.sword.SampleDrillItem;
 import se.fusion1013.items.tools.BasicDrillItem;
@@ -66,6 +69,9 @@ public class CobaltItems {
         public static final CobaltArmorSet TINKER_ARMOR_SET;
         public static final CobaltArmorSet REINFORCED_TINKER_ARMOR_SET;
 
+        // Outstanding Tier
+        public static final CobaltArmorSet EXOSKELETON;
+
 
         static {
             ADVENTURE_ARMOR_SET = registerSet("adventure", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVENTURE, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
@@ -86,6 +92,16 @@ public class CobaltItems {
                     .withHelmet(true).withChestplate().withLeggings().withBoots().build());
             TINKER_ARMOR_SET = registerSet("tinker", new CobaltArmorSet.Builder(CobaltArmorMaterials.TINKER, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
             REINFORCED_TINKER_ARMOR_SET = registerSet("reinforced_tinker", new CobaltArmorSet.Builder(CobaltArmorMaterials.REINFORCED_TINKER, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
+
+            // Outstanding Tier
+            EXOSKELETON = registerSet("exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
+                    .withTriggerAbility((minecraftServer, playerEntity) -> {
+                        // TODO: Add custom status effect that does all of this
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 1));
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 1));
+                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10*20, 100));
+                    })
+                    .build());
         }
 
     }
@@ -101,8 +117,14 @@ public class CobaltItems {
         public static final Item SAMPLE_DRILL;
         public static final Item GUARD_SWORD;
         public static final Item PROSPECTOR_PICKAXE;
+        public static final Item DAGGER;
+        public static final Item SCREWDRIVER;
 
         static {
+            DAGGER = register("dagger", new CobaltSwordItem(ToolMaterials.STONE, -2+1, -4+3,
+                    CobaltItemConfiguration.create(Formatting.GRAY)
+                            .attributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier("cobalt.dagger.attack_damage", .06, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.OFFHAND),
+                    new FabricItemSettings().maxCount(1)));
             ADVENTURE_SWORD = register("adventure_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+3, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GREEN), new FabricItemSettings()));
             INFECTED_ADVENTURE_SWORD = register("infected_adventure_sword", new InfectedSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, new FabricItemSettings(), Formatting.DARK_PURPLE, 10, 60*20, ((world, user, hand) -> {
                 user.playSound(SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
@@ -114,6 +136,8 @@ public class CobaltItems {
             GUARD_SWORD = register("guard_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GRAY), new FabricItemSettings()));
             PROSPECTOR_PICKAXE = register("prospector_pickaxe", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+2.3f, CobaltItemConfiguration.create(Formatting.GOLD)
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            SCREWDRIVER = register("screwdriver", new CobaltSwordItem(ToolMaterials.STONE, -2+6, -4+2.3f, CobaltItemConfiguration.create(Formatting.GRAY)
+                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.screwdriver.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
 
     }
@@ -166,13 +190,8 @@ public class CobaltItems {
         public static final Item MECHANIC_GLOVES;
         public static final Item MECHANIC_SPECTACLES;
         public static final Item GEARSTRAP;
-        public static final Item DAGGER;
 
         static {
-            DAGGER = register("dagger", new CobaltItem(
-                    CobaltItemConfiguration.create(Formatting.GRAY)
-                            .attributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier("cobalt.dagger.attack_damage", .06, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.OFFHAND),
-                    new FabricItemSettings().maxCount(1)));
             HUNTER_GLOVE = register("hunter_gloves", new CobaltTrinketItem(
                     new FabricItemSettings(),
                     new CobaltItemConfiguration()
@@ -251,6 +270,10 @@ public class CobaltItems {
 
         public static final Item BATTERY;
 
+        public static final Item CORRUPTED_PEARL;
+
+        public static final Item WALKIE_TALKIE;
+
         static {
             // Healing
             PAINKILLERS = register("painkillers", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(4), 5));
@@ -266,6 +289,10 @@ public class CobaltItems {
             REMARKABLE_GEAR = register("remarkable_gear", new CobaltItem(CobaltItemConfiguration.create(Formatting.GRAY), new FabricItemSettings()));
 
             BATTERY = register("battery", new CobaltItem(CobaltItemConfiguration.create(Formatting.DARK_AQUA), new FabricItemSettings().maxCount(24)));
+
+            CORRUPTED_PEARL = register("corrupted_pearl", new CorruptedPearlItem());
+
+            WALKIE_TALKIE = register("walkie_talkie", new WalkieTalkieItem(9999));
         }
 
     }
@@ -302,6 +329,8 @@ public class CobaltItems {
             content.add(SwordItems.SAMPLE_DRILL);
             content.add(SwordItems.BASIC_DRILL);
             content.add(SwordItems.GUARD_SWORD);
+            content.add(SwordItems.DAGGER);
+            content.add(SwordItems.SCREWDRIVER);
         });
 
         // Trinket group
@@ -311,7 +340,6 @@ public class CobaltItems {
             content.add(TrinketItems.MECHANIC_GLOVES);
             content.add(TrinketItems.MECHANIC_SPECTACLES);
             content.add(TrinketItems.GEARSTRAP);
-            content.add(TrinketItems.DAGGER);
         });
     }
 

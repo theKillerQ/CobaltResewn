@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"se.fusion1013.MainClient"
+		],
+		"voicechat": [
+			"se.fusion1013.voice.VoiceChatIntegration"
 		]
 	},
 	"mixins": [
@@ -33,7 +36,8 @@
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"voicechat": ">=${minecraft_version}-${voicechat_api_version}"
 	},
 	"suggests": {
 		"another-mod": "*"

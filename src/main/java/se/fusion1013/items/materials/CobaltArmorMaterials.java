@@ -75,5 +75,6 @@ public class CobaltArmorMaterials {
             .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("dive.boots.move_speed", -0.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
             .build();
     public static final CobaltArmorMaterial CORRUPTED = new CobaltArmorMaterial("corrupted", new int[] { 20, 20, 20, 20 }, new int[] { 1, 2, 3, 1 }, 5);
+    public static final CobaltArmorMaterial EXOSKELETON = new CobaltArmorMaterial.Builder("exoskeleton", new int[] { 20, 20, 20, 20 }, new int[] { 1, 1, 1, 1 }, 5).build();
 
 }
