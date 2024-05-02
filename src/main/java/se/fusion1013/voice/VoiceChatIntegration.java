@@ -1,5 +1,6 @@
 package se.fusion1013.voice;
 
+import de.maxhenkel.voicechat.api.Group;
 import de.maxhenkel.voicechat.api.VoicechatPlugin;
 import de.maxhenkel.voicechat.api.VoicechatServerApi;
 import de.maxhenkel.voicechat.api.VolumeCategory;
@@ -16,6 +17,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class VoiceChatIntegration implements VoicechatPlugin {
+
+    public final static String SPEAKER_CATEGORY = "speakers";
 
     @Nullable
     public static VoicechatServerApi voiceChatAPI;
@@ -46,12 +49,32 @@ public class VoiceChatIntegration implements VoicechatPlugin {
         encoder = voiceChatAPI.createEncoder();
         decoder = voiceChatAPI.createDecoder();
 
-        /*
+        voiceChatAPI.groupBuilder()
+                .setPersistent(true)
+                .setName("global_normal")
+                .setPassword("global_normal")
+                .setType(Group.Type.NORMAL)
+                .build();
+        voiceChatAPI.groupBuilder()
+                .setPersistent(true)
+                .setName("global_isolated")
+                .setPassword("global_isolated")
+                .setType(Group.Type.ISOLATED)
+                .build();
+        voiceChatAPI.groupBuilder()
+                .setPersistent(true)
+                .setName("global_open")
+                .setPassword("global_open")
+                .setType(Group.Type.OPEN)
+                .build();
+
         VolumeCategory speakers = voiceChatAPI.volumeCategoryBuilder()
-                // Add speaker categories here if needed
+                .setId(SPEAKER_CATEGORY)
+                .setName("Speakers")
+                .setDescription("The volume of all speakers")
+                // TODO: .setIcon(getIcon("assets/walkietalkie/textures/block/oxidized_copper_speaker.png"))
                 .build();
         voiceChatAPI.registerVolumeCategory(speakers);
-         */
     }
 
     @Override

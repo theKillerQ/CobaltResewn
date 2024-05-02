@@ -1,7 +1,5 @@
 package se.fusion1013.items.misc;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -9,7 +7,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -37,22 +34,22 @@ public class WalkieTalkieItem extends CobaltItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 
-        // Open the walkie talkie configuration screen
-        if (!world.isClient()) {
-            if (player.getStackInHand(hand).hasNbt()) {
+        if (world.isClient()) return super.use(world, player, hand);
+        if (!player.getStackInHand(hand).hasNbt()) return super.use(world, player, hand);
 
-                ItemStack stack = player.getStackInHand(hand);
+        ItemStack stack = player.getStackInHand(hand);
 
-                // Send open screen packet
-                ServerPlayNetworking.send((ServerPlayerEntity) player, CobaltNetworkingConstants.OPEN_WALKIE_TALKIE_SCREEN, PacketByteBufs.empty());
+        if (player.isSneaking()) {
+            // Open the walkie talkie configuration screen
+            ServerPlayNetworking.send((ServerPlayerEntity) player, CobaltNetworkingConstants.OPEN_WALKIE_TALKIE_SCREEN_S2C, PacketByteBufs.empty());
 
-                // new WalkieTalkieScreen(player, stack);
-                return TypedActionResult.success(stack);
+        } else {
+            // Ping all other walkie talkies on this channel
 
-            }
+            // TODO
         }
 
-        return super.use(world, player, hand);
+        return TypedActionResult.success(stack);
     }
 
     @Override

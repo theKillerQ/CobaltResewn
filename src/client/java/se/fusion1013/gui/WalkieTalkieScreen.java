@@ -20,6 +20,9 @@ import se.fusion1013.Main;
 import se.fusion1013.gui.widget.ToggleImageButton;
 import se.fusion1013.items.misc.WalkieTalkieItem;
 import se.fusion1013.networking.CobaltNetworkingConstants;
+import se.fusion1013.networking.CobaltServerNetworking;
+
+import static se.fusion1013.networking.CobaltNetworkingConstants.*;
 
 @Environment(EnvType.CLIENT)
 public class WalkieTalkieScreen extends Screen {
@@ -73,7 +76,7 @@ public class WalkieTalkieScreen extends Screen {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeInt(index);
         buf.writeBoolean(status);
-        ClientPlayNetworking.send(CobaltNetworkingConstants.UPDATE_WALKIETALKIE_C2S, buf);
+        ClientPlayNetworking.send(UPDATE_WALKIETALKIE_C2S, buf);
     }
 
     @Override

@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
+	id 'java'
 }
 
 version = project.mod_version
@@ -75,6 +76,9 @@ dependencies {
 	// Simple voice chat
 	implementation "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
 	modRuntimeOnly "maven.modrinth:simple-voice-chat:fabric-${project.voicechat_version}"
+
+	implementation include(group: 'org.apache.commons', name: 'commons-math3', version: '3.0')
+	implementation include('uk.me.berndporr:iirj:1.7')
 }
 
 processResources {

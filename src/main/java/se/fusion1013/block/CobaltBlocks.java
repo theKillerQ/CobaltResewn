@@ -3,9 +3,7 @@ package se.fusion1013.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -13,8 +11,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
-import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
-import se.fusion1013.block.entity.SculkSpreaderBlockEntity;
 
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_BLOCK_GROUP_KEY;
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_GROUP_KEY;
@@ -106,6 +102,11 @@ public class CobaltBlocks {
     public static final Block SCULK_GRASS = register("sculk_grass", new SculkPlantBlock(FabricBlockSettings.create().noCollision()));
     public static final Block SCULK_SUMMONER = register("sculk_summoner", new SculkSummonerBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
     public static final Block SCULK_SPREADER = register("sculk_spreader", new SculkSpreaderBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
+
+    public static final Block OXIDIZED_COPPER_SPEAKER = register("oxidized_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+    public static final Block WEATHERED_COPPER_SPEAKER = register("weathered_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+    public static final Block EXPOSED_COPPER_SPEAKER = register("exposed_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+    public static final Block COPPER_SPEAKER = register("copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
 
     private static Block register(String name, Block block) {
