@@ -10,7 +10,6 @@ import net.minecraft.scoreboard.ScoreHolder;
 import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ServerScoreboard;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Formatting;
 import se.fusion1013.Main;
 import se.fusion1013.items.CobaltItemConfiguration;
 import se.fusion1013.networking.CobaltNetworkingConstants;
@@ -30,7 +29,7 @@ public class MechanicSpectaclesTrinket extends CobaltTrinketItem {
             PacketByteBuf buf = PacketByteBufs.create();
             buf.writeInt(getScoreboardValue("wf_power", "power"));
             buf.writeInt(getScoreboardValue("wf_pressure", "pressure"));
-            ServerPlayNetworking.send(user, CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, buf);
+            ServerPlayNetworking.send(user, CobaltNetworkingConstants.UPDATE_WF_STATUS_S2C, buf);
         }
     }
 

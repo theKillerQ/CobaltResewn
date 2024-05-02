@@ -1,4 +1,4 @@
-package se.fusion1013.networking;
+package se.fusion1013.networking.packet;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -8,9 +8,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import se.fusion1013.Main;
 import se.fusion1013.items.CobaltItems;
 import se.fusion1013.items.misc.WalkieTalkieItem;
+import se.fusion1013.networking.CobaltNetworkingConstants;
 import se.fusion1013.util.item.ItemUtil;
 import se.fusion1013.util.math.MathUtil;
 

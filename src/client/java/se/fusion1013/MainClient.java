@@ -13,12 +13,10 @@ import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
 import se.fusion1013.entity.CustomEntityRegistry;
-import se.fusion1013.gui.WalkieTalkieScreen;
-import se.fusion1013.items.misc.WalkieTalkieItem;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
+import se.fusion1013.networking.CobaltClientNetworking;
 import se.fusion1013.networking.CobaltNetworkingConstants;
-import se.fusion1013.networking.UpdateWalkieTalkieS2CPacket;
 import se.fusion1013.render.entity.CorruptedCoreEntityModel;
 import se.fusion1013.render.entity.CorruptedCoreEntityRenderer;
 import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
@@ -33,7 +31,8 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import se.fusion1013.util.FacilityStatus;
+
+import static se.fusion1013.networking.CobaltNetworkingConstants.*;
 
 public class MainClient implements ClientModInitializer {
 
@@ -49,32 +48,21 @@ public class MainClient implements ClientModInitializer {
 		initializeKeybinds();
 		registerItems();
 
+		// Entity rendering
 		EntityRendererRegistry.register(CustomEntityRegistry.LIGHTNING_ARROW, LightningArrowEntityRenderer::new);
 		EntityRendererRegistry.register(CustomEntityRegistry.EXPLOSIVE_ARROW, ExplosiveArrowEntityRenderer::new);
 
 		EntityRendererRegistry.register(CustomEntityRegistry.CORRUPTED_CORE, CorruptedCoreEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
+		// Block rendering
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
 				CobaltBlocks.SCULK_GRASS,
 				CobaltBlocks.SHORT_SCULK_GRASS
 		);
 
-		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.WF_FACILITY_STATUS_PACKET_ID, (client, handler, buf, responseSender) -> {
-			client.execute(() -> {
-				FacilityStatus.POWER_CURRENT = buf.readInt();
-				FacilityStatus.PRESSURE_CURRENT = buf.readInt();
-			});
-		});
-
-		// Walkie talkie screen networking
-		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.OPEN_WALKIE_TALKIE_SCREEN, (client, handler, buf, responseSender) -> {
-			client.execute(() -> {
-				if (client.player == null) return;
-				new WalkieTalkieScreen(client.player.getMainHandStack());
-			});
-		});
-		ClientPlayNetworking.registerGlobalReceiver(CobaltNetworkingConstants.UPDATE_WALKIETALKIE_S2C, UpdateWalkieTalkieS2CPacket::receive);
+		// Networking
+		CobaltClientNetworking.register();
 	}
 
 	private void registerItems() {
@@ -95,7 +83,7 @@ public class MainClient implements ClientModInitializer {
 				if (client.player == null) continue;
 
 				PacketByteBuf buf = PacketByteBufs.create();
-				ClientPlayNetworking.send(CobaltNetworkingConstants.KEY_ARMOR_TRIGGER_ID, buf);
+				ClientPlayNetworking.send(KEY_ARMOR_TRIGGER_ID_C2S, buf);
 			}
 		});
 
