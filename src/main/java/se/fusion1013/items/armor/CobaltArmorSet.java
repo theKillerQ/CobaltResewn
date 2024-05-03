@@ -67,17 +67,6 @@ public class CobaltArmorSet {
         item.setArmorBonusTickExecutor(setBonus.executor());
     }
 
-    public static void onKeyArmorTrigger(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buffer, PacketSender responseSender) {
-        for (String key : REGISTERED_ARMOR_SETS.keySet()) {
-            var set = REGISTERED_ARMOR_SETS.get(key);
-
-            if (!ArmorUtil.isWearingArmorSet(player, set.material)) continue;
-
-            // Player is wearing armor set, trigger the ability
-            set.triggerArmorAbility(server, player);
-        }
-    }
-
     public void triggerArmorAbility(MinecraftServer server, PlayerEntity player) {
         if (triggerAbility != null) triggerAbility.accept(server, player);
     }
@@ -177,8 +166,18 @@ public class CobaltArmorSet {
             if (triggerAbility != null) {
                 set.triggerAbility = triggerAbility;
                 configuration.tooltip("");
-                configuration.tooltip(Text.translatable("item.cobalt.armor.trigger_ability.header").formatted(Formatting.GOLD));
-                configuration.tooltip(Text.translatable("item.cobalt.armor.trigger_ability." + material.getName() + "tooltip").formatted(Formatting.GOLD));
+
+                var header = Text.empty()
+                        .append(Text.literal("Press ").formatted(Formatting.GOLD))
+                        .append(Text.keybind("key.cobalt.armor_trigger").formatted(Formatting.GOLD))
+                        .append(Text.literal(": ").formatted(Formatting.GOLD))
+                        .append(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.header").formatted(Formatting.GOLD))
+                        .append(Text.literal(" [").formatted(Formatting.GOLD))
+                        .append(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.cost").formatted(Formatting.GRAY))
+                        .append(Text.literal("]").formatted(Formatting.GOLD));
+
+                configuration.tooltip(header);
+                configuration.tooltip(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.tooltip").formatted(Formatting.GRAY));
             }
 
             // Create the armor items

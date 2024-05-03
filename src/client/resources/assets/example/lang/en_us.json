@@ -284,6 +284,44 @@
 
 
 
+  "item.cobalt.exoskeleton_helmet": "Exoskeleton: Head",
+  "item.cobalt.exoskeleton_helmet.tooltip": "TOOLTIP",
+
+  "item.cobalt.exoskeleton_chestplate": "Exoskeleton: Chest",
+  "item.cobalt.exoskeleton_chestplate.tooltip": "TOOLTIP",
+
+  "item.cobalt.exoskeleton_leggings": "Exoskeleton: Legs",
+  "item.cobalt.exoskeleton_leggings.tooltip": "TOOLTIP",
+
+  "item.cobalt.exoskeleton_boots": "Exoskeleton: Feet",
+  "item.cobalt.exoskeleton_boots.tooltip": "A feat of engineering",
+
+  "item.cobalt.exoskeleton.trigger_ability.header": "Fortify",
+  "item.cobalt.exoskeleton.trigger_ability.cost": "-2 Coal",
+  "item.cobalt.exoskeleton.trigger_ability.tooltip": "Become immovable for a short moment. Gain strength and resistance.",
+
+
+
+
+  "item.cobalt.advanced_exoskeleton_helmet": "Advanced Exoskeleton: Head",
+  "item.cobalt.advanced_exoskeleton_helmet.tooltip": "TOOLTIP",
+
+  "item.cobalt.advanced_exoskeleton_chestplate": "Advanced Exoskeleton: Chest",
+  "item.cobalt.advanced_exoskeleton_chestplate.tooltip": "TOOLTIP",
+
+  "item.cobalt.advanced_exoskeleton_leggings": "Advanced Exoskeleton: Legs",
+  "item.cobalt.advanced_exoskeleton_leggings.tooltip": "TOOLTIP",
+
+  "item.cobalt.advanced_exoskeleton_boots": "Advanced Exoskeleton: Feet",
+  "item.cobalt.advanced_exoskeleton_boots.tooltip": "TOOLTIP",
+
+  "item.cobalt.advanced_exoskeleton.trigger_ability.header": "Improved Fortify",
+  "item.cobalt.advanced_exoskeleton.trigger_ability.cost": "-4 Coal",
+  "item.cobalt.advanced_exoskeleton.trigger_ability.tooltip": "Become immovable for a short moment. Gain improved strength and resistance.",
+
+
+
+
   "item.cobalt.dagger": "Dagger",
   "item.cobalt.dagger.tooltip": "Dagger dagger dagger!",
 
@@ -315,6 +353,8 @@
   "item.cobalt.armor.set_bonus_header": "Set Bonus:",
   "item.cobalt.item_use.header": "On Use:",
 
+  "item.cobalt.armor.trigger_ability.header": "Trigger Armor Ability",
+
 
 
 
@@ -332,6 +372,7 @@
 
   "effect.cobalt.crowd_control": "Crowd Control",
   "effect.cobalt.corruption_spread": "Corruption Spread",
+  "effect.cobalt.immovable": "Immovable",
 
 
 

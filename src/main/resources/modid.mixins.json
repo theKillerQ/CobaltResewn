@@ -3,7 +3,9 @@
   "package": "se.fusion1013.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
+    "EntityMixin",
+    "ExampleMixin",
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

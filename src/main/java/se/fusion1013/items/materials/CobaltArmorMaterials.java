@@ -75,6 +75,19 @@ public class CobaltArmorMaterials {
             .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("dive.boots.move_speed", -0.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
             .build();
     public static final CobaltArmorMaterial CORRUPTED = new CobaltArmorMaterial("corrupted", new int[] { 20, 20, 20, 20 }, new int[] { 1, 2, 3, 1 }, 5);
-    public static final CobaltArmorMaterial EXOSKELETON = new CobaltArmorMaterial.Builder("exoskeleton", new int[] { 20, 20, 20, 20 }, new int[] { 1, 1, 1, 1 }, 5).build();
+
+    public static final CobaltArmorMaterial EXOSKELETON = new CobaltArmorMaterial.Builder("exoskeleton", new int[] { 20, 20, 20, 20 }, new int[] { 3, 6, 7, 3 }, 5)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("exoskeleton.helmet.move_speed", -0.01, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("exoskeleton.chestplate.move_speed", -0.04, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("exoskeleton.leggings.move_speed", -0.03, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("exoskeleton.boots.move_speed", -0.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
+            .build();
+    public static final CobaltArmorMaterial ADVANCED_EXOSKELETON = new CobaltArmorMaterial.Builder("advanced_exoskeleton", new int[] { 20, 20, 20, 20 }, new int[] { 3, 6, 7, 3 }, 5)
+            .toughness(1)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.helmet.move_speed", -0.01, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.chestplate.move_speed", -0.04, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.leggings.move_speed", -0.03, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.boots.move_speed", -0.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
+            .build();
 
 }

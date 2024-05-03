@@ -12,6 +12,7 @@ public class CobaltEffects {
 
     public static final StatusEffect CROWD_CONTROL = register("crowd_control", new CrowdControlEffect());
     public static final StatusEffect CORRUPTION_SPREAD = register("corruption_spread", new CorruptionSpreadEffect());
+    public static final StatusEffect IMMOVABLE_EFFECT = register("immovable", new ImmovableEffect());
 
     public static StatusEffect register(String id, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Main.MOD_NAMESPACE, id), effect);

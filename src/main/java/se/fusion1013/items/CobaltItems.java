@@ -1,6 +1,7 @@
 package se.fusion1013.items;
 
 import io.wispforest.lavender.book.LavenderBookItem;
+import se.fusion1013.effect.CobaltEffects;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
 import se.fusion1013.items.armor.ArmorSetBonus;
@@ -72,6 +73,9 @@ public class CobaltItems {
         // Outstanding Tier
         public static final CobaltArmorSet EXOSKELETON;
 
+        // Perfect Tier
+        public static final CobaltArmorSet ADVANCED_EXOSKELETON;
+
 
         static {
             ADVENTURE_ARMOR_SET = registerSet("adventure", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVENTURE, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
@@ -96,10 +100,32 @@ public class CobaltItems {
             // Outstanding Tier
             EXOSKELETON = registerSet("exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
                     .withTriggerAbility((minecraftServer, playerEntity) -> {
-                        // TODO: Add custom status effect that does all of this
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 1));
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 1));
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10*20, 100));
+
+                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
+                            // Remove coal
+                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 2, playerEntity.getInventory());
+                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
+
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 1));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 1));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
+                        }
+                    })
+                    .build());
+
+            // Perfect Tier
+            ADVANCED_EXOSKELETON = registerSet("advanced_exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVANCED_EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
+                    .withTriggerAbility((minecraftServer, playerEntity) -> {
+
+                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
+                            // Remove coal
+                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 4, playerEntity.getInventory());
+                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
+
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 2));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 2));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
+                        }
                     })
                     .build());
         }

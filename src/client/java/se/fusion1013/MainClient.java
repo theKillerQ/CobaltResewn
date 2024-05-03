@@ -83,7 +83,7 @@ public class MainClient implements ClientModInitializer {
 				if (client.player == null) continue;
 
 				PacketByteBuf buf = PacketByteBufs.create();
-				ClientPlayNetworking.send(KEY_ARMOR_TRIGGER_ID_C2S, buf);
+				ClientPlayNetworking.send(ARMOR_SET_TRIGGER_ABILITY_C2S, buf);
 			}
 		});
 
@@ -98,7 +98,7 @@ public class MainClient implements ClientModInitializer {
 				if (client.player == null) continue;
 
 				PacketByteBuf buf = PacketByteBufs.create();
-				ClientPlayNetworking.send(CobaltNetworkingConstants.KEY_ARMOR_TOGGLE_ID, buf);
+				ClientPlayNetworking.send(CobaltNetworkingConstants.ARMOR_SET_TOGGLE_ABILITY_C2S, buf);
 			}
 		});
 	}
