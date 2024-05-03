@@ -108,6 +108,7 @@ public class CobaltBlocks {
     public static final Block EXPOSED_COPPER_SPEAKER = register("exposed_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block COPPER_SPEAKER = register("copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
+    public static final Block PARTICLE_BLOCK = register("particle_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.NOTE_BLOCK)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);

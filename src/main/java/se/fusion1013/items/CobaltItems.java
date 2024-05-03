@@ -8,6 +8,7 @@ import se.fusion1013.items.armor.ArmorSetBonus;
 import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.items.consumable.CobaltHealingItem;
+import se.fusion1013.items.consumable.LiquidCourageItem;
 import se.fusion1013.items.consumable.MysteryMedicineItem;
 import se.fusion1013.items.crossbow.CobaltCrossbowItem;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
@@ -145,6 +146,7 @@ public class CobaltItems {
         public static final Item PROSPECTOR_PICKAXE;
         public static final Item DAGGER;
         public static final Item SCREWDRIVER;
+        public static final Item CROWBAR;
 
         static {
             DAGGER = register("dagger", new CobaltSwordItem(ToolMaterials.STONE, -2+1, -4+3,
@@ -156,7 +158,7 @@ public class CobaltItems {
                 user.playSound(SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*60, 0));
             })));
-            HEAVY_WRENCH = register("heavy_wrench", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.heavy_wrench.speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            HEAVY_WRENCH = register("heavy_wrench", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.0f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.heavy_wrench.speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             BASIC_DRILL = register("basic_drill", new BasicDrillItem(ToolMaterials.STONE, -2+5, -4+1.4f, new Item.Settings()));
             SAMPLE_DRILL = register("sample_drill", new SampleDrillItem(ToolMaterials.STONE, -2+2, -4+2, new FabricItemSettings(), Formatting.LIGHT_PURPLE));
             GUARD_SWORD = register("guard_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GRAY), new FabricItemSettings()));
@@ -164,6 +166,7 @@ public class CobaltItems {
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             SCREWDRIVER = register("screwdriver", new CobaltSwordItem(ToolMaterials.STONE, -2+6, -4+2.3f, CobaltItemConfiguration.create(Formatting.GRAY)
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.screwdriver.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            CROWBAR = register("crowbar", new CobaltSwordItem(ToolMaterials.STONE, -2+7, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.crowbar.speed", -.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
 
     }
@@ -287,6 +290,7 @@ public class CobaltItems {
         public static final Item FIRST_AID_KIT;
         public static final Item PNEUMATIC_NEEDLE;
         public static final Item MYSTERY_MEDICINE;
+        public static final Item LIQUID_COURAGE;
 
         // Gears
         public static final Item RUINED_GEAR;
@@ -300,6 +304,8 @@ public class CobaltItems {
 
         public static final Item WALKIE_TALKIE;
 
+        public static final Item HAND_HELD_LANTERN;
+
         static {
             // Healing
             PAINKILLERS = register("painkillers", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(4), 5));
@@ -307,6 +313,7 @@ public class CobaltItems {
             FIRST_AID_KIT = register("first_aid_kit", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(2), 20));
             PNEUMATIC_NEEDLE = register("pneumatic_needle", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1), 40));
             MYSTERY_MEDICINE = register("mystery_medicine", new MysteryMedicineItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings()));
+            LIQUID_COURAGE = register("liquid_courage", new LiquidCourageItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings()));
 
             // Gears
             RUINED_GEAR = register("ruined_gear", new CobaltItem(CobaltItemConfiguration.create(Formatting.GRAY), new FabricItemSettings()));
@@ -319,6 +326,8 @@ public class CobaltItems {
             CORRUPTED_PEARL = register("corrupted_pearl", new CorruptedPearlItem());
 
             WALKIE_TALKIE = register("walkie_talkie", new WalkieTalkieItem(9999));
+
+            HAND_HELD_LANTERN = register("hand_held_lantern", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings()));
         }
 
     }

@@ -168,7 +168,7 @@ public class CobaltArmorSet {
                 configuration.tooltip("");
 
                 var header = Text.empty()
-                        .append(Text.literal("Press ").formatted(Formatting.GOLD))
+                        .append(Text.literal("[Set Bonus] Press ").formatted(Formatting.GOLD))
                         .append(Text.keybind("key.cobalt.armor_trigger").formatted(Formatting.GOLD))
                         .append(Text.literal(": ").formatted(Formatting.GOLD))
                         .append(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.header").formatted(Formatting.GOLD))

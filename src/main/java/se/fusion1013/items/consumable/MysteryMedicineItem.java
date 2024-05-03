@@ -2,16 +2,14 @@ package se.fusion1013.items.consumable;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
-import se.fusion1013.items.CobaltItem;
 import se.fusion1013.items.CobaltItemConfiguration;
 
 import java.util.Random;
 
-public class MysteryMedicineItem extends CobaltItem {
+public class MysteryMedicineItem extends CobaltDrinkItem {
 
     private final static StatusEffect[] POSITIVE_POOL = new StatusEffect[] {
             StatusEffects.REGENERATION,
@@ -32,21 +30,21 @@ public class MysteryMedicineItem extends CobaltItem {
         super(configuration, settings.food(new FoodComponent.Builder()
                 .hunger(4)
                 .saturationModifier(.5f)
+                .alwaysEdible()
                 .build())
         );
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        if (world.isClient()) return super.finishUsing(stack, world, user);
+
+
         var rand = new Random();
-        // addEffect(user, POSITIVE_POOL[rand.nextInt(0, POSITIVE_POOL.length)], 180*20, 0);
-        // addEffect(user, NEGATIVE_POOL[rand.nextInt(0, NEGATIVE_POOL.length)], 120*20, 1);
+        addEffectRandomDuration(user, POSITIVE_POOL[rand.nextInt(0, POSITIVE_POOL.length)], 180*20, 1);
+        addEffectRandomDuration(user, NEGATIVE_POOL[rand.nextInt(0, NEGATIVE_POOL.length)], 120*20, 0);
+        addEffectRandomDuration(user, NEGATIVE_POOL[rand.nextInt(0, NEGATIVE_POOL.length)], 120*20, 0);
 
         return super.finishUsing(stack, world, user);
-    }
-
-    private static void addEffect(LivingEntity user, StatusEffect effect, int randomDuration, int randomAmplifier) {
-        var rand = new Random();
-        user.addStatusEffect(new StatusEffectInstance(effect, rand.nextInt(200, randomDuration+1), rand.nextInt(0, randomAmplifier+1)));
     }
 }

@@ -110,6 +110,9 @@
   "item.cobalt.reinforced_mechanic_helmet": "Reinforced Mechanic's Helmet",
   "item.cobalt.reinforced_mechanic_helmet.tooltip": "Helmet made for working in dangerous environments",
 
+  "item.cobalt.crowbar": "Crowbar",
+  "item.cobalt.crowbar.tooltip": "Great for crushing skulls",
+
 
 
 
@@ -360,6 +363,12 @@
 
   "item.cobalt.walkie_talkie": "Walkie Talkie",
   "item.cobalt.walkie_talkie.tooltip": "Communicate over vast distances",
+
+
+
+
+  "item.cobalt.hand_held_lantern": "Hand-Held Lantern",
+  "item.cobalt.hand_held_lantern.tooltip": "A bright companion",
 
 
 
