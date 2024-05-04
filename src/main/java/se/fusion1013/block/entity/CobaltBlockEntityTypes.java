@@ -34,7 +34,7 @@ public class CobaltBlockEntityTypes {
         ANCIENT_POT_4_BLOCK_ENTITY = register("ancient_pot_4_block_entity", FabricBlockEntityTypeBuilder.create(CustomSingleStackInventoryBlockEntity::new, CobaltBlocks.ANCIENT_POT_4_TOP));
         SCULK_SPREADER = register("sculk_spreader_block_entity", FabricBlockEntityTypeBuilder.create(SculkSpreaderBlockEntity::new, CobaltBlocks.SCULK_SPREADER));
         SPEAKER = register("speaker_block_entity", FabricBlockEntityTypeBuilder.create(SpeakerBlockEntity::new, CobaltBlocks.OXIDIZED_COPPER_SPEAKER, CobaltBlocks.EXPOSED_COPPER_SPEAKER, CobaltBlocks.WEATHERED_COPPER_SPEAKER, CobaltBlocks.COPPER_SPEAKER));
-        PARTICLE_BLOCK = register("particle_block_entity", FabricBlockEntityTypeBuilder.create(ParticleBlockEntity::new, CobaltBlocks.PARTICLE_BLOCK));
+        PARTICLE_BLOCK = register("particle_block_entity", FabricBlockEntityTypeBuilder.create(ParticleBlockEntity::new, CobaltBlocks.PARTICLE_COMMAND_BLOCK));
     }
 
 }

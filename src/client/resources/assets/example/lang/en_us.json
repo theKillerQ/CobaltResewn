@@ -478,5 +478,7 @@
   "block.cobalt.oxidized_copper_speaker": "Oxidized Copper Speaker",
   "block.cobalt.weathered_copper_speaker": "Weathered Copper Speaker",
   "block.cobalt.exposed_copper_speaker": "Exposed Copper Speaker",
-  "block.cobalt.copper_speaker": "Copper Speaker"
+  "block.cobalt.copper_speaker": "Copper Speaker",
+
+  "block.cobalt.particle_command_block": "Particle Command Block"
 }
