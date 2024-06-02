@@ -110,6 +110,8 @@ public class CobaltBlocks {
 
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
+    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque()));
+
     private static Block register(String name, Block block) {
         registerItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Main.MOD_NAMESPACE, name), block);

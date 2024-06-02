@@ -1,0 +1,7 @@
+{
+  "parent": "cobalt:block/rune_base",
+  "textures": {
+    "particle": "cobalt:block/rune_p_lit",
+    "rune": "cobalt:block/rune_p_lit"
+  }
+}

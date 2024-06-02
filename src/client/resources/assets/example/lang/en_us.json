@@ -188,6 +188,29 @@
 
 
 
+  "item.cobalt.ratcheting_screwdriver": "Ratcheting Screwdriver",
+  "item.cobalt.ratcheting_screwdriver.tooltip": "Ratcheting Screwdriver",
+
+
+
+
+  "item.cobalt.thermal_gear_helmet": "Thermal Protective Headpiece",
+  "item.cobalt.thermal_gear_helmet.tooltip": "",
+
+  "item.cobalt.thermal_gear_chestplate": "Thermal Protective Jacket",
+  "item.cobalt.thermal_gear_chestplate.tooltip": "",
+
+  "item.cobalt.thermal_gear_leggings": "Thermal Protective Pants",
+  "item.cobalt.thermal_gear_leggings.tooltip": "",
+
+  "item.cobalt.thermal_gear_boots": "Thermal Protective Boots",
+  "item.cobalt.thermal_gear_boots.tooltip": "",
+
+  "item.cobalt.thermal_gear_set_bonus.tooltip": "Allows the wearer to withstand immense heat",
+
+
+
+
   "item.cobalt.painkillers": "Painkillers \uECC1\uECC1\uECC0",
   "item.cobalt.painkillers.tooltip": "For the small wounds",
 
@@ -282,7 +305,8 @@
   "item.cobalt.diving_boots": "Diving Boots",
   "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom",
 
-  "item.cobalt.diving_set_bonus.tooltip": "Allows the wearer to breathe underwater",
+  "item.cobalt.diving_set_bonus.breathing.tooltip": "Allows the wearer to breathe underwater",
+  "item.cobalt.diving_set_bonus.cold.tooltip": "Protects from cold environments",
 
 
 
@@ -303,6 +327,9 @@
   "item.cobalt.exoskeleton.trigger_ability.cost": "-2 Coal",
   "item.cobalt.exoskeleton.trigger_ability.tooltip": "Become immovable for a short moment. Gain strength and resistance.",
 
+  "item.cobalt.bionic_fist": "Bionic Fist",
+  "item.cobalt.bionic_fist.tooltip": "Fist your enemies to death",
+
 
 
 
@@ -321,6 +348,7 @@
   "item.cobalt.advanced_exoskeleton.trigger_ability.header": "Improved Fortify",
   "item.cobalt.advanced_exoskeleton.trigger_ability.cost": "-4 Coal",
   "item.cobalt.advanced_exoskeleton.trigger_ability.tooltip": "Become immovable for a short moment. Gain improved strength and resistance.",
+
 
 
 
@@ -382,6 +410,9 @@
   "effect.cobalt.crowd_control": "Crowd Control",
   "effect.cobalt.corruption_spread": "Corruption Spread",
   "effect.cobalt.immovable": "Immovable",
+  "effect.cobalt.cursed_knowledge": "Cursed Insight",
+  "effect.cobalt.freezing": "Freezing",
+  "effect.cobalt.cold_resistance": "Cold Resistance",
 
 
 
@@ -480,5 +511,7 @@
   "block.cobalt.exposed_copper_speaker": "Exposed Copper Speaker",
   "block.cobalt.copper_speaker": "Copper Speaker",
 
-  "block.cobalt.particle_command_block": "Particle Command Block"
+  "block.cobalt.particle_command_block": "Particle Command Block",
+
+  "block.cobalt.rune_block": "Rune Block"
 }

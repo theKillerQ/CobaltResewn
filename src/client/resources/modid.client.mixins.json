@@ -5,7 +5,8 @@
   "client": [
     "ExampleClientMixin",
     "ExampleMixin",
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "render.BackgroundRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

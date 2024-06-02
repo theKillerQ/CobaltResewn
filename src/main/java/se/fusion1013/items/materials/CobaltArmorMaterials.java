@@ -9,7 +9,7 @@ public class CobaltArmorMaterials {
 
     public static final CobaltArmorMaterial ADVENTURE = new CobaltArmorMaterial("adventure", new int[] { 20, 20, 20, 20 }, new int[] { 1, 2, 3, 1 }, 5);
     public static final CobaltArmorMaterial GUARD = new CobaltArmorMaterial.Builder("guard", new int[] { 20, 20, 20, 20 }, new int[] { 2, 3, 5, 2 }, 5)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("guard.chestplate.move_speed", -0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("guard.chestplate.move_speed", -0.02f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
             .equipSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN)
             .build();
 
@@ -19,18 +19,18 @@ public class CobaltArmorMaterials {
 
 
     public static final CobaltArmorMaterial MECHANIC = new CobaltArmorMaterial.Builder("mechanic", new int[] { 20, 20, 20, 20 }, new int[] { 2, 3, 4, 2 }, 5)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.boots.move_speed", -.14f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.leggings.move_speed", -.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.chestplate.move_speed", -.13f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.helmet.move_speed", -.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.boots.move_speed", -.07f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.leggings.move_speed", -.05f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.chestplate.move_speed", -.06f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.helmet.move_speed", -.05f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
             .toughness(1)
             .build();
 
     public static final CobaltArmorMaterial REINFORCED_MECHANIC = new CobaltArmorMaterial.Builder("reinforced_mechanic", new int[] { 20, 20, 20, 20 }, new int[] { 2, 3, 4, 2 }, 5)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.boots.move_speed", -.20f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.leggings.move_speed", -.15f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.chestplate.move_speed", -.20f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.helmet.move_speed", -.15f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.boots.move_speed", -.10f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.leggings.move_speed", -.075f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.chestplate.move_speed", -.10f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("mechanic.helmet.move_speed", -.075f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.HEAD)
             .toughness(2)
             .build();
 
@@ -58,7 +58,7 @@ public class CobaltArmorMaterials {
             .build();
 
     public static final CobaltArmorMaterial MINER = new CobaltArmorMaterial.Builder("miner", new int[] { 20, 20, 20, 20 }, new int[] { 1, 2, 5, 1 }, 5)
-            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("miner.chestplate.move_speed", -0.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
+            .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("miner.chestplate.move_speed", -0.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
             .build();
 
     public static final CobaltArmorMaterial PROSPECTOR = new CobaltArmorMaterial.Builder("prospector", new int[] { 20, 20, 20, 20 }, new int[] { 1, 2, 3, 2 }, 5)
@@ -88,6 +88,8 @@ public class CobaltArmorMaterials {
             .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.chestplate.move_speed", -0.04, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.CHEST)
             .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.leggings.move_speed", -0.03, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.LEGS)
             .attribute(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("advanced_exoskeleton.boots.move_speed", -0.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.FEET)
+            .build();
+    public static final CobaltArmorMaterial THERMAL_GEAR = new CobaltArmorMaterial.Builder("thermal_gear", new int[] { 20, 20, 20, 20 }, new int[] { 2, 5, 6, 2 }, 5)
             .build();
 
 }

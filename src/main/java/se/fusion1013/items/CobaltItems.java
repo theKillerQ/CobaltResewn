@@ -73,6 +73,7 @@ public class CobaltItems {
 
         // Outstanding Tier
         public static final CobaltArmorSet EXOSKELETON;
+        public static final CobaltArmorSet THERMAL_GEAR;
 
         // Perfect Tier
         public static final CobaltArmorSet ADVANCED_EXOSKELETON;
@@ -81,8 +82,9 @@ public class CobaltItems {
         static {
             ADVENTURE_ARMOR_SET = registerSet("adventure", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVENTURE, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
             DIVING_ARMOR_SET = registerSet("diving", new CobaltArmorSet.Builder(CobaltArmorMaterials.DIVE, CobaltItemConfiguration.create(Formatting.GOLD))
-                    .withHelmet(true).withChestplate().withLeggings().withBoots().withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.diving_set_bonus.tooltip" }, (stack, world, entity, slot, selected) -> {
+                    .withHelmet(true).withChestplate().withLeggings().withBoots().withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.diving_set_bonus.breathing.tooltip", "item.cobalt.diving_set_bonus.cold.tooltip" }, (stack, world, entity, slot, selected) -> {
                         CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
+                        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(CobaltEffects.COLD_RESISTANCE_EFFECT, 20, 0));
                     })).build());
             LUMBERJACK_ARMOR_SET = registerSet("lumberjack", new CobaltArmorSet.Builder(CobaltArmorMaterials.LUMBERJACK, CobaltItemConfiguration.create(Formatting.DARK_GREEN))
                     .withHelmet().withChestplate().withLeggings().withBoots().build());
@@ -112,6 +114,12 @@ public class CobaltItems {
                             playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
                         }
                     })
+                    .build());
+            THERMAL_GEAR = registerSet("thermal_gear", new CobaltArmorSet.Builder(CobaltArmorMaterials.THERMAL_GEAR, CobaltItemConfiguration.create(Formatting.YELLOW)).withAll()
+                    .withHelmet(true)
+                    .withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.thermal_gear_set_bonus.tooltip" }, (stack, world, entity, slot, selected) -> {
+                        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20, 0));
+                    }))
                     .build());
 
             // Perfect Tier
@@ -147,6 +155,8 @@ public class CobaltItems {
         public static final Item DAGGER;
         public static final Item SCREWDRIVER;
         public static final Item CROWBAR;
+        public static final Item RATCHETING_SCREWDRIVER;
+        public static final Item BIONIC_FIST;
 
         static {
             DAGGER = register("dagger", new CobaltSwordItem(ToolMaterials.STONE, -2+1, -4+3,
@@ -158,7 +168,7 @@ public class CobaltItems {
                 user.playSound(SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*60, 0));
             })));
-            HEAVY_WRENCH = register("heavy_wrench", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.0f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.heavy_wrench.speed", -.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            HEAVY_WRENCH = register("heavy_wrench", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.0f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.heavy_wrench.speed", -.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             BASIC_DRILL = register("basic_drill", new BasicDrillItem(ToolMaterials.STONE, -2+5, -4+1.4f, new Item.Settings()));
             SAMPLE_DRILL = register("sample_drill", new SampleDrillItem(ToolMaterials.STONE, -2+2, -4+2, new FabricItemSettings(), Formatting.LIGHT_PURPLE));
             GUARD_SWORD = register("guard_sword", new CobaltSwordItem(ToolMaterials.STONE, -2+4, -4+1.6f, CobaltItemConfiguration.create(Formatting.DARK_GRAY), new FabricItemSettings()));
@@ -166,7 +176,11 @@ public class CobaltItems {
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.prospector_pickaxe.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             SCREWDRIVER = register("screwdriver", new CobaltSwordItem(ToolMaterials.STONE, -2+6, -4+2.3f, CobaltItemConfiguration.create(Formatting.GRAY)
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.screwdriver.speed", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
-            CROWBAR = register("crowbar", new CobaltSwordItem(ToolMaterials.STONE, -2+7, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.crowbar.speed", -.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            CROWBAR = register("crowbar", new CobaltSwordItem(ToolMaterials.STONE, -2+7, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY).attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.crowbar.speed", -.01, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            RATCHETING_SCREWDRIVER = register("ratcheting_screwdriver", new CobaltSwordItem(ToolMaterials.STONE, -2+7, -4+2.3f, CobaltItemConfiguration.create(Formatting.GRAY)
+                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.ratcheting_screwdriver.speed", 0.12f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            BIONIC_FIST = register("bionic_fist", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.6f, CobaltItemConfiguration.create(Formatting.GOLD)
+                    .attributeModifier(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier("cobalt.bionic_fist.knockback", 1.6f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
 
     }
@@ -179,7 +193,7 @@ public class CobaltItems {
 
         static {
             MINER_PICKAXE = register("miner_pickaxe", new CobaltPickaxeItem(ToolMaterials.STONE, -2+9, -4+0.9f, CobaltItemConfiguration.create(Formatting.DARK_GRAY)
-                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.miner_pickaxe.speed", -.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.miner_pickaxe.speed", -.025, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
     }
 
@@ -205,7 +219,7 @@ public class CobaltItems {
 
         static {
             LUMBERJACK_AXE = register("lumberjack_axe", new CobaltAxeItem(ToolMaterials.STONE, -2+7, -4+0.8f, CobaltItemConfiguration.create(Formatting.DARK_GREEN)
-                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.lumberjack.axe", -.02, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+                    .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.lumberjack.axe", -.015, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
         }
 
     }
@@ -234,7 +248,7 @@ public class CobaltItems {
                     new CobaltItemConfiguration()
                             .nameFormatting(Formatting.DARK_GRAY),
                     (modifiers, stack, slot, entity, uuid) -> {
-                        modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid, "cobalt.mechanical_hand.attack_damage", .1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                        modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid, "cobalt.mechanical_hand.attack_damage", .05f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
                         return modifiers;
                     }));
             MECHANIC_GLOVES = register("mechanic_gloves", new CobaltTrinketItem(
@@ -242,7 +256,7 @@ public class CobaltItems {
                     new CobaltItemConfiguration()
                             .nameFormatting(Formatting.DARK_GRAY),
                     (modifiers, stack, slot, entity, uuid) -> {
-                        modifiers.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.mechanic_gloves.move_speed", -0.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                        modifiers.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.mechanic_gloves.move_speed", -0.025, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
                         modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier("cobalt.mechanic_gloves.damage", 0.05, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
                         modifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("cobalt.mechanic_gloves.armor", 2, EntityAttributeModifier.Operation.ADDITION));
                         modifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier("cobalt.mechanic_gloves.toughness", 1, EntityAttributeModifier.Operation.ADDITION));

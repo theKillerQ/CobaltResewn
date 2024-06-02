@@ -17,6 +17,7 @@ import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
 import se.fusion1013.networking.CobaltClientNetworking;
 import se.fusion1013.networking.CobaltNetworkingConstants;
+import se.fusion1013.render.block.CobaltBlockEntityRenderers;
 import se.fusion1013.render.entity.CorruptedCoreEntityModel;
 import se.fusion1013.render.entity.CorruptedCoreEntityRenderer;
 import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
@@ -56,10 +57,16 @@ public class MainClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
 		// Block rendering
+		CobaltBlockEntityRenderers.registerAll();
+
+		// Block rendering
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
 				CobaltBlocks.SCULK_GRASS,
-				CobaltBlocks.SHORT_SCULK_GRASS
+				CobaltBlocks.SHORT_SCULK_GRASS,
+				CobaltBlocks.RUNE_BLOCK
 		);
+
+
 
 		// Networking
 		CobaltClientNetworking.register();
