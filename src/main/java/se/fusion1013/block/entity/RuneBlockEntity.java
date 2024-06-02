@@ -25,9 +25,10 @@ public class RuneBlockEntity extends BlockEntity {
         for (PlayerEntity player : players) {
             var mainHandItem = player.getMainHandStack().getItem();
 
+            if (mainHandItem == CobaltBlocks.RUNE_BLOCK.asItem()) playerInRange = true;
+
             if (
-                    mainHandItem != Items.SOUL_LANTERN &&
-                    mainHandItem != CobaltBlocks.RUNE_BLOCK.asItem()
+                    mainHandItem != Items.SOUL_LANTERN
                 ) continue;
 
             // Player is holding lantern, check distance

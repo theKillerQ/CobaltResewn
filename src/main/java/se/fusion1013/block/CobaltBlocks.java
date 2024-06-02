@@ -12,6 +12,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 
+import java.util.function.ToIntFunction;
+
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_BLOCK_GROUP_KEY;
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_GROUP_KEY;
 
@@ -110,7 +112,7 @@ public class CobaltBlocks {
 
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
-    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque()));
+    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);
@@ -128,6 +130,10 @@ public class CobaltBlocks {
         ItemGroupEvents.modifyEntriesEvent(COBALT_BLOCK_GROUP_KEY).register(content -> {
             content.add(item);
         });
+    }
+
+    public static ToIntFunction<BlockState> createLightLevelFromVisibleBlockState(int litLevel) {
+        return state -> state.get(RuneBlock.VISIBLE) ? litLevel : 0;
     }
 
     public static void register() {}

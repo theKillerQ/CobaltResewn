@@ -74,6 +74,8 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
         return new RuneBlockEntity(pos, state);
     }
 
+
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
@@ -104,7 +106,18 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
         Latin_A, Latin_B, Latin_C, Latin_D, Latin_E, Latin_F, Latin_G, Latin_H,
         Latin_I, Latin_J, Latin_K, Latin_L, Latin_M, Latin_N, Latin_O, Latin_P,
         Latin_Q, Latin_R, Latin_S, Latin_T, Latin_U, Latin_V, Latin_W, Latin_X,
-        Latin_Y, Latin_Z;
+        Latin_Y, Latin_Z,
+
+        // Shapes
+        Line_Horizontal, Line_Vertical, Line_L_NE, Line_L_NW, Line_L_SE, Line_L_SW,
+
+        // Dungeons
+        Dungeons_A, Dungeons_B, Dungeons_C, Dungeons_D, Dungeons_E, Dungeons_F, Dungeons_G, Dungeons_H,
+        Dungeons_I, Dungeons_J, Dungeons_K, Dungeons_L, Dungeons_M, Dungeons_N, Dungeons_O, Dungeons_P,
+        Dungeons_Q, Dungeons_R, Dungeons_S, Dungeons_T, Dungeons_U, Dungeons_V, Dungeons_W, Dungeons_X,
+        Dungeons_Y, Dungeons_Z
+
+        ;
 
         @Override
         public String asString() {

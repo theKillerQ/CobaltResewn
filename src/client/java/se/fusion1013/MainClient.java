@@ -62,7 +62,10 @@ public class MainClient implements ClientModInitializer {
 		// Block rendering
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
 				CobaltBlocks.SCULK_GRASS,
-				CobaltBlocks.SHORT_SCULK_GRASS,
+				CobaltBlocks.SHORT_SCULK_GRASS
+		);
+
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
 				CobaltBlocks.RUNE_BLOCK
 		);
 

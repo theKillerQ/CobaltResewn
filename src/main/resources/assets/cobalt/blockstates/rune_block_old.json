@@ -1,0 +1,5646 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_a_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_a"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_b_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_b"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_c_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_c"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_d_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_d"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_e_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_e"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_f_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_f"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_g_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_g"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_h_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_h"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_i_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_i"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_j_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_j"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_k_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_k"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_l_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_l"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_m_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_m"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_n_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_n"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_o_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_o"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_p_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_p"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_q_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_q"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_r_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_r"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_s_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_s"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_t_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_t"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_u_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_u"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_v_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_v"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_w_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_w"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_x_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_x"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_y_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_y"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_z_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "latin_z"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_horizontal_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_horizontal"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_vertical_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_vertical"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_ne_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_ne"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_nw_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_nw"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_se_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_se"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_line_l_sw_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "line_l_sw"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit"
+      },
+      "when": {
+        "north": true,
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit"
+      },
+      "when": {
+        "down": false,
+        "east": false,
+        "north": false,
+        "south": false,
+        "up": false,
+        "west": false,
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": true,
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    },
+    {
+      "apply": {
+        "model": "cobalt:block/rune_dungeons_a_lit",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "visible": true,
+        "rune_type": "dungeons_a"
+      }
+    }
+  ]
+}
