@@ -320,6 +320,10 @@ public class CobaltItems {
 
         public static final Item HAND_HELD_LANTERN;
 
+        public static final Item RUNE_MODIFIER;
+
+        public static final Item FORGE_SIDE_CRYSTAL;
+
         static {
             // Healing
             PAINKILLERS = register("painkillers", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(4), 5));
@@ -342,6 +346,10 @@ public class CobaltItems {
             WALKIE_TALKIE = register("walkie_talkie", new WalkieTalkieItem(9999));
 
             HAND_HELD_LANTERN = register("hand_held_lantern", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings()));
+
+            RUNE_MODIFIER = register("rune_modifier", new CobaltItem(CobaltItemConfiguration.create(Formatting.DARK_PURPLE), new FabricItemSettings()));
+
+            FORGE_SIDE_CRYSTAL = register("forge_side_crystal", new CobaltItem(CobaltItemConfiguration.create(Formatting.LIGHT_PURPLE), new FabricItemSettings()));
         }
 
     }

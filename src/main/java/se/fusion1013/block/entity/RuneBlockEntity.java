@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import se.fusion1013.block.CobaltBlocks;
 import se.fusion1013.block.RuneBlock;
+import se.fusion1013.items.CobaltItems;
 
 public class RuneBlockEntity extends BlockEntity {
     public RuneBlockEntity(BlockPos pos, BlockState state) {
@@ -24,8 +25,10 @@ public class RuneBlockEntity extends BlockEntity {
         var players = world.getPlayers();
         for (PlayerEntity player : players) {
             var mainHandItem = player.getMainHandStack().getItem();
+            var offhandItem = player.getOffHandStack().getItem();
 
-            if (mainHandItem == CobaltBlocks.RUNE_BLOCK.asItem()) playerInRange = true;
+            if (mainHandItem == CobaltBlocks.RUNE_BLOCK.asItem() || mainHandItem == CobaltItems.MiscItems.RUNE_MODIFIER) playerInRange = true;
+            if (offhandItem == CobaltBlocks.RUNE_BLOCK.asItem() || offhandItem == CobaltItems.MiscItems.RUNE_MODIFIER) playerInRange = true;
 
             if (
                     mainHandItem != Items.SOUL_LANTERN

@@ -6,7 +6,7 @@ import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 public class CobaltBlockEntityRenderers {
 
     public static void registerAll() {
-        // BlockEntityRendererRegistry.register(CobaltBlockEntityTypes.RUNE_BLOCK, RuneBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(CobaltBlockEntityTypes.FORGE_SIDE_CRYSTAL_BLOCK, ForgeSideCrystalBlockEntityRenderer::new);
     }
 
 }

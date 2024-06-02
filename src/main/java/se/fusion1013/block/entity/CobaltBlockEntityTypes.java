@@ -20,6 +20,7 @@ public class CobaltBlockEntityTypes {
     public static final BlockEntityType<SpeakerBlockEntity>                       SPEAKER;
     public static final BlockEntityType<ParticleBlockEntity>                      PARTICLE_BLOCK;
     public static final BlockEntityType<RuneBlockEntity>                          RUNE_BLOCK;
+    public static final BlockEntityType<ForgeSideCrystalBlockEntity>              FORGE_SIDE_CRYSTAL_BLOCK;
 
     private static <T extends BlockEntity> BlockEntityType<T> register(String id, FabricBlockEntityTypeBuilder<T> builder) {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, id), builder.build());
@@ -37,6 +38,7 @@ public class CobaltBlockEntityTypes {
         SPEAKER = register("speaker_block_entity", FabricBlockEntityTypeBuilder.create(SpeakerBlockEntity::new, CobaltBlocks.OXIDIZED_COPPER_SPEAKER, CobaltBlocks.EXPOSED_COPPER_SPEAKER, CobaltBlocks.WEATHERED_COPPER_SPEAKER, CobaltBlocks.COPPER_SPEAKER));
         PARTICLE_BLOCK = register("particle_block_entity", FabricBlockEntityTypeBuilder.create(ParticleBlockEntity::new, CobaltBlocks.PARTICLE_COMMAND_BLOCK));
         RUNE_BLOCK = register("rune_block_entity", FabricBlockEntityTypeBuilder.create(RuneBlockEntity::new, CobaltBlocks.RUNE_BLOCK));
+        FORGE_SIDE_CRYSTAL_BLOCK = register("forge_side_crystal_block_entity", FabricBlockEntityTypeBuilder.create(ForgeSideCrystalBlockEntity::new, CobaltBlocks.FORGE_SIDE_CRYSTAL_BLOCK));
     }
 
 }

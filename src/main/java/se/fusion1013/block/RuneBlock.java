@@ -41,17 +41,25 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
         if (!player.isCreative()) return ActionResult.FAIL;
 
         player.playSound(SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON, 1, 1);
+
         var runeType = state.get(RUNE_TYPE);
         boolean selectNext = false;
+
+        var previousRuneType = RuneType.Dungeons_Z;
         var newRuneType = RuneType.None;
+
         for (RuneType type : RuneType.values()) {
             if (selectNext) {
                 newRuneType = type;
                 break;
             }
             if (type == runeType) selectNext = true;
+            else previousRuneType = type;
         }
-        world.setBlockState(pos, state.with(RUNE_TYPE, newRuneType));
+
+        if (player.isSneaking()) world.setBlockState(pos, state.with(RUNE_TYPE, previousRuneType));
+        else world.setBlockState(pos, state.with(RUNE_TYPE, newRuneType));
+
         return ActionResult.SUCCESS;
     }
 
@@ -73,8 +81,6 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new RuneBlockEntity(pos, state);
     }
-
-
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

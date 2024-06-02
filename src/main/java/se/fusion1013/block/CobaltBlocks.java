@@ -112,7 +112,9 @@ public class CobaltBlocks {
 
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
-    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
+    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
+
+    public static final Block FORGE_SIDE_CRYSTAL_BLOCK = register("forge_side_crystal_block", new ForgeSideCrystalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);
