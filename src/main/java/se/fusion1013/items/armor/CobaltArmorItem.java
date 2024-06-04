@@ -49,6 +49,7 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltArmorItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         configuration.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override

@@ -2,6 +2,7 @@ package se.fusion1013.items;
 
 import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -34,6 +35,7 @@ public class CobaltItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         configuration.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override

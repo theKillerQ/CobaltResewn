@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.block.entity.AncientPotBlockEntity;
 import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
 
 public class AncientPot4TopBlock extends CustomSingleStackBlock {
@@ -26,6 +27,6 @@ public class AncientPot4TopBlock extends CustomSingleStackBlock {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CustomSingleStackInventoryBlockEntity(pos, state);
+        return new AncientPotBlockEntity(pos, state);
     }
 }

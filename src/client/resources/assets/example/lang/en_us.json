@@ -305,9 +305,6 @@
   "item.cobalt.diving_boots": "Diving Boots",
   "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom",
 
-  "item.cobalt.diving_set_bonus.breathing.tooltip": "Allows the wearer to breathe underwater",
-  "item.cobalt.diving_set_bonus.cold.tooltip": "Protects from cold environments",
-
 
 
 
@@ -403,6 +400,35 @@
 
   "item.cobalt.rune_modifier": "Rune Modifier",
   "item.cobalt.rune_modifier.tooltip": "Modifies runes",
+
+
+
+
+  "item.cobalt.rune_glove": "Rune Glove",
+  "item.cobalt.rune_glove.tooltip": "TODO",
+
+  "item.cobalt.fire_rune": "Fire Rune",
+  "item.cobalt.fire_rune.tooltip": "TODO",
+
+  "item.cobalt.health_rune": "Health Rune",
+  "item.cobalt.health_rune.tooltip": "TODO",
+
+  "item.cobalt.heavy_rune": "Heavy Rune",
+  "item.cobalt.heavy_rune.tooltip": "TODO",
+
+
+
+  "item_set.cobalt.header": "Set Bonus:",
+
+  "item_set.cobalt.diving_armor.tooltip.breathing": "Allows the wearer to breathe underwater",
+  "item_set.cobalt.diving_armor.tooltip.cold": "Protects from cold environments",
+
+
+  "item_set.cobalt.fire_rune_health.tooltip.header": "With Health Rune:",
+  "item_set.cobalt.fire_rune_health.tooltip": "Provides a small amount of health regeneration",
+
+  "item_set.cobalt.fire_rune_heavy.tooltip.header": "With Heavy Rune:",
+  "item_set.cobalt.fire_rune_heavy.tooltip": "Provides increased resistance",
 
 
 
@@ -519,5 +545,9 @@
 
   "block.cobalt.particle_command_block": "Particle Command Block",
 
-  "block.cobalt.rune_block": "Rune Block"
+  "block.cobalt.rune_block": "Rune Block",
+
+  "block.cobalt.pedestal_block": "Pedestal Block",
+
+  "trinkets.slot.hand.rune": "Rune"
 }

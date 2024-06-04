@@ -5,6 +5,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -61,6 +63,7 @@ public abstract class CustomSingleStackBlock extends Block implements BlockEntit
                 player.getStackInHand(hand).setCount(0);
 
                 blockEntity.markDirty();
+                world.updateListeners(blockPos, blockState, world.getBlockState(blockPos), Block.NOTIFY_LISTENERS);
 
                 // Play item insert sound and display particle
                 world.playSound(null, blockPos, SoundEvents.BLOCK_DECORATED_POT_INSERT, SoundCategory.BLOCKS, 1.0f, 0.7f);
@@ -81,10 +84,17 @@ public abstract class CustomSingleStackBlock extends Block implements BlockEntit
             if (!blockEntity.getStack(0).isEmpty()) {
                 player.getInventory().offerOrDrop(blockEntity.getStack(0));
                 blockEntity.removeStack(0);
+                blockEntity.setStack(0, ItemStack.EMPTY);
 
                 blockEntity.markDirty();
+                world.updateListeners(blockPos, blockState, world.getBlockState(blockPos), Block.NOTIFY_LISTENERS);
+
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ParticleTypes.SMOKE, blockPos.getX() + .5f, blockPos.getY() + .9f, blockPos.getZ() + .5f, 7, 0, 0, 0, 0);
+                }
             }
         }
+
         return ActionResult.SUCCESS;
     }
 

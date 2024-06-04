@@ -3,30 +3,25 @@ package se.fusion1013.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
-import se.fusion1013.block.entity.ExposedCopperCrateBlockEntity;
+import se.fusion1013.block.entity.PedestalBlockEntity;
 
-public class CopperCrateBlock extends CustomSingleStackBlock implements Waterloggable, BlockEntityProvider {
+public class PedestalBlock extends CustomSingleStackBlock implements Waterloggable, BlockEntityProvider {
 
-    public static final MapCodec<CopperCrateBlock> CODEC = createCodec(CopperCrateBlock::new);
+    public static final MapCodec<PedestalBlock> CODEC = createCodec(PedestalBlock::new);
     private static final BooleanProperty WATERLOGGED;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 14, 15);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
 
-    protected CopperCrateBlock(Settings settings) {
+    public PedestalBlock(Settings settings) {
         super(settings);
     }
-
-    /// region Init
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -35,21 +30,19 @@ public class CopperCrateBlock extends CustomSingleStackBlock implements Waterlog
     }
 
     @Override
-    protected MapCodec<? extends Block> getCodec() {
-        return CODEC;
-    }
-
-    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
-    /// endregion
+    @Override
+    protected MapCodec<? extends Block> getCodec() {
+        return CODEC;
+    }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ExposedCopperCrateBlockEntity(pos, state);
+        return new PedestalBlockEntity(pos, state);
     }
 
     static {

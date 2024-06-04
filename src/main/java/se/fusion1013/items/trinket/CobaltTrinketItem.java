@@ -14,6 +14,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import se.fusion1013.items.CobaltItemConfiguration;
+import se.fusion1013.items.ItemSet;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,12 @@ public class CobaltTrinketItem extends TrinketItem {
         super(settings.maxCount(1)); // Override stack size for all trinkets
         this.configuration = configuration;
         this.modifierProvider = modifierProvider;
+    }
+
+    @Override
+    public void tick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        super.tick(stack, slot, entity);
+        ItemSet.trinketTick(stack, slot, entity);
     }
 
     @Override
@@ -52,6 +59,7 @@ public class CobaltTrinketItem extends TrinketItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         configuration.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     public interface TrinketModifierProvider {

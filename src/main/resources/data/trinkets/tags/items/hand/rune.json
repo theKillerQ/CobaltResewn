@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "cobalt:health_rune",
+    "cobalt:heavy_rune",
+    "cobalt:fire_rune"
+  ]
+}

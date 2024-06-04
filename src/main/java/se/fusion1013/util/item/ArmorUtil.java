@@ -106,6 +106,15 @@ public class ArmorUtil {
                 helmet == material;
     }
 
+    public static boolean isWearingArmorItem(PlayerEntity player, Item item) {
+        var boots = player.getInventory().getArmorStack(0).getItem();
+        var leggings = player.getInventory().getArmorStack(1).getItem();
+        var chestplate = player.getInventory().getArmorStack(2).getItem();
+        var helmet = player.getInventory().getArmorStack(3).getItem();
+
+        return boots == item || leggings == item || chestplate == item || helmet == item;
+    }
+
     public static ArmorMaterial getArmorMaterial(Item item) {
         if (item instanceof ArmorItem armorItem) return armorItem.getMaterial();
         if (item instanceof CobaltEquipmentItem equipmentItem) return equipmentItem.material;

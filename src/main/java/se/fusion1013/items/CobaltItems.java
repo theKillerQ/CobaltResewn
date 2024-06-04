@@ -1,6 +1,14 @@
 package se.fusion1013.items;
 
+import dev.emi.trinkets.api.SlotAttributes;
+import dev.emi.trinkets.api.SlotReference;
 import io.wispforest.lavender.book.LavenderBookItem;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.datafixer.fix.StatusEffectFix;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.text.Text;
+import org.jetbrains.annotations.Nullable;
 import se.fusion1013.effect.CobaltEffects;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
@@ -44,6 +52,9 @@ import se.fusion1013.items.materials.CobaltArmorMaterials;
 import se.fusion1013.items.trinket.CobaltTrinketItem;
 import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
 
+import java.text.Format;
+import java.util.List;
+
 import static se.fusion1013.Main.MOD_NAMESPACE;
 import static se.fusion1013.items.CustomItemGroupRegistry.*;
 
@@ -82,10 +93,7 @@ public class CobaltItems {
         static {
             ADVENTURE_ARMOR_SET = registerSet("adventure", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVENTURE, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
             DIVING_ARMOR_SET = registerSet("diving", new CobaltArmorSet.Builder(CobaltArmorMaterials.DIVE, CobaltItemConfiguration.create(Formatting.GOLD))
-                    .withHelmet(true).withChestplate().withLeggings().withBoots().withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.diving_set_bonus.breathing.tooltip", "item.cobalt.diving_set_bonus.cold.tooltip" }, (stack, world, entity, slot, selected) -> {
-                        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
-                        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(CobaltEffects.COLD_RESISTANCE_EFFECT, 20, 0));
-                    })).build());
+                    .withHelmet(true).withChestplate().withLeggings().withBoots().build());
             LUMBERJACK_ARMOR_SET = registerSet("lumberjack", new CobaltArmorSet.Builder(CobaltArmorMaterials.LUMBERJACK, CobaltItemConfiguration.create(Formatting.DARK_GREEN))
                     .withHelmet().withChestplate().withLeggings().withBoots().build());
             GUARD_ARMOR_SET = registerSet("guard", new CobaltArmorSet.Builder(CobaltArmorMaterials.GUARD, CobaltItemConfiguration.create(Formatting.GRAY))
@@ -234,6 +242,12 @@ public class CobaltItems {
         public static final Item MECHANIC_SPECTACLES;
         public static final Item GEARSTRAP;
 
+        public static final Item RUNE_GLOVE;
+        public static final Item HEALTH_RUNE;
+        public static final Item HEAVY_RUNE;
+
+        public static final Item FIRE_RUNE;
+
         static {
             HUNTER_GLOVE = register("hunter_gloves", new CobaltTrinketItem(
                     new FabricItemSettings(),
@@ -276,6 +290,42 @@ public class CobaltItems {
                         modifiers.put(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier(uuid, "cobalt:health", 10, EntityAttributeModifier.Operation.ADDITION));
                         return modifiers;
                     }));
+            RUNE_GLOVE = register("rune_glove", new CobaltTrinketItem(
+                    new Item.Settings(),
+                    new CobaltItemConfiguration()
+                            .nameFormatting(Formatting.GOLD),
+                    (modifiers, stack, slot, entity, uuid) -> {
+                        modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(uuid, "cobalt.rune_glove.damage", -0.25, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                        SlotAttributes.addSlotModifier(modifiers, "hand/rune", uuid, 5, EntityAttributeModifier.Operation.ADDITION);
+                        return modifiers;
+                    }
+            ));
+
+            HEALTH_RUNE = register("health_rune", new CobaltTrinketItem(
+                    new Item.Settings(),
+                    new CobaltItemConfiguration()
+                            .nameFormatting(Formatting.RED),
+                    (modifiers, stack, slot, entity, uuid) -> {
+                        modifiers.put(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier(uuid, "cobalt.health_rune.health", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                        return modifiers;
+                    }
+            ));
+            HEAVY_RUNE = register("heavy_rune", new CobaltTrinketItem(
+                    new Item.Settings(),
+                    new CobaltItemConfiguration()
+                            .nameFormatting(Formatting.GRAY),
+                    (modifiers, stack, slot, entity, uuid) -> {
+                        modifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "cobalt.heavy_rune.armor", 2, EntityAttributeModifier.Operation.ADDITION));
+                        return modifiers;
+                    }
+            ));
+
+            FIRE_RUNE = register("fire_rune", new CobaltTrinketItem(
+                    new Item.Settings(),
+                    new CobaltItemConfiguration()
+                            .nameFormatting(Formatting.RED),
+                    (modifiers, stack, slot, entity, uuid) -> modifiers
+            ));
         }
 
     }
@@ -356,6 +406,73 @@ public class CobaltItems {
 
     public static final Item PRESSURE_GAUGE = register("pressure_gauge", new CobaltItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
 
+    // --- ITEM SETS
+
+    public static class ItemSets {
+
+        public static final ItemSet FIRE_RUNE_HEALTH = ItemSet.register(new Identifier("fire_rune_health"), new ItemSet.ItemSetItem[]{
+                new ItemSet.ItemSetItem(TrinketItems.HEALTH_RUNE, ItemSet.ItemLocation.Trinket, false),
+                new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
+        }, new IItemSetMethods() {
+            @Override
+            public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+                IItemSetMethods.super.trinketTick(stack, slot, entity);
+                if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
+            }
+            @Override
+            public Text[] appendTooltip() {
+                return new Text[] {
+                        Text.translatable("item_set.cobalt.fire_rune_health.tooltip.header").formatted(Formatting.GRAY),
+                        Text.translatable("item_set.cobalt.fire_rune_health.tooltip").formatted(Formatting.GRAY)
+                };
+            }
+        });
+
+        public static final ItemSet FIRE_RUNE_HEAVY = ItemSet.register(new Identifier("fire_rune_heavy"), new ItemSet.ItemSetItem[]{
+                new ItemSet.ItemSetItem(TrinketItems.HEAVY_RUNE, ItemSet.ItemLocation.Trinket, false),
+                new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
+        }, new IItemSetMethods() {
+            @Override
+            public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+                IItemSetMethods.super.trinketTick(stack, slot, entity);
+                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 0));
+            }
+            @Override
+            public Text[] appendTooltip() {
+                return new Text[] {
+                        Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip.header").formatted(Formatting.GRAY),
+                        Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip").formatted(Formatting.GRAY)
+                };
+            }
+        });
+
+        public static final ItemSet DIVING_ARMOR = ItemSet.register(new Identifier("diving_armor"), new ItemSet.ItemSetItem[]{
+                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredBoots, ItemSet.ItemLocation.Armor),
+                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredLeggings, ItemSet.ItemLocation.Armor),
+                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredChestplate, ItemSet.ItemLocation.Armor),
+                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredHelmet, ItemSet.ItemLocation.Armor)
+        }, new IItemSetMethods() {
+            @Override
+            public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+                IItemSetMethods.super.inventoryTick(stack, world, entity, slot, selected);
+
+                // TODO: Move this to ItemSet class
+                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
+                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(CobaltEffects.COLD_RESISTANCE_EFFECT, 20, 0));
+            }
+            @Override
+            public Text[] appendTooltip() {
+                return new Text[] {
+                        Text.translatable("item_set.cobalt.diving_armor.tooltip.breathing").formatted(Formatting.GRAY),
+                        Text.translatable("item_set.cobalt.diving_armor.tooltip.cold").formatted(Formatting.GRAY)
+                };
+            }
+        });
+
+        public static void registerAll() {}
+
+    }
+
     // -- REGISTER
 
     public static void register() {
@@ -369,6 +486,8 @@ public class CobaltItems {
         TrinketItems.registerAll();
         ArrowItems.registerAll();
         MiscItems.registerAll();
+
+        ItemSets.registerAll();
 
         registerDispenserBlockBehaviour(ArrowItems.LIGHTNING_ARROW);
         registerDispenserBlockBehaviour(ArrowItems.EXPLOSIVE_ARROW);
