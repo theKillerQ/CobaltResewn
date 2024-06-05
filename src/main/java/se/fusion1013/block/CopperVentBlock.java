@@ -63,6 +63,8 @@ public class CopperVentBlock extends WallMountedBlock {
             world.playSound(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, .3f, 1.2f, false);
         }
 
+        // Display particles
+        // Position, direction and velocity depends on which direction the vent is facing
         Direction direction = state.get(FACING);
         switch (state.get(FACE)) {
             case FLOOR:
@@ -73,18 +75,10 @@ public class CopperVentBlock extends WallMountedBlock {
                 break;
             case WALL:
                 switch (direction) {
-                    case NORTH:
-                        world.addParticle(ParticleTypes.CLOUD, pos.getX() + .5, pos.getY()+.5, pos.getZ()+1, 0, 0, -PARTICLE_VELOCITY);
-                        break;
-                    case SOUTH:
-                        world.addParticle(ParticleTypes.CLOUD, pos.getX() + .5, pos.getY()+.5, pos.getZ(), 0, 0, PARTICLE_VELOCITY);
-                        break;
-                    case EAST:
-                        world.addParticle(ParticleTypes.CLOUD, pos.getX(), pos.getY()+.5, pos.getZ()+.5, PARTICLE_VELOCITY, 0, 0);
-                        break;
-                    case WEST:
-                        world.addParticle(ParticleTypes.CLOUD, pos.getX()+1, pos.getY()+.5, pos.getZ()+.5, -PARTICLE_VELOCITY, 0, 0);
-                        break;
+                    case NORTH -> world.addParticle(ParticleTypes.CLOUD, pos.getX() + .5, pos.getY() + .5, pos.getZ() + 1, 0, 0, -PARTICLE_VELOCITY);
+                    case SOUTH -> world.addParticle(ParticleTypes.CLOUD, pos.getX() + .5, pos.getY() + .5, pos.getZ(), 0, 0, PARTICLE_VELOCITY);
+                    case EAST -> world.addParticle(ParticleTypes.CLOUD, pos.getX(), pos.getY() + .5, pos.getZ() + .5, PARTICLE_VELOCITY, 0, 0);
+                    case WEST -> world.addParticle(ParticleTypes.CLOUD, pos.getX() + 1, pos.getY() + .5, pos.getZ() + .5, -PARTICLE_VELOCITY, 0, 0);
                 }
                 break;
         }

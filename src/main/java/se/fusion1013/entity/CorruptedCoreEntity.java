@@ -55,16 +55,14 @@ public class CorruptedCoreEntity extends HostileEntity {
 
     private CorruptedCoreState state = CorruptedCoreState.ALIVE;
 
-    private static final BlockSpreadManager.IBlockSpreadReplacer replacer = new BlockSpreadManager.IBlockSpreadReplacer() {
-        @Override
-        public BlockState replaceWith(BlockState blockState) {
-            if (blockState.getBlock() == Blocks.SCULK) return Blocks.STONE.getDefaultState();
-            if (blockState.getBlock() == Blocks.SCULK_VEIN) return Blocks.AIR.getDefaultState();
-            if (blockState.getBlock() == Blocks.SCULK_CATALYST) return Blocks.AIR.getDefaultState();
-            if (blockState.getBlock() == Blocks.SCULK_SENSOR) return Blocks.AIR.getDefaultState();
-            if (blockState.getBlock() == Blocks.SCULK_SHRIEKER) return Blocks.AIR.getDefaultState();
-            return null;
-        }
+    // Block spreader that gets rid of sculk when the core dies
+    private static final BlockSpreadManager.IBlockSpreadReplacer replacer = blockState -> {
+        if (blockState.getBlock() == Blocks.SCULK) return Blocks.STONE.getDefaultState();
+        if (blockState.getBlock() == Blocks.SCULK_VEIN) return Blocks.AIR.getDefaultState();
+        if (blockState.getBlock() == Blocks.SCULK_CATALYST) return Blocks.AIR.getDefaultState();
+        if (blockState.getBlock() == Blocks.SCULK_SENSOR) return Blocks.AIR.getDefaultState();
+        if (blockState.getBlock() == Blocks.SCULK_SHRIEKER) return Blocks.AIR.getDefaultState();
+        return null;
     };
 
     public CorruptedCoreEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -83,6 +81,7 @@ public class CorruptedCoreEntity extends HostileEntity {
 
     @Override
     protected void initGoals() {
+        // Target selector that looks for mobs that the core can buff
         this.targetSelector.add(0, new ActiveTargetGoal<>(this, HostileEntity.class, 0, false, false, CAN_BOOST_PREDICATE));
     }
 
@@ -115,6 +114,7 @@ public class CorruptedCoreEntity extends HostileEntity {
 
         if (getWorld().isClient) return super.damage(source, amount);
 
+        // State switch checker
         switch (state) {
             case ALIVE -> damagedAlive(source, amount);
             case DYING -> damagedDying(source, amount);
@@ -123,9 +123,11 @@ public class CorruptedCoreEntity extends HostileEntity {
         return super.damage(source, amount);
     }
 
+    // Triggered when the core is damaged while alive
     private void damagedAlive(DamageSource source, float amount) {
         var charge = Math.round(Math.min(amount, 4));
 
+        // Spread sculk on the nearby blocks, depending on the amount of damage that was dealt
         this.spreadManager.spread(BlockPos.ofFloored(this.getX()-2, this.getY()-1, this.getZ()), charge);
         this.spreadManager.spread(BlockPos.ofFloored(this.getX()+2, this.getY()-1, this.getZ()), charge);
         this.spreadManager.spread(BlockPos.ofFloored(this.getX(), this.getY()-1, this.getZ()-2), charge);
@@ -173,6 +175,7 @@ public class CorruptedCoreEntity extends HostileEntity {
             }
         }
 
+        // State switch check
         if (!getWorld().isClient) {
             if (getHealthPercentage() < 0 && state == CorruptedCoreState.ALIVE) {
                 switchState(CorruptedCoreState.DYING);
@@ -231,6 +234,7 @@ public class CorruptedCoreEntity extends HostileEntity {
     }
 
     private void updatePlayers() {
+        // Update player boss bars
         for (PlayerEntity playerEntity : this.getWorld().getPlayers()) {
             ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
             if (player.distanceTo(this) < 16) bossBar.addPlayer(player);

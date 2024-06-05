@@ -62,15 +62,13 @@ public class SculkPlantBlock extends ShortPlantBlock {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction[] var2 = ctx.getPlacementDirections();
-        int var3 = var2.length;
 
-        for(int var4 = 0; var4 < var3; ++var4) {
-            Direction direction = var2[var4];
+        for (Direction direction : var2) {
             BlockState blockState;
             if (direction.getAxis() == Direction.Axis.Y) {
-                blockState = (BlockState)((BlockState)this.getDefaultState().with(FACE, direction == Direction.UP ? BlockFace.CEILING : BlockFace.FLOOR)).with(FACING, ctx.getHorizontalPlayerFacing());
+                blockState = this.getDefaultState().with(FACE, direction == Direction.UP ? BlockFace.CEILING : BlockFace.FLOOR).with(FACING, ctx.getHorizontalPlayerFacing());
             } else {
-                blockState = (BlockState)((BlockState)this.getDefaultState().with(FACE, BlockFace.WALL)).with(FACING, direction.getOpposite());
+                blockState = this.getDefaultState().with(FACE, BlockFace.WALL).with(FACING, direction.getOpposite());
             }
 
             if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {

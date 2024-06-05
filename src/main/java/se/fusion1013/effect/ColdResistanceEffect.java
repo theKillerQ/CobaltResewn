@@ -4,6 +4,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
+/**
+ * Makes the {@link LivingEntity} immune to various cold related effects.
+ */
 public class ColdResistanceEffect extends StatusEffect {
 
     public ColdResistanceEffect() {
@@ -12,6 +15,7 @@ public class ColdResistanceEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+        // Remove cold-related effects on the entity
         entity.removeStatusEffect(CobaltEffects.FREEZING_EFFECT);
         entity.setInPowderSnow(false);
         entity.setFrozenTicks(0);

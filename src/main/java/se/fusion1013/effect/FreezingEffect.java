@@ -8,6 +8,9 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
+/**
+ * Simulates the effect of powdered snow on the entity.
+ */
 public class FreezingEffect extends StatusEffect {
     public FreezingEffect() {
         super(StatusEffectCategory.HARMFUL, 0x818da1);

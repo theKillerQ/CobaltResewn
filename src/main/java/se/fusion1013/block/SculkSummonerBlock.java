@@ -20,6 +20,7 @@ public class SculkSummonerBlock extends Block {
 
         if (random.nextInt(2) != 0) return;
 
+        // Display particles and play sound
         world.addParticle(ParticleTypes.SCULK_SOUL, pos.getX()+random.nextFloat(), pos.getY()+1.2, pos.getZ()+random.nextFloat(), 0, 0, 0);
         world.playSound(pos.getX()+.5, pos.getY()+.5, pos.getZ()+.5, SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.BLOCKS, 1, 1, false);
 

@@ -9,9 +9,12 @@ import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 import se.fusion1013.block.CobaltBlocks;
 
+/**
+ * Handles registering custom {@link BlockEntityType}s.
+ */
 public class CobaltBlockEntityTypes {
 
-    public static final BlockEntityType<ExposedCopperCrateBlockEntity>            EXPOSED_COPPER_CRATE;
+    public static final BlockEntityType<CopperCrateBlockEntity>                   COPPER_CRATE_ENTITY;
     public static final BlockEntityType<AncientPotBlockEntity>                    ANCIENT_POT_BLOCK_ENTITY;
     public static final BlockEntityType<SculkSpreaderBlockEntity>                 SCULK_SPREADER;
     public static final BlockEntityType<SpeakerBlockEntity>                       SPEAKER;
@@ -27,7 +30,7 @@ public class CobaltBlockEntityTypes {
     public static void registerAll() {}
 
     static {
-        EXPOSED_COPPER_CRATE = register("exposed_copper_crate_block_entity", FabricBlockEntityTypeBuilder.create(ExposedCopperCrateBlockEntity::new, CobaltBlocks.EXPOSED_COPPER_CRATE));
+        COPPER_CRATE_ENTITY = register("exposed_copper_crate_block_entity", FabricBlockEntityTypeBuilder.create(CopperCrateBlockEntity::new, CobaltBlocks.EXPOSED_COPPER_CRATE));
         ANCIENT_POT_BLOCK_ENTITY = register("ancient_pot_block_entity", FabricBlockEntityTypeBuilder.create(AncientPotBlockEntity::new, CobaltBlocks.ANCIENT_POT_1, CobaltBlocks.ANCIENT_POT_2, CobaltBlocks.ANCIENT_POT_3, CobaltBlocks.ANCIENT_POT_4_TOP));
         SCULK_SPREADER = register("sculk_spreader_block_entity", FabricBlockEntityTypeBuilder.create(SculkSpreaderBlockEntity::new, CobaltBlocks.SCULK_SPREADER));
         SPEAKER = register("speaker_block_entity", FabricBlockEntityTypeBuilder.create(SpeakerBlockEntity::new, CobaltBlocks.OXIDIZED_COPPER_SPEAKER, CobaltBlocks.EXPOSED_COPPER_SPEAKER, CobaltBlocks.WEATHERED_COPPER_SPEAKER, CobaltBlocks.COPPER_SPEAKER));

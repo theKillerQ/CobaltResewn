@@ -11,8 +11,10 @@ import net.minecraft.world.World;
 import se.fusion1013.block.CobaltBlocks;
 import se.fusion1013.block.RuneBlock;
 import se.fusion1013.items.CobaltItems;
+import se.fusion1013.tags.CobaltTags;
 
 public class RuneBlockEntity extends BlockEntity {
+
     public RuneBlockEntity(BlockPos pos, BlockState state) {
         super(CobaltBlockEntityTypes.RUNE_BLOCK, pos, state);
     }
@@ -22,22 +24,22 @@ public class RuneBlockEntity extends BlockEntity {
 
         boolean playerInRange = false;
 
+        // Find all nearby players
         var players = world.getPlayers();
         for (PlayerEntity player : players) {
-            var mainHandItem = player.getMainHandStack().getItem();
-            var offhandItem = player.getOffHandStack().getItem();
 
-            if (mainHandItem == CobaltBlocks.RUNE_BLOCK.asItem() || mainHandItem == CobaltItems.MiscItems.RUNE_MODIFIER) playerInRange = true;
-            if (offhandItem == CobaltBlocks.RUNE_BLOCK.asItem() || offhandItem == CobaltItems.MiscItems.RUNE_MODIFIER) playerInRange = true;
+            // Get the held items of the player
+            var mainHandItem = player.getMainHandStack();
+            var offhandItem = player.getOffHandStack();
 
-            if (
-                    mainHandItem != Items.SOUL_LANTERN
-                ) continue;
+            // Check if player is holding an item that reveals runes (check if the item has the reveal runes tag)
+            if (!mainHandItem.isIn(CobaltTags.REVEALS_RUNES) && !offhandItem.isIn(CobaltTags.REVEALS_RUNES)) continue;
 
             // Player is holding lantern, check distance
-            if (player.getPos().distanceTo(pos.toCenterPos()) < 6) playerInRange = true;
+            if (player.getPos().distanceTo(pos.toCenterPos()) < 16) playerInRange = true;
         }
 
+        // Set the visible state of the block
         world.setBlockState(pos, state.with(RuneBlock.VISIBLE, playerInRange));
     }
 }

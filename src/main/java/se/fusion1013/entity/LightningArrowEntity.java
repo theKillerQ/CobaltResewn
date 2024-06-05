@@ -41,6 +41,8 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
+
+        // If the arrow is in the ground, display lightning particles
         if (this.getWorld().isClient) {
             if (this.inGround) {
                 if (this.inGroundTime % 5 == 0) {

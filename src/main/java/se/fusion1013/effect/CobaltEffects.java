@@ -1,5 +1,6 @@
 package se.fusion1013.effect;
 
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.registry.Registries;
@@ -7,6 +8,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 
+/**
+ * Handles registering custom {@link StatusEffect}s.
+ */
 public class CobaltEffects {
 
     public static final StatusEffect CROWD_CONTROL = register("crowd_control", new CrowdControlEffect());

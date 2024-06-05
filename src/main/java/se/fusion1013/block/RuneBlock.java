@@ -42,12 +42,16 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
 
         player.playSound(SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON, 1, 1);
 
+        // Get the current rune type
         var runeType = state.get(RUNE_TYPE);
         boolean selectNext = false;
 
+        // Store the previous and next runes
         var previousRuneType = RuneType.Dungeons_Z;
         var newRuneType = RuneType.None;
 
+        // Iterate over all rune types and find the current one.
+        // Store the previous and next values.
         for (RuneType type : RuneType.values()) {
             if (selectNext) {
                 newRuneType = type;
@@ -57,6 +61,8 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
             else previousRuneType = type;
         }
 
+        // Switch the rune state depending on if the player is sneaking or not
+        // TODO: Currently does not work. Make a different interface for switching rune types
         if (player.isSneaking()) world.setBlockState(pos, state.with(RUNE_TYPE, previousRuneType));
         else world.setBlockState(pos, state.with(RUNE_TYPE, newRuneType));
 
@@ -65,6 +71,7 @@ public class RuneBlock extends MultifaceGrowthBlockWithEntity implements BlockEn
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        // Display particles if the rune is visible
         if (!state.get(VISIBLE)) return;
         if (!world.isClient) return;
 

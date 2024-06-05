@@ -1,6 +1,6 @@
 package se.fusion1013.config;
 
-public class CobaltModConfig {
+public class CobaltModConfig { // TODO: This will be a proper config system at some point
 
     public static final boolean voiceDuplication = false;
     public static final float speakerDistance = 20;

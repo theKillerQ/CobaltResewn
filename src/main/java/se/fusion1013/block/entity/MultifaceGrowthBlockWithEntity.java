@@ -25,6 +25,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.function.Function;
 
+/**
+ * A {@link MultifaceGrowthBlock} that inherits from {@link BlockWithEntity}.
+ */
 public abstract class MultifaceGrowthBlockWithEntity extends BlockWithEntity {
     private static final float field_31194 = 1.0f;
     private static final VoxelShape UP_SHAPE = Block.createCuboidShape(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);

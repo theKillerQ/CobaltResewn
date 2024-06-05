@@ -60,6 +60,10 @@ public class ExplosiveArrowEntity extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
+
+        // If the arrow is in the ground;
+        // Update the fuse timer
+        // If fuse timer runs out, explode
         if (this.inGround)
         {
             int i = this.getFuse() - 1;
@@ -70,6 +74,9 @@ public class ExplosiveArrowEntity extends PersistentProjectileEntity {
                 this.updateWaterState();
             }
         }
+
+        // If on the client, display particles
+        // If on the server, send status to clients
         if (this.getWorld().isClient) {
             if (this.inGround) {
                 if (this.inGroundTime % 5 == 0) {

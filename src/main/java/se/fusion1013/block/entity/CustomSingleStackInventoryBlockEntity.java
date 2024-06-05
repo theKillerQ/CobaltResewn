@@ -16,6 +16,10 @@ import org.jetbrains.annotations.Nullable;
 import se.fusion1013.Main;
 import se.fusion1013.block.inventory.ImplementedInventory;
 
+/**
+ * {@link BlockEntity} that allows for storing a single {@link net.minecraft.item.Item} inside it.
+ * Does not handle insertion/extraction, that has to be handled on the {@link net.minecraft.block.Block} side.
+ */
 public class CustomSingleStackInventoryBlockEntity extends BlockEntity implements ImplementedInventory {
 
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);

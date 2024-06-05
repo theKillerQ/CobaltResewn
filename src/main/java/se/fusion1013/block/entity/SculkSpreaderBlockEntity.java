@@ -9,14 +9,17 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import se.fusion1013.block.CobaltBlocks;
 
+/**
+ * {@link BlockEntity} that spreads sculk around it for a specified number of ticks.
+ */
 public class SculkSpreaderBlockEntity extends BlockEntity {
 
-    private static final int MAX_ALIVE_TICK = 200;
+    private static final int MAX_ALIVE_TICK = 200; // The number of ticks this block will exist for before getting removed.
 
     public final SculkSpreadManager spreadManager;
-    public final Random random;
+    public int aliveTicks = 0; // The number of ticks the block has existed for.
 
-    public int aliveTicks = 0;
+    public final Random random;
 
     public SculkSpreaderBlockEntity(BlockPos pos, BlockState state) {
         super(CobaltBlockEntityTypes.SCULK_SPREADER, pos, state);
@@ -25,7 +28,9 @@ public class SculkSpreaderBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, SculkSpreaderBlockEntity blockEntity) {
-        blockEntity.aliveTicks++;
+        blockEntity.aliveTicks++; // Increment
+
+        // If it has been alive for more than the allowed time, replace it with sculk
         if (blockEntity.aliveTicks > MAX_ALIVE_TICK) {
             world.setBlockState(pos, Blocks.SCULK.getDefaultState());
             return;

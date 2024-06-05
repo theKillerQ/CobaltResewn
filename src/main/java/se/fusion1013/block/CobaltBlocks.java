@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -17,8 +18,12 @@ import java.util.function.ToIntFunction;
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_BLOCK_GROUP_KEY;
 import static se.fusion1013.items.CustomItemGroupRegistry.COBALT_GROUP_KEY;
 
+/**
+ * Handles registering custom {@link Block}s.
+ */
 public class CobaltBlocks {
 
+    // -- Chiseled Copper Blocks
     public static final Block WHITE_CHISELED_COPPER =                register("white_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block LIGHT_GRAY_CHISELED_COPPER =           register("light_gray_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block GRAY_CHISELED_COPPER =                 register("gray_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
@@ -87,9 +92,11 @@ public class CobaltBlocks {
     public static final Block OXIDIZED_MAGENTA_CHISELED_COPPER =    register("oxidized_magenta_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block OXIDIZED_PINK_CHISELED_COPPER =       register("oxidized_pink_chiseled_copper", new Block(AbstractBlock.Settings.create().strength(3, 6)));
 
+    // -- Copper Decoration Blocks
     public static final Block EXPOSED_COPPER_VENT = register("exposed_copper_vent", new CopperVentBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block EXPOSED_COPPER_CRATE = register("exposed_copper_crate", new CopperCrateBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
+    // -- Pots
     // TODO: Replace with custom class
     public static final Block ANCIENT_POT_1 = register("ancient_pot_1", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_2 = register("ancient_pot_2", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
@@ -98,18 +105,20 @@ public class CobaltBlocks {
     public static final Block ANCIENT_POT_4_MIDDLE = register("tall_ancient_pot_middle", new AncientPot4BottomBlock(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_4_TOP = register("ancient_pot_4_top", new AncientPot4TopBlock(AbstractBlock.Settings.create().strength(3, 6)));
 
-
+    // -- Sculk Blocks
     public static final Block SCULK_STEM = register("sculk_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
     public static final Block SHORT_SCULK_GRASS = register("short_sculk_grass", new SculkPlantBlock(FabricBlockSettings.create().noCollision()));
     public static final Block SCULK_GRASS = register("sculk_grass", new SculkPlantBlock(FabricBlockSettings.create().noCollision()));
     public static final Block SCULK_SUMMONER = register("sculk_summoner", new SculkSummonerBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
     public static final Block SCULK_SPREADER = register("sculk_spreader", new SculkSpreaderBlock(FabricBlockSettings.copyOf(Blocks.SCULK)));
 
+    // -- Speakers
     public static final Block OXIDIZED_COPPER_SPEAKER = register("oxidized_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block WEATHERED_COPPER_SPEAKER = register("weathered_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block EXPOSED_COPPER_SPEAKER = register("exposed_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block COPPER_SPEAKER = register("copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
+    // -- Misc
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
     public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
@@ -137,7 +146,7 @@ public class CobaltBlocks {
     }
 
     public static ToIntFunction<BlockState> createLightLevelFromVisibleBlockState(int litLevel) {
-        return state -> state.get(RuneBlock.VISIBLE) ? litLevel : 0;
+        return state -> state.get(RuneBlock.VISIBLE) ? litLevel : 0; // TODO: Move visible block state to custom thingy
     }
 
     public static void register() {}

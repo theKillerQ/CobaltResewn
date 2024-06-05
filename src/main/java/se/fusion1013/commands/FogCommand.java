@@ -17,6 +17,9 @@ import se.fusion1013.networking.CobaltNetworkingConstants;
 
 import static net.minecraft.server.command.CommandManager.*;
 
+/**
+ * Allows for switching different fog parameters in game.
+ */
 public class FogCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {

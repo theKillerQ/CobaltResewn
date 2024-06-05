@@ -9,6 +9,9 @@ import net.minecraft.entity.effect.StatusEffects;
 
 import java.util.UUID;
 
+/**
+ * Makes the entity immovable for the duration.
+ */
 public class ImmovableEffect extends StatusEffect {
     public ImmovableEffect() {
         super(StatusEffectCategory.HARMFUL, 0x818da1);

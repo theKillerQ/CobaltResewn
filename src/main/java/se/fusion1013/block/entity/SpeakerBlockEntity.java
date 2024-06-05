@@ -45,10 +45,12 @@ public class SpeakerBlockEntity extends BlockEntity {
 
     public SpeakerBlockEntity(BlockPos pos, BlockState state) {
         super(CobaltBlockEntityTypes.SPEAKER, pos, state);
-        speakerBlockEntities.add(this);
+
+        speakerBlockEntities.add(this); // Add the new instance to the list of speakers
 
         channelId = UUID.randomUUID();
 
+        // TODO: This might not be needed anymore, remove?
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -94,6 +96,14 @@ public class SpeakerBlockEntity extends BlockEntity {
         return super.onSyncedBlockEvent(type, data);
     }
 
+    /**
+     * Returns a list of all {@link SpeakerBlockEntity} within the specified range of the point, on the specified canal.
+     * @param canal the canal of the speakers.
+     * @param world the world to get speakers from.
+     * @param pos the position to search from.
+     * @param range the range to search within.
+     * @return a list of speakers within range of the position.
+     */
     public static List<SpeakerBlockEntity> getSpeakersActivatedInRange(int canal, World world, Vec3d pos, int range) {
         speakerBlockEntities.removeIf(BlockEntity::isRemoved);
 
@@ -114,22 +124,40 @@ public class SpeakerBlockEntity extends BlockEntity {
         return list;
     }
 
+    /**
+     * Play a sound from the speaker.
+     * @param event the microphone event.
+     * @param audioData the audio data to play.
+     */
     public void playSound(MicrophonePacketEvent event, byte[] audioData) {
+
+        // Create the position to play the sound from
         Position pos = VoiceChatIntegration.voiceChatAPI.createPosition(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ());
 
+        // If a channel has not yet been created; Attempt to create a new channel to play the sound from.
         if (this.channel == null) {
+
+            // Attempt to create the channel
             if (this.world instanceof ServerWorld serverWorld) {
                 this.channel = VoiceChatIntegration.voiceChatAPI.createLocationalAudioChannel(this.channelId, VoiceChatIntegration.voiceChatAPI.fromServerLevel(serverWorld), pos);
             }
+
+            // If the channel still does not exist, do not attempt to play sound from it
             if (this.channel == null) {
                 return;
             }
+
+            // Set channel data
             this.channel.setCategory(VoiceChatIntegration.SPEAKER_CATEGORY);
             this.channel.setDistance(CobaltModConfig.speakerDistance + 1F);
+
+            // Filter who should hear the sound
             if (!CobaltModConfig.voiceDuplication) {
                 this.channel.setFilter(serverPlayer -> !serverPlayer.getEntity().equals(event.getSenderConnection().getPlayer().getEntity()));
             }
         }
+
+        // Send the audio data to the channel
         this.channel.send(audioData);
     }
 

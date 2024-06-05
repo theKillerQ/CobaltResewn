@@ -2,6 +2,7 @@ package se.fusion1013.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -11,11 +12,16 @@ import net.minecraft.registry.Registry;
 
 import static se.fusion1013.Main.MOD_NAMESPACE;
 
+/**
+ * Handles registering custom {@link Entity}s.
+ */
 public class CustomEntityRegistry {
 
+    // Arrows
     public static EntityType<LightningArrowEntity> LIGHTNING_ARROW;
     public static EntityType<ExplosiveArrowEntity> EXPLOSIVE_ARROW;
 
+    // Sculk entities
     public static EntityType<CorruptedCoreEntity> CORRUPTED_CORE;
 
     public static void register() {
