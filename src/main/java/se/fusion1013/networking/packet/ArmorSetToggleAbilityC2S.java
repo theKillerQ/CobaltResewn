@@ -8,6 +8,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.util.item.ArmorUtil;
 
+/**
+ *
+ */
 public class ArmorSetToggleAbilityC2S extends ServerPacketBase {
 
     @Override

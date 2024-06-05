@@ -2,6 +2,9 @@ package se.fusion1013.networking;
 
 import net.minecraft.util.Identifier;
 
+/**
+ * All the networking constants used for cobalt.
+ */
 public class CobaltNetworkingConstants {
 
     // S2C
