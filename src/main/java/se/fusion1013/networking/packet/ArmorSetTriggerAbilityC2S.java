@@ -8,6 +8,10 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.util.item.ArmorUtil;
 
+/**
+ * Sent from the client to the server when a player presses the armor set triggered ability keybind.
+ * Routes the call to the worn armor set.
+ */
 public class ArmorSetTriggerAbilityC2S extends ServerPacketBase {
 
     @Override

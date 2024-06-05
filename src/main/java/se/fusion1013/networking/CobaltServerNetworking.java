@@ -9,6 +9,9 @@ import se.fusion1013.networking.packet.UpdateWalkieTalkieC2SPacket;
 
 import static se.fusion1013.networking.CobaltNetworkingConstants.*;
 
+/**
+ * Registers all the global receivers on the server side.
+ */
 public class CobaltServerNetworking {
 
     public static void register() {
