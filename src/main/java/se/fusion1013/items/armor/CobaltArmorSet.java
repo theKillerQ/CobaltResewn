@@ -1,5 +1,6 @@
 package se.fusion1013.items.armor;
 
+import com.mojang.datafixers.util.Function3;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,15 +12,18 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.Arm;
 import net.minecraft.util.Formatting;
-import se.fusion1013.items.CobaltItemConfiguration;
-import se.fusion1013.items.ICobaltArmorItem;
+import net.minecraft.util.Identifier;
+import se.fusion1013.Main;
+import se.fusion1013.items.*;
 import se.fusion1013.items.materials.CobaltArmorMaterial;
 import se.fusion1013.util.item.ArmorUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CobaltArmorSet {
@@ -47,9 +51,32 @@ public class CobaltArmorSet {
 
     public final CobaltArmorMaterial material;
 
+    // Item set
+    private IItemSetMethods setMethods;
+    public ItemSet itemSet;
+
     public CobaltArmorSet(CobaltArmorMaterial material) {
         this.material = material;
         REGISTERED_ARMOR_SETS.put(material.getName(), this);
+    }
+
+    public void register(String setId, BiFunction<String, Item, Item> registerFunction) {
+        // Register the parts
+        registeredHelmet = registerFunction.apply(setId + "_helmet", helmet.getItem());
+        registeredChestplate = registerFunction.apply(setId + "_chestplate", chestplate.getItem());
+        registeredLeggings = registerFunction.apply(setId + "_leggings", leggings.getItem());
+        registeredBoots = registerFunction.apply(setId + "_boots", boots.getItem());
+
+        // Create item set if methods are present
+        if (setMethods != null) {
+            Main.LOGGER.info("Registered armor set with item set methods");
+            itemSet = ItemSet.register(new Identifier(setId), new ItemSet.ItemSetItem[] {
+                    new ItemSet.ItemSetItem(registeredHelmet, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(registeredChestplate, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(registeredLeggings, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(registeredBoots, ItemSet.ItemLocation.Armor)
+            }, setMethods);
+        }
     }
 
     public static class Builder {
@@ -73,6 +100,8 @@ public class CobaltArmorSet {
         private boolean hasBoots;
         private boolean bootsAsEquipment;
         private ICobaltArmorItem boots;
+
+        private IItemSetMethods itemSetMethods;
 
         public Builder(CobaltArmorMaterial material, CobaltItemConfiguration configuration) {
             this.material = material;
@@ -119,6 +148,11 @@ public class CobaltArmorSet {
             return this;
         }
 
+        public Builder withSetBonus(IItemSetMethods methods) {
+            itemSetMethods = methods;
+            return this;
+        }
+
         public CobaltArmorSet build() {
             var set = new CobaltArmorSet(material);
 
@@ -139,6 +173,8 @@ public class CobaltArmorSet {
 
             set.hasBoots = hasBoots;
             set.boots = boots;
+
+            set.setMethods = itemSetMethods;
 
             return set;
         }
