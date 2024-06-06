@@ -95,31 +95,23 @@ public class CobaltItems {
 
         static {
             ADVENTURE_ARMOR_SET = registerSet("adventure", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVENTURE, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
-            DIVING_ARMOR_SET = registerSet("diving", new CobaltArmorSet.Builder(CobaltArmorMaterials.DIVE, CobaltItemConfiguration.create(Formatting.GOLD))
-                    .withHelmet(true).withChestplate().withLeggings().withBoots().build());
-            LUMBERJACK_ARMOR_SET = registerSet("lumberjack", new CobaltArmorSet.Builder(CobaltArmorMaterials.LUMBERJACK, CobaltItemConfiguration.create(Formatting.DARK_GREEN))
-                    .withHelmet().withChestplate().withLeggings().withBoots().build());
-            GUARD_ARMOR_SET = registerSet("guard", new CobaltArmorSet.Builder(CobaltArmorMaterials.GUARD, CobaltItemConfiguration.create(Formatting.GRAY))
-                    .withHelmet().withChestplate().withLeggings().withBoots().build());
+            DIVING_ARMOR_SET = registerSet("diving", new CobaltArmorSet.Builder(CobaltArmorMaterials.DIVE, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().withHelmet(true).build());
+            LUMBERJACK_ARMOR_SET = registerSet("lumberjack", new CobaltArmorSet.Builder(CobaltArmorMaterials.LUMBERJACK, CobaltItemConfiguration.create(Formatting.DARK_GREEN)).withAll().build());
+            GUARD_ARMOR_SET = registerSet("guard", new CobaltArmorSet.Builder(CobaltArmorMaterials.GUARD, CobaltItemConfiguration.create(Formatting.GRAY)).withAll().build());
             HUNTER_ARMOR_SET = registerSet("hunter", new CobaltArmorSet.Builder(CobaltArmorMaterials.HUNTER, CobaltItemConfiguration.create(Formatting.GRAY)).withAll().build());
             MECHANIC_ARMOR_SET = registerSet("mechanic", new CobaltArmorSet.Builder(CobaltArmorMaterials.MECHANIC, CobaltItemConfiguration.create(Formatting.DARK_GRAY)).withAll().build());
             REINFORCED_MECHANIC_ARMOR_SET = registerSet("reinforced_mechanic", new CobaltArmorSet.Builder(CobaltArmorMaterials.REINFORCED_MECHANIC, CobaltItemConfiguration.create(Formatting.DARK_GRAY)).withAll().build());
-            MINER_ARMOR_SET = registerSet("miner", new CobaltArmorSet.Builder(CobaltArmorMaterials.MINER, CobaltItemConfiguration.create(Formatting.DARK_GRAY))
-                    .withHelmet(true).withChestplate().withLeggings().withBoots().build());
-            PROSPECTOR_ARMOR_SET = registerSet("prospector", new CobaltArmorSet.Builder(CobaltArmorMaterials.PROSPECTOR, CobaltItemConfiguration.create(Formatting.GOLD))
-                    .withHelmet(true).withChestplate().withLeggings().withBoots().build());
+            MINER_ARMOR_SET = registerSet("miner", new CobaltArmorSet.Builder(CobaltArmorMaterials.MINER, CobaltItemConfiguration.create(Formatting.DARK_GRAY)).withAll().withHelmet(true).build());
+            PROSPECTOR_ARMOR_SET = registerSet("prospector", new CobaltArmorSet.Builder(CobaltArmorMaterials.PROSPECTOR, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().withHelmet(true).build());
             TINKER_ARMOR_SET = registerSet("tinker", new CobaltArmorSet.Builder(CobaltArmorMaterials.TINKER, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
             REINFORCED_TINKER_ARMOR_SET = registerSet("reinforced_tinker", new CobaltArmorSet.Builder(CobaltArmorMaterials.REINFORCED_TINKER, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
 
             // Outstanding Tier
-            EXOSKELETON = registerSet("exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
-                    .build());
-            THERMAL_GEAR = registerSet("thermal_gear", new CobaltArmorSet.Builder(CobaltArmorMaterials.THERMAL_GEAR, CobaltItemConfiguration.create(Formatting.YELLOW)).withAll()
-                    .withHelmet(true).build());
+            EXOSKELETON = registerSet("exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
+            THERMAL_GEAR = registerSet("thermal_gear", new CobaltArmorSet.Builder(CobaltArmorMaterials.THERMAL_GEAR, CobaltItemConfiguration.create(Formatting.YELLOW)).withAll().withHelmet(true).build());
 
             // Perfect Tier
-            ADVANCED_EXOSKELETON = registerSet("advanced_exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVANCED_EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
-                    .build());
+            ADVANCED_EXOSKELETON = registerSet("advanced_exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVANCED_EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll().build());
         }
 
     }
