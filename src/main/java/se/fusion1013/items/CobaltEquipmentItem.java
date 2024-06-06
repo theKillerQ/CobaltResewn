@@ -68,11 +68,6 @@ public class CobaltEquipmentItem extends Item implements Equipment, ICobaltArmor
     }
 
     @Override
-    public void setArmorBonusTickExecutor(CobaltArmorItem.IArmorTickExecutor executor) {
-        // TODO
-    }
-
-    @Override
     public Item getItem() {
         return this;
     }

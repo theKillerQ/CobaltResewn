@@ -45,30 +45,11 @@ public class CobaltArmorSet {
     private boolean hasBoots;
     public ICobaltArmorItem boots;
 
-    public ArmorSetBonus setBonus;
-
     public final CobaltArmorMaterial material;
-
-    private BiConsumer<MinecraftServer, PlayerEntity> triggerAbility;
 
     public CobaltArmorSet(CobaltArmorMaterial material) {
         this.material = material;
         REGISTERED_ARMOR_SETS.put(material.getName(), this);
-    }
-
-    private void applySetBonus() {
-        if (hasBoots) applySetBonus(boots, setBonus);
-        else if (hasLeggings) applySetBonus(leggings, setBonus);
-        else if (hasChestplate) applySetBonus(chestplate, setBonus);
-        else if (hasHelmet) applySetBonus(helmet, setBonus);
-    }
-
-    private static void applySetBonus(ICobaltArmorItem item, ArmorSetBonus setBonus) {
-        item.setArmorBonusTickExecutor(setBonus.executor());
-    }
-
-    public void triggerArmorAbility(MinecraftServer server, PlayerEntity player) {
-        if (triggerAbility != null) triggerAbility.accept(server, player);
     }
 
     public static class Builder {
@@ -93,18 +74,9 @@ public class CobaltArmorSet {
         private boolean bootsAsEquipment;
         private ICobaltArmorItem boots;
 
-        private ArmorSetBonus setBonus;
-
-        private BiConsumer<MinecraftServer, PlayerEntity> triggerAbility;
-
         public Builder(CobaltArmorMaterial material, CobaltItemConfiguration configuration) {
             this.material = material;
             this.configuration = configuration;
-        }
-
-        public Builder withSetBonus(ArmorSetBonus setBonus) {
-            this.setBonus = setBonus;
-            return this;
         }
 
         public Builder withAll() {
@@ -147,38 +119,8 @@ public class CobaltArmorSet {
             return this;
         }
 
-        public Builder withTriggerAbility(BiConsumer<MinecraftServer, PlayerEntity> trigger) {
-            this.triggerAbility = trigger;
-            return this;
-        }
-
         public CobaltArmorSet build() {
             var set = new CobaltArmorSet(material);
-
-            // Apply modifications to the config that all items inherit from
-            if (setBonus != null) {
-                configuration.tooltip("");
-                configuration.tooltip(Text.translatable("item.cobalt.armor.set_bonus_header").formatted(Formatting.GOLD));
-                for (String s : setBonus.tooltip()) configuration.tooltip(Text.translatable(s).formatted(Formatting.GRAY));
-            }
-
-            // Apply trigger ability
-            if (triggerAbility != null) {
-                set.triggerAbility = triggerAbility;
-                configuration.tooltip("");
-
-                var header = Text.empty()
-                        .append(Text.literal("[Set Bonus] Press ").formatted(Formatting.GOLD))
-                        .append(Text.keybind("key.cobalt.armor_trigger").formatted(Formatting.GOLD))
-                        .append(Text.literal(": ").formatted(Formatting.GOLD))
-                        .append(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.header").formatted(Formatting.GOLD))
-                        .append(Text.literal(" [").formatted(Formatting.GOLD))
-                        .append(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.cost").formatted(Formatting.GRAY))
-                        .append(Text.literal("]").formatted(Formatting.GOLD));
-
-                configuration.tooltip(header);
-                configuration.tooltip(Text.translatable("item.cobalt." + material.getName() + ".trigger_ability.tooltip").formatted(Formatting.GRAY));
-            }
 
             // Create the armor items
             if (hasHelmet) helmet = ArmorUtil.getArmorItem(material, helmetAsEquipment, ArmorItem.Type.HELMET, configuration);
@@ -197,11 +139,6 @@ public class CobaltArmorSet {
 
             set.hasBoots = hasBoots;
             set.boots = boots;
-
-            if (setBonus != null) {
-                set.setBonus = setBonus;
-                set.applySetBonus();
-            }
 
             return set;
         }

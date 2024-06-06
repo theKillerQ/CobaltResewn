@@ -15,7 +15,6 @@ import se.fusion1013.Main;
 import se.fusion1013.effect.CobaltEffects;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
-import se.fusion1013.items.armor.ArmorSetBonus;
 import se.fusion1013.items.armor.CobaltArmorItem;
 import se.fusion1013.items.armor.CobaltArmorSet;
 import se.fusion1013.items.consumable.CobaltHealingItem;
@@ -386,42 +385,9 @@ public class CobaltItems {
 
     public static class ItemSets {
 
-
-        public static final ItemSet FIRE_RUNE_HEALTH = ItemSet.register(new Identifier("fire_rune_health"), new ItemSet.ItemSetItem[]{
-                new ItemSet.ItemSetItem(TrinketItems.HEALTH_RUNE, ItemSet.ItemLocation.Trinket, false),
-                new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
-        }, new IItemSetMethods() {
-            @Override
-            public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
-                IItemSetMethods.super.trinketTick(stack, slot, entity);
-                if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
-            }
-            @Override
-            public Text[] appendTooltipText() {
-                return new Text[] {
-                        Text.translatable("item_set.cobalt.fire_rune_health.tooltip.header").formatted(Formatting.GRAY),
-                        Text.translatable("item_set.cobalt.fire_rune_health.tooltip").formatted(Formatting.GRAY)
-                };
-            }
-        });
-
-        public static final ItemSet FIRE_RUNE_HEAVY = ItemSet.register(new Identifier("fire_rune_heavy"), new ItemSet.ItemSetItem[]{
-                new ItemSet.ItemSetItem(TrinketItems.HEAVY_RUNE, ItemSet.ItemLocation.Trinket, false),
-                new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
-        }, new IItemSetMethods() {
-            @Override
-            public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
-                IItemSetMethods.super.trinketTick(stack, slot, entity);
-                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 0));
-            }
-            @Override
-            public Text[] appendTooltipText() {
-                return new Text[] {
-                        Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip.header").formatted(Formatting.GRAY),
-                        Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip").formatted(Formatting.GRAY)
-                };
-            }
-        });
+        // Runes
+        public static final ItemSet FIRE_RUNE_HEALTH;
+        public static final ItemSet FIRE_RUNE_HEAVY;
 
         // Armor Sets
         public static final ItemSet DIVING_ARMOR;
@@ -430,6 +396,42 @@ public class CobaltItems {
         public static final ItemSet ADVANCED_EXOSKELETON;
 
         static {
+            FIRE_RUNE_HEALTH = ItemSet.register(new Identifier("fire_rune_health"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(TrinketItems.HEALTH_RUNE, ItemSet.ItemLocation.Trinket, false),
+                    new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
+            }, new IItemSetMethods() {
+                @Override
+                public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+                    IItemSetMethods.super.trinketTick(stack, slot, entity);
+                    if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) ItemSetUtil.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
+                }
+                @Override
+                public Text[] appendTooltipText() {
+                    return new Text[] {
+                            Text.translatable("item_set.cobalt.fire_rune_health.tooltip.header").formatted(Formatting.GRAY),
+                            Text.translatable("item_set.cobalt.fire_rune_health.tooltip").formatted(Formatting.GRAY)
+                    };
+                }
+            });
+
+            FIRE_RUNE_HEAVY = ItemSet.register(new Identifier("fire_rune_heavy"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(TrinketItems.HEAVY_RUNE, ItemSet.ItemLocation.Trinket, false),
+                    new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
+            }, new IItemSetMethods() {
+                @Override
+                public void trinketTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
+                    IItemSetMethods.super.trinketTick(stack, slot, entity);
+                    ItemSetUtil.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 0));
+                }
+                @Override
+                public Text[] appendTooltipText() {
+                    return new Text[] {
+                            Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip.header").formatted(Formatting.GRAY),
+                            Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip").formatted(Formatting.GRAY)
+                    };
+                }
+            });
+
             DIVING_ARMOR = ItemSet.register(new Identifier("diving_armor"), new ItemSet.ItemSetItem[]{
                     new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredBoots, ItemSet.ItemLocation.Armor),
                     new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredLeggings, ItemSet.ItemLocation.Armor),

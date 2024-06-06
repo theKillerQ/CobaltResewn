@@ -85,8 +85,7 @@ public class ArmorUtil {
     }
 
     public static CobaltArmorItem getArmorItem(CobaltArmorMaterial material, ArmorItem.Type armorType, CobaltItemConfiguration configuration) {
-        var builder = new CobaltArmorItem.Builder(material, armorType, configuration, new FabricItemSettings());
-        return builder.build();
+        return new CobaltArmorItem(material, armorType, configuration, new FabricItemSettings());
     }
 
     public static ICobaltArmorItem getArmorItem(CobaltArmorMaterial material, boolean asEquipment, ArmorItem.Type armorType, CobaltItemConfiguration configuration) {

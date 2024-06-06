@@ -10,7 +10,6 @@ public interface ICobaltArmorItem {
     default void addTooltip(String translatableString) {}
     @Deprecated
     default void addTooltip(Text text) {}
-    void setArmorBonusTickExecutor(CobaltArmorItem.IArmorTickExecutor executor);
     Item getItem();
 
 }

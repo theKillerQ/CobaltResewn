@@ -16,7 +16,7 @@ public class CobaltNetworkingConstants {
 
     // C2S
     public static final Identifier ARMOR_SET_TOGGLE_ABILITY_C2S = new Identifier("cobalt", "armor_set_toggle_ability_c2s");
-    public static final Identifier ARMOR_SET_TRIGGER_ABILITY_C2S = new Identifier("cobalt", "armor_set_trigger_ability_c2s");
+    public static final Identifier ITEM_SET_TRIGGER_ABILITY_C2S = new Identifier("cobalt", "item_set_trigger_ability_c2s");
     public static final Identifier UPDATE_WALKIETALKIE_C2S = new Identifier("cobalt", "update_walkietalkie_c2s");
     public static final Identifier UPDATE_SPEAKER_C2S = new Identifier("cobalt", "update_speaker_c2s");
     public static final Identifier UPDATE_ITEM_DISPLAY_C2S = new Identifier("cobalt", "update_item_display_c2s");

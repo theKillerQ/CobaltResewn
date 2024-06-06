@@ -32,7 +32,6 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltArmorItem {
 
     private final CobaltItemConfiguration configuration;
     private final CobaltArmorMaterial cobaltMaterial;
-    private IArmorTickExecutor setBonusTickExecutor;
 
     public CobaltArmorItem(CobaltArmorMaterial material, ArmorItem.Type type, CobaltItemConfiguration configuration, Item.Settings settings) {
         super(material, type, settings);
@@ -53,21 +52,6 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltArmorItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, world, entity, slot, selected);
-        armorSetBonusTick(stack, world, entity, slot, selected);
-    }
-
-    private void armorSetBonusTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (setBonusTickExecutor == null) return;
-
-        if (entity instanceof PlayerEntity player) {
-            if (!ArmorUtil.isWearingArmorSet(player, material)) return;
-            setBonusTickExecutor.execute(stack, world, entity, slot, selected);
-        }
-    }
-
-    @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         var map = configuration.getAttributeModifiers(super.getAttributeModifiers(stack, slot), stack, slot);
         map = ArmorUtil.getAttributeModifiers(map, cobaltMaterial, type, slot);
@@ -81,62 +65,7 @@ public class CobaltArmorItem extends ArmorItem implements ICobaltArmorItem {
     }
 
     @Override
-    public void setArmorBonusTickExecutor(IArmorTickExecutor executor) {
-        setBonusTickExecutor = executor;
-    }
-
-    @Override
     public Item getItem() {
         return this;
-    }
-
-    public static class Builder {
-
-        // Generic
-        private final CobaltArmorMaterial material;
-        private final ArmorItem.Type type;
-        private final CobaltItemConfiguration configuration;
-        private final Item.Settings settings;
-        private IArmorTickExecutor setBonusTickExecutor;
-
-        public Builder(CobaltArmorMaterial material, Type type, CobaltItemConfiguration configuration, Settings settings) {
-            this.material = material;
-            this.type = type;
-            this.configuration = configuration;
-            this.settings = settings;
-        }
-
-        public Builder armorSetBonusTick(IArmorTickExecutor tickExecutor) {
-            this.setBonusTickExecutor = tickExecutor;
-            return this;
-        }
-
-        public CobaltArmorItem build() {
-            CobaltArmorItem armor = new CobaltArmorItem(material, type, configuration, settings);
-            armor.setBonusTickExecutor = setBonusTickExecutor;
-            return armor;
-        }
-    }
-
-    public static void addSetBonusStatusEffect(Entity entity, StatusEffectInstance effect) {
-        if (entity instanceof PlayerEntity player) addSetBonusStatusEffect(player, effect);
-    }
-
-    public static void addSetBonusStatusEffect(PlayerEntity player, StatusEffectInstance effect) {
-        boolean hasEffect = player.hasStatusEffect(effect.getEffectType());
-
-        if (!hasEffect) {
-            player.addStatusEffect(new StatusEffectInstance(effect.getEffectType(), effect.getDuration(), effect.getAmplifier(), false, false, true));
-        }
-
-        if (player.getActiveStatusEffects().containsKey(effect.getEffectType())) {
-            if (player.getActiveStatusEffects().get(effect.getEffectType()).getDuration() < 221) {
-                player.addStatusEffect(new StatusEffectInstance(effect.getEffectType(), effect.getDuration(), effect.getAmplifier(), false, false, true));
-            }
-        }
-    }
-
-    public interface IArmorTickExecutor {
-        void execute(ItemStack stack, World world, Entity entity, int slot, boolean selected);
     }
 }

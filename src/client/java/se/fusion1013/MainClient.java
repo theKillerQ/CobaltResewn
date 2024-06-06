@@ -13,7 +13,6 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
-import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 import se.fusion1013.entity.CustomEntityRegistry;
 import se.fusion1013.gui.ItemDisplayScreen;
 import se.fusion1013.items.trinkets.BackpackItem;
@@ -41,7 +40,7 @@ import static se.fusion1013.networking.CobaltNetworkingConstants.*;
 
 public class MainClient implements ClientModInitializer {
 
-	private static KeyBinding armorTriggerKeyBinding;
+	private static KeyBinding itemSetTriggerKeyBinding;
 	private static KeyBinding armorToggleKeyBinding;
 
 	public static final Item BACKPACK = new BackpackItem(new FabricItemSettings());
@@ -89,18 +88,18 @@ public class MainClient implements ClientModInitializer {
 	}
 
 	private void initializeKeybinds() {
-		armorTriggerKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.cobalt.armor_trigger",
+		itemSetTriggerKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.cobalt.item_set_trigger",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_X,
 				"category.cobalt.main"
 		));
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			while (armorTriggerKeyBinding.wasPressed()) {
+			while (itemSetTriggerKeyBinding.wasPressed()) {
 				if (client.player == null) continue;
 
 				PacketByteBuf buf = PacketByteBufs.create();
-				ClientPlayNetworking.send(ARMOR_SET_TRIGGER_ABILITY_C2S, buf);
+				ClientPlayNetworking.send(ITEM_SET_TRIGGER_ABILITY_C2S, buf);
 			}
 		});
 
