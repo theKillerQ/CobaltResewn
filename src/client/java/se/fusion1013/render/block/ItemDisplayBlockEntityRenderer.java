@@ -27,20 +27,20 @@ public class ItemDisplayBlockEntityRenderer implements BlockEntityRenderer<ItemD
 
             // Translation
             // Add .5 to each to center it inside the block by default
-            var xOffset = entity.getxOffset() + .5f + Math.sin(t * entity.getxOffsetFrequency()) * entity.getxOffsetAmplitude();
-            var yOffset = entity.getyOffset() + .5f + Math.sin(t * entity.getyOffsetFrequency()) * entity.getyOffsetAmplitude();
-            var zOffset = entity.getzOffset() + .5f + Math.sin(t * entity.getzOffsetFrequency()) * entity.getzOffsetAmplitude();
+            var xOffset = entity.getOffset().x + .5f + Math.sin(t * entity.getOffsetFrequency().x) * entity.getOffsetAmplitude().x;
+            var yOffset = entity.getOffset().y + .5f + Math.sin(t * entity.getOffsetFrequency().y) * entity.getOffsetAmplitude().y;
+            var zOffset = entity.getOffset().z + .5f + Math.sin(t * entity.getOffsetFrequency().z) * entity.getOffsetAmplitude().z;
             matrices.translate(xOffset, yOffset, zOffset);
 
             // Rotation
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.getxRotation() + t * entity.getxRotationSpeed()));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getyRotation() + t * entity.getyRotationSpeed()));
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.getzRotation() + t * entity.getzRotationSpeed()));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.getRotation().x + t * entity.getRotationSpeed().x));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getRotation().y + t * entity.getRotationSpeed().y));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.getRotation().z + t * entity.getRotationSpeed().z));
 
             // Scale
-            float xScale = (float) (entity.getxScale() + Math.sin(t * entity.getxScaleFrequency()) * entity.getxScaleAmplitude());
-            float yScale = (float) (entity.getyScale() + Math.sin(t * entity.getyScaleFrequency()) * entity.getyScaleAmplitude());
-            float zScale = (float) (entity.getzScale() + Math.sin(t * entity.getzScaleFrequency()) * entity.getzScaleAmplitude());
+            float xScale = (float) (entity.getScale().x + Math.sin(t * entity.getScaleFrequency().x) * entity.getScaleAmplitude().x);
+            float yScale = (float) (entity.getScale().y + Math.sin(t * entity.getScaleFrequency().y) * entity.getScaleFrequency().y);
+            float zScale = (float) (entity.getScale().z + Math.sin(t * entity.getScaleFrequency().z) * entity.getScaleFrequency().z);
             matrices.scale(xScale, yScale, zScale);
 
             // Render the item
