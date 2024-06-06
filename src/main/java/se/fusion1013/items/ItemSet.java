@@ -1,12 +1,12 @@
 package se.fusion1013.items;
 
 import dev.emi.trinkets.api.SlotReference;
-import dev.emi.trinkets.api.TrinketItem;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import se.fusion1013.Main;
 import se.fusion1013.util.item.ArmorUtil;
+import se.fusion1013.util.item.ItemSetUtil;
 
 import java.util.*;
 
@@ -33,10 +34,18 @@ public class ItemSet {
 
     private final ItemSetItem[] items;
     private final IItemSetMethods setMethods;
+    private final Identifier id;
 
-    public ItemSet(ItemSetItem[] items, IItemSetMethods methods) {
+    public ItemSet(ItemSetItem[] items, IItemSetMethods methods, Identifier id) {
         this.items = items;
         setMethods = methods;
+        this.id = id;
+    }
+
+    // -- Triggers
+
+    public void triggerSetAbility(Entity entity) {
+        setMethods.triggerSetAbility(entity);
     }
 
     // -- Validity Check
@@ -89,7 +98,7 @@ public class ItemSet {
         }
 
         // Create the item set
-        var set = new ItemSet(items, methods);
+        var set = new ItemSet(items, methods, identifier);
 
         // Register the item set
         // Add it to the ItemSet map with the identifier
@@ -111,18 +120,60 @@ public class ItemSet {
         var sets = ITEM_SET_MEMBERS.get(stack.getItem());
         if (sets == null) return;
 
+        appendSetBonusTooltips(sets, stack, tooltip);
+        appendSetAbilityTooltips(sets, stack, tooltip);
+    }
+
+    private static void appendSetBonusTooltips(List<ItemSet> sets, ItemStack stack, List<Text> tooltip) {
         // Get the tooltips
-        var tips = getTooltips(sets, stack.getItem());
+        var tips = getSetBonusTooltips(sets, stack.getItem());
         if (tips.isEmpty()) return; // If there are no tooltips, do not add anything
 
         // Append a space and the header
-        tooltip.add(Text.empty());
         tooltip.add(Text.translatable("item_set.cobalt.header").formatted(Formatting.GOLD));
 
         tooltip.addAll(tips);
     }
 
-    private static List<Text> getTooltips(List<ItemSet> sets, Item item) {
+    private static void appendSetAbilityTooltips(List<ItemSet> sets, ItemStack stack, List<Text> tooltip) {
+        for (ItemSet set : sets) {
+            boolean addTooltip = true;
+
+            for (ItemSetItem itemSetItem : set.items) {
+                if (itemSetItem.item == stack.getItem() && !itemSetItem.showTooltip) {
+                    addTooltip = false;
+                    break;
+                }
+            }
+
+            if (!addTooltip) continue;
+            if (set.setMethods.setAbilityTooltipString().length <= 0 && set.setMethods.setAbilityTooltipText().length <= 0) continue;
+
+            // Add empty string to separate different set triggers
+            tooltip.add(Text.empty());
+
+            // Add header
+            var header = Text.empty()
+                    .append(Text.literal("[Set Bonus] Press ").formatted(Formatting.GOLD))
+                    .append(Text.keybind("key.cobalt.armor_trigger").formatted(Formatting.GOLD))
+                    .append(Text.literal(": ").formatted(Formatting.GOLD))
+                    .append(Text.translatable("item.cobalt." + set.id.getPath() + ".trigger_ability.header").formatted(Formatting.GOLD))
+                    .append(Text.literal(" [").formatted(Formatting.GOLD))
+                    .append(Text.translatable("item.cobalt." + set.id.getPath() + ".trigger_ability.cost").formatted(Formatting.GRAY))
+                    .append(Text.literal("]").formatted(Formatting.GOLD));
+            tooltip.add(header);
+
+            // Add text tooltips
+            var textTooltips = set.setMethods.setAbilityTooltipText();
+            tooltip.addAll(Arrays.asList(textTooltips));
+
+            // Add string tooltips
+            var stringTooltips = set.setMethods.setAbilityTooltipString();
+            for (String s : stringTooltips) tooltip.add(Text.translatable(s).formatted(Formatting.GRAY));
+        }
+    }
+
+    private static List<Text> getSetBonusTooltips(List<ItemSet> sets, Item item) {
         List<Text> tooltips = new ArrayList<>();
 
         for (ItemSet set : sets) {
@@ -136,10 +187,18 @@ public class ItemSet {
             }
 
             if (!addTooltip) continue;
+            if (set.setMethods.appendTooltipStrings().length <= 0 && set.setMethods.appendTooltipText().length <= 0) continue;
 
-            var text = set.setMethods.appendTooltip();
-            tooltips.addAll(Arrays.asList(text));
+            // Add empty string to separate different set bonuses
             tooltips.add(Text.empty());
+
+            // Add text tooltips
+            var textTooltips = set.setMethods.appendTooltipText();
+            tooltips.addAll(Arrays.asList(textTooltips));
+
+            // Add string tooltips
+            var stringTooltips = set.setMethods.appendTooltipStrings();
+            for (String s : stringTooltips) tooltips.add(Text.translatable(s).formatted(Formatting.GRAY));
         }
 
         return tooltips;
@@ -152,6 +211,7 @@ public class ItemSet {
             if (!set.hasItems(entity)) continue; // Do not activate if entity does not have all the items
 
             set.setMethods.inventoryTick(stack, world, entity, slot, selected);
+            applyStatusEffects(entity, set.setMethods);
         }
     }
 
@@ -162,12 +222,26 @@ public class ItemSet {
             if (!set.hasItems(entity)) continue; // Do not activate if entity does not have all the items
 
             set.setMethods.trinketTick(stack, slot, entity);
+            applyStatusEffects(entity, set.setMethods);
+        }
+    }
+
+    private static void applyStatusEffects(Entity entity, IItemSetMethods methods) {
+        var effects = methods.withActiveEffects();
+        for (StatusEffectInstance effect : effects) {
+            ItemSetUtil.addSetBonusStatusEffect(entity, effect);
         }
     }
 
     public static void entityDamaged(LivingEntity entity, DamageSource source, float amount) {
 
     }
+
+    public static ItemSet[] registeredSets() {
+        return ITEM_SETS.values().toArray(new ItemSet[0]);
+    }
+
+    // -- Structures
 
     public enum ItemLocation {
         Inventory, Armor, Trinket, Hand, Offhand

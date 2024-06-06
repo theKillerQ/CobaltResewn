@@ -15,6 +15,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import se.fusion1013.networking.CobaltServerNetworking;
+import se.fusion1013.screen.CobaltScreenHandlers;
 
 public class Main implements ModInitializer {
 
@@ -36,6 +37,7 @@ public class Main implements ModInitializer {
 		CobaltBlockEntityTypes.registerAll();
 		CobaltEffects.registerAll();
 		CobaltServerNetworking.register();
+		CobaltScreenHandlers.registerAll();
 	}
 
 	private void onServerStart(MinecraftServer server) {

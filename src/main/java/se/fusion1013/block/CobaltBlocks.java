@@ -118,6 +118,9 @@ public class CobaltBlocks {
     public static final Block EXPOSED_COPPER_SPEAKER = register("exposed_copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block COPPER_SPEAKER = register("copper_speaker", new SpeakerBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
+    // -- Walls
+    public static final Block AMETHYST_WALL = register("amethyst_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).solid()));
+
     // -- Misc
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
@@ -126,6 +129,8 @@ public class CobaltBlocks {
     public static final Block FORGE_SIDE_CRYSTAL_BLOCK = register("forge_side_crystal_block", new ForgeSideCrystalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
 
     public static final Block PEDESTAL_BLOCK = register("pedestal_block", new PedestalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
+
+    public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);

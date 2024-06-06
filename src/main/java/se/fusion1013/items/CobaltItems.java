@@ -7,8 +7,11 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.datafixer.fix.StatusEffectFix;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Arm;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.Main;
 import se.fusion1013.effect.CobaltEffects;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
@@ -51,6 +54,7 @@ import net.minecraft.world.World;
 import se.fusion1013.items.materials.CobaltArmorMaterials;
 import se.fusion1013.items.trinket.CobaltTrinketItem;
 import se.fusion1013.items.trinket.MechanicSpectaclesTrinket;
+import se.fusion1013.util.item.ItemSetUtil;
 
 import java.text.Format;
 import java.util.List;
@@ -110,40 +114,12 @@ public class CobaltItems {
 
             // Outstanding Tier
             EXOSKELETON = registerSet("exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
-                    .withTriggerAbility((minecraftServer, playerEntity) -> {
-
-                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
-                            // Remove coal
-                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 2, playerEntity.getInventory());
-                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
-
-                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 1));
-                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 1));
-                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
-                        }
-                    })
                     .build());
             THERMAL_GEAR = registerSet("thermal_gear", new CobaltArmorSet.Builder(CobaltArmorMaterials.THERMAL_GEAR, CobaltItemConfiguration.create(Formatting.YELLOW)).withAll()
-                    .withHelmet(true)
-                    .withSetBonus(new ArmorSetBonus(new String[] { "item.cobalt.thermal_gear_set_bonus.tooltip" }, (stack, world, entity, slot, selected) -> {
-                        CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20, 0));
-                    }))
-                    .build());
+                    .withHelmet(true).build());
 
             // Perfect Tier
             ADVANCED_EXOSKELETON = registerSet("advanced_exoskeleton", new CobaltArmorSet.Builder(CobaltArmorMaterials.ADVANCED_EXOSKELETON, CobaltItemConfiguration.create(Formatting.GOLD)).withAll()
-                    .withTriggerAbility((minecraftServer, playerEntity) -> {
-
-                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
-                            // Remove coal
-                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 4, playerEntity.getInventory());
-                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
-
-                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 2));
-                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 2));
-                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
-                        }
-                    })
                     .build());
         }
 
@@ -410,6 +386,7 @@ public class CobaltItems {
 
     public static class ItemSets {
 
+
         public static final ItemSet FIRE_RUNE_HEALTH = ItemSet.register(new Identifier("fire_rune_health"), new ItemSet.ItemSetItem[]{
                 new ItemSet.ItemSetItem(TrinketItems.HEALTH_RUNE, ItemSet.ItemLocation.Trinket, false),
                 new ItemSet.ItemSetItem(TrinketItems.FIRE_RUNE, ItemSet.ItemLocation.Trinket)
@@ -420,7 +397,7 @@ public class CobaltItems {
                 if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
             }
             @Override
-            public Text[] appendTooltip() {
+            public Text[] appendTooltipText() {
                 return new Text[] {
                         Text.translatable("item_set.cobalt.fire_rune_health.tooltip.header").formatted(Formatting.GRAY),
                         Text.translatable("item_set.cobalt.fire_rune_health.tooltip").formatted(Formatting.GRAY)
@@ -438,7 +415,7 @@ public class CobaltItems {
                 CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 0));
             }
             @Override
-            public Text[] appendTooltip() {
+            public Text[] appendTooltipText() {
                 return new Text[] {
                         Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip.header").formatted(Formatting.GRAY),
                         Text.translatable("item_set.cobalt.fire_rune_heavy.tooltip").formatted(Formatting.GRAY)
@@ -446,28 +423,102 @@ public class CobaltItems {
             }
         });
 
-        public static final ItemSet DIVING_ARMOR = ItemSet.register(new Identifier("diving_armor"), new ItemSet.ItemSetItem[]{
-                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredBoots, ItemSet.ItemLocation.Armor),
-                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredLeggings, ItemSet.ItemLocation.Armor),
-                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredChestplate, ItemSet.ItemLocation.Armor),
-                new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredHelmet, ItemSet.ItemLocation.Armor)
-        }, new IItemSetMethods() {
-            @Override
-            public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-                IItemSetMethods.super.inventoryTick(stack, world, entity, slot, selected);
+        // Armor Sets
+        public static final ItemSet DIVING_ARMOR;
+        public static final ItemSet EXOSKELETON;
+        public static final ItemSet THERMAL_GEAR;
+        public static final ItemSet ADVANCED_EXOSKELETON;
 
-                // TODO: Move this to ItemSet class
-                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0));
-                CobaltArmorItem.addSetBonusStatusEffect(entity, new StatusEffectInstance(CobaltEffects.COLD_RESISTANCE_EFFECT, 20, 0));
-            }
-            @Override
-            public Text[] appendTooltip() {
-                return new Text[] {
-                        Text.translatable("item_set.cobalt.diving_armor.tooltip.breathing").formatted(Formatting.GRAY),
-                        Text.translatable("item_set.cobalt.diving_armor.tooltip.cold").formatted(Formatting.GRAY)
-                };
-            }
-        });
+        static {
+            DIVING_ARMOR = ItemSet.register(new Identifier("diving_armor"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredBoots, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredLeggings, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredChestplate, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.DIVING_ARMOR_SET.registeredHelmet, ItemSet.ItemLocation.Armor)
+            }, new IItemSetMethods() {
+                @Override
+                public StatusEffectInstance[] withActiveEffects() {
+                    return new StatusEffectInstance[] {
+                            new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20, 0),
+                            new StatusEffectInstance(CobaltEffects.COLD_RESISTANCE_EFFECT, 20, 0)
+                    };
+                }
+                @Override
+                public String[] appendTooltipStrings() {
+                    return new String[] { "item_set.cobalt.diving_armor.tooltip.breathing", "item_set.cobalt.diving_armor.tooltip.cold" };
+                }
+            });
+
+            EXOSKELETON = ItemSet.register(new Identifier("exoskeleton"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(ArmorItems.EXOSKELETON.registeredBoots, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.EXOSKELETON.registeredLeggings, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.EXOSKELETON.registeredChestplate, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.EXOSKELETON.registeredHelmet, ItemSet.ItemLocation.Armor)
+            }, new IItemSetMethods() {
+                @Override
+                public void triggerSetAbility(Entity entity) {
+                    IItemSetMethods.super.triggerSetAbility(entity);
+                    if (entity instanceof PlayerEntity playerEntity) {
+                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
+                            // Remove coal
+                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 2, playerEntity.getInventory());
+                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
+
+                            // Add status effects
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 1));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 1));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
+                        }
+                    }
+                }
+                @Override
+                public String[] setAbilityTooltipString() {
+                    return new String[] { "item.cobalt.exoskeleton.trigger_ability.tooltip" };
+                }
+            });
+
+            THERMAL_GEAR = ItemSet.register(new Identifier("thermal_gear"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(ArmorItems.THERMAL_GEAR.registeredBoots, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.THERMAL_GEAR.registeredLeggings, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.THERMAL_GEAR.registeredChestplate, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.THERMAL_GEAR.registeredHelmet, ItemSet.ItemLocation.Armor)
+            }, new IItemSetMethods() {
+                @Override
+                public StatusEffectInstance[] withActiveEffects() {
+                    return new StatusEffectInstance[] { new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20, 0) };
+                }
+                @Override
+                public String[] appendTooltipStrings() {
+                    return new String[] { "item.cobalt.thermal_gear_set_bonus.tooltip" };
+                }
+            });
+
+            ADVANCED_EXOSKELETON = ItemSet.register(new Identifier("advanced_exoskeleton"), new ItemSet.ItemSetItem[]{
+                    new ItemSet.ItemSetItem(ArmorItems.ADVANCED_EXOSKELETON.registeredBoots, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.ADVANCED_EXOSKELETON.registeredLeggings, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.ADVANCED_EXOSKELETON.registeredChestplate, ItemSet.ItemLocation.Armor),
+                    new ItemSet.ItemSetItem(ArmorItems.ADVANCED_EXOSKELETON.registeredHelmet, ItemSet.ItemLocation.Armor)
+            }, new IItemSetMethods() {
+                @Override
+                public void triggerSetAbility(Entity entity) {
+                    if (entity instanceof PlayerEntity playerEntity) {
+                        if (playerEntity.getInventory().containsAny(itemStack -> itemStack.getItem() == Items.COAL) && !playerEntity.hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT)) {
+                            // Remove coal
+                            playerEntity.getInventory().remove(itemStack -> itemStack.getItem() == Items.COAL, 4, playerEntity.getInventory());
+                            playerEntity.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
+
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10*20, 2));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10*20, 2));
+                            playerEntity.addStatusEffect(new StatusEffectInstance(CobaltEffects.IMMOVABLE_EFFECT, 10*20, 0));
+                        }
+                    }
+                }
+                @Override
+                public String[] setAbilityTooltipString() {
+                    return new String[] { "item.cobalt.advanced_exoskeleton.trigger_ability.tooltip" };
+                }
+            });
+        }
 
         public static void registerAll() {}
 
