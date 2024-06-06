@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "cobalt:rune_modifier",
-    "minecraft:soul_lantern"
+    "minecraft:soul_lantern",
+    "cobalt:rune_block"
   ]
 }
