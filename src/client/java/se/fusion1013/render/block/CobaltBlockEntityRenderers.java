@@ -10,6 +10,7 @@ public class CobaltBlockEntityRenderers {
     public static void registerAll() {
         BlockEntityRendererRegistry.register(CobaltBlockEntityTypes.FORGE_SIDE_CRYSTAL_BLOCK, ForgeSideCrystalBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(CobaltBlockEntityTypes.PEDESTAL_BLOCK_ENTITY, PedestalBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(CobaltBlockEntityTypes.ITEM_DISPLAY_BLOCK_ENTITY, ItemDisplayBlockEntityRenderer::new);
     }
 
 }

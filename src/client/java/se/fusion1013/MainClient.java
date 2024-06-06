@@ -6,13 +6,16 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
+import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 import se.fusion1013.entity.CustomEntityRegistry;
+import se.fusion1013.gui.ItemDisplayScreen;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
 import se.fusion1013.networking.CobaltClientNetworking;
@@ -32,6 +35,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import se.fusion1013.screen.CobaltScreenHandlers;
 
 import static se.fusion1013.networking.CobaltNetworkingConstants.*;
 
@@ -68,6 +72,9 @@ public class MainClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
 				CobaltBlocks.RUNE_BLOCK
 		);
+
+		// Screens
+		HandledScreens.register(CobaltScreenHandlers.ITEM_DISPLAY_SCREEN_HANDLER, ItemDisplayScreen::new);
 
 
 
