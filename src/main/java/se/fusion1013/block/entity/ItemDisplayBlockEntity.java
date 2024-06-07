@@ -34,16 +34,16 @@ public class ItemDisplayBlockEntity extends CustomSingleStackInventoryBlockEntit
     public static final String NBT_KEY_ROTATION = "rotation";
     public static final String NBT_KEY_ROTATION_SPEED = "rotation_speed";
 
-    private Vector3f offset;
-    private Vector3f offsetFrequency;
-    private Vector3f offsetAmplitude;
+    private Vector3f offset = new Vector3f();
+    private Vector3f offsetFrequency = new Vector3f();
+    private Vector3f offsetAmplitude = new Vector3f();
 
-    private Vector3f scale;
-    private Vector3f scaleFrequency;
-    private Vector3f scaleAmplitude;
+    private Vector3f scale = new Vector3f();
+    private Vector3f scaleFrequency = new Vector3f();
+    private Vector3f scaleAmplitude = new Vector3f();
 
-    private Vector3f rotation;
-    private Vector3f rotationSpeed;
+    private Vector3f rotation = new Vector3f();
+    private Vector3f rotationSpeed = new Vector3f();
 
     public ItemDisplayBlockEntity(BlockPos pos, BlockState state) {
         super(CobaltBlockEntityTypes.ITEM_DISPLAY_BLOCK_ENTITY, pos, state);

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cobalt:amethyst_wall"
+    "cobalt:amethyst_wall",
+    "cobalt:packed_ice_wall"
   ]
 }

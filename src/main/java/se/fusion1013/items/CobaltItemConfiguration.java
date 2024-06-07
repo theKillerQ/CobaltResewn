@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import se.fusion1013.util.TextUtil;
 import se.fusion1013.util.item.AttributeModifierProvider;
 
 import java.util.*;
@@ -48,7 +49,9 @@ public class CobaltItemConfiguration {
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(stack.getTranslationKey() + ".tooltip").formatted(Formatting.DARK_GRAY));
+        var tooltipText = Text.translatable(stack.getTranslationKey() + ".tooltip").formatted(Formatting.DARK_GRAY);
+        var splitTooltip = TextUtil.splitText(tooltipText);
+        tooltip.addAll(splitTooltip);
         tooltip.addAll(this.tooltip);
     }
 

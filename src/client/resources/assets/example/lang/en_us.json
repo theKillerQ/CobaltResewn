@@ -308,17 +308,17 @@
 
 
 
-  "item.cobalt.exoskeleton_helmet": "Exoskeleton: Head",
-  "item.cobalt.exoskeleton_helmet.tooltip": "TOOLTIP",
+  "item.cobalt.exoskeleton_helmet": "Exoskeleton MK I: Head",
+  "item.cobalt.exoskeleton_helmet.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was the first version of a series of weapons meant to improve mobility and combat prowess for soldiers on the battlefield.",
 
-  "item.cobalt.exoskeleton_chestplate": "Exoskeleton: Chest",
-  "item.cobalt.exoskeleton_chestplate.tooltip": "TOOLTIP",
+  "item.cobalt.exoskeleton_chestplate": "Exoskeleton MK I: Chest",
+  "item.cobalt.exoskeleton_chestplate.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was the first version of a series of weapons meant to improve mobility and combat prowess for soldiers on the battlefield.",
 
-  "item.cobalt.exoskeleton_leggings": "Exoskeleton: Legs",
-  "item.cobalt.exoskeleton_leggings.tooltip": "TOOLTIP",
+  "item.cobalt.exoskeleton_leggings": "Exoskeleton MK I: Legs",
+  "item.cobalt.exoskeleton_leggings.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was the first version of a series of weapons meant to improve mobility and combat prowess for soldiers on the battlefield.",
 
-  "item.cobalt.exoskeleton_boots": "Exoskeleton: Feet",
-  "item.cobalt.exoskeleton_boots.tooltip": "A feat of engineering",
+  "item.cobalt.exoskeleton_boots": "Exoskeleton MK I: Feet",
+  "item.cobalt.exoskeleton_boots.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was the first version of a series of weapons meant to improve mobility and combat prowess for soldiers on the battlefield.",
 
   "item.cobalt.exoskeleton.trigger_ability.header": "Fortify",
   "item.cobalt.exoskeleton.trigger_ability.cost": "-2 Coal",
@@ -330,17 +330,17 @@
 
 
 
-  "item.cobalt.advanced_exoskeleton_helmet": "Advanced Exoskeleton: Head",
-  "item.cobalt.advanced_exoskeleton_helmet.tooltip": "TOOLTIP",
+  "item.cobalt.advanced_exoskeleton_helmet": "Exoskeleton MK II: Head",
+  "item.cobalt.advanced_exoskeleton_helmet.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was a more advanced version of the MK I, featuring increased defensive capabilities. Usually used by special service soldiers.",
 
-  "item.cobalt.advanced_exoskeleton_chestplate": "Advanced Exoskeleton: Chest",
-  "item.cobalt.advanced_exoskeleton_chestplate.tooltip": "TOOLTIP",
+  "item.cobalt.advanced_exoskeleton_chestplate": "Exoskeleton MK II: Chest",
+  "item.cobalt.advanced_exoskeleton_chestplate.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was a more advanced version of the MK I, featuring increased defensive capabilities. Usually used by special service soldiers.",
 
-  "item.cobalt.advanced_exoskeleton_leggings": "Advanced Exoskeleton: Legs",
-  "item.cobalt.advanced_exoskeleton_leggings.tooltip": "TOOLTIP",
+  "item.cobalt.advanced_exoskeleton_leggings": "Exoskeleton MK II: Legs",
+  "item.cobalt.advanced_exoskeleton_leggings.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was a more advanced version of the MK I, featuring increased defensive capabilities. Usually used by special service soldiers.",
 
-  "item.cobalt.advanced_exoskeleton_boots": "Advanced Exoskeleton: Feet",
-  "item.cobalt.advanced_exoskeleton_boots.tooltip": "TOOLTIP",
+  "item.cobalt.advanced_exoskeleton_boots": "Exoskeleton MK II: Feet",
+  "item.cobalt.advanced_exoskeleton_boots.tooltip": "Armor developed by the H.S.A. during the early days of the War. It was a more advanced version of the MK I, featuring increased defensive capabilities. Usually used by special service soldiers.",
 
   "item.cobalt.advanced_exoskeleton.trigger_ability.header": "Improved Fortify",
   "item.cobalt.advanced_exoskeleton.trigger_ability.cost": "-4 Coal",
@@ -550,6 +550,7 @@
   "block.cobalt.pedestal_block": "Pedestal Block",
 
   "block.cobalt.amethyst_wall": "Amethyst Wall",
+  "block.cobalt.packed_ice_wall": "Packed Ice Wall",
 
   "trinkets.slot.hand.rune": "Rune"
 }
