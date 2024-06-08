@@ -122,6 +122,8 @@ public class ItemDisplayBlockEntity extends CustomSingleStackInventoryBlockEntit
     // The order you insert things here is the same as you need to extract them. You do not need to reverse the order.
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buffer) {
+        buffer.writeBlockPos(pos);
+
         // Offset
         buffer.writeVector3f(offset);
         buffer.writeVector3f(offsetFrequency);
@@ -167,5 +169,37 @@ public class ItemDisplayBlockEntity extends CustomSingleStackInventoryBlockEntit
 
     public Vector3f getRotationSpeed() {
         return rotationSpeed;
+    }
+
+    public void setOffset(Vector3f offset) {
+        this.offset = offset;
+    }
+
+    public void setOffsetFrequency(Vector3f offsetFrequency) {
+        this.offsetFrequency = offsetFrequency;
+    }
+
+    public void setOffsetAmplitude(Vector3f offsetAmplitude) {
+        this.offsetAmplitude = offsetAmplitude;
+    }
+
+    public void setScale(Vector3f scale) {
+        this.scale = scale;
+    }
+
+    public void setScaleFrequency(Vector3f scaleFrequency) {
+        this.scaleFrequency = scaleFrequency;
+    }
+
+    public void setScaleAmplitude(Vector3f scaleAmplitude) {
+        this.scaleAmplitude = scaleAmplitude;
+    }
+
+    public void setRotation(Vector3f rotation) {
+        this.rotation = rotation;
+    }
+
+    public void setRotationSpeed(Vector3f rotationSpeed) {
+        this.rotationSpeed = rotationSpeed;
     }
 }

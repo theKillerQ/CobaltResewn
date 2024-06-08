@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import se.fusion1013.Main;
@@ -13,6 +14,8 @@ import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 import se.fusion1013.block.entity.ItemDisplayBlockEntity;
 
 public class ItemDisplayScreenHandler extends ScreenHandler {
+
+    private BlockPos blockPos;
 
     private Vector3f offset;
     private Vector3f offsetFrequency;
@@ -29,6 +32,7 @@ public class ItemDisplayScreenHandler extends ScreenHandler {
         this(syncId, playerInventory);
 
         // Load data from buffer
+        blockPos = buffer.readBlockPos();
         offset = buffer.readVector3f();
         offsetFrequency = buffer.readVector3f();
         offsetAmplitude = buffer.readVector3f();
@@ -54,6 +58,11 @@ public class ItemDisplayScreenHandler extends ScreenHandler {
     }
 
     // Getters
+
+
+    public BlockPos getBlockPos() {
+        return blockPos;
+    }
 
     public Vector3f getOffset() {
         return offset;
