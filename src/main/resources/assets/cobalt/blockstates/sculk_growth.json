@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "face=ceiling": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 180
+    },
+    "face=floor": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 0
+    },
+    "face=wall,facing=east": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=north": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 0
+    },
+    "face=wall,facing=south": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 270
+    },
+    "face=wall,facing=up": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 270
+    },
+    "face=wall,facing=down": {
+      "model": "cobalt:block/sculk_growth",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

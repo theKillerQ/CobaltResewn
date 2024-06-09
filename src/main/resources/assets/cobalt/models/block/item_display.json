@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "cobalt:block/particle_command_block"
+    "all": "cobalt:block/item_display"
   }
 }

@@ -19,6 +19,16 @@ public abstract class LivingEntityMixin extends EntityMixin {
 
     @Inject(method = "travel", at = @At("HEAD"), cancellable = true)
     private void travel(Vec3d movementInput, CallbackInfo ci) {
+        // Immovable Effect
         if (hasStatusEffect(CobaltEffects.IMMOVABLE_EFFECT) && isOnGround()) ci.cancel();
+    }
+
+    @Inject(method = "travel", at = @At("TAIL"))
+    private void travelTail(Vec3d movementInput, CallbackInfo ci) {
+        // Heavy Effect
+        double d = 0.08;
+        if (hasStatusEffect(CobaltEffects.HEAVY) && isSubmergedInWater()) {
+            this.setVelocity(this.getVelocity().add(0, -d / 4.0, 0));
+        }
     }
 }

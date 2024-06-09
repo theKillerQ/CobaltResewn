@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -65,11 +66,13 @@ public class MainClient implements ClientModInitializer {
 		// Block rendering
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
 				CobaltBlocks.SCULK_GRASS,
-				CobaltBlocks.SHORT_SCULK_GRASS
+				CobaltBlocks.SHORT_SCULK_GRASS,
+				CobaltBlocks.ITEM_DISPLAY
 		);
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-				CobaltBlocks.RUNE_BLOCK
+				CobaltBlocks.RUNE_BLOCK,
+				CobaltBlocks.SCULK_GROWTH
 		);
 
 		// Screens

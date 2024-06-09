@@ -17,13 +17,37 @@ public class ItemDisplayBlockEntityRenderer implements BlockEntityRenderer<ItemD
 
     @Override
     public void render(ItemDisplayBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+        int lightAbove = WorldRenderer.getLightmapCoordinates(entity.getWorld(), entity.getPos().up());
+        var t = entity.getWorld().getTime() + tickDelta;
+
+        renderTransformedItem(entity, t, matrices, vertexConsumers, lightAbove);
+        renderInteriorItem(entity, t, matrices, vertexConsumers, lightAbove);
+    }
+
+    private void renderInteriorItem(ItemDisplayBlockEntity entity, float t, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int lightAbove) {
+        matrices.push();
+
+        var stack = entity.getStack(0);
+
+        if (!entity.getStack(0).isEmpty()) {
+            // -- Render the interior item
+            matrices.translate(.5, .5, .5); // Translate it to the center of the block
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(t * .5f));
+
+            MinecraftClient.getInstance().getItemRenderer().renderItem(stack, ModelTransformationMode.GROUND, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 0);
+        }
+
+        matrices.pop();
+    }
+
+    private void renderTransformedItem(ItemDisplayBlockEntity entity, float t, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int lightAbove) {
         matrices.push();
 
         var stack = entity.getStack(0);
 
         if (!entity.getStack(0).isEmpty()) {
 
-            var t = entity.getWorld().getTime() + tickDelta;
+            // -- Render the transformed item
 
             // Translation
             // Add .5 to each to center it inside the block by default
@@ -44,7 +68,6 @@ public class ItemDisplayBlockEntityRenderer implements BlockEntityRenderer<ItemD
             matrices.scale(xScale, yScale, zScale);
 
             // Render the item
-            int lightAbove = WorldRenderer.getLightmapCoordinates(entity.getWorld(), entity.getPos().up());
             MinecraftClient.getInstance().getItemRenderer().renderItem(stack, ModelTransformationMode.GROUND, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 0);
         }
 

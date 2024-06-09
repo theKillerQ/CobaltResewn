@@ -75,16 +75,16 @@
   "item.cobalt.mechanical_hand.tooltip": "When your own hands are not strong enough",
 
   "item.cobalt.mechanic_boots": "Mechanic's Boots",
-  "item.cobalt.mechanic_boots.tooltip": "Heavy leather boots made for working in wet environments",
+  "item.cobalt.mechanic_boots.tooltip": "Special armor designed for performing heavy maintenance on various systems within Facility EF002. Features a simple exoskeleton that enhances the strength of the wearer, at the cost of some mobility.",
 
   "item.cobalt.mechanic_leggings": "Mechanic's Leggings",
-  "item.cobalt.mechanic_leggings.tooltip": "Heavy, insulated leggings",
+  "item.cobalt.mechanic_leggings.tooltip": "Special armor designed for performing heavy maintenance on various systems within Facility EF002. Features a simple exoskeleton that enhances the strength of the wearer, at the cost of some mobility.",
 
   "item.cobalt.mechanic_chestplate": "Mechanic's Chestplate",
-  "item.cobalt.mechanic_chestplate.tooltip": "Heavy-duty chestplate for working with heavy machinery",
+  "item.cobalt.mechanic_chestplate.tooltip": "Special armor designed for performing heavy maintenance on various systems within Facility EF002. Features a simple exoskeleton that enhances the strength of the wearer, at the cost of some mobility.",
 
   "item.cobalt.mechanic_helmet": "Mechanic's Helmet",
-  "item.cobalt.mechanic_helmet.tooltip": "Protect your head from falling debris",
+  "item.cobalt.mechanic_helmet.tooltip": "Special armor designed for performing heavy maintenance on various systems within Facility EF002. Features a simple exoskeleton that enhances the strength of the wearer, at the cost of some mobility.",
 
   "item.cobalt.mechanic_gloves": "Mechanic's Gloves",
   "item.cobalt.mechanic_gloves.tooltip": "Keep the grease off your hands",
@@ -122,16 +122,16 @@
   "item.cobalt.basic_drill.ability": "Use: Gain haste for 10s. Consumes coal",
 
   "item.cobalt.miner_helmet": "Miner's Helmet",
-  "item.cobalt.miner_helmet.tooltip": "Brighten your surroundings",
+  "item.cobalt.miner_helmet.tooltip": "Standard issue miners helmet for Kiln and Cross workers. It offers decent protection from the elements. Provides light while working in dark environments.",
 
   "item.cobalt.miner_chestplate": "Miner's Chestplate",
-  "item.cobalt.miner_chestplate.tooltip": "Heavy chestplate made for mining",
+  "item.cobalt.miner_chestplate.tooltip": "Standard issue miners chestplate for Kiln and Cross workers. It offers decent protection from the elements.",
 
   "item.cobalt.miner_leggings": "Miner's Leggings",
-  "item.cobalt.miner_leggings.tooltip": "Sturdy leggings made for mining",
+  "item.cobalt.miner_leggings.tooltip": "Standard issue miners leggings for Kiln and Cross workers. It offers decent protection from the elements.",
 
   "item.cobalt.miner_boots": "Miner's Boots",
-  "item.cobalt.miner_boots.tooltip": "Sturdy boots made for mining",
+  "item.cobalt.miner_boots.tooltip": "Standard issue miners boots for Kiln and Cross workers. It offers decent protection from the elements.",
 
   "item.cobalt.miner_pickaxe": "Miner's Pickaxe",
   "item.cobalt.miner_pickaxe.tooltip": "Pickaxe meant for mining and punching things",
@@ -141,19 +141,19 @@
 
 
   "item.cobalt.prospector_pickaxe": "Prospector's Pickaxe",
-  "item.cobalt.prospector_pickaxe.tooltip": "Swiftly test the ground for minerals",
+  "item.cobalt.prospector_pickaxe.tooltip": "Used by individuals within the Kiln and Cross for finding and identifying mineral deposits.",
 
   "item.cobalt.prospector_helmet": "Prospector's Tophat",
-  "item.cobalt.prospector_helmet.tooltip": "Swiftly explore the mines for ancient structures",
+  "item.cobalt.prospector_helmet.tooltip": "Worn by individulas within the Kiln and Cross that specialized in finding and identifying mineral deposits, and looking stylish while doing so.",
 
   "item.cobalt.prospector_chestplate": "Prospector's Suspenders",
-  "item.cobalt.prospector_chestplate.tooltip": "Swiftly explore the mines for ores",
+  "item.cobalt.prospector_chestplate.tooltip": "Worn by individulas within the Kiln and Cross that specialized in finding and identifying mineral deposits, and looking stylish while doing so.",
 
   "item.cobalt.prospector_leggings": "Prospector's Pants",
-  "item.cobalt.prospector_leggings.tooltip": "Swiftly explore the mines for rocks",
+  "item.cobalt.prospector_leggings.tooltip": "Worn by individulas within the Kiln and Cross that specialized in finding and identifying mineral deposits, and looking stylish while doing so.",
 
   "item.cobalt.prospector_boots": "Prospector's Boots",
-  "item.cobalt.prospector_boots.tooltip": "Swiftly explore the mines for rare metals ",
+  "item.cobalt.prospector_boots.tooltip": "Worn by individulas within the Kiln and Cross that specialized in finding and identifying mineral deposits, and looking stylish while doing so.",
 
 
 
@@ -294,16 +294,16 @@
   "item.cobalt.harpoon_gun.tooltip": "",
 
   "item.cobalt.diving_helmet": "Diving Helmet",
-  "item.cobalt.diving_helmet.tooltip": "Breathe underwater! ..if you can find some air tanks..",
+  "item.cobalt.diving_helmet.tooltip": "Diving suit used by workers within EF002 to perform maintenance in underwater areas. This suit works by converting surrounding water into breathable air, providing an infinite amount of time underwater. It is also heavily insulated, providing protection from cold water environments.",
 
   "item.cobalt.diving_chestplate": "Diving Torso",
-  "item.cobalt.diving_chestplate.tooltip": "Waterproof but very heavy",
+  "item.cobalt.diving_chestplate.tooltip": "Diving suit used by workers within EF002 to perform maintenance in underwater areas. This suit works by converting surrounding water into breathable air, providing an infinite amount of time underwater. It is also heavily insulated, providing protection from cold water environments.",
 
   "item.cobalt.diving_leggings": "Diving Leggings",
-  "item.cobalt.diving_leggings.tooltip": "They are not easy to walk around in",
+  "item.cobalt.diving_leggings.tooltip": "Diving suit used by workers within EF002 to perform maintenance in underwater areas. This suit works by converting surrounding water into breathable air, providing an infinite amount of time underwater. It is also heavily insulated, providing protection from cold water environments.",
 
   "item.cobalt.diving_boots": "Diving Boots",
-  "item.cobalt.diving_boots.tooltip": "Lead boots that bring you straight to the bottom",
+  "item.cobalt.diving_boots.tooltip": "Diving suit used by workers within EF002 to perform maintenance in underwater areas. This suit works by converting surrounding water into breathable air, providing an infinite amount of time underwater. It is also heavily insulated, providing protection from cold water environments.",
 
 
 
@@ -537,6 +537,7 @@
   "block.cobalt.sculk_stem": "Sculk Stem",
   "block.cobalt.sculk_summoner": "Sculk Summoner",
   "block.cobalt.sculk_spreader": "Sculk Spreader",
+  "block.cobalt.sculk_growth": "Sculk Growth",
 
   "block.cobalt.oxidized_copper_speaker": "Oxidized Copper Speaker",
   "block.cobalt.weathered_copper_speaker": "Weathered Copper Speaker",
@@ -551,6 +552,8 @@
 
   "block.cobalt.amethyst_wall": "Amethyst Wall",
   "block.cobalt.packed_ice_wall": "Packed Ice Wall",
+
+  "block.cobalt.item_display": "Item Display",
 
   "trinkets.slot.hand.rune": "Rune"
 }
