@@ -8,6 +8,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import se.fusion1013.block.entity.ItemDisplayBlockEntity;
 
@@ -18,7 +19,7 @@ public class ItemDisplayBlockEntityRenderer implements BlockEntityRenderer<ItemD
     @Override
     public void render(ItemDisplayBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         int lightAbove = WorldRenderer.getLightmapCoordinates(entity.getWorld(), entity.getPos().up());
-        var t = entity.getWorld().getTime() + tickDelta;
+        var t = MathHelper.lerp(tickDelta, (float)ItemDisplayBlockEntity.getLastTick(), (float)ItemDisplayBlockEntity.getTick());
 
         renderTransformedItem(entity, t, matrices, vertexConsumers, lightAbove);
         renderInteriorItem(entity, t, matrices, vertexConsumers, lightAbove);

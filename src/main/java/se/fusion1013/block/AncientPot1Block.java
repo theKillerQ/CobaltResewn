@@ -1,5 +1,6 @@
 package se.fusion1013.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.state.StateManager;
@@ -14,10 +15,16 @@ import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
 
 public class AncientPot1Block extends CustomSingleStackBlock {
 
+    public static final MapCodec<AncientPot1Block> CODEC = createCodec(AncientPot1Block::new);
     public static final VoxelShape SHAPE = Block.createCuboidShape(3, 0, 3, 13, 10, 13);
 
     public AncientPot1Block(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return CODEC;
     }
 
     @Override

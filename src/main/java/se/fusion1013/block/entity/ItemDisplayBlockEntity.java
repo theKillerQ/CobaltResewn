@@ -15,6 +15,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import se.fusion1013.Main;
@@ -45,8 +46,20 @@ public class ItemDisplayBlockEntity extends CustomSingleStackInventoryBlockEntit
     private Vector3f rotation = new Vector3f();
     private Vector3f rotationSpeed = new Vector3f();
 
+    private static int tick;
+    private static int lastTick;
+
     public ItemDisplayBlockEntity(BlockPos pos, BlockState state) {
         super(CobaltBlockEntityTypes.ITEM_DISPLAY_BLOCK_ENTITY, pos, state);
+    }
+
+    public static void clientTick(World world, BlockPos pos, BlockState blockState, ItemDisplayBlockEntity itemDisplayBlockEntity) {
+        lastTick = tick;
+        tick++;
+    }
+
+    public static void serverTick(World world, BlockPos pos, BlockState blockState, ItemDisplayBlockEntity itemDisplayBlockEntity) {
+
     }
 
     @Override
@@ -201,5 +214,13 @@ public class ItemDisplayBlockEntity extends CustomSingleStackInventoryBlockEntit
 
     public void setRotationSpeed(Vector3f rotationSpeed) {
         this.rotationSpeed = rotationSpeed;
+    }
+
+    public static int getTick() {
+        return tick;
+    }
+
+    public static int getLastTick() {
+        return lastTick;
     }
 }

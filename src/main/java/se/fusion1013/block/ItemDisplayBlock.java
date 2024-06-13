@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;
@@ -21,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import se.fusion1013.Main;
+import se.fusion1013.block.entity.CobaltBlockEntityTypes;
 import se.fusion1013.block.entity.ItemDisplayBlockEntity;
 import se.fusion1013.networking.CobaltNetworkingConstants;
 
@@ -78,6 +81,12 @@ public class ItemDisplayBlock extends BlockWithEntity implements BlockEntityProv
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return validateTicker(type, CobaltBlockEntityTypes.ITEM_DISPLAY_BLOCK_ENTITY, world.isClient ? ItemDisplayBlockEntity::clientTick : ItemDisplayBlockEntity::serverTick);
     }
 
     @Nullable

@@ -27,7 +27,7 @@ import se.fusion1013.block.entity.CustomSingleStackInventoryBlockEntity;
 /**
  * {@link Block} that can contain up to one stack of {@link net.minecraft.item.Item}s of a single type.
  */
-public abstract class CustomSingleStackBlock extends Block implements BlockEntityProvider {
+public abstract class CustomSingleStackBlock extends BlockWithEntity implements BlockEntityProvider {
 
     public static final DirectionProperty FACING;
 
