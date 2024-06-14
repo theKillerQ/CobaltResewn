@@ -201,6 +201,7 @@ public class CobaltItems {
         public static final Item CROWBAR;
         public static final Item RATCHETING_SCREWDRIVER;
         public static final Item BIONIC_FIST;
+        public static final Item FORGE_HAMMER;
 
         static {
             DAGGER = register("dagger", new CobaltSwordItem(ToolMaterials.STONE, -2+1, -4+3,
@@ -225,6 +226,7 @@ public class CobaltItems {
                     .attributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("cobalt.ratcheting_screwdriver.speed", 0.12f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             BIONIC_FIST = register("bionic_fist", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.6f, CobaltItemConfiguration.create(Formatting.GOLD)
                     .attributeModifier(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier("cobalt.bionic_fist.knockback", 1.6f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
+            FORGE_HAMMER = register("forge_hammer", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.6f, CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
         }
 
     }
@@ -435,7 +437,7 @@ public class CobaltItems {
 
             RUNE_MODIFIER = register("rune_modifier", new CobaltItem(CobaltItemConfiguration.create(Formatting.DARK_PURPLE), new FabricItemSettings()));
 
-            FORGE_SIDE_CRYSTAL = register("forge_side_crystal", new CobaltItem(CobaltItemConfiguration.create(Formatting.LIGHT_PURPLE), new FabricItemSettings()));
+            FORGE_SIDE_CRYSTAL = register("forge_side_crystal", new CobaltItem(CobaltItemConfiguration.create(Formatting.LIGHT_PURPLE), new FabricItemSettings().maxCount(1)));
         }
 
     }

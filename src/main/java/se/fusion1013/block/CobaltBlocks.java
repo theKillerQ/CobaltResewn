@@ -134,6 +134,8 @@ public class CobaltBlocks {
 
     public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK).nonOpaque()));
 
+    public static final Block FORGE_BLOCK = register("forge_block", new ForgeBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
+
     private static Block register(String name, Block block) {
         registerItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Main.MOD_NAMESPACE, name), block);

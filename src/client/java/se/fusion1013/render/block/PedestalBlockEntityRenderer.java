@@ -31,11 +31,11 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         if (!entity.getStack(0).isEmpty()) {
 
-            double offset = Math.sin(MathHelper.lerp(tickDelta, (float)PedestalBlockEntity.getLastTick(), (float)PedestalBlockEntity.getTick()) / 8f) / 8.0;
+            double offset = Math.sin(MathHelper.lerp(tickDelta, (float)PedestalBlockEntity.getLastTick(), (float)PedestalBlockEntity.getTick()) / 32f) / 8.0;
 
             matrices.translate(.5, 1.25 + offset, .5);
             // matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((entity.getWorld().getTime() + tickDelta) * .5f));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)MathHelper.lerp(tickDelta, PedestalBlockEntity.getLastTick(), PedestalBlockEntity.getTick())));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)MathHelper.lerp(tickDelta, (float)PedestalBlockEntity.getLastTick(), (float)PedestalBlockEntity.getTick()) / 2f));
 
 
             // Render the item
