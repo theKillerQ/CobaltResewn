@@ -15,6 +15,8 @@ import se.fusion1013.items.CustomItemGroupRegistry;
 import se.fusion1013.networking.CobaltServerNetworking;
 import se.fusion1013.screen.CobaltScreenHandlers;
 
+import java.util.Random;
+
 public class Main implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("cobalt");
@@ -23,7 +25,8 @@ public class Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		var random = new Random();
+		LOGGER.info(motd[random.nextInt(0, motd.length)]);
 
 		ServerLifecycleEvents.SERVER_STARTED.register(this::onServerStart);
 
@@ -41,4 +44,9 @@ public class Main implements ModInitializer {
 	private void onServerStart(MinecraftServer server) {
 		Main.server = server;
 	}
+
+	private static final String[] motd = new String[] {
+			"1.21 is a lie",
+			"why are you looking here?"
+	};
 }
