@@ -124,6 +124,8 @@ public class CobaltBlocks {
     public static final Block PACKED_ICE_WALL = register("packed_ice_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).solid()));
 
     // -- Misc
+    public static final Block Icicle_Block = register("icicle_block", new PointedDripstoneBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE)));
+
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
     public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
@@ -135,6 +137,8 @@ public class CobaltBlocks {
     public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK).nonOpaque()));
 
     public static final Block FORGE_BLOCK = register("forge_block", new ForgeBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
+
+
 
     private static Block register(String name, Block block) {
         registerItem(name, block);

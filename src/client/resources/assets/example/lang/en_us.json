@@ -555,5 +555,7 @@
 
   "block.cobalt.item_display": "Item Display",
 
-  "trinkets.slot.hand.rune": "Rune"
+  "trinkets.slot.hand.rune": "Rune",
+
+  "block.cobalt.icicle_block": "Icicle"
 }
