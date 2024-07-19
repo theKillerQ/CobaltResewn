@@ -51,6 +51,8 @@ public class HealthRuneItem extends CobaltTrinketItem {
     public void tick(ItemStack stack, SlotReference slot, LivingEntity entity, TrinketComponent trinketComponent) {
         super.tick(stack, slot, entity, trinketComponent);
 
+        if (entity.getWorld().isClient) return;
+
         cooldown++;
 
         // Try to heal the entity
@@ -65,8 +67,6 @@ public class HealthRuneItem extends CobaltTrinketItem {
                     (trinketComponent.isEquipped(CobaltItems.TrinketItems.FIRE_RUNE) ? FIRE_RUNE_MULTIPLIER : 1);
 
             entity.heal(healAmount);
-            entity.playSound(SoundEvents.ENTITY_WITCH_DRINK, 1, 1);
-            entity.getWorld().addParticle(ParticleTypes.HEART, entity.getX(), entity.getY(), entity.getZ(), 0, 0, 0);
         }
     }
 }
