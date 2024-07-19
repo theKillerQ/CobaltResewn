@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/icicle_block",
-  "textures": {
-    "cross": "minecraft:block/icicle_block_up_base"
-  }
-}

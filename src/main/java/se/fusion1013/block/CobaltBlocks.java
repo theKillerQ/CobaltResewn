@@ -4,12 +4,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 
@@ -124,7 +124,7 @@ public class CobaltBlocks {
     public static final Block PACKED_ICE_WALL = register("packed_ice_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).solid()));
 
     // -- Misc
-    public static final Block Icicle_Block = register("icicle_block", new PointedDripstoneBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE)));
+    public static final Block ICICLE_BLOCK = register("icicle_block", new IcicleBlock(FabricBlockSettings.copyOf(Blocks.POINTED_DRIPSTONE).slipperiness(0.98F).sounds(BlockSoundGroup.GLASS)));
 
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
@@ -161,7 +161,6 @@ public class CobaltBlocks {
     public static ToIntFunction<BlockState> createLightLevelFromVisibleBlockState(int litLevel) {
         return state -> state.get(RuneBlock.VISIBLE) ? litLevel : 0; // TODO: Move visible block state to custom thingy
     }
-
     public static void register() {}
 
 }

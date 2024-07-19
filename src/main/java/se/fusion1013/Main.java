@@ -39,6 +39,7 @@ public class Main implements ModInitializer {
 		CobaltEffects.registerAll();
 		CobaltServerNetworking.register();
 		CobaltScreenHandlers.registerAll();
+
 	}
 
 	private void onServerStart(MinecraftServer server) {
