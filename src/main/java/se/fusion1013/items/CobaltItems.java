@@ -207,6 +207,7 @@ public class CobaltItems {
         public static final Item RATCHETING_SCREWDRIVER;
         public static final Item BIONIC_FIST;
         public static final Item FORGE_HAMMER;
+        public static final Item VOIDREND;
 
         static {
             DAGGER = register("dagger", new CobaltSwordItem(ToolMaterials.STONE, -2+1, -4+3,
@@ -232,6 +233,7 @@ public class CobaltItems {
             BIONIC_FIST = register("bionic_fist", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.6f, CobaltItemConfiguration.create(Formatting.GOLD)
                     .attributeModifier(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier("cobalt.bionic_fist.knockback", 1.6f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL), EquipmentSlot.MAINHAND), new FabricItemSettings()));
             FORGE_HAMMER = register("forge_hammer", new CobaltSwordItem(ToolMaterials.STONE, -2+9, -4+1.6f, CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
+            VOIDREND = register("voidrend", new VoidRendSwordItem());
         }
 
     }
