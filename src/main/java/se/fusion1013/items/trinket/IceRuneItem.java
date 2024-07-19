@@ -1,6 +1,7 @@
 package se.fusion1013.items.trinket;
 
 import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -23,6 +24,8 @@ import java.util.List;
 
 public class IceRuneItem extends CobaltTrinketItem {
 
+    private static final float ICE_RADIUS = 8;
+
     public IceRuneItem() {
         super(new Item.Settings(),
                 new CobaltItemConfiguration()
@@ -34,17 +37,13 @@ public class IceRuneItem extends CobaltTrinketItem {
     }
 
     @Override
-    public void tick(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        super.tick(stack, slot, entity);
-        var trinketComponentOptional = TrinketsApi.getTrinketComponent(entity);
-        if (trinketComponentOptional.isEmpty()) return;
-
-        var trinket = trinketComponentOptional.get();
+    public void tick(ItemStack stack, SlotReference slot, LivingEntity entity, TrinketComponent trinketComponent) {
+        super.tick(stack, slot, entity, trinketComponent);
 
         // Tick depending on which base rune is equipped
-        if (trinket.isEquipped(CobaltItems.TrinketItems.HEALTH_RUNE)) healthRuneTick(stack, slot, entity);
-        if (trinket.isEquipped(CobaltItems.TrinketItems.HEAVY_RUNE)) heavyRuneTick(stack, slot, entity);
-        if (trinket.isEquipped(CobaltItems.TrinketItems.FAST_RUNE)) fastRuneTick(stack, slot, entity);
+        if (trinketComponent.isEquipped(CobaltItems.TrinketItems.HEALTH_RUNE)) healthRuneTick(stack, slot, entity);
+        if (trinketComponent.isEquipped(CobaltItems.TrinketItems.HEAVY_RUNE)) heavyRuneTick(stack, slot, entity);
+        if (trinketComponent.isEquipped(CobaltItems.TrinketItems.FAST_RUNE)) fastRuneTick(stack, slot, entity);
     }
 
     private void healthRuneTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
@@ -56,11 +55,10 @@ public class IceRuneItem extends CobaltTrinketItem {
     private void fastRuneTick(ItemStack stack, SlotReference slot, LivingEntity entity) {
         World world = entity.getWorld();
         float time = world.getTime();
-        float distance = 8;
         Random r = Random.create();
 
         // Add freezing to nearby non-player entities
-        Box box = entity.getBoundingBox().expand(distance, distance, distance);
+        Box box = entity.getBoundingBox().expand(ICE_RADIUS, ICE_RADIUS, ICE_RADIUS);
         List<Entity> otherEntities = world.getOtherEntities(entity, box, other -> !other.isPlayer());
         for (Entity other : otherEntities) {
             if (other instanceof LivingEntity living) {
@@ -81,9 +79,9 @@ public class IceRuneItem extends CobaltTrinketItem {
         for (int i = 0; i < 8; i++) {
             float g = (i * (2 * (float)Math.PI / 16f) + time) % ((float)Math.PI * 2);
             world.addParticle(ParticleTypes.SNOWFLAKE,
-                    entity.getX() + MathHelper.cos(g) * distance,
+                    entity.getX() + MathHelper.cos(g) * ICE_RADIUS,
                     entity.getY(),
-                    entity.getZ() + MathHelper.sin(g) * distance,
+                    entity.getZ() + MathHelper.sin(g) * ICE_RADIUS,
                     0, 0, 0
             );
         }
