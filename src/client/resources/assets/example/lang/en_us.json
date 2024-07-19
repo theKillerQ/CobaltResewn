@@ -460,6 +460,12 @@
   "effect.cobalt.cursed_knowledge": "Cursed Insight",
   "effect.cobalt.freezing": "Freezing",
   "effect.cobalt.cold_resistance": "Cold Resistance",
+  "effect.cobalt.infected": "Infected",
+
+
+
+
+  "death.attack.infection": "%1$s succumbed to the infection",
 
 
 
