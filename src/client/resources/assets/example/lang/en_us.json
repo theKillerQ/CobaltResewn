@@ -428,6 +428,12 @@
 
 
 
+  "item.cobalt.light_soul": "Light Soul",
+  "item.cobalt.light_soul.tooltip": "Mysterious orb of light. Emits a low hum.",
+
+
+
+
   "item_set.cobalt.header": "Set Bonus:",
 
   "item_set.cobalt.diving_armor.tooltip.breathing": "Allows the wearer to breathe underwater",

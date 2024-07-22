@@ -409,6 +409,8 @@ public class CobaltItems {
 
         public static final Item FORGE_SIDE_CRYSTAL;
 
+        public static final Item LIGHT_SOUL;
+
         static {
             // Healing
             PAINKILLERS = register("painkillers", new CobaltHealingItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(4), 5));
@@ -435,6 +437,8 @@ public class CobaltItems {
             RUNE_MODIFIER = register("rune_modifier", new CobaltItem(CobaltItemConfiguration.create(Formatting.DARK_PURPLE), new FabricItemSettings()));
 
             FORGE_SIDE_CRYSTAL = register("forge_side_crystal", new CobaltItem(CobaltItemConfiguration.create(Formatting.LIGHT_PURPLE), new FabricItemSettings().maxCount(1)));
+
+            LIGHT_SOUL = register("light_soul", new CobaltItem(CobaltItemConfiguration.create(Formatting.AQUA), new FabricItemSettings().maxCount(1)));
         }
 
     }
