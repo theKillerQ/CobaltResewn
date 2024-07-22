@@ -12,6 +12,7 @@ public class CobaltBlockEntityRenderers {
         BlockEntityRendererFactories.register(CobaltBlockEntityTypes.FORGE_SIDE_CRYSTAL_BLOCK, ForgeSideCrystalBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(CobaltBlockEntityTypes.PEDESTAL_BLOCK_ENTITY, PedestalBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(CobaltBlockEntityTypes.ITEM_DISPLAY_BLOCK_ENTITY, ItemDisplayBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(CobaltBlockEntityTypes.LIGHT_HOLDER_BLOCK_ENTITY, LightHolderBlockEntityRenderer::new);
     }
 
 }
