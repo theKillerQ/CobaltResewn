@@ -138,6 +138,8 @@ public class CobaltBlocks {
 
     public static final Block LIGHT_HOLDER = register("light_holder", new LightHolderBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(createLightLevelFromBooleanProperty(14, LightHolderBlock.LIT))));
 
+    public static final Block ANCIENT_PEDESTAL = register("ancient_pedestal", new AncientPedestal(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
+
     private static Block register(String name, Block block) {
         registerItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Main.MOD_NAMESPACE, name), block);
