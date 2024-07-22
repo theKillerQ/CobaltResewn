@@ -14,6 +14,7 @@ import se.fusion1013.items.CobaltItems;
 import se.fusion1013.items.CustomItemGroupRegistry;
 import se.fusion1013.networking.CobaltServerNetworking;
 import se.fusion1013.screen.CobaltScreenHandlers;
+import se.fusion1013.sounds.CobaltSoundEvents;
 
 import java.util.Random;
 
@@ -31,6 +32,7 @@ public class Main implements ModInitializer {
 		ServerLifecycleEvents.SERVER_STARTED.register(this::onServerStart);
 
 		CobaltCommands.register();
+		CobaltSoundEvents.register();
 		CobaltItems.register();
 		CustomEntityRegistry.register();
 		CobaltBlocks.register();

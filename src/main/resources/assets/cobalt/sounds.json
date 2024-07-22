@@ -1,0 +1,12 @@
+{
+  "block.light_holder.insert": {
+    "sounds": [
+      "cobalt:light_holder_insert"
+    ]
+  },
+  "block.light_holder.remove": {
+    "sounds": [
+      "cobalt:light_holder_remove"
+    ]
+  }
+}

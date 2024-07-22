@@ -10,6 +10,7 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 import se.fusion1013.block.CobaltBlocks;
+import se.fusion1013.block.LightHolderBlock;
 import se.fusion1013.screen.ItemDisplayScreenHandler;
 
 /**
@@ -27,6 +28,7 @@ public class CobaltBlockEntityTypes {
     public static final BlockEntityType<PedestalBlockEntity>                      PEDESTAL_BLOCK_ENTITY;
     public static final BlockEntityType<ItemDisplayBlockEntity>                   ITEM_DISPLAY_BLOCK_ENTITY;
     public static final BlockEntityType<ForgeBlockEntity>                         FORGE_BLOCK_ENTITY;
+    public static final BlockEntityType<LightHolderBlockEntity>                   LIGHT_HOLDER_BLOCK_ENTITY;
 
     private static <T extends BlockEntity> BlockEntityType<T> register(String id, FabricBlockEntityTypeBuilder<T> builder) {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_NAMESPACE, id), builder.build());
@@ -45,6 +47,7 @@ public class CobaltBlockEntityTypes {
         PEDESTAL_BLOCK_ENTITY = register("pedestal_block_entity", FabricBlockEntityTypeBuilder.create(PedestalBlockEntity::new, CobaltBlocks.PEDESTAL_BLOCK));
         ITEM_DISPLAY_BLOCK_ENTITY = register("item_display_entity", FabricBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new, CobaltBlocks.ITEM_DISPLAY));
         FORGE_BLOCK_ENTITY = register("forge_block_entity", FabricBlockEntityTypeBuilder.create(ForgeBlockEntity::new, CobaltBlocks.FORGE_BLOCK));
+        LIGHT_HOLDER_BLOCK_ENTITY = register("light_holder_block_entity", FabricBlockEntityTypeBuilder.create(LightHolderBlockEntity::new, CobaltBlocks.LIGHT_HOLDER));
     }
 
 }

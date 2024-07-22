@@ -9,6 +9,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
 
@@ -125,7 +126,7 @@ public class CobaltBlocks {
     // -- Misc
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
-    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromVisibleBlockState(4))));
+    public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromBooleanProperty(4, RuneBlock.VISIBLE))));
 
     public static final Block FORGE_SIDE_CRYSTAL_BLOCK = register("forge_side_crystal_block", new ForgeSideCrystalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
 
@@ -134,6 +135,8 @@ public class CobaltBlocks {
     public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK).nonOpaque()));
 
     public static final Block FORGE_BLOCK = register("forge_block", new ForgeBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
+
+    public static final Block LIGHT_HOLDER = register("light_holder", new LightHolderBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(createLightLevelFromBooleanProperty(14, LightHolderBlock.LIT))));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);
@@ -153,8 +156,8 @@ public class CobaltBlocks {
         });
     }
 
-    public static ToIntFunction<BlockState> createLightLevelFromVisibleBlockState(int litLevel) {
-        return state -> state.get(RuneBlock.VISIBLE) ? litLevel : 0; // TODO: Move visible block state to custom thingy
+    public static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
+        return state -> state.get(property) ? litLevel : 0; // TODO: Move visible block state to custom thingy
     }
 
     public static void register() {}
