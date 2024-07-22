@@ -28,7 +28,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -40,31 +39,12 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     public static final DirectionProperty VERTICAL_DIRECTION;
     public static final EnumProperty<Thickness> THICKNESS;
     public static final BooleanProperty WATERLOGGED;
-    private static final int field_31205 = 11;
-    private static final int field_31207 = 2;
-    private static final float field_31208 = 0.02F;
-    private static final float field_31209 = 0.12F;
-    private static final int field_31210 = 11;
-    private static final float WATER_DRIP_CHANCE = 0.17578125F;
-    private static final float LAVA_DRIP_CHANCE = 0.05859375F;
-    private static final double field_31213 = 0.6;
-    private static final float field_31214 = 1.0F;
-    private static final int field_31215 = 40;
-    private static final int field_31200 = 6;
-    private static final float field_31201 = 2.0F;
-    private static final int field_31202 = 2;
-    private static final float field_33566 = 5.0F;
-    private static final float field_33567 = 0.011377778F;
-    private static final int MAX_STALACTITE_GROWTH = 7;
-    private static final int STALACTITE_FLOOR_SEARCH_RANGE = 10;
-    private static final float field_31203 = 0.6875F;
     private static final VoxelShape TIP_MERGE_SHAPE;
     private static final VoxelShape UP_TIP_SHAPE;
     private static final VoxelShape DOWN_TIP_SHAPE;
     private static final VoxelShape BASE_SHAPE;
     private static final VoxelShape FRUSTUM_SHAPE;
     private static final VoxelShape MIDDLE_SHAPE;
-    private static final float field_31204 = 0.125F;
     private static final VoxelShape DRIP_COLLISION_SHAPE;
 
     public MapCodec<IcicleBlock> getCodec() {
@@ -73,7 +53,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
 
     public IcicleBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(VERTICAL_DIRECTION, Direction.UP)).with(THICKNESS, Thickness.TIP)).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(VERTICAL_DIRECTION, Direction.UP).with(THICKNESS, Thickness.TIP).with(WATERLOGGED, false));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -81,18 +61,18 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return canPlaceAtWithDirection(world, pos, (Direction)state.get(VERTICAL_DIRECTION));
+        return canPlaceAtWithDirection(world, pos, state.get(VERTICAL_DIRECTION));
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if ((Boolean) state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
         if (direction != Direction.UP && direction != Direction.DOWN) {
             return state;
         } else {
-            Direction direction2 = (Direction) state.get(VERTICAL_DIRECTION);
+            Direction direction2 = state.get(VERTICAL_DIRECTION);
             if (direction2 == Direction.DOWN && world.getBlockTickScheduler().isQueued(pos, this)) {
 
                 return state;
@@ -107,7 +87,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
             } else {
                 boolean bl = state.get(THICKNESS) == Thickness.TIP_MERGE;
                 Thickness thickness = getThickness(world, pos, direction2, bl);
-                return (BlockState) state.with(THICKNESS, thickness);
+                return state.with(THICKNESS, thickness);
             }
         }
     }
@@ -178,12 +158,12 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         } else {
             boolean bl = !ctx.shouldCancelInteraction();
             Thickness thickness = getThickness(worldAccess, blockPos, direction2, bl);
-            return thickness == null ? null : (BlockState)((BlockState)((BlockState)this.getDefaultState().with(VERTICAL_DIRECTION, direction2)).with(THICKNESS, thickness)).with(WATERLOGGED, worldAccess.getFluidState(blockPos).getFluid() == Fluids.WATER);
+            return thickness == null ? null : this.getDefaultState().with(VERTICAL_DIRECTION, direction2).with(THICKNESS, thickness).with(WATERLOGGED, worldAccess.getFluidState(blockPos).getFluid() == Fluids.WATER);
         }
     }
 
     public FluidState getFluidState(BlockState state) {
-        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
@@ -191,7 +171,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Thickness thickness = (Thickness)state.get(THICKNESS);
+        Thickness thickness = state.get(THICKNESS);
         VoxelShape voxelShape;
         if (thickness == Thickness.TIP_MERGE) {
             voxelShape = TIP_MERGE_SHAPE;
@@ -308,7 +288,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     private static void place(WorldAccess world, BlockPos pos, Direction direction, Thickness thickness) {
-        BlockState blockState = (BlockState)((BlockState)((BlockState)CobaltBlocks.ICICLE_BLOCK.getDefaultState().with(VERTICAL_DIRECTION, direction)).with(THICKNESS, thickness)).with(WATERLOGGED, world.getFluidState(pos).getFluid() == Fluids.WATER);
+        BlockState blockState = CobaltBlocks.ICICLE_BLOCK.getDefaultState().with(VERTICAL_DIRECTION, direction).with(THICKNESS, thickness).with(WATERLOGGED, world.getFluidState(pos).getFluid() == Fluids.WATER);
         world.setBlockState(pos, blockState, 3);
     }
 
@@ -334,13 +314,13 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         if (isTip(state, allowMerged)) {
             return pos;
         } else {
-            Direction direction = (Direction)state.get(VERTICAL_DIRECTION);
+            Direction direction = state.get(VERTICAL_DIRECTION);
             BiPredicate<BlockPos, BlockState> biPredicate = (posx, statex) -> {
                 return statex.isOf(CobaltBlocks.ICICLE_BLOCK) && statex.get(VERTICAL_DIRECTION) == direction;
             };
-            return (BlockPos)searchInDirection(world, pos, direction.getDirection(), biPredicate, (statex) -> {
+            return searchInDirection(world, pos, direction.getDirection(), biPredicate, (statex) -> {
                 return isTip(statex, allowMerged);
-            }, range).orElse((BlockPos) null);
+            }, range).orElse( null);
         }
     }
 
@@ -368,7 +348,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         } else if (!isPointedDripstoneFacingDirection(blockState, direction)) {
             return Thickness.TIP;
         } else {
-            Thickness thickness = (Thickness)blockState.get(THICKNESS);
+            Thickness thickness = blockState.get(THICKNESS);
             if (thickness != Thickness.TIP && thickness != Thickness.TIP_MERGE) {
                 BlockState blockState2 = world.getBlockState(pos.offset(direction2));
                 return !isPointedDripstoneFacingDirection(blockState2, direction) ? Thickness.BASE : Thickness.MIDDLE;
@@ -383,7 +363,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     private static boolean canGrow(BlockState state, ServerWorld world, BlockPos pos) {
-        Direction direction = (Direction)state.get(VERTICAL_DIRECTION);
+        Direction direction = state.get(VERTICAL_DIRECTION);
         BlockPos blockPos = pos.offset(direction);
         BlockState blockState = world.getBlockState(blockPos);
         if (!blockState.getFluidState().isEmpty()) {
@@ -394,7 +374,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     private static Optional<BlockPos> getSupportingPos(World world, BlockPos pos, BlockState state, int range) {
-        Direction direction = (Direction)state.get(VERTICAL_DIRECTION);
+        Direction direction = state.get(VERTICAL_DIRECTION);
         BiPredicate<BlockPos, BlockState> biPredicate = (posx, statex) -> {
             return statex.isOf(CobaltBlocks.ICICLE_BLOCK) && statex.get(VERTICAL_DIRECTION) == direction;
         };
@@ -413,7 +393,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         if (!state.isOf(CobaltBlocks.ICICLE_BLOCK)) {
             return false;
         } else {
-            Thickness thickness = (Thickness)state.get(THICKNESS);
+            Thickness thickness = state.get(THICKNESS);
             return thickness == Thickness.TIP || allowMerged && thickness == Thickness.TIP_MERGE;
         }
     }
@@ -448,7 +428,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         BiPredicate<BlockPos, BlockState> biPredicate = (posx, state) -> {
             return canDripThrough(world, posx, state);
         };
-        return (BlockPos)searchInDirection(world, pos, Direction.UP.getDirection(), biPredicate, PointedDripstoneBlock::canDrip, 11).orElse((BlockPos) null);
+        return searchInDirection(world, pos, Direction.UP.getDirection(), biPredicate, PointedDripstoneBlock::canDrip, 11).orElse(null);
     }
 
 
