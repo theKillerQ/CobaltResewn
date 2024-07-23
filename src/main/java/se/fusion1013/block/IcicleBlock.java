@@ -47,6 +47,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     private static final VoxelShape MIDDLE_SHAPE;
     private static final VoxelShape DRIP_COLLISION_SHAPE;
 
+    @Override
     public MapCodec<IcicleBlock> getCodec() {
         return CODEC;
     }
@@ -55,7 +56,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(VERTICAL_DIRECTION, Direction.UP).with(THICKNESS, Thickness.TIP).with(WATERLOGGED, false));
     }
-
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{VERTICAL_DIRECTION, THICKNESS, WATERLOGGED});
     }
@@ -63,7 +64,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return canPlaceAtWithDirection(world, pos, state.get(VERTICAL_DIRECTION));
     }
-
+    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
@@ -91,20 +92,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
             }
         }
     }
-    private static boolean canDripThrough(BlockView world, BlockPos pos, BlockState state) {
-        if (state.isAir()) {
-            return true;
-        } else if (state.isOpaqueFullCube(world, pos)) {
-            return false;
-        } else if (!state.getFluidState().isEmpty()) {
-            return false;
-        } else {
-            VoxelShape voxelShape = state.getCollisionShape(world, pos);
-            return !VoxelShapes.matchesAnywhere(DRIP_COLLISION_SHAPE, voxelShape, BooleanBiFunction.AND);
-        }
-    }
-
-
+    @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
         if (!world.isClient) {
             BlockPos blockPos = hit.getBlockPos();
@@ -114,7 +102,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
 
         }
     }
-
+    @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (state.get(VERTICAL_DIRECTION) == Direction.UP && state.get(THICKNESS) == Thickness.TIP) {
             entity.handleFallDamage(fallDistance + 2.0F, 2.0F, world.getDamageSources().stalagmite());
@@ -123,8 +111,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
 
     }
-
-
+    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (isPointingUp(state) && !this.canPlaceAt(state, world, pos)) {
             world.breakBlock(pos, true);
@@ -148,6 +135,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     }
 
     @Nullable
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         WorldAccess worldAccess = ctx.getWorld();
         BlockPos blockPos = ctx.getBlockPos();
@@ -162,14 +150,15 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
     }
 
+    @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
-
+    @Override
     public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
         return VoxelShapes.empty();
     }
-
+    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Thickness thickness = state.get(THICKNESS);
         VoxelShape voxelShape;
@@ -200,18 +189,17 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     public float getMaxHorizontalModelOffset() {
         return 0.125F;
     }
-
+    @Override
     public void onDestroyedOnLanding(World world, BlockPos pos, FallingBlockEntity fallingBlockEntity) {
         if (!fallingBlockEntity.isSilent()) {
             world.syncWorldEvent(1045, pos, 0);
         }
 
     }
-
+    @Override
     public DamageSource getDamageSource(Entity attacker) {
         return attacker.getDamageSources().fallingStalactite(attacker);
     }
-
     private static void spawnFallingBlock(BlockState state, ServerWorld world, BlockPos pos) {
         BlockPos.Mutable mutable = pos.mutableCopy();
 
@@ -228,102 +216,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
 
     }
-
-    @VisibleForTesting
-    public static void tryGrow(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BlockState blockState = world.getBlockState(pos.up(1));
-        BlockState blockState2 = world.getBlockState(pos.up(2));
-        if (canGrow(blockState, blockState2)) {
-            BlockPos blockPos = getTipPos(state, world, pos, 7, false);
-            if (blockPos != null) {
-                BlockState blockState3 = world.getBlockState(blockPos);
-                if (canDrip(blockState3) && canGrow(blockState3, world, blockPos)) {
-                    if (random.nextBoolean()) {
-                        tryGrow(world, blockPos, Direction.DOWN);
-                    } else {
-                        tryGrowStalagmite(world, blockPos);
-                    }
-
-                }
-            }
-        }
-    }
-
-    private static void tryGrowStalagmite(ServerWorld world, BlockPos pos) {
-        BlockPos.Mutable mutable = pos.mutableCopy();
-
-        for(int i = 0; i < 10; ++i) {
-            mutable.move(Direction.DOWN);
-            BlockState blockState = world.getBlockState(mutable);
-            if (!blockState.getFluidState().isEmpty()) {
-                return;
-            }
-
-            if (isTip(blockState, Direction.UP) && canGrow(blockState, world, mutable)) {
-                tryGrow(world, mutable, Direction.UP);
-                return;
-            }
-
-            if (canPlaceAtWithDirection(world, mutable, Direction.UP) && !world.isWater(mutable.down())) {
-                tryGrow(world, mutable.down(), Direction.UP);
-                return;
-            }
-
-            if (!canDripThrough(world, mutable, blockState)) {
-                return;
-            }
-        }
-
-    }
-
-    private static void tryGrow(ServerWorld world, BlockPos pos, Direction direction) {
-        BlockPos blockPos = pos.offset(direction);
-        BlockState blockState = world.getBlockState(blockPos);
-        if (isTip(blockState, direction.getOpposite())) {
-            growMerged(blockState, world, blockPos);
-        } else if (blockState.isAir() || blockState.isOf(Blocks.WATER)) {
-            place(world, blockPos, direction, Thickness.TIP);
-        }
-
-    }
-
-    private static void place(WorldAccess world, BlockPos pos, Direction direction, Thickness thickness) {
-        BlockState blockState = CobaltBlocks.ICICLE_BLOCK.getDefaultState().with(VERTICAL_DIRECTION, direction).with(THICKNESS, thickness).with(WATERLOGGED, world.getFluidState(pos).getFluid() == Fluids.WATER);
-        world.setBlockState(pos, blockState, 3);
-    }
-
-    private static void growMerged(BlockState state, WorldAccess world, BlockPos pos) {
-        BlockPos blockPos2;
-        BlockPos blockPos;
-        if (state.get(VERTICAL_DIRECTION) == Direction.UP) {
-            blockPos = pos;
-            blockPos2 = pos.up();
-        } else {
-            blockPos2 = pos;
-            blockPos = pos.down();
-        }
-
-        place(world, blockPos2, Direction.DOWN, Thickness.TIP_MERGE);
-        place(world, blockPos, Direction.UP, Thickness.TIP_MERGE);
-    }
-
-
-
-    @Nullable
-    private static BlockPos getTipPos(BlockState state, WorldAccess world, BlockPos pos, int range, boolean allowMerged) {
-        if (isTip(state, allowMerged)) {
-            return pos;
-        } else {
-            Direction direction = state.get(VERTICAL_DIRECTION);
-            BiPredicate<BlockPos, BlockState> biPredicate = (posx, statex) -> {
-                return statex.isOf(CobaltBlocks.ICICLE_BLOCK) && statex.get(VERTICAL_DIRECTION) == direction;
-            };
-            return searchInDirection(world, pos, direction.getDirection(), biPredicate, (statex) -> {
-                return isTip(statex, allowMerged);
-            }, range).orElse( null);
-        }
-    }
-
     @Nullable
     private static Direction getDirectionToPlaceAt(WorldView world, BlockPos pos, Direction direction) {
         Direction direction2;
@@ -358,31 +250,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
     }
 
-    public static boolean canDrip(BlockState state) {
-        return isPointingDown(state) && state.get(THICKNESS) == Thickness.TIP && !(Boolean)state.get(WATERLOGGED);
-    }
-
-    private static boolean canGrow(BlockState state, ServerWorld world, BlockPos pos) {
-        Direction direction = state.get(VERTICAL_DIRECTION);
-        BlockPos blockPos = pos.offset(direction);
-        BlockState blockState = world.getBlockState(blockPos);
-        if (!blockState.getFluidState().isEmpty()) {
-            return false;
-        } else {
-            return blockState.isAir() || isTip(blockState, direction.getOpposite());
-        }
-    }
-
-    private static Optional<BlockPos> getSupportingPos(World world, BlockPos pos, BlockState state, int range) {
-        Direction direction = state.get(VERTICAL_DIRECTION);
-        BiPredicate<BlockPos, BlockState> biPredicate = (posx, statex) -> {
-            return statex.isOf(CobaltBlocks.ICICLE_BLOCK) && statex.get(VERTICAL_DIRECTION) == direction;
-        };
-        return searchInDirection(world, pos, direction.getOpposite().getDirection(), biPredicate, (statex) -> {
-            return !statex.isOf(CobaltBlocks.ICICLE_BLOCK);
-        }, range);
-    }
-
     private static boolean canPlaceAtWithDirection(WorldView world, BlockPos pos, Direction direction) {
         BlockPos blockPos = pos.offset(direction.getOpposite());
         BlockState blockState = world.getBlockState(blockPos);
@@ -409,11 +276,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     private static boolean isPointingUp(BlockState state) {
         return isPointedDripstoneFacingDirection(state, Direction.UP);
     }
-
-    private static boolean isHeldByPointedDripstone(BlockState state, WorldView world, BlockPos pos) {
-        return isPointingDown(state) && !world.getBlockState(pos.up()).isOf(CobaltBlocks.ICICLE_BLOCK);
-    }
-
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
@@ -421,22 +283,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     private static boolean isPointedDripstoneFacingDirection(BlockState state, Direction direction) {
         return state.isOf(CobaltBlocks.ICICLE_BLOCK) && state.get(VERTICAL_DIRECTION) == direction;
     }
-
-
-    @Nullable
-    public static BlockPos getDripPos(World world, BlockPos pos) {
-        BiPredicate<BlockPos, BlockState> biPredicate = (posx, state) -> {
-            return canDripThrough(world, posx, state);
-        };
-        return searchInDirection(world, pos, Direction.UP.getDirection(), biPredicate, PointedDripstoneBlock::canDrip, 11).orElse(null);
-    }
-
-
-    private static boolean canGrow(BlockState dripstoneBlockState, BlockState waterState) {
-        return dripstoneBlockState.isOf(Blocks.DRIPSTONE_BLOCK) && waterState.isOf(Blocks.WATER) && waterState.getFluidState().isStill();
-    }
-
-
     private static Optional<BlockPos> searchInDirection(WorldAccess world, BlockPos pos, Direction.AxisDirection direction, BiPredicate<BlockPos, BlockState> continuePredicate, Predicate<BlockState> stopPredicate, int range) {
         Direction direction2 = Direction.get(direction, Direction.Axis.Y);
         BlockPos.Mutable mutable = pos.mutableCopy();
