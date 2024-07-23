@@ -1,6 +1,5 @@
 package se.fusion1013.block;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Thickness;
@@ -16,7 +15,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.*;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -45,7 +43,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     private static final VoxelShape BASE_SHAPE;
     private static final VoxelShape FRUSTUM_SHAPE;
     private static final VoxelShape MIDDLE_SHAPE;
-    private static final VoxelShape DRIP_COLLISION_SHAPE;
 
     @Override
     public MapCodec<IcicleBlock> getCodec() {
@@ -131,7 +128,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         BASE_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
         FRUSTUM_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
         MIDDLE_SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-        DRIP_COLLISION_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+
     }
 
     @Nullable
