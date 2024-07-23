@@ -583,7 +583,9 @@
   "block.cobalt.item_display": "Item Display",
 
   "block.cobalt.light_holder": "Light Holder",
+  "block.cobalt.directional_light_holder": "Directional Light Holder",
   "block.cobalt.ancient_pedestal": "Ancient Pedestal",
+  "block.cobalt.ancient_pillar": "Ancient Pillar",
 
   "trinkets.slot.hand.rune": "Rune"
 }

@@ -47,7 +47,7 @@ public class CobaltBlockEntityTypes {
         PEDESTAL_BLOCK_ENTITY = register("pedestal_block_entity", FabricBlockEntityTypeBuilder.create(PedestalBlockEntity::new, CobaltBlocks.PEDESTAL_BLOCK));
         ITEM_DISPLAY_BLOCK_ENTITY = register("item_display_entity", FabricBlockEntityTypeBuilder.create(ItemDisplayBlockEntity::new, CobaltBlocks.ITEM_DISPLAY));
         FORGE_BLOCK_ENTITY = register("forge_block_entity", FabricBlockEntityTypeBuilder.create(ForgeBlockEntity::new, CobaltBlocks.FORGE_BLOCK));
-        LIGHT_HOLDER_BLOCK_ENTITY = register("light_holder_block_entity", FabricBlockEntityTypeBuilder.create(LightHolderBlockEntity::new, CobaltBlocks.LIGHT_HOLDER));
+        LIGHT_HOLDER_BLOCK_ENTITY = register("light_holder_block_entity", FabricBlockEntityTypeBuilder.create(LightHolderBlockEntity::new, CobaltBlocks.LIGHT_HOLDER, CobaltBlocks.DIRECTIONAL_LIGHT_HOLDER));
     }
 
 }

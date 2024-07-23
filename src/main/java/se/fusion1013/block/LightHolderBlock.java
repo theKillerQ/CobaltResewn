@@ -15,6 +15,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
@@ -114,6 +115,11 @@ public class LightHolderBlock extends BlockWithEntity {
         world.setBlockState(pos, state.with(LIT, false));
         player.setStackInHand(hand, CobaltItems.MiscItems.LIGHT_SOUL.getDefaultStack());
 
+        // Update all neighbors
+        for (Direction dir : Direction.values()) {
+            world.updateNeighborsAlways(pos.offset(dir), this);
+        }
+
         if (!world.isClient) {
             world.playSound(null, pos, CobaltSoundEvents.LIGHT_HOLDER_REMOVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -125,6 +131,21 @@ public class LightHolderBlock extends BlockWithEntity {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return validateTicker(type, CobaltBlockEntityTypes.LIGHT_HOLDER_BLOCK_ENTITY, world.isClient ? LightHolderBlockEntity::clientTick : LightHolderBlockEntity::serverTick);
+    }
+
+    @Override
+    public boolean emitsRedstonePower(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return state.get(LIT) ? 15 : 0;
+    }
+
+    @Override
+    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return state.get(LIT) ? 15 : 0;
     }
 
     @Nullable

@@ -96,14 +96,19 @@ public class CobaltBlocks {
     public static final Block EXPOSED_COPPER_VENT = register("exposed_copper_vent", new CopperVentBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Block EXPOSED_COPPER_CRATE = register("exposed_copper_crate", new CopperCrateBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
 
-    // -- Pots
-    // TODO: Replace with custom class
+    // -- Ancient Blocks
     public static final Block ANCIENT_POT_1 = register("ancient_pot_1", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_2 = register("ancient_pot_2", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_3 = register("ancient_pot_3", new AncientPot1Block(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_4_BOTTOM = register("ancient_pot_4_bottom", new AncientPot4BottomBlock(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_4_MIDDLE = register("tall_ancient_pot_middle", new AncientPot4BottomBlock(AbstractBlock.Settings.create().strength(3, 6)));
     public static final Block ANCIENT_POT_4_TOP = register("ancient_pot_4_top", new AncientPot4TopBlock(AbstractBlock.Settings.create().strength(3, 6)));
+
+    public static final Block ANCIENT_PEDESTAL = register("ancient_pedestal", new AncientPedestalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
+    public static final Block ANCIENT_PILLAR = register("ancient_pillar", new AncientPedestalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
+    public static final Block LIGHT_HOLDER = register("light_holder", new LightHolderBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS).luminance(createLightLevelFromBooleanProperty(14, LightHolderBlock.LIT))));
+    public static final Block DIRECTIONAL_LIGHT_HOLDER = register("directional_light_holder", new LightHolderBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS).luminance(createLightLevelFromBooleanProperty(14, LightHolderBlock.LIT))));
+
 
     // -- Sculk Blocks
     public static final Block SCULK_STEM = register("sculk_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
@@ -136,9 +141,6 @@ public class CobaltBlocks {
 
     public static final Block FORGE_BLOCK = register("forge_block", new ForgeBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
 
-    public static final Block LIGHT_HOLDER = register("light_holder", new LightHolderBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(createLightLevelFromBooleanProperty(14, LightHolderBlock.LIT))));
-
-    public static final Block ANCIENT_PEDESTAL = register("ancient_pedestal", new AncientPedestal(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
 
     private static Block register(String name, Block block) {
         registerItem(name, block);
