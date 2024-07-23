@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class AncientPedestalBlock extends Block {
 
-    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 14, 16, 14);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 2, 14, 16, 14);
 
     private static final BooleanProperty POWERED = BooleanProperty.of("powered");
 
