@@ -587,10 +587,16 @@
 
   "block.cobalt.item_display": "Item Display",
 
+
+  "trinkets.slot.hand.rune": "Rune",
+
+  "block.cobalt.icicle_block": "Icicle",
+
   "block.cobalt.light_holder": "Light Holder",
   "block.cobalt.directional_light_holder": "Directional Light Holder",
   "block.cobalt.ancient_pedestal": "Ancient Pedestal",
   "block.cobalt.ancient_pillar": "Ancient Pillar",
 
-  "trinkets.slot.hand.rune": "Rune"
+  "trinkets.slot.hand.rune": "Rune",
+
 }

@@ -9,6 +9,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.Identifier;
 import se.fusion1013.Main;
@@ -129,6 +130,8 @@ public class CobaltBlocks {
     public static final Block PACKED_ICE_WALL = register("packed_ice_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).solid()));
 
     // -- Misc
+    public static final Block ICICLE_BLOCK = register("icicle_block", new IcicleBlock(FabricBlockSettings.copyOf(Blocks.POINTED_DRIPSTONE).slipperiness(0.98F).sounds(BlockSoundGroup.GLASS)));
+
     public static final Block PARTICLE_COMMAND_BLOCK = register("particle_command_block", new ParticleBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK)));
 
     public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromBooleanProperty(4, RuneBlock.VISIBLE))));
@@ -140,6 +143,7 @@ public class CobaltBlocks {
     public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK).nonOpaque()));
 
     public static final Block FORGE_BLOCK = register("forge_block", new ForgeBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
+
 
 
     private static Block register(String name, Block block) {
@@ -163,7 +167,6 @@ public class CobaltBlocks {
     public static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
         return state -> state.get(property) ? litLevel : 0; // TODO: Move visible block state to custom thingy
     }
-
     public static void register() {}
 
 }
