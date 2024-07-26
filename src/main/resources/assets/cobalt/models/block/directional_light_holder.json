@@ -82,20 +82,6 @@
 				"up": {"uv": [0, 0, 2, 2], "rotation": 270, "texture": "#1"},
 				"down": {"uv": [0, 0, 2, 2], "rotation": 90, "texture": "#1"}
 			}
-		},
-		{
-			"name": "lens",
-			"from": [4, 2, 3],
-			"to": [12, 10, 4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4, 2, 3]},
-			"faces": {
-				"north": {"uv": [8, 0, 12, 4], "texture": "#1"},
-				"east": {"uv": [0, 0, 1, 8], "texture": "#1"},
-				"south": {"uv": [8, 0, 12, 4], "texture": "#1"},
-				"west": {"uv": [0, 0, 1, 8], "texture": "#1"},
-				"up": {"uv": [0, 0, 8, 1], "texture": "#1"},
-				"down": {"uv": [0, 0, 8, 1], "texture": "#1"}
-			}
 		}
 	],
 	"display": {
@@ -135,7 +121,6 @@
 			"origin": [8, 8, 8],
 			"color": 0,
 			"children": [0, 1, 2, 3, 4, 5]
-		},
-		6
+		}
 	]
 }

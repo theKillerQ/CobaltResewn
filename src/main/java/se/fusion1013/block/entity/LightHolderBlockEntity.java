@@ -15,6 +15,10 @@ public class LightHolderBlockEntity extends BlockEntity {
         super(CobaltBlockEntityTypes.LIGHT_HOLDER_BLOCK_ENTITY, pos, state);
     }
 
+    public LightHolderBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+    }
+
     public static void clientTick(World world, BlockPos pos, BlockState blockState, LightHolderBlockEntity lightHolderBlockEntity) {
         lastTick = tick;
         tick++;

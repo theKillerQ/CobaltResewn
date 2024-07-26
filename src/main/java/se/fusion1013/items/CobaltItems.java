@@ -1,53 +1,24 @@
 package se.fusion1013.items;
 
 import dev.emi.trinkets.api.SlotAttributes;
-import dev.emi.trinkets.api.SlotReference;
 import io.wispforest.lavender.book.LavenderBookItem;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.datafixer.fix.StatusEffectFix;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.text.Text;
-import net.minecraft.util.Arm;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.random.Random;
-import org.jetbrains.annotations.Nullable;
-import se.fusion1013.Main;
-import se.fusion1013.effect.CobaltEffects;
-import se.fusion1013.entity.ExplosiveArrowEntity;
-import se.fusion1013.entity.LightningArrowEntity;
-import se.fusion1013.items.armor.CobaltArmorItem;
-import se.fusion1013.items.armor.CobaltArmorSet;
-import se.fusion1013.items.consumable.CobaltHealingItem;
-import se.fusion1013.items.consumable.LiquidCourageItem;
-import se.fusion1013.items.consumable.MysteryMedicineItem;
-import se.fusion1013.items.crossbow.CobaltCrossbowItem;
-import se.fusion1013.items.materials.CobaltArmorMaterial;
-import se.fusion1013.items.misc.CorruptedPearlItem;
-import se.fusion1013.items.misc.WalkieTalkieItem;
-import se.fusion1013.items.sword.InfectedSwordItem;
-import se.fusion1013.items.sword.SampleDrillItem;
-import se.fusion1013.items.sword.VoidRendSwordItem;
-import se.fusion1013.items.tools.BasicDrillItem;
-import se.fusion1013.items.tools.CobaltAxeItem;
-import se.fusion1013.items.sword.CobaltSwordItem;
-import se.fusion1013.items.tools.CobaltPickaxeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundCategory;
@@ -56,12 +27,25 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
+import se.fusion1013.effect.CobaltEffects;
+import se.fusion1013.entity.ExplosiveArrowEntity;
+import se.fusion1013.entity.LightningArrowEntity;
+import se.fusion1013.items.armor.CobaltArmorSet;
+import se.fusion1013.items.consumable.CobaltHealingItem;
+import se.fusion1013.items.consumable.LiquidCourageItem;
+import se.fusion1013.items.consumable.MysteryMedicineItem;
+import se.fusion1013.items.crossbow.CobaltCrossbowItem;
 import se.fusion1013.items.materials.CobaltArmorMaterials;
+import se.fusion1013.items.misc.CorruptedPearlItem;
+import se.fusion1013.items.misc.WalkieTalkieItem;
+import se.fusion1013.items.sword.CobaltSwordItem;
+import se.fusion1013.items.sword.InfectedSwordItem;
+import se.fusion1013.items.sword.SampleDrillItem;
+import se.fusion1013.items.sword.VoidRendSwordItem;
+import se.fusion1013.items.tools.BasicDrillItem;
+import se.fusion1013.items.tools.CobaltAxeItem;
+import se.fusion1013.items.tools.CobaltPickaxeItem;
 import se.fusion1013.items.trinket.*;
-import se.fusion1013.util.item.ItemSetUtil;
-
-import java.text.Format;
-import java.util.List;
 
 import static se.fusion1013.Main.MOD_NAMESPACE;
 import static se.fusion1013.items.CustomItemGroupRegistry.*;
@@ -410,6 +394,10 @@ public class CobaltItems {
         public static final Item FORGE_SIDE_CRYSTAL;
 
         public static final Item LIGHT_SOUL;
+        public static final Item LENS;
+        public static final Item RED_LENS;
+        public static final Item GREEN_LENS;
+        public static final Item BLUE_LENS;
 
         static {
             // Healing
@@ -439,6 +427,10 @@ public class CobaltItems {
             FORGE_SIDE_CRYSTAL = register("forge_side_crystal", new CobaltItem(CobaltItemConfiguration.create(Formatting.LIGHT_PURPLE), new FabricItemSettings().maxCount(1)));
 
             LIGHT_SOUL = register("light_soul", new CobaltItem(CobaltItemConfiguration.create(Formatting.AQUA), new FabricItemSettings().maxCount(1)));
+            LENS = register("lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
+            RED_LENS = register("red_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
+            GREEN_LENS = register("green_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
+            BLUE_LENS = register("blue_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
         }
 
     }

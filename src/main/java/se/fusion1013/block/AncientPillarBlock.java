@@ -16,13 +16,13 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class AncientPedestalBlock extends Block {
+public class AncientPillarBlock extends Block {
 
     private static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 2, 14, 16, 14);
 
-    private static final BooleanProperty POWERED = BooleanProperty.of("powered");
+    protected static final BooleanProperty POWERED = BooleanProperty.of("powered");
 
-    public AncientPedestalBlock(Settings settings) {
+    public AncientPillarBlock(Settings settings) {
         super(settings);
         this.setDefaultState(getDefaultState().with(POWERED, false));
     }

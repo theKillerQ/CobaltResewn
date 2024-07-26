@@ -12,8 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import se.fusion1013.block.CobaltBlocks;
-import se.fusion1013.block.LightHolderBlock;
+import se.fusion1013.block.LightContainerBlock;
 import se.fusion1013.block.entity.LightHolderBlockEntity;
 import se.fusion1013.items.CobaltItems;
 
@@ -25,6 +24,10 @@ public class LightHolderBlockEntityRenderer implements BlockEntityRenderer<Light
 
     @Override
     public void render(LightHolderBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+        tryRenderLightSoul(entity, tickDelta, matrices, vertexConsumers, light, overlay);
+    }
+
+    public static void tryRenderLightSoul(LightHolderBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         matrices.push();
 
         World world = entity.getWorld();
@@ -37,9 +40,9 @@ public class LightHolderBlockEntityRenderer implements BlockEntityRenderer<Light
         matrices.pop();
     }
 
-    private void renderLightSoul(BlockState state, float tickDelta, MatrixStack matrices, LightHolderBlockEntity entity, VertexConsumerProvider vertexConsumers) {
+    private static void renderLightSoul(BlockState state, float tickDelta, MatrixStack matrices, LightHolderBlockEntity entity, VertexConsumerProvider vertexConsumers) {
         // If block is lit, render light soul inside of it
-        if (state.get(LightHolderBlock.LIT)) {
+        if (state.get(LightContainerBlock.LIT)) {
             double offset = Math.sin(MathHelper.lerp(tickDelta, (float)LightHolderBlockEntity.getLastTick(), (float)LightHolderBlockEntity.getTick()) / 32f) / 32.0;
 
             matrices.translate(0.5, (1/16f)*6 + offset, 0.5);
