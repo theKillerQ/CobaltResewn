@@ -28,11 +28,8 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-
 public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
+
     public static final MapCodec<IcicleBlock> CODEC = createCodec(IcicleBlock::new);
     public static final DirectionProperty VERTICAL_DIRECTION;
     public static final EnumProperty<Thickness> THICKNESS;
@@ -53,14 +50,17 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(VERTICAL_DIRECTION, Direction.UP).with(THICKNESS, Thickness.TIP).with(WATERLOGGED, false));
     }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{VERTICAL_DIRECTION, THICKNESS, WATERLOGGED});
+        builder.add(VERTICAL_DIRECTION, THICKNESS, WATERLOGGED);
     }
 
+    @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return canPlaceAtWithDirection(world, pos, state.get(VERTICAL_DIRECTION));
     }
+
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
@@ -89,6 +89,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
             }
         }
     }
+
     @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
         if (!world.isClient) {
@@ -99,6 +100,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
 
         }
     }
+
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (state.get(VERTICAL_DIRECTION) == Direction.UP && state.get(THICKNESS) == Thickness.TIP) {
@@ -108,6 +110,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
 
     }
+
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (isPointingUp(state) && !this.canPlaceAt(state, world, pos)) {
@@ -151,10 +154,12 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
+
     @Override
     public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
         return VoxelShapes.empty();
     }
+
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Thickness thickness = state.get(THICKNESS);
@@ -179,6 +184,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         return voxelShape.offset(vec3d.x, 0.0, vec3d.z);
     }
 
+    @Override
     public boolean isShapeFullCube(BlockState state, BlockView world, BlockPos pos) {
         return false;
     }
@@ -186,6 +192,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     public float getMaxHorizontalModelOffset() {
         return 0.125F;
     }
+
     @Override
     public void onDestroyedOnLanding(World world, BlockPos pos, FallingBlockEntity fallingBlockEntity) {
         if (!fallingBlockEntity.isSilent()) {
@@ -193,10 +200,12 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
 
     }
+
     @Override
     public DamageSource getDamageSource(Entity attacker) {
         return attacker.getDamageSources().fallingStalactite(attacker);
     }
+
     private static void spawnFallingBlock(BlockState state, ServerWorld world, BlockPos pos) {
         BlockPos.Mutable mutable = pos.mutableCopy();
 
@@ -213,6 +222,7 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
 
     }
+
     @Nullable
     private static Direction getDirectionToPlaceAt(WorldView world, BlockPos pos, Direction direction) {
         Direction direction2;
@@ -262,10 +272,6 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
         }
     }
 
-    private static boolean isTip(BlockState state, Direction direction) {
-        return isTip(state, false) && state.get(VERTICAL_DIRECTION) == direction;
-    }
-
     private static boolean isPointingDown(BlockState state) {
         return isPointedDripstoneFacingDirection(state, Direction.DOWN);
     }
@@ -273,30 +279,14 @@ public class IcicleBlock extends Block implements LandingBlock, Waterloggable {
     private static boolean isPointingUp(BlockState state) {
         return isPointedDripstoneFacingDirection(state, Direction.UP);
     }
+
+    @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
 
     private static boolean isPointedDripstoneFacingDirection(BlockState state, Direction direction) {
         return state.isOf(CobaltBlocks.ICICLE_BLOCK) && state.get(VERTICAL_DIRECTION) == direction;
-    }
-    private static Optional<BlockPos> searchInDirection(WorldAccess world, BlockPos pos, Direction.AxisDirection direction, BiPredicate<BlockPos, BlockState> continuePredicate, Predicate<BlockState> stopPredicate, int range) {
-        Direction direction2 = Direction.get(direction, Direction.Axis.Y);
-        BlockPos.Mutable mutable = pos.mutableCopy();
-
-        for(int i = 1; i < range; ++i) {
-            mutable.move(direction2);
-            BlockState blockState = world.getBlockState(mutable);
-            if (stopPredicate.test(blockState)) {
-                return Optional.of(mutable.toImmutable());
-            }
-
-            if (world.isOutOfHeightLimit(mutable.getY()) || !continuePredicate.test(mutable, blockState)) {
-                return Optional.empty();
-            }
-        }
-
-        return Optional.empty();
     }
 
 }
