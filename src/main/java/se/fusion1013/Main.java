@@ -26,14 +26,17 @@ public class Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		var random = new Random();
-		LOGGER.info(motd[random.nextInt(0, motd.length)]);
+
+		LOGGER.info("Initializing Cobalt...");
 
 		ServerLifecycleEvents.SERVER_STARTED.register(this::onServerStart);
 
 		CobaltCommands.register();
 		CobaltSoundEvents.register();
+
+		LOGGER.info("Loading Bananas...");
 		CobaltItems.register();
+
 		CustomEntityRegistry.register();
 		CobaltBlocks.register();
 		CustomItemGroupRegistry.register();
@@ -47,9 +50,4 @@ public class Main implements ModInitializer {
 	private void onServerStart(MinecraftServer server) {
 		Main.server = server;
 	}
-
-	private static final String[] motd = new String[] {
-			"1.21 is a lie",
-			"why are you looking here?"
-	};
 }
