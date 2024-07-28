@@ -38,7 +38,11 @@ public class Main implements ModInitializer {
 		CobaltItems.register();
 
 		CustomEntityRegistry.register();
+
+		LOGGER.info("Loading the big boi...");
 		CobaltBlocks.register();
+
+		LOGGER.info("Loading some other random things...");
 		CustomItemGroupRegistry.register();
 		CobaltBlockEntityTypes.registerAll();
 		CobaltEffects.registerAll();
