@@ -136,8 +136,6 @@ public class CobaltBlocks {
 
     public static final Block RUNE_BLOCK = register("rune_block", new RuneBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS).nonOpaque().luminance(createLightLevelFromBooleanProperty(4, RuneBlock.VISIBLE))));
 
-    public static final Block FORGE_SIDE_CRYSTAL_BLOCK = register("forge_side_crystal_block", new ForgeSideCrystalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
-
     public static final Block PEDESTAL_BLOCK = register("pedestal_block", new PedestalBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_BRICKS)));
 
     public static final Block ITEM_DISPLAY = register("item_display", new ItemDisplayBlock(FabricBlockSettings.copyOf(Blocks.COMMAND_BLOCK).nonOpaque()));
