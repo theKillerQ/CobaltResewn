@@ -18,5 +18,10 @@
     "sounds": [
       "cobalt:light_holder_lens_remove"
     ]
+  },
+  "illusory_wall": {
+    "sounds": [
+      "cobalt:illusory_wall"
+    ]
   }
 }
