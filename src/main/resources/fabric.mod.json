@@ -15,6 +15,9 @@
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			"se.fusion1013.data.CobaltDataGenerator"
+		],
 		"main": [
           "se.fusion1013.Main"
 		],
