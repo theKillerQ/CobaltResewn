@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Fusion1013/CobaltResewn"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"fabric-datagen": [

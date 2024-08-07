@@ -55,6 +55,7 @@ public class CobaltItems {
 
     public static final Item ICON_ITEM = new Item(new Item.Settings());
     public static final LavenderBookItem WF_INSTRUCTION_MANUAL = LavenderBookItem.registerForBook(new Identifier("cobalt", "wf_instruction_manual"), new FabricItemSettings());
+    public static final LavenderBookItem ADVENTURER_JOURNAL = LavenderBookItem.registerForBook(new Identifier("cobalt", "adventure_journal"), new FabricItemSettings());
 
     // --- ITEMS
 

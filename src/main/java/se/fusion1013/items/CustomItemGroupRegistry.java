@@ -11,6 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import se.fusion1013.block.CobaltBlocks;
 
+import static se.fusion1013.items.CobaltItems.ADVENTURER_JOURNAL;
 import static se.fusion1013.items.CobaltItems.WF_INSTRUCTION_MANUAL;
 
 public class CustomItemGroupRegistry {
@@ -22,6 +23,7 @@ public class CustomItemGroupRegistry {
             .displayName(Text.translatable("item_group.cobalt.items"))
             .entries((displayContext, entries) -> {
                 entries.add(WF_INSTRUCTION_MANUAL);
+                entries.add(ADVENTURER_JOURNAL);
             })
             .build());
 
