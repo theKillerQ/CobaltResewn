@@ -23,6 +23,7 @@ public class CustomEntityRegistry {
 
     // Sculk entities
     public static EntityType<CorruptedCoreEntity> CORRUPTED_CORE;
+    public static EntityType<CorruptedZombieEntity> CORRUPTED_ZOMBIE;
 
     public static void register() {
         LIGHTNING_ARROW = register("lightning_arrow", createArrowEntityType(LightningArrowEntity::new));
@@ -30,6 +31,11 @@ public class CustomEntityRegistry {
 
         CORRUPTED_CORE = register("corrupted_core", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, CorruptedCoreEntity::new).dimensions(EntityDimensions.fixed(2f, 2f)).build());
         FabricDefaultAttributeRegistry.register(CORRUPTED_CORE, CorruptedCoreEntity.createCorruptedCoreAttributes());
+
+        CORRUPTED_ZOMBIE = register("corrupted_zombie", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, CorruptedZombieEntity::new)
+                .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
+                .build());
+        FabricDefaultAttributeRegistry.register(CORRUPTED_ZOMBIE, CorruptedZombieEntity.createZombieAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String s, EntityType<T> entityType) {

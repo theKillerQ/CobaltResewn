@@ -26,6 +26,7 @@ import se.fusion1013.render.entity.CorruptedCoreEntityModel;
 import se.fusion1013.render.entity.CorruptedCoreEntityRenderer;
 import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
 import se.fusion1013.render.entity.LightningArrowEntityRenderer;
+import se.fusion1013.render.entity.*;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
@@ -57,12 +58,13 @@ public class MainClient implements ClientModInitializer {
 		registerItems();
 
 		// Entity rendering
-		EntityRendererRegistry.register(CustomEntityRegistry.LIGHTNING_ARROW, LightningArrowEntityRenderer::new);
-		EntityRendererRegistry.register(CustomEntityRegistry.EXPLOSIVE_ARROW, ExplosiveArrowEntityRenderer::new);
+		EntityRendererRegistry.register(CobaltEntities.LIGHTNING_ARROW, LightningArrowEntityRenderer::new);
+		EntityRendererRegistry.register(CobaltEntities.EXPLOSIVE_ARROW, ExplosiveArrowEntityRenderer::new);
 
-		EntityRendererRegistry.register(CustomEntityRegistry.CORRUPTED_CORE, CorruptedCoreEntityRenderer::new);
+		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_CORE, CorruptedCoreEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
+		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_ZOMBIE, CorruptedZombieEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(TEST_BLOCK_ENTITY_LAYER, DirectionalLightHolderBlockEntityRenderer::getTestTexturedModelData);
 
 		// Block rendering

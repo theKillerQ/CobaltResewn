@@ -22,7 +22,7 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
     }
 
     public LightningArrowEntity(World world, LivingEntity owner, ItemStack stack) {
-        super(CustomEntityRegistry.LIGHTNING_ARROW, owner, world, stack);
+        super(CobaltEntities.LIGHTNING_ARROW, owner, world, stack);
     }
 
     public LightningArrowEntity(EntityType<? extends PersistentProjectileEntity> entityEntityType, World world) {
@@ -30,7 +30,7 @@ public class LightningArrowEntity extends PersistentProjectileEntity {
     }
 
     public LightningArrowEntity(double x, double y, double z, World world, ItemStack stack) {
-        super(CustomEntityRegistry.LIGHTNING_ARROW, x, y, z, world, stack);
+        super(CobaltEntities.LIGHTNING_ARROW, x, y, z, world, stack);
     }
 
     @Override
