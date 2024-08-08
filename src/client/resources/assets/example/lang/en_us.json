@@ -443,6 +443,12 @@
 
 
 
+  "item.cobalt.corrupted_zombie_spawn_egg": "Corrupted Zombie Spawn Egg",
+  "item.cobalt.corrupted_skeleton_spawn_egg": "Corrupted Skeleton Spawn Egg",
+
+
+
+
   "item_set.cobalt.header": "Set Bonus:",
 
   "item_set.cobalt.diving_armor.tooltip.breathing": "Allows the wearer to breathe underwater",
@@ -465,6 +471,8 @@
 
 
   "entity.cobalt.corrupted_core": "Corrupted Core",
+  "entity.cobalt.corrupted_zombie": "Corrupted Zombie",
+  "entity.cobalt.corrupted_skeleton": "Corrupted Skeleton",
 
 
 

@@ -12,13 +12,11 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundCategory;
@@ -28,6 +26,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import se.fusion1013.effect.CobaltEffects;
+import se.fusion1013.entity.CobaltEntities;
 import se.fusion1013.entity.ExplosiveArrowEntity;
 import se.fusion1013.entity.LightningArrowEntity;
 import se.fusion1013.items.armor.CobaltArmorSet;
@@ -436,6 +435,9 @@ public class CobaltItems {
 
     }
 
+    public static final Item CORRUPTED_ZOMBIE_SPAWN_EGG = register("corrupted_zombie_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_ZOMBIE, 0x03fca1, 0x077a01, new FabricItemSettings()));
+    public static final Item CORRUPTED_SKELETON_SPAWN_EGG = register("corrupted_skeleton_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_SKELETON, 0xa6a6a6, 0x7ad0d6, new FabricItemSettings()));
+
     public static final Item PRESSURE_GAUGE = register("pressure_gauge", new CobaltItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
 
     // --- ITEM SETS
@@ -487,6 +489,11 @@ public class CobaltItems {
             content.add(TrinketItems.MECHANIC_GLOVES);
             content.add(TrinketItems.MECHANIC_SPECTACLES);
             content.add(TrinketItems.GEARSTRAP);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(content -> {
+            content.add(CORRUPTED_ZOMBIE_SPAWN_EGG);
+            content.add(CORRUPTED_SKELETON_SPAWN_EGG);
         });
     }
 
