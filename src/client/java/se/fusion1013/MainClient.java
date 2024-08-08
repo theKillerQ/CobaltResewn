@@ -8,13 +8,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
-import se.fusion1013.entity.CustomEntityRegistry;
+import se.fusion1013.entity.CobaltEntities;
 import se.fusion1013.gui.ItemDisplayScreen;
 import se.fusion1013.items.trinkets.BackpackItem;
 import se.fusion1013.model.CobaltPredicateProviderRegister;
@@ -22,10 +22,6 @@ import se.fusion1013.networking.CobaltClientNetworking;
 import se.fusion1013.networking.CobaltNetworkingConstants;
 import se.fusion1013.render.block.CobaltBlockEntityRenderers;
 import se.fusion1013.render.block.DirectionalLightHolderBlockEntityRenderer;
-import se.fusion1013.render.entity.CorruptedCoreEntityModel;
-import se.fusion1013.render.entity.CorruptedCoreEntityRenderer;
-import se.fusion1013.render.entity.ExplosiveArrowEntityRenderer;
-import se.fusion1013.render.entity.LightningArrowEntityRenderer;
 import se.fusion1013.render.entity.*;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
@@ -65,6 +61,7 @@ public class MainClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_CORE_LAYER, CorruptedCoreEntityModel::getTexturedModelData);
 
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_ZOMBIE, CorruptedZombieEntityRenderer::new);
+		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SKELETON, CorruptedSkeletonEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(TEST_BLOCK_ENTITY_LAYER, DirectionalLightHolderBlockEntityRenderer::getTestTexturedModelData);
 
 		// Block rendering
