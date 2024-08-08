@@ -18,7 +18,7 @@ import se.fusion1013.items.CobaltItems;
 
 public class LightHolderBlockEntityRenderer implements BlockEntityRenderer<LightHolderBlockEntity> {
 
-    private static final ItemStack stack = new ItemStack(CobaltItems.MiscItems.LIGHT_SOUL, 1);
+    private static final ItemStack stack = new ItemStack(CobaltItems.LIGHT_SOUL, 1);
 
     public LightHolderBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {}
 
