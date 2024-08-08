@@ -2,11 +2,11 @@ package se.fusion1013.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -15,7 +15,7 @@ import static se.fusion1013.Main.MOD_NAMESPACE;
 /**
  * Handles registering custom {@link Entity}s.
  */
-public class CustomEntityRegistry {
+public class CobaltEntities {
 
     // Arrows
     public static EntityType<LightningArrowEntity> LIGHTNING_ARROW;
@@ -25,6 +25,8 @@ public class CustomEntityRegistry {
     public static EntityType<CorruptedCoreEntity> CORRUPTED_CORE;
     public static EntityType<CorruptedZombieEntity> CORRUPTED_ZOMBIE;
     public static EntityType<CorruptedSkeletonEntity> CORRUPTED_SKELETON;
+
+    public static EntityType<RatEntity> RAT;
 
     public static void register() {
         LIGHTNING_ARROW = register("lightning_arrow", createArrowEntityType(LightningArrowEntity::new));
@@ -42,6 +44,9 @@ public class CustomEntityRegistry {
                 .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
                 .build());
         FabricDefaultAttributeRegistry.register(CORRUPTED_SKELETON, CorruptedSkeletonEntity.createAbstractSkeletonAttributes());
+
+        RAT = register("rat", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, RatEntity::new).dimensions(EntityDimensions.fixed(0.45f, 0.35f)).trackRangeBlocks(8).build());
+        FabricDefaultAttributeRegistry.register(RAT, RatEntity.createSilverfishAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String s, EntityType<T> entityType) {

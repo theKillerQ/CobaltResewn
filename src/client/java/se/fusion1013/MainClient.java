@@ -62,6 +62,9 @@ public class MainClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_ZOMBIE, CorruptedZombieEntityRenderer::new);
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SKELETON, CorruptedSkeletonEntityRenderer::new);
+
+		EntityRendererRegistry.register(CobaltEntities.RAT, RatEntityRenderer::new);
+
 		EntityModelLayerRegistry.registerModelLayer(TEST_BLOCK_ENTITY_LAYER, DirectionalLightHolderBlockEntityRenderer::getTestTexturedModelData);
 
 		// Block rendering
