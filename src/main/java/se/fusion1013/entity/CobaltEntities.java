@@ -25,6 +25,7 @@ public class CobaltEntities {
     public static EntityType<CorruptedCoreEntity> CORRUPTED_CORE;
     public static EntityType<CorruptedZombieEntity> CORRUPTED_ZOMBIE;
     public static EntityType<CorruptedSkeletonEntity> CORRUPTED_SKELETON;
+    public static EntityType<AutomatonEntity> AUTOMATON;
 
     public static EntityType<RatEntity> RAT;
 
@@ -44,6 +45,13 @@ public class CobaltEntities {
                 .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
                 .build());
         FabricDefaultAttributeRegistry.register(CORRUPTED_SKELETON, CorruptedSkeletonEntity.createAbstractSkeletonAttributes());
+
+        AUTOMATON = register("automaton", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, AutomatonEntity::new)
+                .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
+                .build());
+        FabricDefaultAttributeRegistry.register(AUTOMATON, AutomatonEntity.createVindicatorAttributes());
+
+
 
         RAT = register("rat", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, RatEntity::new).dimensions(EntityDimensions.fixed(0.45f, 0.35f)).trackRangeBlocks(8).build());
         FabricDefaultAttributeRegistry.register(RAT, RatEntity.createSilverfishAttributes());

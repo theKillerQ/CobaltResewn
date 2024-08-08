@@ -25,6 +25,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
+import org.spongepowered.asm.launch.platform.container.IContainerHandle;
 import se.fusion1013.effect.CobaltEffects;
 import se.fusion1013.entity.CobaltEntities;
 import se.fusion1013.entity.ExplosiveArrowEntity;
@@ -34,6 +35,7 @@ import se.fusion1013.items.armor.sets.AdvancedExoskeletonArmorSet;
 import se.fusion1013.items.armor.sets.DivingArmorSet;
 import se.fusion1013.items.armor.sets.ExoskeletonArmorSet;
 import se.fusion1013.items.armor.sets.ThermalGearArmorSet;
+import se.fusion1013.items.consumable.CobaltDrinkItem;
 import se.fusion1013.items.consumable.CobaltHealingItem;
 import se.fusion1013.items.consumable.LiquidCourageItem;
 import se.fusion1013.items.consumable.MysteryMedicineItem;
@@ -136,6 +138,11 @@ public class CobaltItems {
     public static final Item RED_LENS;
     public static final Item GREEN_LENS;
     public static final Item BLUE_LENS;
+    public static final Item PRESSURE_GAUGE;
+
+    public static final Item CORRUPTED_ZOMBIE_SPAWN_EGG;
+    public static final Item CORRUPTED_SKELETON_SPAWN_EGG;
+    public static final Item AUTOMATON_SPAWN_EGG;
 
 
     static {
@@ -265,19 +272,11 @@ public class CobaltItems {
         RED_LENS = register("red_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
         GREEN_LENS = register("green_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
         BLUE_LENS = register("blue_lens", new CobaltItem(CobaltItemConfiguration.create(Formatting.WHITE), new FabricItemSettings().maxCount(1)));
-    }
+        PRESSURE_GAUGE = register("pressure_gauge", new CobaltItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
 
-    // --- ITEMS
-
-    public static final Item CORRUPTED_ZOMBIE_SPAWN_EGG = register("corrupted_zombie_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_ZOMBIE, 0x03fca1, 0x077a01, new FabricItemSettings()));
-    public static final Item CORRUPTED_SKELETON_SPAWN_EGG = register("corrupted_skeleton_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_SKELETON, 0xa6a6a6, 0x7ad0d6, new FabricItemSettings()));
-
-    public static final Item PRESSURE_GAUGE = register("pressure_gauge", new CobaltItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
-
-    // --- ITEM SETS
-
-    public static class ItemSets {
-        public static void registerAll() {}
+        CORRUPTED_ZOMBIE_SPAWN_EGG = register("corrupted_zombie_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_ZOMBIE, 44975, 3790560, new FabricItemSettings()));
+        CORRUPTED_SKELETON_SPAWN_EGG = register("corrupted_skeleton_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_SKELETON, 0xC1C1C1, 3790560, new FabricItemSettings()));
+        AUTOMATON_SPAWN_EGG = register("automaton_spawn_egg", new SpawnEggItem(CobaltEntities.AUTOMATON, 0x909c3a, 0xcfd4a9, new FabricItemSettings()));
     }
 
     // -- REGISTER
@@ -285,18 +284,8 @@ public class CobaltItems {
     public static void register() {
         register("icon_item", ICON_ITEM);
 
-        ItemSets.registerAll();
-
         registerDispenserBlockBehaviour(LIGHTNING_ARROW);
         registerDispenserBlockBehaviour(EXPLOSIVE_ARROW);
-
-        // Weapon group
-        ItemGroupEvents.modifyEntriesEvent(COBALT_WEAPON_GROUP_KEY).register(content -> {
-        });
-
-        // Trinket group
-        ItemGroupEvents.modifyEntriesEvent(COBALT_TRINKET_GROUP_KEY).register(content -> {
-        });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(content -> {
             content.add(CORRUPTED_ZOMBIE_SPAWN_EGG);
@@ -306,9 +295,17 @@ public class CobaltItems {
 
     private static Item register(String itemId, Item item) {
         Registry.register(Registries.ITEM, new Identifier(MOD_NAMESPACE, itemId), item);
-        ItemGroupEvents.modifyEntriesEvent(COBALT_GROUP_KEY).register(content -> {
-            content.add(item);
-        });
+
+        ItemGroupEvents.modifyEntriesEvent(COBALT_GROUP_KEY).register(content -> content.add(item));
+
+        // Add to appropriate item group depending on item type
+        if (item instanceof SwordItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> content.addAfter(Items.NETHERITE_SWORD, item));
+        else if (item instanceof AxeItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> content.addAfter(Items.NETHERITE_AXE, item));
+        else if (item instanceof CrossbowItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> content.addAfter(Items.CROSSBOW, item));
+        else if (item instanceof ArrowItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> content.addAfter(Items.TIPPED_ARROW, item));
+        else if (item instanceof SpawnEggItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(content -> content.add(item));
+        else if (item instanceof CobaltDrinkItem) ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(content -> content.addAfter(Items.SPIDER_EYE, item));
+
         return item;
     }
 
@@ -318,10 +315,18 @@ public class CobaltItems {
 
         // Add to armor item group
         ItemGroupEvents.modifyEntriesEvent(COBALT_ARMOR_GROUP_KEY).register(content -> {
-            content.add(set.registeredHelmet);
-            content.add(set.registeredChestplate);
-            content.add(set.registeredLeggings);
             content.add(set.registeredBoots);
+            content.add(set.registeredLeggings);
+            content.add(set.registeredChestplate);
+            content.add(set.registeredHelmet);
+        });
+
+        // Add to vanilla combat item group
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
+            content.addAfter(Items.TURTLE_HELMET, set.registeredHelmet);
+            content.addAfter(Items.TURTLE_HELMET, set.registeredChestplate);
+            content.addAfter(Items.TURTLE_HELMET, set.registeredLeggings);
+            content.addAfter(Items.TURTLE_HELMET, set.registeredBoots);
         });
 
         return set;
