@@ -62,6 +62,7 @@ public class MainClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_ZOMBIE, CorruptedZombieEntityRenderer::new);
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SKELETON, CorruptedSkeletonEntityRenderer::new);
+		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SPIDER, CorruptedSpiderEntityRenderer::new);
 
 		EntityRendererRegistry.register(CobaltEntities.RAT, RatEntityRenderer::new);
 

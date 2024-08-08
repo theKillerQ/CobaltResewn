@@ -142,6 +142,7 @@ public class CobaltItems {
 
     public static final Item CORRUPTED_ZOMBIE_SPAWN_EGG;
     public static final Item CORRUPTED_SKELETON_SPAWN_EGG;
+    public static final Item CORRUPTED_SPIDER_SPAWN_EGG;
     public static final Item AUTOMATON_SPAWN_EGG;
 
 
@@ -276,6 +277,7 @@ public class CobaltItems {
 
         CORRUPTED_ZOMBIE_SPAWN_EGG = register("corrupted_zombie_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_ZOMBIE, 44975, 3790560, new FabricItemSettings()));
         CORRUPTED_SKELETON_SPAWN_EGG = register("corrupted_skeleton_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_SKELETON, 0xC1C1C1, 3790560, new FabricItemSettings()));
+        CORRUPTED_SPIDER_SPAWN_EGG = register("corrupted_spider_spawn_egg", new SpawnEggItem(CobaltEntities.CORRUPTED_SPIDER, 3419431, 3790560, new FabricItemSettings()));
         AUTOMATON_SPAWN_EGG = register("automaton_spawn_egg", new SpawnEggItem(CobaltEntities.AUTOMATON, 0x909c3a, 0xcfd4a9, new FabricItemSettings()));
     }
 

@@ -445,6 +445,7 @@
 
   "item.cobalt.corrupted_zombie_spawn_egg": "Corrupted Zombie Spawn Egg",
   "item.cobalt.corrupted_skeleton_spawn_egg": "Corrupted Skeleton Spawn Egg",
+  "item.cobalt.corrupted_spider_spawn_egg": "Corrupted Spider Spawn Egg",
   "item.cobalt.automaton_spawn_egg": "Automaton Spawn Egg",
 
 
@@ -474,6 +475,7 @@
   "entity.cobalt.corrupted_core": "Corrupted Core",
   "entity.cobalt.corrupted_zombie": "Corrupted Zombie",
   "entity.cobalt.corrupted_skeleton": "Corrupted Skeleton",
+  "entity.cobalt.corrupted_spider": "Corrupted Spider",
   "entity.cobalt.automaton": "Automaton",
 
 
