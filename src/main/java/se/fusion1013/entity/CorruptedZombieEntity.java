@@ -10,4 +10,8 @@ public class CorruptedZombieEntity extends ZombieEntity {
         super(entityType, world);
     }
 
+    @Override
+    protected boolean isAffectedByDaylight() {
+        return false;
+    }
 }

@@ -10,4 +10,8 @@ public class CorruptedSkeletonEntity extends SkeletonEntity {
         super(entityType, world);
     }
 
+    @Override
+    protected boolean isAffectedByDaylight() {
+        return false;
+    }
 }
