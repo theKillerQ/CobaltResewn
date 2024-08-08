@@ -10,7 +10,6 @@ import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import se.fusion1013.block.CobaltBlocks;
@@ -33,6 +32,8 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import se.fusion1013.render.entity.model.CorruptedCoreEntityModel;
+import se.fusion1013.render.entity.model.CorruptedSpiderEntityModel;
 import se.fusion1013.screen.CobaltScreenHandlers;
 
 import static se.fusion1013.networking.CobaltNetworkingConstants.*;
@@ -45,6 +46,7 @@ public class MainClient implements ClientModInitializer {
 	public static final Item BACKPACK = new BackpackItem(new FabricItemSettings());
 
 	public static final EntityModelLayer MODEL_CORRUPTED_CORE_LAYER = new EntityModelLayer(new Identifier("cobalt", "corrupted_core"), "main");
+	public static final EntityModelLayer MODEL_CORRUPTED_SPIDER_LAYER = new EntityModelLayer(new Identifier("cobalt", "corrupted_spider"), "main");
 
 	public static final EntityModelLayer TEST_BLOCK_ENTITY_LAYER = new EntityModelLayer(new Identifier("cobalt", "empty_lens"), "main");
 
@@ -63,6 +65,7 @@ public class MainClient implements ClientModInitializer {
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_ZOMBIE, CorruptedZombieEntityRenderer::new);
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SKELETON, CorruptedSkeletonEntityRenderer::new);
 		EntityRendererRegistry.register(CobaltEntities.CORRUPTED_SPIDER, CorruptedSpiderEntityRenderer::new);
+		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_SPIDER_LAYER, CorruptedSpiderEntityModel::getTexturedModelData);
 
 		EntityRendererRegistry.register(CobaltEntities.RAT, RatEntityRenderer::new);
 
