@@ -4,7 +4,7 @@
   "key.cobalt.armor_toggle": "Toggle Active Armor Ability",
 
 
-  "item_group.cobalt.items": "Flickering Lights - All",
+  "item_group.cobalt.items": "Flickering Lights",
   "item_group.cobalt.weapons": "Flickering Lights - Weapons",
   "item_group.cobalt.trinkets": "Flickering Lights - Trinkets",
   "item_group.cobalt.armor": "Flickering Lights - Armor",
@@ -365,6 +365,7 @@
 
 
   "item.cobalt.wf_instruction_manual": "Site EF002 Instructions",
+  "item.cobalt.adventurer_journal": "Adventurer's Journal",
 
 
 
@@ -435,6 +436,17 @@
 
 
   "item.cobalt.lens": "Lens",
+  "item.cobalt.blue_lens": "Blue Lens",
+  "item.cobalt.red_lens": "Red Lens",
+  "item.cobalt.green_lens": "Green Lens",
+
+
+
+
+  "item.cobalt.corrupted_zombie_spawn_egg": "Corrupted Zombie Spawn Egg",
+  "item.cobalt.corrupted_skeleton_spawn_egg": "Corrupted Skeleton Spawn Egg",
+  "item.cobalt.corrupted_spider_spawn_egg": "Corrupted Spider Spawn Egg",
+  "item.cobalt.automaton_spawn_egg": "Automaton Spawn Egg",
 
 
 
@@ -461,6 +473,10 @@
 
 
   "entity.cobalt.corrupted_core": "Corrupted Core",
+  "entity.cobalt.corrupted_zombie": "Corrupted Zombie",
+  "entity.cobalt.corrupted_skeleton": "Corrupted Skeleton",
+  "entity.cobalt.corrupted_spider": "Corrupted Spider",
+  "entity.cobalt.automaton": "Automaton",
 
 
 
