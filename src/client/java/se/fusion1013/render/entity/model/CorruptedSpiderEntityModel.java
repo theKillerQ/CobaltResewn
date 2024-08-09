@@ -40,45 +40,32 @@ public class CorruptedSpiderEntityModel extends EntityModel<CorruptedSpiderEntit
 		ModelPartData modelPartData = modelData.getRoot();
 		ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(32, 4).cuboid(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 15.0F, -3.0F));
 
-		ModelPartData bone8 = head.addChild("bone8", ModelPartBuilder.create().uv(-6, 15).cuboid(-2.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new Dilation(0.0001F)), ModelTransform.of(4.0F, 1.75F, -9.0F, -3.1416F, 0.0F, -0.2618F));
+        head.addChild("bone8", ModelPartBuilder.create().uv(-6, 15).cuboid(-2.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new Dilation(0.0001F)), ModelTransform.of(4.0F, 1.75F, -9.0F, -3.1416F, 0.0F, -0.2618F));
+        head.addChild("bone6", ModelPartBuilder.create().uv(-6, 15).cuboid(-2.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new Dilation(0.0001F)), ModelTransform.of(-4.0F, 1.75F, -9.0F, 0.0F, 3.1416F, 0.2618F));
 
-		ModelPartData bone6 = head.addChild("bone6", ModelPartBuilder.create().uv(-6, 15).cuboid(-2.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new Dilation(0.0001F)), ModelTransform.of(-4.0F, 1.75F, -9.0F, 0.0F, 3.1416F, 0.2618F));
+        modelPartData.addChild("neck", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 15.0F, 0.0F));
 
-		ModelPartData neck = modelPartData.addChild("neck", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 15.0F, 0.0F));
-
-		ModelPartData body = modelPartData.addChild("body", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 15.0F, 9.0F));
+        ModelPartData body = modelPartData.addChild("body", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 15.0F, 9.0F));
 
 		ModelPartData bone3 = body.addChild("bone3", ModelPartBuilder.create().uv(0, 12).cuboid(-5.0F, -7.0F, 0.0F, 10.0F, 8.0F, 12.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 3.0F, -6.0F));
+        bone3.addChild("bone5", ModelPartBuilder.create().uv(47, 27).cuboid(-1.5F, -5.0F, 0.0F, 3.0F, 5.0F, 0.0F, new Dilation(0.0001F))
+                .uv(47, 24).cuboid(0.0F, -5.0F, -1.25F, 0.0F, 5.0F, 3.0F, new Dilation(0.0001F)), ModelTransform.of(0.0F, -3.0F, 11.0F, -1.5708F, 0.0F, 0.7854F));
+        bone3.addChild("bone7", ModelPartBuilder.create().uv(54, 19).cuboid(0.0F, -4.0F, -3.0F, 0.0F, 4.0F, 5.0F, new Dilation(0.0001F))
+                .uv(54, 24).cuboid(-2.5F, -4.0F, -0.5F, 5.0F, 4.0F, 0.0F, new Dilation(0.0001F)), ModelTransform.of(2.5F, -5.0F, 11.5F, -1.5708F, 0.0F, 0.7854F));
+        bone3.addChild("bone4", ModelPartBuilder.create().uv(54, 19).cuboid(0.0F, -4.0F, -3.0F, 0.0F, 4.0F, 5.0F, new Dilation(0.0001F))
+                .uv(54, 24).cuboid(-2.5F, -4.0F, -0.5F, 5.0F, 4.0F, 0.0F, new Dilation(0.0001F)), ModelTransform.of(-3.5F, -2.0F, 11.5F, -1.5708F, 0.0F, 0.7854F));
+        bone3.addChild("bone2", ModelPartBuilder.create().uv(48, 0).cuboid(-3.0F, 0.0F, -5.0F, 3.0F, 0.0F, 10.0F, new Dilation(0.0001F)), ModelTransform.of(4.0F, -7.0F, 6.0F, 0.0F, 0.0F, 0.2618F));
+        bone3.addChild("bone", ModelPartBuilder.create().uv(48, 0).cuboid(-3.0F, 0.0F, -5.0F, 3.0F, 0.0F, 10.0F, new Dilation(0.0001F)), ModelTransform.of(-4.0F, -7.0F, 6.0F, 3.1416F, 0.0F, 2.8798F));
 
-		ModelPartData bone5 = bone3.addChild("bone5", ModelPartBuilder.create().uv(47, 27).cuboid(-1.5F, -5.0F, 0.0F, 3.0F, 5.0F, 0.0F, new Dilation(0.0001F))
-		.uv(47, 24).cuboid(0.0F, -5.0F, -1.25F, 0.0F, 5.0F, 3.0F, new Dilation(0.0001F)), ModelTransform.of(0.0F, -3.0F, 11.0F, -1.5708F, 0.0F, 0.7854F));
-
-		ModelPartData bone7 = bone3.addChild("bone7", ModelPartBuilder.create().uv(54, 19).cuboid(0.0F, -4.0F, -3.0F, 0.0F, 4.0F, 5.0F, new Dilation(0.0001F))
-		.uv(54, 24).cuboid(-2.5F, -4.0F, -0.5F, 5.0F, 4.0F, 0.0F, new Dilation(0.0001F)), ModelTransform.of(2.5F, -5.0F, 11.5F, -1.5708F, 0.0F, 0.7854F));
-
-		ModelPartData bone4 = bone3.addChild("bone4", ModelPartBuilder.create().uv(54, 19).cuboid(0.0F, -4.0F, -3.0F, 0.0F, 4.0F, 5.0F, new Dilation(0.0001F))
-		.uv(54, 24).cuboid(-2.5F, -4.0F, -0.5F, 5.0F, 4.0F, 0.0F, new Dilation(0.0001F)), ModelTransform.of(-3.5F, -2.0F, 11.5F, -1.5708F, 0.0F, 0.7854F));
-
-		ModelPartData bone2 = bone3.addChild("bone2", ModelPartBuilder.create().uv(48, 0).cuboid(-3.0F, 0.0F, -5.0F, 3.0F, 0.0F, 10.0F, new Dilation(0.0001F)), ModelTransform.of(4.0F, -7.0F, 6.0F, 0.0F, 0.0F, 0.2618F));
-
-		ModelPartData bone = bone3.addChild("bone", ModelPartBuilder.create().uv(48, 0).cuboid(-3.0F, 0.0F, -5.0F, 3.0F, 0.0F, 10.0F, new Dilation(0.0001F)), ModelTransform.of(-4.0F, -7.0F, 6.0F, 3.1416F, 0.0F, 2.8798F));
-
-		ModelPartData leg1 = modelPartData.addChild("leg1", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, 4.0F));
-
-		ModelPartData leg2 = modelPartData.addChild("leg2", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, 4.0F));
-
-		ModelPartData leg3 = modelPartData.addChild("leg3", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, 1.0F));
-
-		ModelPartData leg4 = modelPartData.addChild("leg4", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, 1.0F));
-
-		ModelPartData leg5 = modelPartData.addChild("leg5", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, -2.0F));
-
-		ModelPartData leg6 = modelPartData.addChild("leg6", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, -2.0F));
-
-		ModelPartData leg7 = modelPartData.addChild("leg7", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, -5.0F));
-
-		ModelPartData leg8 = modelPartData.addChild("leg8", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, -5.0F));
-		return TexturedModelData.of(modelData, 64, 32);
+        modelPartData.addChild("leg1", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, 4.0F));
+        modelPartData.addChild("leg2", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, 4.0F));
+        modelPartData.addChild("leg3", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, 1.0F));
+        modelPartData.addChild("leg4", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, 1.0F));
+        modelPartData.addChild("leg5", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, -2.0F));
+        modelPartData.addChild("leg6", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, -2.0F));
+        modelPartData.addChild("leg7", ModelPartBuilder.create().uv(18, 0).cuboid(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 15.0F, -5.0F));
+        modelPartData.addChild("leg8", ModelPartBuilder.create().uv(28, 20).cuboid(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 15.0F, -5.0F));
+        return TexturedModelData.of(modelData, 64, 32);
 	}
 
 	@Override
@@ -86,6 +73,10 @@ public class CorruptedSpiderEntityModel extends EntityModel<CorruptedSpiderEntit
 		head.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		neck.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		body.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		renderLegs(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+	}
+
+	private void renderLegs(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		rightHindLeg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		leftHindLeg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		rightMiddleLeg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
@@ -100,8 +91,7 @@ public class CorruptedSpiderEntityModel extends EntityModel<CorruptedSpiderEntit
 	public void setAngles(CorruptedSpiderEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		this.head.yaw = headYaw * ((float)Math.PI / 180);
 		this.head.pitch = headPitch * ((float)Math.PI / 180);
-		float f = 0.7853982f;
-		this.rightHindLeg.roll = -0.7853982f;
+        this.rightHindLeg.roll = -0.7853982f;
 		this.leftHindLeg.roll = 0.7853982f;
 		this.rightMiddleLeg.roll = -0.58119464f;
 		this.leftMiddleLeg.roll = 0.58119464f;
@@ -109,9 +99,7 @@ public class CorruptedSpiderEntityModel extends EntityModel<CorruptedSpiderEntit
 		this.leftMiddleFrontLeg.roll = 0.58119464f;
 		this.rightFrontLeg.roll = -0.7853982f;
 		this.leftFrontLeg.roll = 0.7853982f;
-		float g = -0.0f;
-		float h = 0.3926991f;
-		this.rightHindLeg.yaw = 0.7853982f;
+        this.rightHindLeg.yaw = 0.7853982f;
 		this.leftHindLeg.yaw = -0.7853982f;
 		this.rightMiddleLeg.yaw = 0.3926991f;
 		this.leftMiddleLeg.yaw = -0.3926991f;
@@ -119,14 +107,14 @@ public class CorruptedSpiderEntityModel extends EntityModel<CorruptedSpiderEntit
 		this.leftMiddleFrontLeg.yaw = 0.3926991f;
 		this.rightFrontLeg.yaw = -0.7853982f;
 		this.leftFrontLeg.yaw = 0.7853982f;
-		float i = -(MathHelper.cos((float)(limbAngle * 0.6662f * 2.0f + 0.0f)) * 0.4f) * limbDistance;
-		float j = -(MathHelper.cos((float)(limbAngle * 0.6662f * 2.0f + (float)Math.PI)) * 0.4f) * limbDistance;
-		float k = -(MathHelper.cos((float)(limbAngle * 0.6662f * 2.0f + 1.5707964f)) * 0.4f) * limbDistance;
-		float l = -(MathHelper.cos((float)(limbAngle * 0.6662f * 2.0f + 4.712389f)) * 0.4f) * limbDistance;
-		float m = Math.abs(MathHelper.sin((float)(limbAngle * 0.6662f + 0.0f)) * 0.4f) * limbDistance;
-		float n = Math.abs(MathHelper.sin((float)(limbAngle * 0.6662f + (float)Math.PI)) * 0.4f) * limbDistance;
-		float o = Math.abs(MathHelper.sin((float)(limbAngle * 0.6662f + 1.5707964f)) * 0.4f) * limbDistance;
-		float p = Math.abs(MathHelper.sin((float)(limbAngle * 0.6662f + 4.712389f)) * 0.4f) * limbDistance;
+		float i = -(MathHelper.cos(limbAngle * 0.6662f * 2.0f + 0.0f) * 0.4f) * limbDistance;
+		float j = -(MathHelper.cos(limbAngle * 0.6662f * 2.0f + (float)Math.PI) * 0.4f) * limbDistance;
+		float k = -(MathHelper.cos(limbAngle * 0.6662f * 2.0f + 1.5707964f) * 0.4f) * limbDistance;
+		float l = -(MathHelper.cos(limbAngle * 0.6662f * 2.0f + 4.712389f) * 0.4f) * limbDistance;
+		float m = Math.abs(MathHelper.sin(limbAngle * 0.6662f + 0.0f) * 0.4f) * limbDistance;
+		float n = Math.abs(MathHelper.sin(limbAngle * 0.6662f + (float)Math.PI) * 0.4f) * limbDistance;
+		float o = Math.abs(MathHelper.sin(limbAngle * 0.6662f + 1.5707964f) * 0.4f) * limbDistance;
+		float p = Math.abs(MathHelper.sin(limbAngle * 0.6662f + 4.712389f) * 0.4f) * limbDistance;
 		this.rightHindLeg.yaw += i;
 		this.leftHindLeg.yaw += -i;
 		this.rightMiddleLeg.yaw += j;
