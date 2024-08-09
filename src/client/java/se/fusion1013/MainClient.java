@@ -73,7 +73,8 @@ public class MainClient implements ClientModInitializer {
 				CobaltBlocks.SCULK_GRASS,
 				CobaltBlocks.SHORT_SCULK_GRASS,
 				CobaltBlocks.ITEM_DISPLAY,
-				CobaltBlocks.ICICLE_BLOCK
+				CobaltBlocks.ICICLE_BLOCK,
+				CobaltBlocks.DIM_LANTERN
 		);
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

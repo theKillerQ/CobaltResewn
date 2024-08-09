@@ -1,0 +1,6 @@
+{
+  "parent": "cobalt:block/template_dim_hanging_lantern",
+  "textures": {
+    "lantern": "cobalt:block/dim_lantern"
+  }
+}
