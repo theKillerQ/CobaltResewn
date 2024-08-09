@@ -34,6 +34,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import se.fusion1013.render.entity.model.CorruptedCoreEntityModel;
 import se.fusion1013.render.entity.model.CorruptedSpiderEntityModel;
+import se.fusion1013.render.entity.model.RatEntityModel;
 import se.fusion1013.screen.CobaltScreenHandlers;
 
 import static se.fusion1013.networking.CobaltNetworkingConstants.*;
@@ -47,6 +48,7 @@ public class MainClient implements ClientModInitializer {
 
 	public static final EntityModelLayer MODEL_CORRUPTED_CORE_LAYER = new EntityModelLayer(new Identifier("cobalt", "corrupted_core"), "main");
 	public static final EntityModelLayer MODEL_CORRUPTED_SPIDER_LAYER = new EntityModelLayer(new Identifier("cobalt", "corrupted_spider"), "main");
+	public static final EntityModelLayer MODEL_RAT_LAYER = new EntityModelLayer(new Identifier("cobalt", "rat"), "main");
 
 	public static final EntityModelLayer TEST_BLOCK_ENTITY_LAYER = new EntityModelLayer(new Identifier("cobalt", "empty_lens"), "main");
 
@@ -68,6 +70,7 @@ public class MainClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(MODEL_CORRUPTED_SPIDER_LAYER, CorruptedSpiderEntityModel::getTexturedModelData);
 
 		EntityRendererRegistry.register(CobaltEntities.RAT, RatEntityRenderer::new);
+		EntityModelLayerRegistry.registerModelLayer(MODEL_RAT_LAYER, RatEntityModel::getTexturedModelData);
 
 		EntityRendererRegistry.register(CobaltEntities.AUTOMATON, AutomatonEntityRenderer::new);
 
