@@ -9,6 +9,7 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import se.fusion1013.items.CobaltItemConfiguration;
@@ -43,5 +44,9 @@ public class CobaltCrossbowItem extends CrossbowItem {
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
         configuration.postProcessNbt(nbt);
+    }
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.CROSSBOW;
     }
 }

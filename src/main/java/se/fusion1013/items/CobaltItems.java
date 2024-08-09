@@ -35,6 +35,7 @@ import se.fusion1013.items.consumable.CobaltHealingItem;
 import se.fusion1013.items.consumable.LiquidCourageItem;
 import se.fusion1013.items.consumable.MysteryMedicineItem;
 import se.fusion1013.items.crossbow.CobaltCrossbowItem;
+import se.fusion1013.items.crossbow.CobaltRepeatingCrossbowItem;
 import se.fusion1013.items.materials.CobaltArmorMaterials;
 import se.fusion1013.items.misc.CorruptedPearlItem;
 import se.fusion1013.items.misc.WalkieTalkieItem;
@@ -240,8 +241,10 @@ public class CobaltItems {
 
         public static final Item HARPOON_GUN;
         public static final Item HUNTER_CROSSBOW;
+        public static final  Item DOUBLE_SHOT_CROSSBOW;
 
         static {
+            DOUBLE_SHOT_CROSSBOW = register("double_shot_crossbow", new CobaltRepeatingCrossbowItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
             HARPOON_GUN = register("harpoon_gun", new CobaltCrossbowItem(CobaltItemConfiguration.create(Formatting.GOLD), new FabricItemSettings()));
             HUNTER_CROSSBOW = register("hunter_crossbow", new CobaltCrossbowItem(CobaltItemConfiguration.create(Formatting.GRAY), new FabricItemSettings()));
         }
